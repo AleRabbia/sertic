@@ -1,25 +1,63 @@
-import React, { useEffect } from 'react';
-import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
+import React, { useEffect, useState, useRef } from 'react';
 import { useAnimatedCounter } from '../../hooks/useAnimatedCounter';
-import { stats } from '../../data/stats';
+
+// Tus stats locales
+const stats = [
+  { number: "5000+", label: "Tickets Resueltos con Éxito" },
+  { number: "50+", label: "Empresas Confían en Nosotros" },
+  { number: "15+", label: "Años de Experiencia" },
+  { number: "24/7", label: "Soporte Remoto y Monitoreo" }
+];
+
+// Hook personalizado para intersection observer simplificado
+const useIntersectionObserver = () => {
+  const [hasTriggered, setHasTriggered] = useState(false);
+  const elementRef = useRef();
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasTriggered) {
+          setHasTriggered(true);
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (elementRef.current) {
+      observer.observe(elementRef.current);
+    }
+
+    return () => {
+      if (elementRef.current) {
+        observer.unobserve(elementRef.current);
+      }
+    };
+  }, [hasTriggered]);
+
+  return { elementRef, hasTriggered };
+};
 
 const StatCard = ({ stat, index }) => {
-  const { elementRef, isVisible, hasBeenVisible } = useIntersectionObserver();
+  const { elementRef, hasTriggered } = useIntersectionObserver();
+  const [hasStartedAnimation, setHasStartedAnimation] = useState(false);
   
-  // Extract numeric value for animation (if it's a number)
+  // Extract numeric value for animation
   const numericValue = stat.number.includes('+') 
     ? parseInt(stat.number.replace('+', '')) 
     : stat.number === '24/7' 
       ? null 
       : parseInt(stat.number);
 
-  const { count, startAnimation } = useAnimatedCounter(numericValue || 0, 2000);
+  const { count, startAnimation } = useAnimatedCounter(numericValue || 0, 1000, 0);
   
   useEffect(() => {
-    if (isVisible && numericValue && !hasBeenVisible) {
+    if (hasTriggered && numericValue && !hasStartedAnimation) {
+      console.log(`Starting animation for ${stat.number}`);
+      setHasStartedAnimation(true);
       startAnimation();
     }
-  }, [isVisible, numericValue, hasBeenVisible, startAnimation]);
+  }, [hasTriggered, numericValue, hasStartedAnimation, startAnimation, stat.number]);
 
   const displayValue = numericValue 
     ? `${count}${stat.number.includes('+') ? '+' : ''}`
@@ -29,7 +67,7 @@ const StatCard = ({ stat, index }) => {
     <div 
       ref={elementRef}
       className={`text-center transition-all duration-700 ${
-        hasBeenVisible 
+        hasTriggered 
           ? 'opacity-100 translate-y-0' 
           : 'opacity-0 translate-y-8'
       }`}
