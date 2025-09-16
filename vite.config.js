@@ -7,7 +7,8 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:5678', // tu n8n
+        target: 'https://n8n-xvcg.onrender.com',
+        //target: 'http://localhost:5678', // tu n8n//https://n8n-xvcg.onrender.com/webhook/chatbot
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''), // quita el /api del inicio
       },

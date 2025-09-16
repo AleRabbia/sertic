@@ -25,10 +25,10 @@ const Home = () => {
         <About />
         <Testimonials />
         <CasosExito />
-        <Contact />
-        <Chatbot />
+        <Contact />        
       </main>
       <Footer />
+      <Chatbot />
     </div>
   );
 };
