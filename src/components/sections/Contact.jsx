@@ -1,4 +1,3 @@
-// src/components/sections/Contact.jsx
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send, Calendar } from 'lucide-react';
 import Button from '../ui/Button';
@@ -71,7 +70,7 @@ const ContactForm = () => {
     
     setIsSubmitting(true);
     
-    // Simular envío del formulario
+    // para simular envío del formulario
     setTimeout(() => {
       alert('¡Mensaje enviado correctamente! Nos pondremos en contacto contigo pronto.');
       setFormData({ name: '', email: '', company: '', service: '', message: '' });

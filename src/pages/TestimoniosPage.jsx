@@ -1,4 +1,3 @@
-// src/pages/TestimoniosPage.jsx
 import React, { useState, useEffect } from 'react';
 import { Navigation, Footer } from '../components/layout';
 import { useNavigate } from 'react-router-dom';
@@ -11,7 +10,7 @@ const TestimoniosPage = () => {
     useEffect(() => {
     window.scrollTo(0, 0);
     }, []);
-  // Definir sectores manualmente (porque los querés fijos)
+  // Definir sectores
   const sectors = [
     { id: 'todos', name: 'Todos los sectores' },
     { id: 'agroindustria', name: 'Agroindustria' },
@@ -21,7 +20,7 @@ const TestimoniosPage = () => {
     { id: 'servicios', name: 'Servicios' }
   ];
 
-  // Filtrar testimonios según el sector activo
+  // Filtrar testimonios
   const filteredTestimonials = activeFilter === 'todos'
     ? testimonials
     : testimonials.filter(testimonial => testimonial.sector === activeFilter);
@@ -73,7 +72,7 @@ const TestimoniosPage = () => {
             </div>
           </div>
 
-          {/* Grid de testimonios detallados */}
+          {/*testimonios detallados */}
           <div className="grid md:grid-cols-2 gap-8">
             {filteredTestimonials.map((testimonial) => (
               <div

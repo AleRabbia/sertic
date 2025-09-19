@@ -1,5 +1,3 @@
-// src/data/casosExito.js
-
 export const casosExito = [
   {
     id: 1,
@@ -450,122 +448,9 @@ export const casosExito = [
     ],
     clientQuote: "La migración fue perfecta. SerTIC logró lo que creíamos imposible: migrar sin parar las operaciones.",
     featured: true
-  },
-  {
-    id: 17,
-    title: "RECUPERACIÓN DE DATOS CRÍTICOS",
-    category: "soporte",
-    sector: "eventual",
-    logo: null,
-    description: "Recuperación urgente de base de datos crítica para estudio contable con 500+ clientes tras falla de hardware.",
-    detailedDescription: "Estudio contable sufrió falla catastrófica de su servidor principal en plena época de vencimientos fiscales. Ejecutamos recuperación de datos de emergencia en 48 horas, recuperando 100% de la información y implementando nuevo sistema de backup automatizado para prevenir futuras pérdidas.",
-    technologies: ["Data Recovery", "Database Restoration", "Emergency Response", "Backup Automation", "RAID Recovery"],
-    duration: "48 horas emergencia + 1 semana setup",
-    teamSize: "3 especialistas recovery",
-    services: ["Emergency Data Recovery", "Backup Implementation", "System Restoration", "Prevention"],
-    metrics: {
-      recovery: "100% datos recuperados",
-      timeline: "48 horas emergencia",
-      clients: "500+ clientes impactados",
-      prevention: "Backup automatizado"
-    },
-    results: [
-      "100% de datos críticos recuperados",
-      "48 horas tiempo total de recovery",
-      "500+ clientes sin pérdida información",
-      "Sistema backup automatizado implementado",
-      "Procedimientos emergencia documentados"
-    ],
-    clientQuote: "SerTIC nos salvó el estudio. Recuperaron TODO en 48 horas cuando pensábamos que habíamos perdido años de trabajo.",
-    featured: false
-  },
-  {
-    id: 18,
-    title: "IMPLEMENTACIÓN ERP URGENTE",
-    category: "staffing",
-    sector: "eventual",
-    logo: null,
-    description: "Staffing de 8 desarrolladores para implementación urgente de ERP en empresa metalúrgica en crecimiento.",
-    detailedDescription: "Empresa metalúrgica en proceso de adquisición necesitaba implementar ERP completo en 4 meses para cumplir requisitos del comprador. Proporcionamos equipo completo de 8 desarrolladores especializados que ejecutaron implementación completa de SAP con módulos financieros, inventario y producción.",
-    technologies: ["SAP Implementation", "Custom Development", "Data Migration", "Integration", "Training"],
-    duration: "4 meses - proyecto finalizado",
-    teamSize: "8 desarrolladores especializados",
-    services: ["Staff Augmentation", "ERP Implementation", "Custom Development", "User Training"],
-    metrics: {
-      timeline: "4 meses deadline cumplido",
-      modules: "5 módulos SAP implementados",
-      team: "8 desarrolladores especializados",
-      success: "Adquisición exitosa"
-    },
-    results: [
-      "ERP completo en 4 meses según deadline",
-      "5 módulos SAP implementados exitosamente",
-      "8 desarrolladores especializados asignados",
-      "Adquisición empresarial completada",
-      "100% usuarios capacitados"
-    ],
-    clientQuote: "Sin el equipo de SerTIC no hubiéramos logrado la implementación a tiempo. Su staffing fue clave para cerrar la adquisición.",
-    featured: false
-  },
-  {
-    id: 19,
-    title: "AUDITORÍA DE SEGURIDAD EXPRESS",
-    category: "soporte",
-    sector: "eventual",
-    logo: null,
-    description: "Auditoría de seguridad IT y implementación de mejoras para empresa financiera antes de certificación ISO 27001.",
-    detailedDescription: "Empresa de servicios financieros necesitaba auditoría completa de seguridad IT y remediación de vulnerabilidades para obtener certificación ISO 27001 en 6 semanas. Ejecutamos assessment completo, implementamos controles de seguridad y documentamos todos los procedimientos necesarios para la certificación.",
-    technologies: ["Security Assessment", "ISO 27001", "Vulnerability Management", "Policy Documentation", "Compliance"],
-    duration: "6 semanas - proyecto finalizado",
-    teamSize: "4 especialistas seguridad",
-    services: ["Security Audit", "Vulnerability Remediation", "Policy Creation", "Compliance Support"],
-    metrics: {
-      timeline: "6 semanas timeline cumplido",
-      vulnerabilities: "25 vulnerabilidades resueltas",
-      compliance: "ISO 27001 certificado",
-      policies: "15 políticas documentadas"
-    },
-    results: [
-      "Certificación ISO 27001 obtenida",
-      "25 vulnerabilidades críticas resueltas",
-      "15 políticas de seguridad documentadas",
-      "100% compliance regulatorio",
-      "Equipo interno capacitado en seguridad"
-    ],
-    clientQuote: "La auditoría de SerTIC fue fundamental para obtener nuestra certificación ISO. Su expertise en seguridad es excepcional.",
-    featured: false
-  },
-  {
-    id: 20,
-    title: "DIGITALIZACIÓN DOCUMENTAL MASIVA",
-    category: "infraestructura",
-    sector: "eventual",
-    logo: null,
-    description: "Digitalización y organización de 50,000+ documentos físicos para bufete de abogados con implementación de sistema de gestión documental.",
-    detailedDescription: "Importante bufete de abogados necesitaba digitalizar 50+ años de documentos físicos e implementar sistema de gestión documental moderno. Ejecutamos proyecto de digitalización masiva con OCR, indexación automática y sistema de búsqueda avanzada, permitiendo acceso instantáneo a décadas de información legal.",
-    technologies: ["Document Scanning", "OCR Processing", "Document Management System", "Search Engine", "Cloud Storage"],
-    duration: "3 meses digitalización + setup",
-    teamSize: "6 especialistas digitalización",
-    services: ["Mass Digitization", "OCR Processing", "System Implementation", "Data Organization"],
-    metrics: {
-      documents: "50,000+ documentos digitalizados",
-      accuracy: "99.8% precisión OCR",
-      searchTime: "5 segundos búsqueda promedio",
-      storage: "80% reducción espacio físico"
-    },
-    results: [
-      "50,000+ documentos digitalizados con OCR",
-      "99.8% precisión en reconocimiento de texto",
-      "Búsquedas en 5 segundos promedio",
-      "80% reducción en espacio físico requerido",
-      "Sistema de gestión documental moderno"
-    ],
-    clientQuote: "SerTIC digitalizó 50 años de historia de nuestro bufete. Ahora encontramos cualquier documento en segundos.",
-    featured: false
   }*/}
 ];
 
-// Utilidades para filtrar y obtener datos
 export const getFeaturedCases = () => casosExito.filter(caso => caso.featured);
 
 export const getCasesByCategory = (category) => {

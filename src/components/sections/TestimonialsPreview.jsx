@@ -1,11 +1,10 @@
-// src/components/sections/TestimonialsPreview.jsx
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { testimonials } from '../../data/testimonials';
 
 const TestimonialsPreview = () => {
-  // Solo mostramos los primeros 3 testimonios
+  // solo mostramos los primeros 3 testimonios
   const featuredTestimonials = testimonials.slice(0, 3);
 
   return (

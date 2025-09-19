@@ -1,4 +1,3 @@
-// src/pages/PoliticaCookies.jsx
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Navigation, Footer } from "../components/layout";
@@ -19,7 +18,7 @@ const PoliticaCookies = () => {
 
       <main className="pt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          {/* Botón Volver */}
+          {/* Volver */}
           <div className="flex items-center gap-4 mb-8">
             <button
               onClick={() => navigate("/")}
@@ -71,7 +70,7 @@ const PoliticaCookies = () => {
               desactivás ciertas cookies.
             </p>
 
-            {/* Botón Configurar */}
+            {/* Configurar */}
             <div className="mt-8 flex justify-center">
               <button
                 onClick={() => setShowSettings(true)}

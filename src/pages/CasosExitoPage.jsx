@@ -13,7 +13,7 @@ const CasosExitoPage = () => {
 }, []);
 
   const [activeFilter, setActiveFilter] = useState('todos');
-  const [filterType, setFilterType] = useState('category'); // 'category' or 'sector'
+  const [filterType, setFilterType] = useState('category');
 const navigate = useNavigate();
   const categoryFilters = [
     { id: 'todos', name: 'Todos los servicios' },
@@ -83,7 +83,7 @@ const navigate = useNavigate();
             </p>
           </div>
 
-          {/* Toggle de tipo de filtro */}
+          {/* tipo de filtro */}
           <div className="flex justify-center mb-8">
             <div className="bg-slate-800/50 backdrop-blur-sm rounded-xl p-1">
               <button
@@ -129,11 +129,11 @@ const navigate = useNavigate();
             </div>
           </div>
 
-          {/* Grid de casos de éxito detallados */}
+          {/* casos de éxito detallados */}
           <div className="grid lg:grid-cols-2 gap-12">
             {validCases.map((caso) => (
               <div key={caso.id} className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm rounded-3xl overflow-hidden border border-slate-700/50 hover:border-cyan-500/30 transition-all duration-500">
-                {/* Header con logo y métricas */}
+                {/* Header */}
                 <div className="relative p-8 bg-gradient-to-r from-slate-800/80 to-slate-700/80">
                   <div className="flex items-center justify-between mb-6">
                     <div className="flex items-center gap-4">
