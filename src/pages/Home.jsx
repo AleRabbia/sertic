@@ -15,6 +15,7 @@ import {
   CasosExitoPreview,
   TestimonialsPreview
 } from '../components/sections';
+import ConsentBanner from '../components/privacity/ConsentBanner';
 
 const Home = () => {
   return (
@@ -31,6 +32,7 @@ const Home = () => {
       </main>
       <Footer />
       <Chatbot />
+      <ConsentBanner />
     </div>
   );
 };

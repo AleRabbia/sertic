@@ -6,11 +6,11 @@ import { ArrowLeft, Filter } from 'lucide-react';
 import { testimonials } from '../data/testimonials';
 
 const TestimoniosPage = () => {
-  const [activeFilter, setActiveFilter] = useState('todos');
-const navigate = useNavigate();
-useEffect(() => {
-  window.scrollTo(0, 0);
-}, []);
+    const [activeFilter, setActiveFilter] = useState('todos');
+    const navigate = useNavigate();
+    useEffect(() => {
+    window.scrollTo(0, 0);
+    }, []);
   // Definir sectores manualmente (porque los querés fijos)
   const sectors = [
     { id: 'todos', name: 'Todos los sectores' },
