@@ -1,6 +1,7 @@
 // src/components/sections/TestimonialsPreview.jsx
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { testimonials } from '../../data/testimonials';
 
 const TestimonialsPreview = () => {
@@ -48,13 +49,13 @@ const TestimonialsPreview = () => {
 
         {/* Call to Action para ver más */}
         <div className="text-center">
-          <button
-            onClick={() => (window.location.href = '/testimonios')}
+          <Link
+            to= '/testimonios'
             className="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-600 hover:to-purple-700 px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105"
           >
             Ver todos los testimonios
             <ArrowRight className="w-5 h-5" />
-          </button>
+          </Link>
         </div>
       </div>
     </section>

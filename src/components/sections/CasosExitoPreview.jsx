@@ -1,6 +1,7 @@
 // src/components/sections/CasosExitoPreview.jsx
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { getFeaturedCases } from '../../data/casosExito';
 
 const CasosExitoPreview = () => {
@@ -64,13 +65,13 @@ const CasosExitoPreview = () => {
 
         {/* Call to Action para ver más */}
         <div className="text-center">
-          <button
-            onClick={() => (window.location.href = '/casos-de-exito')}
+          <Link
+            to= '/casos-de-exito'
             className="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-600 hover:to-purple-700 px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105"
           >
             Ver todos los casos de éxito
             <ArrowRight className="w-5 h-5" />
-          </button>
+          </Link>
         </div>
       </div>
     </section>

@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { Navigation, Footer } from '../components/layout';
+import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Filter, Users, Clock, CheckCircle, TrendingUp } from 'lucide-react';
 import { casosExito, getCasesByCategory, getCasesBySector } from '../data/casosExito';
 
 const CasosExitoPage = () => {
   const [activeFilter, setActiveFilter] = useState('todos');
   const [filterType, setFilterType] = useState('category'); // 'category' or 'sector'
-
+const navigate = useNavigate();
   const categoryFilters = [
     { id: 'todos', name: 'Todos los servicios' },
     { id: 'infraestructura', name: 'Infraestructura' },
@@ -58,7 +59,7 @@ const CasosExitoPage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="flex items-center gap-4 mb-8">
             <button 
-              onClick={() => window.history.back()}
+              onClick={() => navigate('/')}
               className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors"
             >
               <ArrowLeft className="w-5 h-5" />

@@ -1,12 +1,13 @@
 // src/pages/TestimoniosPage.jsx
 import React, { useState } from 'react';
 import { Navigation, Footer } from '../components/layout';
+import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Filter } from 'lucide-react';
 import { testimonials } from '../data/testimonials';
 
 const TestimoniosPage = () => {
   const [activeFilter, setActiveFilter] = useState('todos');
-
+const navigate = useNavigate();
   // Definir sectores manualmente (porque los querés fijos)
   const sectors = [
     { id: 'todos', name: 'Todos los sectores' },
@@ -31,7 +32,7 @@ const TestimoniosPage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="flex items-center gap-4 mb-8">
             <button
-              onClick={() => window.history.back()}
+              onClick={() => navigate('/')}
               className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors"
             >
               <ArrowLeft className="w-5 h-5" />
