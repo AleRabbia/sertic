@@ -11,7 +11,9 @@ import {
   About,
   Testimonials,
   Contact,
-  CasosExito
+  CasosExito,
+  CasosExitoPreview,
+  TestimonialsPreview
 } from '../components/sections';
 
 const Home = () => {
@@ -22,9 +24,9 @@ const Home = () => {
         <Hero />
         <Stats />
         <Services />
+        <CasosExitoPreview/>
         <About />
-        <Testimonials />
-        <CasosExito />
+        <TestimonialsPreview />
         <Contact />        
       </main>
       <Footer />
