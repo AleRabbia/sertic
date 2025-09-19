@@ -1,10 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Navigation, Footer } from '../components/layout';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Filter, Users, Clock, CheckCircle, TrendingUp } from 'lucide-react';
 import { casosExito, getCasesByCategory, getCasesBySector } from '../data/casosExito';
 
+
+
 const CasosExitoPage = () => {
+
+    useEffect(() => {
+  window.scrollTo(0, 0);
+}, []);
+
   const [activeFilter, setActiveFilter] = useState('todos');
   const [filterType, setFilterType] = useState('category'); // 'category' or 'sector'
 const navigate = useNavigate();

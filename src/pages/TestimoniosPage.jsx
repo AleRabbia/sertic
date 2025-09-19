@@ -1,5 +1,5 @@
 // src/pages/TestimoniosPage.jsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Navigation, Footer } from '../components/layout';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Filter } from 'lucide-react';
@@ -8,6 +8,9 @@ import { testimonials } from '../data/testimonials';
 const TestimoniosPage = () => {
   const [activeFilter, setActiveFilter] = useState('todos');
 const navigate = useNavigate();
+useEffect(() => {
+  window.scrollTo(0, 0);
+}, []);
   // Definir sectores manualmente (porque los querés fijos)
   const sectors = [
     { id: 'todos', name: 'Todos los sectores' },

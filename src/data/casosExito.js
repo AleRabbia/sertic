@@ -342,7 +342,7 @@ export const casosExito = [
     title: "3dF DESARROLLOS",
     category: ["soporte","infraestructura"],
     sector: "servicios",
-    logo: "https://3dfdesarrollos.com/wp-content/uploads/2023/05/3df-logo-blanco.png",
+    logo: "https://www.desarrollos3df.com/images/icon/Oficinas%203dF%20SVG/20250818%20Oficinas%20de%20diseno%203dF-02.svg",
     description: "Somos un equipo de jóvenes profesionales enfocados en el diseño, el desarrollo, la dirección y ejecución de obras de arquitectura en múltiples escalas y tipologías.",
     detailedDescription: "3dF Desarrollos, especialistas en arquitectura y desarrollo de obras, necesitaba soporte técnico para sus herramientas de diseño arquitectónico y gestión de proyectos. Implementamos soluciones que garantizan la disponibilidad de software CAD, gestión de archivos de gran tamaño y colaboración con equipos multidisciplinarios.",
     technologies: ["AutoCAD", "BIM Software", "Project Management", "File Servers", "Cloud Collaboration"],
