@@ -1,3 +1,7 @@
+import konecta from '../assets/clientes/konecta.png';
+import letis from '../assets/clientes/letis.png';
+import unicaba from '../assets/clientes/unicaba.png';
+
 export const casosExito = [
   {
     id: 1,
@@ -32,7 +36,7 @@ export const casosExito = [
     title: "LETIS",
     category: ["soporte","infraestructura"],
     sector: "servicios",
-    logo: "https://letis.org/wp-content/uploads/2020/11/logo-header.png",
+    logo: letis,
     description: "LETIS es una empresa dedicada a la certificación y auditoría de normas internacionales de calidad y sustentabilidad en productos y procesos.",
     detailedDescription: "LETIS requería soporte técnico especializado para sus sistemas críticos de certificación y auditoría. Proporcionamos un equipo dedicado para soporte remoto, gestión de incidencias y mantenimiento preventivo. La criticidad del sector de certificación demandó protocolos especiales y tiempos de respuesta ultra-rápidos para mantener la continuidad operativa.",
     technologies: ["Remote Support Tools", "ITIL Framework", "Incident Management", "System Monitoring", "Security Protocols"],
@@ -88,7 +92,7 @@ export const casosExito = [
     title: "UNIVERSIDAD DE LA CIUDAD",
     category: "infraestructura",
     sector: "educacion",
-    logo: "https://udelaciudad.edu.ar/wp-content/uploads/2025/01/Logos-3-png_Logo-secundario-1-768x372.png",
+    logo: unicaba,
     description: "Trabajamos para ampliar las oportunidades para el desarrollo de las personas, para contribuir en la generación y distribución social del conocimiento.",
     detailedDescription: "La Universidad de la Ciudad requería modernizar su infraestructura IT para soportar el crecimiento estudiantil y las nuevas modalidades educativas híbridas. Implementamos soluciones de virtualización, backup y soporte técnico especializado para entornos educativos, garantizando la continuidad académica.",
     technologies: ["Hyper-V", "Office 365 Education", "Backup Solutions", "Network Infrastructure", "Classroom Technology"],
@@ -172,7 +176,7 @@ export const casosExito = [
     title: "KONECTA",
     category: "staffing",
     sector: "servicios",
-    logo: "https://talentokonecta.grupokonecta.com.ar/wp-content/uploads/2025/02/Konecta_Logo_RGB_Blue-2048x667.png",
+    logo: konecta,
     description: "Konecta crea experiencias híbridas para generar nuevo valor para ti, tus clientes y tus empleados. En salas de reuniones y en espacios vitales, convertimos conexiones en momentos significativos.",
     detailedDescription: "Konecta necesitaba ampliar rápidamente su equipo IT para varios proyectos críticos de transformación digital. Proporcionamos un servicio integral de staffing con profesionales pre-calificados en diferentes especialidades tecnológicas, adaptándonos a los requerimientos específicos de cada proyecto y las necesidades de experiencias híbridas.",
     technologies: ["Staff Augmentation", "Technical Assessment", "Project Management", "Digital Transformation", "Hybrid Work Solutions"],
