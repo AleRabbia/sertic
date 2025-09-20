@@ -1,3 +1,5 @@
+import logo2a from '../../assets/logo2a.png'
+
 export const Logo = ({ size = 'md' }) => {
   const sizes = {
     sm: 'w-8 h-8',
@@ -9,7 +11,7 @@ export const Logo = ({ size = 'md' }) => {
     <div className="flex items-center space-x-2">
       <div className={`${sizes[size]} flex items-center justify-center`}>
         <img 
-          src="/src/assets/logo2a.png" 
+          src={logo2a}
           alt="SerTIC Tech Solutions" 
           className="w-full h-full object-contain rounded-xl"
         />
