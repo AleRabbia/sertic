@@ -102,7 +102,13 @@ const Navigation = () => {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
-            <Logo />
+            <button 
+              onClick={handleInicioClick}
+              className="focus:outline-none focus:bg-white/10 rounded-lg p-1 transition-colors"
+              aria-label="Ir al inicio"
+            >
+              <Logo />
+            </button>
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8" role="menubar">

@@ -7,3 +7,6 @@ export { default as Contact } from './Contact';
 export {default as CasosExito} from './CasosExito';
 export { default as TestimonialsPreview } from './TestimonialsPreview';
 export {default as CasosExitoPreview} from './CasosExitoPreview';
+export {default as Memberships} from './Memberships';
+export {default as Technologies} from './Technologies';
+export {default as ContactInternational} from './InternationalContacts';

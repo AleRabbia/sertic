@@ -3,7 +3,7 @@ import { Mail, Phone, MapPin, Send, Calendar } from 'lucide-react';
 import Button from '../ui/Button';
 import { Card } from '../ui/Card';
 import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
-import { contactInfo } from '../../data/contact';
+import { contactInfo, internationalContacts } from '../../data/contact';
 
 const ContactCard = ({ icon: Icon, title, content, color, index }) => {
   const { elementRef, hasBeenVisible } = useIntersectionObserver();
@@ -258,19 +258,80 @@ const Contact = () => {
           </div>
         </div>
 
-        {/* Contact Cards */}
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
-          {contactCards.map((card, index) => (
-            <ContactCard 
-              key={card.title}
-              icon={card.icon}
-              title={card.title}
-              content={card.content}
-              color={card.color}
-              index={index}
-            />
+        {/* Cards internacionales */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+          {internationalContacts.map((c) => (
+            <div
+              key={c.id}
+              className="group bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm rounded-xl p-6 border border-slate-700/50 hover:border-cyan-500/50 transition-all duration-300"
+            >
+              {/* Header con bandera y ciudad */}
+              <div className="flex items-center gap-3 mb-4">
+                <div className="text-2xl flex items-center justify-center w-8 h-8">
+                  {c.flag}
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-lg font-bold text-white group-hover:text-cyan-400 transition-colors">
+                    {c.city}
+                  </h3>
+                  <p className="text-gray-400 text-sm">{c.country}</p>
+                </div>
+              </div>
+
+              {/* Información de contacto */}
+              <div className="space-y-3">
+                <div className="flex items-start gap-2">
+                  <MapPin className="w-5 h-5 text-pink-400 mt-0.5 flex-shrink-0" />
+                  <div className="min-w-0 flex-1">
+                    <p className="text-pink-400 font-medium text-sm">Ubicación</p>
+                    {/* solo Argentina con link a Maps */}
+                    {c.country === "Argentina" ? (
+                      <a
+                        href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                          c.address
+                        )}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-gray-300 hover:text-white text-xs transition-colors block"
+                      >
+                        {c.address}
+                      </a>
+                    ) : (
+                      <p className="text-gray-300 text-xs">{c.address}</p>
+                    )}
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-2">
+                  <Phone className="w-5 h-5 text-purple-400 mt-0.5 flex-shrink-0" />
+                  <div className="min-w-0 flex-1">
+                    <p className="text-purple-400 font-medium text-sm">Teléfono</p>
+                    <a
+                      href={`tel:${c.phone}`}
+                      className="text-gray-300 hover:text-white text-xs transition-colors block"
+                    >
+                      {c.phone}
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-2">
+                  <Mail className="w-5 h-5 text-cyan-400 mt-0.5 flex-shrink-0" />
+                  <div className="min-w-0 flex-1">
+                    <p className="text-cyan-400 font-medium text-sm">Email</p>
+                    <a
+                      href={`mailto:${c.email}`}
+                      className="text-gray-300 hover:text-white text-xs transition-colors block truncate"
+                    >
+                      {c.email}
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
           ))}
         </div>
+
 
         {/* Contact Form */}
         <ContactForm />

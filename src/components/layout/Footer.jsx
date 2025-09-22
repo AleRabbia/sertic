@@ -3,6 +3,7 @@ import { Linkedin, Twitter, Github, Mail, Phone, MapPin } from 'lucide-react';
 import { Logo } from '../ui/Logo';
 import { contactInfo } from '../../data/contact';
 import { navigationLinks } from '../../data/navigation';
+import { useNavigate } from 'react-router-dom';
 
 const SocialLink = ({ href, icon: Icon, label }) => (
   <a
@@ -33,6 +34,13 @@ const QuickLink = ({ href, children }) => (
 );
 
 const Footer = () => {
+
+  const navigate = useNavigate();
+
+  const handleInicioClick = () => {
+    navigate('/'); 
+    setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 50);
+  };
   const currentYear = new Date().getFullYear();
   
   const socialLinks = [
@@ -60,7 +68,13 @@ const Footer = () => {
           
           {/* Company Info */}
           <div className="space-y-4">
-            <Logo />
+            <button 
+                          onClick={handleInicioClick}
+                          className="focus:outline-none focus:bg-white/10 rounded-lg p-1 transition-colors"
+                          aria-label="Ir al inicio"
+                        >
+                          <Logo />
+                        </button>
             <p className="text-gray-300 text-sm max-w-xs">
               Soluciones IT confiables para empresas. Transformamos la tecnología en el motor de tu crecimiento.
             </p>

@@ -13,7 +13,10 @@ import {
   Contact,
   CasosExito,
   CasosExitoPreview,
-  TestimonialsPreview
+  TestimonialsPreview,
+  Technologies,
+  Memberships,
+  ContactInternational
 } from '../components/sections';
 import ConsentBanner from '../components/privacity/ConsentBanner';
 
@@ -25,6 +28,8 @@ const Home = () => {
         <Hero />
         <Stats />
         <Services />
+        <Technologies />
+        <Memberships />        
         <CasosExitoPreview/>
         <About />
         <TestimonialsPreview />
