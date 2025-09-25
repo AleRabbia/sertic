@@ -305,9 +305,9 @@ const Contact = () => {
                 <div className="flex items-start gap-2">
                   <Phone className="w-5 h-5 text-purple-400 mt-0.5 flex-shrink-0" />
                   <div className="min-w-0 flex-1">
-                    <p className="text-purple-400 font-medium text-sm">Teléfono</p>
+                    <p className="text-purple-400 font-medium text-sm">Whatsapp</p>
                     <a
-                      href={`tel:${c.phone}`}
+                      href={`https://wa.me/${c.phone.replace(/[^\d]/g, '')}`}
                       className="text-gray-300 hover:text-white text-xs transition-colors block"
                     >
                       {c.phone}

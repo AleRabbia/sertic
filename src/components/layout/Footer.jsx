@@ -141,16 +141,32 @@ const Footer = () => {
               <div className="flex items-center gap-3 text-gray-300" role="listitem">
                 <Phone className="w-4 h-4 text-purple-400 flex-shrink-0" aria-hidden="true" />
                 <a 
-                  href={`tel:${contactInfo.phone}`}
+                  href={`https://wa.me/${contactInfo.phone.replace(/[^\d]/g, '')}`}
                   className="hover:text-purple-400 focus:text-purple-400 transition-colors text-sm focus:outline-none focus:underline"
-                  aria-label={`Llamar al ${contactInfo.phone}`}
+                  aria-label={`Escribir al ${contactInfo.phone}`}
                 >
                   {contactInfo.phone}
                 </a>
               </div>
               <div className="flex items-start gap-3 text-gray-300" role="listitem">
-                <MapPin className="w-4 h-4 text-pink-400 flex-shrink-0 mt-1" aria-hidden="true" />
-                <address className="text-sm not-italic">{contactInfo.location}</address>
+                <MapPin
+                  className="w-4 h-4 text-pink-400 flex-shrink-0 mt-1"
+                  aria-hidden="true"
+                />
+                {contactInfo.location ? (
+                  <a
+                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                      contactInfo.location
+                    )}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm not-italic hover:text-white transition-colors"
+                  >
+                    {contactInfo.location}
+                  </a>
+                ) : (
+                  <address className="text-sm not-italic">{contactInfo.location}</address>
+                )}
               </div>
             </div>
           </div>
