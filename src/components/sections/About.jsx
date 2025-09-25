@@ -47,7 +47,7 @@ const About = () => {
     {
       icon: Shield,
       title: "Seguridad y Cumplimiento",
-      description: "Protegemos tus datos y sistemas siguiendo estándares de seguridad y normativas como ISO 27001."
+      description: "Protegemos tus datos y sistemas siguiendo estándares de seguridad y normativas como ISO 27001 y NIST."
     },
     {
       icon: Headphones,
@@ -78,7 +78,7 @@ const About = () => {
                 ¿Por qué SerTIC?
               </h2>
               <p className="text-xl text-gray-300 mb-8">
-                Brindamos soluciones IT confiables para empresas, con soporte continuo, infraestructura segura y consultoría estratégica para proteger y potenciar tu negocio.
+                Brindamos soluciones IT confiables para empresas, con soporte continuo y monitoreado, infraestructura segura y consultoría estratégica para proteger y potenciar tu negocio.
               </p>
             </div>
             

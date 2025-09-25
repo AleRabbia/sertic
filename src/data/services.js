@@ -4,15 +4,15 @@ export const services = [
   {
     id: 'soporte-remoto',
     icon: Headphones,
-    title: "Soporte Remoto",
+    title: "Soporte IT",
     description: "Atención rápida y eficiente para resolver incidencias de forma remota.",
-    features: ["Mesa de ayuda", "Resolución de tickets", "Asistencia en tiempo real", "SLA garantizados"],
+    features: ["Mesa de ayuda", "Monitoreo con resoluciones automatizadas", "Asistencia en tiempo real", "SLA garantizados"],
     color: "cyan"
   },
   {
     id: 'infraestructura',
     icon: Server,
-    title: "Infraestructura",
+    title: "Infraestructura IT",
     description: "Diseño, implementación y mantenimiento de la infraestructura tecnológica de tu empresa.",
     features: ["Servidores Windows & Linux", "Cloud (AWS, GCP)", "Redes y comunicaciones", "Gestión de backups"],
     color: "purple"
@@ -20,7 +20,7 @@ export const services = [
   {
     id: 'consultoria',
     icon: Shield,
-    title: "Consultoría",
+    title: "Ciberseguridad y Hardening",
     description: "Auditorías, seguridad informática y planes estratégicos para proteger tu negocio.",
     features: ["Ciberseguridad", "Auditorías IT", "Normas ISO 27001", "Planes de continuidad"],
     color: "pink"

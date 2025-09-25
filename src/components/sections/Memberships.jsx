@@ -1,6 +1,6 @@
 import React from 'react';
 import { ExternalLink, Award, Users } from 'lucide-react';
-import { memberships } from '../../data/technologies';
+import { memberships } from '../../data/memberships';
 
 const Memberships = () => {
   return (
@@ -15,53 +15,60 @@ const Memberships = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          {memberships.map((membership) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        {memberships.map((membership) => (
             <div
-              key={membership.id}
-              className="group bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700/50 hover:border-cyan-500/50 transition-all duration-300"
+            key={membership.id}
+            className="group bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700/50 hover:border-cyan-500/50 transition-all duration-300"
             >
-              <div className="flex items-start gap-6">
+            <div className="flex items-start gap-6">
                 <div className="w-16 h-16 bg-white/10 backdrop-blur-sm rounded-xl p-3 flex items-center justify-center flex-shrink-0">
-                  <img
+                <img
                     src={membership.logo}
                     alt={`Logo de ${membership.name}`}
-                    className="max-w-full max-h-full object-contain"
-                  />
+                    className="max-w-full max-h-full object-contain filter brightness-0 invert group-hover:filter-none transition-all duration-300"
+                />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">
+                <h3 className="text-xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">
                     {membership.name}
-                  </h3>
-                  <p className="text-gray-300 mb-4 text-sm leading-relaxed">
+                </h3>
+                <p className="text-gray-300 mb-4 text-sm leading-relaxed">
                     {membership.description}
-                  </p>
-                  <div className="flex items-center gap-4">
+                </p>
+                <div className="flex items-center gap-4">
                     <div className="flex items-center gap-2">
-                      {membership.type === 'technology' ? (
+                    {membership.type === "technology" ? (
                         <Users className="w-4 h-4 text-cyan-400" />
-                      ) : (
+                    ) : membership.type === "chamber" ? (
                         <Award className="w-4 h-4 text-purple-400" />
-                      )}
-                      <span className="text-sm text-gray-400">
-                        {membership.type === 'technology' ? 'Polo Tecnológico' : 'Cámara Empresarial'}
-                      </span>
+                    ) : (
+                        <Award className="w-4 h-4 text-green-400" />
+                    )}
+                    <span className="text-sm text-gray-400">
+                        {membership.type === "technology"
+                        ? "Polo Tecnológico"
+                        : membership.type === "chamber"
+                        ? "Cámara Empresarial"
+                        : "Certificación"}
+                    </span>
                     </div>
                     <a
-                      href={membership.website}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-cyan-400 hover:text-cyan-300 text-sm transition-colors"
+                    href={membership.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-cyan-400 hover:text-cyan-300 text-sm transition-colors"
                     >
-                      Ver más
-                      <ExternalLink className="w-3 h-3" />
+                    Ver más
+                    <ExternalLink className="w-3 h-3" />
                     </a>
-                  </div>
                 </div>
-              </div>
+                </div>
             </div>
-          ))}
+            </div>
+        ))}
         </div>
+
 
         {/* Beneficios */}
         <div className="mt-12 bg-gradient-to-r from-cyan-500/10 to-purple-600/10 rounded-2xl p-8 border border-cyan-500/20">

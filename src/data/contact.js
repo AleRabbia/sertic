@@ -21,19 +21,19 @@ export const internationalContacts = [
     flag: "🇦🇷"
   },
   {
+    id: 2,
+    country: "España", 
+    city: "Alicante  ",
+    address: "Pintor Gisbert 25",
+    phone: "+34 672 74 50 25",
+    email: "nicolas.roman@sertic.cloud",
+    flag: "🇪🇸"
+  },
+  {
     id: 3,
     country: "España",
     city: "Portugalete (BIZKAIA)",
     address: "Travesía de Arantza, Nº 1",
-    phone: "+34 672 74 50 25",
-    email: "nicolas.roman@sertic.com.ar",
-    flag: "🇪🇸"
-  },
-  {
-    id: 2,
-    country: "España", 
-    city: "Barcelona",
-    address: "Paseo de Gracia n° 54",
     phone: "+34 697 44 18 36",
     email: "francisco.mizzau@sertic.com.ar",
     flag: "🇪🇸"
