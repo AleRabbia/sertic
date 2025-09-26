@@ -19,7 +19,7 @@ const FeatureItem = ({ icon: Icon, title, description, index }) => {
         <Icon className="w-6 h-6" />
       </div>
       <div>
-        <h4 className="text-lg font-semibold mb-2">{title}</h4>
+        <h3 className="text-lg font-semibold mb-2">{title}</h3>
         <p className="text-gray-400">{description}</p>
       </div>
     </div>

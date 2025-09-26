@@ -102,8 +102,8 @@ const Chatbot = () => {
         <button
             onClick={() => setIsOpen(true)}
             className="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full p-4 shadow-lg transition-all duration-300 transform hover:scale-110 relative"
+            aria-label="Abrir chatbot asistente virtual"
         >
-            {/* Icono de robot en lugar de globito */}
             <Bot size={24} className="text-white" />
         </button>
         )}
