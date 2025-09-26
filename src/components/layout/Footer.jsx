@@ -72,6 +72,7 @@ const Footer = () => {
                           onClick={handleInicioClick}
                           className="focus:outline-none focus:bg-white/10 rounded-lg p-1 transition-colors"
                           aria-label="Ir al inicio"
+                          title='Inicio'
                         >
                           <Logo />
                         </button>
@@ -93,7 +94,7 @@ const Footer = () => {
 
           {/* Quick Links */}
           <nav aria-label="Enlaces rápidos">
-            <h3 className="text-white font-semibold mb-4 text-base">Enlaces Rápidos</h3>
+            <h2 className="text-white font-semibold mb-4 text-base">Enlaces Rápidos</h2>
             <ul className="space-y-2" role="list">
               {navigationLinks.map((link) => (
                 <li key={link.href} role="listitem">

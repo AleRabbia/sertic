@@ -93,59 +93,40 @@ const Navigation = () => {
 
   return (
     <>
-      <nav
-        className={`fixed w-full z-50 transition-all duration-300 ${
-          scrollY > 50 ? 'bg-black/80 backdrop-blur-lg' : 'bg-transparent'
-        }`}
-        role="navigation"
-        aria-label="Navegación principal"
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
-            <button 
-              onClick={handleInicioClick}
-              className="focus:outline-none focus:bg-white/10 rounded-lg p-1 transition-colors"
-              aria-label="Ir al inicio"
-            >
-              <Logo />
-            </button>
+              <nav 
+          className={`fixed w-full z-50 transition-all duration-300 ${scrollY > 50 ? 'bg-black/80 backdrop-blur-lg' : 'bg-transparent'}`} 
+          aria-label="Navegación principal"
+        >
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex justify-between items-center py-4">
+              
+              {/* Logo */}
+              <button 
+                onClick={handleInicioClick}
+                className="focus:outline-none focus:bg-white/10 rounded-lg p-1 transition-colors"
+                aria-label="Ir al inicio"
+                title="Inicio"
+              >
+                <Logo />
+              </button>
 
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-8" role="menubar">
-              {navigationLinks.map((link) => {
-                if (link.label === 'Inicio') {
-                  return (
-                    <button
-                      key={link.href}
-                      onClick={handleInicioClick}
-                      className="hover:text-cyan-400 focus:text-cyan-400 focus:bg-cyan-400/10 transition-all duration-200 focus:outline-none rounded px-2 py-1"
-                      role="menuitem"
-                      aria-label={`Ir a ${link.label}`}
-                    >
-                      {link.label}
-                    </button>
-                  );
-                }
-                return (
-                  <button
+              {/* Desktop Navigation */}
+              <div className="hidden md:flex items-center space-x-8">
+                {navigationLinks.map((link) => (
+                  <a
                     key={link.href}
-                    onClick={() => handleNavClick(link.href)}
-                    className="hover:text-cyan-400 focus:text-cyan-400 focus:bg-cyan-400/10 transition-all duration-200 focus:outline-none rounded px-2 py-1"
-                    role="menuitem"
-                    aria-label={`Ir a sección ${link.label}`}
+                    href={link.href}
+                    onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
+                    className="hover:text-cyan-400 focus:text-cyan-400 ..."
                   >
                     {link.label}
-                  </button>
-                );
-              })}
-              <Button 
-                size="sm" 
-                onClick={handleOpenModal}
-                aria-label="Abrir modal de cotización"
-              >
-                Cotización
-              </Button>
-            </div>
+                  </a>
+                ))}
+                <Button size="sm" onClick={handleOpenModal} aria-label="Abrir modal de cotización">
+                  Cotización
+                </Button>
+              </div>
+
 
             {/* Mobile Menu Button */}
             <button
