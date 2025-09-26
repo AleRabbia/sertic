@@ -57,7 +57,7 @@ const Technologies = () => {
         {/* Mensaje adicional */}
         <div className="text-center mt-12">
           <p className="text-gray-300 mb-6">
-            Y muchas tecnologías más. Nos adaptamos a las necesidades específicas de cada proyecto.
+            Dominamos un ecosistema amplio de tecnologías y seguimos sumando innovación
           </p>
           <button
             onClick={() => document.getElementById("modal-cotizacion")?.classList.remove("hidden")}

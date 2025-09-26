@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, Calendar } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Calendar, X, CheckCircle, XCircle } from 'lucide-react';
 import Button from '../ui/Button';
 import { Card } from '../ui/Card';
 import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
@@ -35,7 +35,11 @@ const ContactForm = () => {
     service: '',
     message: ''
   });
-  
+  const [modal, setModal] = useState({
+  isOpen: false,
+  isSuccess: false,
+  message: ''
+});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState({});
 
@@ -62,22 +66,62 @@ const ContactForm = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    
-    if (!validateForm()) {
-      return;
-    }
-    
-    setIsSubmitting(true);
-    
-    // para simular envío del formulario
-    setTimeout(() => {
-      alert('¡Mensaje enviado correctamente! Nos pondremos en contacto contigo pronto.');
-      setFormData({ name: '', email: '', company: '', service: '', message: '' });
-      setErrors({});
-      setIsSubmitting(false);
-    }, 1000);
-  };
+      e.preventDefault();
+      
+      if (!validateForm()) {
+        return;
+      }
+      
+      setIsSubmitting(true);
+      
+      try {
+        const response = await fetch(import.meta.env.VITE_N8N_CONTACT_WEBHOOK_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            company: formData.company || 'No especificada',
+            service: formData.service || 'No especificado',
+            message: formData.message
+          })
+        });
+
+        let result;
+        try {
+          result = await response.json();
+        } catch {
+          result = null; 
+        }
+         
+        if (response.ok) {
+              setModal({
+                isOpen: true,
+                isSuccess: true,
+                message: '¡Mensaje enviado correctamente! Nos pondremos en contacto contigo pronto.'
+              });
+              setFormData({ name: '', email: '', company: '', service: '', message: '' });
+              setErrors({});
+            } else {
+              setModal({
+                isOpen: true,
+                isSuccess: false,
+                message: result?.message || 'Error al enviar el mensaje'
+              });
+            }
+          } catch (error) {
+            console.error('Error al enviar formulario:', error);
+            setModal({
+              isOpen: true,
+              isSuccess: false,
+              message: 'Hubo un problema al enviar tu mensaje. Por favor, intenta nuevamente o contáctanos directamente.'
+            });
+          } finally {
+            setIsSubmitting(false);
+          }
+        };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -98,9 +142,10 @@ const ContactForm = () => {
   const isFormValid = formData.name && formData.email && formData.message && !isSubmitting;
 
   return (
+    <>
     <Card className="w-full max-w-2xl mx-auto">
       <h3 className="text-2xl font-bold text-center mb-6 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
-        Solicita tu consultoría gratuita
+        Solicita más información
       </h3>
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="grid md:grid-cols-2 gap-4">
@@ -205,6 +250,44 @@ const ContactForm = () => {
         </Button>
       </form>
     </Card>
+    {modal.isOpen && (
+      <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl border border-slate-700/50 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+          <div className="p-8">
+            <div className="flex justify-between items-center mb-6">
+              <h2 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+                {modal.isSuccess ? '' : 'Error'}
+              </h2>
+              <button
+                onClick={() => setModal({ ...modal, isOpen: false })}
+                className="text-gray-400 hover:text-white"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+
+            <div className="text-center py-8">
+              {modal.isSuccess ? (
+                <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
+              ) : (
+                <XCircle className="w-16 h-16 text-red-500 mx-auto mb-4" />
+              )}
+              <h3 className="text-xl font-semibold mb-4">
+                {modal.isSuccess ? '¡Mensaje Enviado!' : 'Oops...'}
+              </h3>
+              <p className="text-gray-300 mb-6">{modal.message}</p>
+              <button
+                onClick={() => setModal({ ...modal, isOpen: false })}
+                className="bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-600 hover:to-purple-700 px-6 py-2 rounded-full transition-all duration-300"
+              >
+                Cerrar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    )}
+    </>
   );
 };
 

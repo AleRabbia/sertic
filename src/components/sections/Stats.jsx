@@ -53,7 +53,6 @@ const StatCard = ({ stat, index }) => {
   
   useEffect(() => {
     if (hasTriggered && numericValue && !hasStartedAnimation) {
-      console.log(`Starting animation for ${stat.number}`);
       setHasStartedAnimation(true);
       startAnimation();
     }

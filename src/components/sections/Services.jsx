@@ -18,12 +18,12 @@ const ServiceCard = ({ service, index }) => {
       }`}
       style={{ transitionDelay: `${index * 150}ms` }}
     >
-      <Card className="group">
+      <Card className="group h-full flex flex-col">
         <div className={`text-${service.color}-400 mb-6 group-hover:scale-110 transition-transform duration-300`}>
           <IconComponent className="w-8 h-8" />
         </div>
         <h3 className="text-xl font-bold mb-4 text-white">{service.title}</h3>
-        <p className="text-gray-400 mb-6">{service.description}</p>
+        <p className="text-gray-400 mb-6 flex-grow">{service.description}</p>
         <ul className="space-y-2">
           {service.features.map((feature, idx) => (
             <li key={idx} className="flex items-center text-sm text-gray-300">
@@ -50,7 +50,7 @@ const Services = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 items-stretch">
           {services.map((service, index) => (
             <ServiceCard 
               key={service.id} 
