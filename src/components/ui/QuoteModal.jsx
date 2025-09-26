@@ -151,14 +151,16 @@ const QuoteModal = ({ isOpen, onClose }) => {
 
   return (
     <>
-      <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+      <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+           role="dialog" aria-modal="true" aria-labelledby="quote-title">
         <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl border border-slate-700/50 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
           <div className="p-8">
             <div className="flex justify-between items-center mb-6">
-              <h2 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+              <h2 id="quote-title" className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
                 Solicitar Cotización
               </h2>
-              <button onClick={onClose} className="text-gray-400 hover:text-white">
+              <button onClick={onClose} className="text-gray-400 hover:text-white"
+                      aria-label="Cerrar modal">
                 <X className="w-6 h-6" />
               </button>
             </div>
@@ -166,66 +168,54 @@ const QuoteModal = ({ isOpen, onClose }) => {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">
+                  <label htmlFor="q-name" className="block text-sm font-medium text-gray-300 mb-2">
                     Nombre completo *
                   </label>
                   <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
+                    type="text" id="q-name" name="name" value={formData.name} onChange={handleInputChange}
                     className={`w-full px-4 py-3 bg-slate-700/50 border rounded-lg focus:outline-none transition-colors text-white ${
                       errors.name ? 'border-red-500 focus:border-red-400' : 'border-slate-600 focus:border-cyan-500'
                     }`}
                     placeholder="Tu nombre completo"
                   />
                   {errors.name && (
-                    <p className="mt-1 text-sm text-red-400">{errors.name}</p>
+                    <p className="mt-1 text-sm text-red-400" role="alert">{errors.name}</p>
                   )}
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">
+                  <label htmlFor="q-email" className="block text-sm font-medium text-gray-300 mb-2">
                     Email *
                   </label>
                   <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
+                    type="email" id="q-email" name="email" value={formData.email} onChange={handleInputChange}
                     className={`w-full px-4 py-3 bg-slate-700/50 border rounded-lg focus:outline-none transition-colors text-white ${
                       errors.email ? 'border-red-500 focus:border-red-400' : 'border-slate-600 focus:border-cyan-500'
                     }`}
                     placeholder="tu@email.com"
                   />
                   {errors.email && (
-                    <p className="mt-1 text-sm text-red-400">{errors.email}</p>
+                    <p className="mt-1 text-sm text-red-400" role="alert">{errors.email}</p>
                   )}
                 </div>
               </div>
 
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">
+                  <label htmlFor="q-phone" className="block text-sm font-medium text-gray-300 mb-2">
                     Teléfono
                   </label>
                   <input
-                    type="tel"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleInputChange}
+                    type="tel" id="q-phone" name="phone" value={formData.phone} onChange={handleInputChange}
                     className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg focus:border-cyan-500 focus:outline-none transition-colors text-white"
                     placeholder="+54 341 123 4567"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">
+                  <label htmlFor="q-company" className="block text-sm font-medium text-gray-300 mb-2">
                     Empresa
                   </label>
                   <input
-                    type="text"
-                    name="company"
-                    value={formData.company}
-                    onChange={handleInputChange}
+                    type="text" id="q-company" name="company" value={formData.company} onChange={handleInputChange}
                     className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg focus:border-cyan-500 focus:outline-none transition-colors text-white"
                     placeholder="Nombre de tu empresa"
                   />
@@ -233,13 +223,11 @@ const QuoteModal = ({ isOpen, onClose }) => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">
+                <label htmlFor="q-service" className="block text-sm font-medium text-gray-300 mb-2">
                   Servicio de interés
                 </label>
                 <select
-                  name="service"
-                  value={formData.service}
-                  onChange={handleInputChange}
+                  id="q-service" name="service" value={formData.service} onChange={handleInputChange}
                   className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg focus:border-cyan-500 focus:outline-none transition-colors text-white"
                 >
                   <option value="">Selecciona un servicio</option>
@@ -253,13 +241,11 @@ const QuoteModal = ({ isOpen, onClose }) => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">
+                <label htmlFor="q-description" className="block text-sm font-medium text-gray-300 mb-2">
                   Descripción del proyecto *
                 </label>
                 <textarea
-                  name="description"
-                  value={formData.description}
-                  onChange={handleInputChange}
+                  id="q-description" name="description" value={formData.description} onChange={handleInputChange}
                   rows={4}
                   className={`w-full px-4 py-3 bg-slate-700/50 border rounded-lg focus:outline-none transition-colors text-white resize-none ${
                     errors.description ? 'border-red-500 focus:border-red-400' : 'border-slate-600 focus:border-cyan-500'
@@ -267,7 +253,7 @@ const QuoteModal = ({ isOpen, onClose }) => {
                   placeholder="Cuéntanos sobre tu proyecto, objetivos, funcionalidades específicas, presupuesto estimado, plazo deseado, etc."
                 />
                 {errors.description && (
-                  <p className="mt-1 text-sm text-red-400">{errors.description}</p>
+                  <p className="mt-1 text-sm text-red-400" role="alert">{errors.description}</p>
                 )}
               </div>
 
@@ -289,7 +275,8 @@ const QuoteModal = ({ isOpen, onClose }) => {
 
       {/* Modal de confirmación */}
       {modal.isOpen && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[60] flex items-center justify-center p-4">
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[60] flex items-center justify-center p-4"
+             role="dialog" aria-modal="true">
           <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl border border-slate-700/50 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
             <div className="p-8">
               <div className="flex justify-between items-center mb-6">
@@ -299,6 +286,7 @@ const QuoteModal = ({ isOpen, onClose }) => {
                 <button
                   onClick={() => setModal({ ...modal, isOpen: false })}
                   className="text-gray-400 hover:text-white"
+                  aria-label="Cerrar"
                 >
                   <X className="w-6 h-6" />
                 </button>
