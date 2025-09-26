@@ -32,14 +32,15 @@ const ContactForm = () => {
     name: '',
     email: '',
     company: '',
+    phone: '',
     service: '',
     message: ''
   });
   const [modal, setModal] = useState({
-  isOpen: false,
-  isSuccess: false,
-  message: ''
-});
+    isOpen: false,
+    isSuccess: false,
+    message: ''
+  });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState({});
 
@@ -66,62 +67,63 @@ const ContactForm = () => {
   };
 
   const handleSubmit = async (e) => {
-      e.preventDefault();
-      
-      if (!validateForm()) {
-        return;
-      }
-      
-      setIsSubmitting(true);
-      
-      try {
-        const response = await fetch(import.meta.env.VITE_N8N_CONTACT_WEBHOOK_URL, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            name: formData.name,
-            email: formData.email,
-            company: formData.company || 'No especificada',
-            service: formData.service || 'No especificado',
-            message: formData.message
-          })
-        });
+    e.preventDefault();
+    
+    if (!validateForm()) {
+      return;
+    }
+    
+    setIsSubmitting(true);
+    
+    try {
+      const response = await fetch(import.meta.env.VITE_N8N_CONTACT_WEBHOOK_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone || 'No especificado',
+          company: formData.company || 'No especificada',
+          service: formData.service || 'No especificado',
+          message: formData.message
+        })
+      });
 
-        let result;
-        try {
-          result = await response.json();
-        } catch {
-          result = null; 
-        }
-         
-        if (response.ok) {
-              setModal({
-                isOpen: true,
-                isSuccess: true,
-                message: '¡Mensaje enviado correctamente! Nos pondremos en contacto contigo pronto.'
-              });
-              setFormData({ name: '', email: '', company: '', service: '', message: '' });
-              setErrors({});
-            } else {
-              setModal({
-                isOpen: true,
-                isSuccess: false,
-                message: result?.message || 'Error al enviar el mensaje'
-              });
-            }
-          } catch (error) {
-            console.error('Error al enviar formulario:', error);
-            setModal({
-              isOpen: true,
-              isSuccess: false,
-              message: 'Hubo un problema al enviar tu mensaje. Por favor, intenta nuevamente o contáctanos directamente.'
-            });
-          } finally {
-            setIsSubmitting(false);
-          }
-        };
+      let result;
+      try {
+        result = await response.json();
+      } catch {
+        result = null; 
+      }
+       
+      if (response.ok) {
+        setModal({
+          isOpen: true,
+          isSuccess: true,
+          message: '¡Mensaje enviado correctamente! Nos pondremos en contacto contigo pronto.'
+        });
+        setFormData({ name: '', email: '', company: '', phone: '', service: '', message: '' });
+        setErrors({});
+      } else {
+        setModal({
+          isOpen: true,
+          isSuccess: false,
+          message: result?.message || 'Error al enviar el mensaje'
+        });
+      }
+    } catch (error) {
+      console.error('Error al enviar formulario:', error);
+      setModal({
+        isOpen: true,
+        isSuccess: false,
+        message: 'Hubo un problema al enviar tu mensaje. Por favor, intenta nuevamente o contáctanos directamente.'
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -203,22 +205,36 @@ const ContactForm = () => {
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-300 mb-2">
-              Servicio de interés
+              Teléfono
             </label>
-            <select
-              name="service"
-              value={formData.service}
+            <input
+              type="tel"
+              name="phone"
+              value={formData.phone}
               onChange={handleChange}
               className="w-full px-4 py-3 bg-slate-800/50 border border-slate-600 rounded-lg focus:border-cyan-500 focus:outline-none transition-colors"
-            >
-              <option value="">Selecciona un servicio</option>
-              <option value="soporte-remoto">Soporte Remoto</option>
-              <option value="infraestructura">Infraestructura</option>
-              <option value="consultoria">Consultoría</option>
-              <option value="staffing">Staffing</option>
-              <option value="todos">Todos los servicios</option>
-            </select>
+              placeholder="+54 341 123 4567"
+            />
           </div>
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-300 mb-2">
+            Servicio de interés
+          </label>
+          <select
+            name="service"
+            value={formData.service}
+            onChange={handleChange}
+            className="w-full px-4 py-3 bg-slate-800/50 border border-slate-600 rounded-lg focus:border-cyan-500 focus:outline-none transition-colors"
+          >
+            <option value="">Selecciona un servicio</option>
+            <option value="soporte-remoto">Soporte IT</option>
+            <option value="infraestructura">Infraestructura IT</option>
+            <option value="consultoria">Ciberseguridad y Hardening</option>
+            <option value="staffing">Staffing</option>
+            <option value="todos">Todos los servicios</option>
+          </select>
         </div>
 
         <div>
@@ -414,7 +430,6 @@ const Contact = () => {
             </div>
           ))}
         </div>
-
 
         {/* Contact Form */}
         <ContactForm />
