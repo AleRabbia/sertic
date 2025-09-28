@@ -19,8 +19,7 @@ const ContactCard = ({ icon: Icon, title, content, color, index }) => {
       style={{ transitionDelay: `${index * 150}ms` }}
     >
       <Card className="flex flex-col items-center gap-4 text-center h-full">
-        <Icon className={`w-8 h-8 text-${color}-400`} aria-hidden="true" />
-        {/* ✅ CORREGIDO: h4 → h3 para orden correcto */}
+        <Icon className={`w-8 h-8 text-${color}-400`} aria-hidden="true" />        
         <h3 className={`text-lg font-semibold text-${color}-400`}>{title}</h3>
         <p className="text-gray-300">{content}</p>
       </Card>
@@ -44,8 +43,7 @@ const ContactForm = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState({});
-
-  // Función para validar el formulario
+  
   const validateForm = () => {
     const newErrors = {};
     
@@ -133,7 +131,6 @@ const ContactForm = () => {
       [name]: value
     });
     
-    // Limpiar error del campo al escribir
     if (errors[name]) {
       setErrors({
         ...errors,
@@ -147,14 +144,14 @@ const ContactForm = () => {
   return (
     <>
     <Card className="w-full max-w-2xl mx-auto">
-      {/* ✅ CORREGIDO: h3 → h2 para orden correcto */}
+      
       <h2 className="text-2xl font-bold text-center mb-6 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
         Solicita más información
       </h2>
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="grid md:grid-cols-2 gap-4">
           <div>
-            {/* ✅ CORREGIDO: Agregado htmlFor para asociar label */}
+            
             <label htmlFor="contact-name" className="block text-sm font-medium text-gray-300 mb-2">
               Nombre completo *
             </label>
@@ -177,7 +174,7 @@ const ContactForm = () => {
             )}
           </div>
           <div>
-            {/* ✅ CORREGIDO: Agregado htmlFor para asociar label */}
+            
             <label htmlFor="contact-email" className="block text-sm font-medium text-gray-300 mb-2">
               Email *
             </label>
@@ -203,7 +200,7 @@ const ContactForm = () => {
         
         <div className="grid md:grid-cols-2 gap-4">
           <div>
-            {/* ✅ CORREGIDO: Agregado htmlFor para asociar label */}
+            
             <label htmlFor="contact-company" className="block text-sm font-medium text-gray-300 mb-2">
               Empresa
             </label>
@@ -218,7 +215,7 @@ const ContactForm = () => {
             />
           </div>
           <div>
-            {/* ✅ CORREGIDO: Agregado htmlFor para asociar label */}
+            
             <label htmlFor="contact-phone" className="block text-sm font-medium text-gray-300 mb-2">
               Teléfono
             </label>
@@ -235,7 +232,7 @@ const ContactForm = () => {
         </div>
 
         <div>
-          {/* ✅ CORREGIDO: Agregado htmlFor para asociar label al select */}
+          
           <label htmlFor="contact-service" className="block text-sm font-medium text-gray-300 mb-2">
             Servicio de interés
           </label>
@@ -257,7 +254,7 @@ const ContactForm = () => {
         </div>
 
         <div>
-          {/* ✅ CORREGIDO: Agregado htmlFor para asociar label */}
+          
           <label htmlFor="contact-message" className="block text-sm font-medium text-gray-300 mb-2">
             Mensaje *
           </label>
@@ -295,7 +292,6 @@ const ContactForm = () => {
       </form>
     </Card>
     
-    {/* ✅ CORREGIDO: Modal con mejor accesibilidad */}
     {modal.isOpen && (
       <div 
         className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
@@ -310,7 +306,7 @@ const ContactForm = () => {
               <h2 id="modal-title" className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
                 {modal.isSuccess ? 'Mensaje Enviado' : 'Error'}
               </h2>
-              {/* ✅ CORREGIDO: Botón con nombre accesible */}
+              
               <button
                 onClick={() => setModal({ ...modal, isOpen: false })}
                 className="text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-slate-900 rounded"
@@ -349,6 +345,14 @@ const ContactForm = () => {
 const Contact = () => {
   const { elementRef: titleRef, hasBeenVisible: titleVisible } = useIntersectionObserver();
 
+  
+
+  const handleScheduleMeeting = () => {
+  const calendlyUrl = 'https://calendly.com/alexis-rabbia-sertic/consulta-tecnica';
+  window.open(calendlyUrl, '_blank');
+};
+
+
   const contactCards = [
     {
       icon: Mail,
@@ -379,7 +383,7 @@ const Contact = () => {
             titleVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
-          {/* ✅ CORREGIDO: h2 → h1 o mantener h2 pero asegurar jerarquía */}
+          
           <h2 id="contact-heading" className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
             ¿Listo para comenzar?
           </h2>
@@ -387,18 +391,17 @@ const Contact = () => {
             Contactános y descubre cómo podemos mejorar tu infraestructura, seguridad y soporte tecnológico
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-            {/* ✅ CORREGIDO: Botones con nombres más descriptivos */}
+            
             <Button size="lg" icon aria-label="Solicitar cotización de servicios">
               Solicitar Cotización
             </Button>
-            <Button variant="secondary" size="lg" aria-label="Agendar una reunión">
+            <Button variant="secondary" size="lg" aria-label="Agendar una reunión" onClick={handleScheduleMeeting}>
               <Calendar className="w-5 h-5 mr-2" aria-hidden="true" />
               Agendar Reunión
             </Button>
           </div>
         </div>
-
-        {/* ✅ CORREGIDO: Agregada región landmark y encabezado */}
+        
         <section aria-labelledby="offices-heading">
           <h2 id="offices-heading" className="sr-only">Nuestras oficinas internacionales</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
@@ -407,7 +410,7 @@ const Contact = () => {
                 key={c.id}
                 className="group bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm rounded-xl p-6 border border-slate-700/50 hover:border-cyan-500/50 transition-all duration-300"
               >
-                {/* Header con bandera y ciudad */}
+                
                 <div className="flex items-center gap-3 mb-4">
                   <div className="text-2xl flex items-center justify-center w-8 h-8" aria-hidden="true">
                     {c.flag}

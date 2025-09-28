@@ -74,6 +74,7 @@ const Technologies = () => {
                 >
                     <div className="w-12 h-12 mb-4 flex items-center justify-center">
                     <img
+                    loading="lazy"
                         src={tech.logo}
                         alt={`Logo de ${tech.name}`}
                         className="max-w-full max-h-full object-contain filter brightness-0 invert group-hover:filter-none group-focus-within:filter-none transition-all duration-300"
