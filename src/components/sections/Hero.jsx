@@ -1,9 +1,13 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ChevronDown } from 'lucide-react';
 import Button from '../ui/Button';
 import { GradientBackground } from '../ui/GradientBackground';
 
 const Hero = () => {
+
+  const navigate = useNavigate(); 
+  
   const handleScrollToServices = () => {
     const servicesSection = document.querySelector('#servicios');
     if (servicesSection) {
@@ -16,6 +20,10 @@ const Hero = () => {
     if (contactSection) {
       contactSection.scrollIntoView({ behavior: 'smooth' });
     }
+  };
+
+  const handleCasosExitoClick = () => {
+    navigate('/casos-de-exito');
   };
 
   return (
@@ -44,7 +52,7 @@ const Hero = () => {
               <Button 
                 variant="secondary" 
                 size="lg"
-                onClick={handleScrollToServices}
+                onClick={handleCasosExitoClick}
               >
                 Casos de Éxito
               </Button>
