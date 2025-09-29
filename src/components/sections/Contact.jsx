@@ -4,7 +4,6 @@ import Button from '../ui/Button';
 import { Card } from '../ui/Card';
 import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
 import { contactInfo, internationalContacts } from '../../data/contact';
-import GoogleCalendarMeetingForm from './GoogleCalendarMeetingForm ';
 
 const ContactCard = ({ icon: Icon, title, content, color, index }) => {
   const { elementRef, hasBeenVisible } = useIntersectionObserver();
@@ -345,13 +344,13 @@ const ContactForm = () => {
 
 const Contact = () => {
   const { elementRef: titleRef, hasBeenVisible: titleVisible } = useIntersectionObserver();
-  const [showCalendarForm, setShowCalendarForm] = useState(false);
+
   
 
-  /*const handleScheduleMeeting = () => {
+  const handleScheduleMeeting = () => {
   const calendlyUrl = 'https://calendly.com/alexis-rabbia-sertic/consulta-tecnica';
   window.open(calendlyUrl, '_blank');
-};*/
+};
 
 
   const contactCards = [
@@ -396,16 +395,13 @@ const Contact = () => {
             <Button size="lg" icon aria-label="Solicitar cotización de servicios">
               Solicitar Cotización
             </Button>
-            <Button variant="secondary" size="lg" aria-label="Agendar una reunión" onClick={() => setShowCalendarForm(true)}>
+            <Button variant="secondary" size="lg" aria-label="Agendar una reunión" onClick={handleScheduleMeeting}>
               <Calendar className="w-5 h-5 mr-2" aria-hidden="true" />
               Agendar Reunión
             </Button>
           </div>
         </div>
-        <GoogleCalendarMeetingForm 
-  isOpen={showCalendarForm} 
-  onClose={() => setShowCalendarForm(false)} 
-/>
+        
         <section aria-labelledby="offices-heading">
           <h2 id="offices-heading" className="sr-only">Nuestras oficinas internacionales</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
