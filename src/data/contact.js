@@ -17,7 +17,7 @@ export const internationalContacts = [
     city: "Rosario",
     address: "Italia 1352",
     phone: "+54 9 3417 51-4628",
-    email: "comercial@sertic.com.ar",
+    email: "comercial@sertic.cloud",
     flag: "🇦🇷"
   },
   {
@@ -35,7 +35,7 @@ export const internationalContacts = [
     city: "Bilbao",
     address: "Travesía de Arantza, Nº 1",
     phone: "+34 697 44 18 36",
-    email: "francisco.mizzau@sertic.com.ar",
+    email: "francisco.mizzau@sertic.cloud",
     flag: "🇪🇸"
   }
 ];
