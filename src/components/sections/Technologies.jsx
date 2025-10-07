@@ -4,7 +4,7 @@ import { Autoplay, Keyboard, A11y } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/autoplay";
 import "swiper/css/a11y";
-
+import { motion } from "framer-motion";
 import { technologies } from "../../data/technologies";
 
 const Technologies = () => {
@@ -12,103 +12,87 @@ const Technologies = () => {
     const modal = document.getElementById("modal-cotizacion");
     if (modal) {
       modal.classList.remove("hidden");
-      // Mover foco al modal
       modal.focus();
     }
   };
 
   return (
-    <section className="py-20 bg-black/20" aria-labelledby="tech-title">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 id="tech-title" className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
-            Tecnologías que Dominamos
+    <section className="py-12 relative overflow-hidden">
+      {/* Fondo sutil */}
+      <div className="absolute inset-0 bg-gradient-to-br from-cyan-900/10 via-slate-900/40 to-purple-900/10 blur-3xl opacity-30"></div>
+
+      <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
+        {/* Encabezado */}
+        <div className="text-center mb-10">
+          <h2 className="text-3xl md:text-4xl font-bold mb-3 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+            Tecnologías que Potencian Nuestros Servicios
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Trabajamos con las mejores herramientas y plataformas del mercado para ofrecerte soluciones de vanguardia
+          <p className="text-base text-gray-400 max-w-2xl mx-auto">
+            Implementamos, integramos y administramos las principales plataformas tecnológicas.
           </p>
         </div>
 
-        {/* Slider de tecnologías */}
-        <div role="region" aria-labelledby="tech-title" aria-label="Carrusel de tecnologías">
-          <Swiper
-            modules={[Autoplay, Keyboard, A11y]}
-            spaceBetween={20}
-            speed={800}
-            autoplay={{ 
-              delay: 2500, 
-              disableOnInteraction: false,
-              pauseOnMouseEnter: true 
-            }}
-            keyboard={{
-              enabled: true,
-              onlyInViewport: true,
-            }}
-            a11y={{
-              enabled: true,
-              prevSlideMessage: 'Slide anterior',
-              nextSlideMessage: 'Siguiente slide',
-              firstSlideMessage: 'Este es el primer slide',
-              lastSlideMessage: 'Este es el último slide',
-            }}
-            loop={true}
-            breakpoints={{
-                320: { slidesPerView: 3 },   // smartphone
-                768: { slidesPerView: 4 },   // tablet
-                1024: { slidesPerView: 5 },  // desktop
-            }}
-            className="focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-black rounded-2xl"
-          >
-            {technologies.map((tech, index) => (
-                <SwiperSlide key={tech.id}>
-                <article 
-                  className="group h-40 flex flex-col justify-center items-center bg-gradient-to-br from-slate-800/30 to-slate-900/30 backdrop-blur-sm rounded-2xl p-6 border border-slate-700/30 hover:border-cyan-500/50 transition-all duration-300 transform hover:scale-105 focus-within:border-cyan-500/50 focus-within:scale-105"
-                  tabIndex="0"
-                  aria-label={`Tecnología ${index + 1} de ${technologies.length}: ${tech.name}`}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                      e.preventDefault();
-                      // Opcional: acción al presionar enter/espacio
-                    }
-                  }}
-                >
-                    <div className="w-12 h-12 mb-4 flex items-center justify-center">
-                    <img
+        {/* Carrusel */}
+        <Swiper
+          modules={[Autoplay, Keyboard, A11y]}
+          spaceBetween={30}
+          speed={1000}
+          autoplay={{
+            delay: 2200,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+          }}
+          keyboard={{ enabled: true, onlyInViewport: true }}
+          a11y={{
+            enabled: true,
+            prevSlideMessage: "Slide anterior",
+            nextSlideMessage: "Siguiente slide",
+          }}
+          loop={true}
+          breakpoints={{
+            320: { slidesPerView: 3 },
+            640: { slidesPerView: 4 },
+            1024: { slidesPerView: 6 },
+          }}
+          className="py-4"
+        >
+          {technologies.map((tech, i) => (
+            <SwiperSlide key={tech.id}>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.98 }}
+                className="group h-28 flex flex-col justify-center items-center rounded-2xl bg-slate-800/40 backdrop-blur-md border border-slate-700/40 hover:border-cyan-400/30 shadow-md hover:shadow-cyan-500/10 transition-all duration-300"
+              >
+                <div className="w-14 h-14 flex items-center justify-center mb-3">
+                  <img
                     loading="lazy"
-                        src={tech.logo}
-                        alt={`Logo de ${tech.name}`}
-                        className="max-w-full max-h-full object-contain filter brightness-0 invert group-hover:filter-none group-focus-within:filter-none transition-all duration-300"
-                    />
-                    </div>
-                    <h3 className="text-sm font-semibold text-white mb-2 group-hover:text-cyan-400 group-focus-within:text-cyan-400 transition-colors">
-                    {tech.name}
-                    </h3>
-                    <p className="text-xs text-gray-400 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-300">
-                    {tech.description}
-                    </p>
-                </article>
-                </SwiperSlide>
-            ))}
-          </Swiper>
-        </div>
+                    src={tech.logo}
+                    alt={tech.name}
+                    className="max-w-full max-h-full object-contain rounded-lg"
+                  />
+                </div>
+                <h3 className="text-xs font-semibold text-white opacity-90 group-hover:text-cyan-400 transition-colors">
+                  {tech.name}
+                </h3>
+              </motion.div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
 
-        {/* Controles de accesibilidad para el slider */}
-        <div className="sr-only" aria-live="polite" id="slider-status">
-          Use las flechas del teclado para navegar por las tecnologías
-        </div>
-
-        {/* Mensaje adicional */}
-        <div className="text-center mt-12">
-          <p className="text-gray-300 mb-6">
-            Dominamos un ecosistema amplio de tecnologías y seguimos sumando innovación
+        {/* Bloque inferior */}
+        <div className="mt-12 text-center">
+          <p className="text-gray-400 mb-6 text-sm md:text-base">
+            Evolucionamos junto a las tecnologías para acompañar los desafíos de cada organización.
           </p>
-          <button
+          {/*
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             onClick={handleConsultClick}
-            className="bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-600 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-black px-8 py-3 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 focus:scale-105"
-            aria-label="Abrir modal para consultar sobre tu tecnología específica"
+            className="px-6 py-3 rounded-full font-medium text-white bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-600 hover:to-purple-700 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-slate-900"
           >
-            Consulta sobre tu tecnología
-          </button>
+            Consultá por tu stack tecnológico
+          </motion.button>*/}
         </div>
       </div>
     </section>

@@ -5,6 +5,7 @@ import {
 } from '../components/layout';
 import Chatbot from '../components/ui/ChatBox';
 import {
+  HeroCarousel,
   Hero,
   Stats,
   Services,

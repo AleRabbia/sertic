@@ -10,3 +10,4 @@ export {default as CasosExitoPreview} from './CasosExitoPreview';
 export {default as Memberships} from './Memberships';
 export {default as Technologies} from './Technologies';
 export {default as ContactInternational} from './InternationalContacts';
+export {default as HeroCarousel} from './HeroCarrousel';
