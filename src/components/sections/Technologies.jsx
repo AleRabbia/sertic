@@ -71,7 +71,7 @@ const Technologies = () => {
                     className="max-w-full max-h-full object-contain rounded-lg"
                   />
                 </div>
-                <h3 className="text-xs font-semibold text-white opacity-90 group-hover:text-cyan-400 transition-colors">
+                <h3 className="text-xs font-semibold text-white mb-1 text-center break-words group-hover:text-cyan-400 transition-colors">
                   {tech.name}
                 </h3>
               </motion.div>
