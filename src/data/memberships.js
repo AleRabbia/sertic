@@ -19,13 +19,21 @@ export const memberships = [
     website: "https://cessi.org.ar/",
     type: "chamber"
   },
-  {
+  /*{
     id: 3,
     name: "ISO 27001",
     logo: iso,
     description: "Certificación en Sistemas de Gestión de Seguridad de la Información",
     website: "https://www.iso.org/standard/27001",
     type: "certification"
+  },*/
+  {
+    id: 4,
+    name: "ISO 27002",
+    logo: iso,
+    description: "Aplicamos las buenas prácticas de seguridad definidas en la norma ISO 27002.",
+    website: "https://www.iso.org/standard/75652.html",
+    type: "standard"
   }
 ];
 

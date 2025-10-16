@@ -22,7 +22,7 @@ const Navigation = () => {
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
-    setIsMenuOpen(false); // Cerrar menú móvil si está abierto
+    setIsMenuOpen(false);
   };
 
   const handleCloseModal = () => {

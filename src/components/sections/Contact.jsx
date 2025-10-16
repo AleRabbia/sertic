@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send, Calendar, X, CheckCircle, XCircle } from 'lucide-react';
 import Button from '../ui/Button';
 import { Card } from '../ui/Card';
+import QuoteModal from '../ui/QuoteModal';
 import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
 import { contactInfo, internationalContacts } from '../../data/contact';
 
 const ContactCard = ({ icon: Icon, title, content, color, index }) => {
   const { elementRef, hasBeenVisible } = useIntersectionObserver();
-
+  
   return (
     <div
       ref={elementRef}
@@ -43,7 +44,7 @@ const ContactForm = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState({});
-  
+
   const validateForm = () => {
     const newErrors = {};
     
@@ -138,6 +139,7 @@ const ContactForm = () => {
       });
     }
   };
+
 
   const isFormValid = formData.name && formData.email && formData.message && !isSubmitting;
 
@@ -344,7 +346,8 @@ const ContactForm = () => {
 
 const Contact = () => {
   const { elementRef: titleRef, hasBeenVisible: titleVisible } = useIntersectionObserver();
-
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   
 
   const handleScheduleMeeting = () => {
@@ -374,6 +377,15 @@ const Contact = () => {
     }
   ];
 
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+    setIsMenuOpen(false);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <section id="contacto" className="py-20 bg-black/30" aria-labelledby="contact-heading">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -392,7 +404,9 @@ const Contact = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
             
-            <Button size="lg" icon aria-label="Solicitar cotización de servicios">
+            <Button size="lg" icon aria-label="Solicitar cotización de servicios"
+              onClick={handleOpenModal}
+            >
               Solicitar Cotización
             </Button>
             <Button variant="secondary" size="lg" aria-label="Agendar una reunión" onClick={handleScheduleMeeting}>
@@ -483,6 +497,11 @@ const Contact = () => {
 
         {/* Contact Form */}
         <ContactForm />
+        {/* Modal de Cotización */}
+        <QuoteModal 
+          isOpen={isModalOpen} 
+          onClose={handleCloseModal} 
+        />
       </div>
     </section>
   );

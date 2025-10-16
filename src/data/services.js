@@ -1,20 +1,13 @@
 import { Headphones, Server, Shield, Users } from 'lucide-react';
 
 export const services = [
-  {
-    id: 'soporte-remoto',
-    icon: Headphones,
-    title: "Soporte IT",
-    description: "Atención rápida y eficiente para resolver incidencias de forma remota.",
-    features: ["Mesa de ayuda", "Monitoreo con resoluciones automatizadas", "Asistencia en tiempo real", "SLA garantizados"],
-    color: "cyan"
-  },
+  
   {
     id: 'infraestructura',
     icon: Server,
     title: "Infraestructura IT",
-    description: "Diseño, implementación y mantenimiento de la infraestructura tecnológica de tu empresa.",
-    features: ["Servidores Windows & Linux", "Cloud (AWS, GCP)", "Redes y comunicaciones", "Gestión de backups"],
+    description: "Implementamos y administramos entornos tecnológicos confiables que aseguran el rendimiento y la continuidad de tu operación.",
+    features: ["Servidores físicos y virtuales (Windows & Linux)", "Infraestructura Cloud (AWS, GCP)", "Gestión de Backups", "Monitoreo y soporte técnico especializado" ],
     color: "purple"
   },
   {
