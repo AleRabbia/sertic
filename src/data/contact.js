@@ -4,8 +4,8 @@ export const contactInfo = {
   location: "Italia 1352, Rosario, Argentina",
   social: {
     linkedin: "https://linkedin.com/company/sertic-tech",
-    twitter: "https://twitter.com/sertic",
-    github: "https://github.com/sertic"
+    twitter: "https://twitter.com",
+    github: "https://github.com"
   }
 };
 

@@ -3,6 +3,7 @@ import { Linkedin, Twitter, Github, Mail, Phone, MapPin } from 'lucide-react';
 import { Logo } from '../ui/Logo';
 import { contactInfo } from '../../data/contact';
 import { navigationLinks } from '../../data/navigation';
+import { useNavigate } from 'react-router-dom';
 
 const SocialLink = ({ href, icon: Icon, label }) => (
   <a
@@ -34,7 +35,7 @@ const QuickLink = ({ href, children }) => (
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  
+  const navigate = useNavigate(); 
   const socialLinks = [
     { 
       href: contactInfo.social?.linkedin || '#', 
@@ -52,6 +53,18 @@ const Footer = () => {
       label: 'GitHub' 
     }
   ];
+
+  const handleCookiesClick = () => {
+    navigate('/politica-cookies');
+  };
+
+  const handlePrivacidadClick = () => {
+    navigate('/politica-privacidad');
+  };
+
+  const handleTerminosClick = () => {
+    navigate('/terminos-servicios');
+  };
 
   return (
     <footer className="bg-black/50 py-12 border-t border-slate-800/50">
@@ -91,8 +104,7 @@ const Footer = () => {
           {/* Services */}
           <div>
             <h3 className="text-white font-semibold mb-4">Servicios</h3>
-            <div className="space-y-2">
-              <QuickLink href="#servicios">Soporte Remoto</QuickLink>
+            <div className="space-y-2">              
               <QuickLink href="#servicios">Infraestructura</QuickLink>
               <QuickLink href="#servicios">Consultoría IT</QuickLink>
               <QuickLink href="#servicios">Staffing</QuickLink>
@@ -136,13 +148,19 @@ const Footer = () => {
               &copy; {currentYear} SerTIC Tech Solutions. Todos los derechos reservados.
             </div>
             <div className="flex gap-6 text-sm text-gray-400">
-              <a href="#" className="hover:text-cyan-400 transition-colors">
+              <a className="hover:text-cyan-400 transition-colors"
+              onClick={handlePrivacidadClick}
+              >
                 Política de Privacidad
               </a>
-              <a href="#" className="hover:text-cyan-400 transition-colors">
+              <a className="hover:text-cyan-400 transition-colors"
+              onClick={handleTerminosClick}
+              >
                 Términos de Servicio
               </a>
-              <a href="#" className="hover:text-cyan-400 transition-colors">
+              <a className="hover:text-cyan-400 transition-colors"
+                onClick={handleCookiesClick}
+              >
                 Cookies
               </a>
             </div>

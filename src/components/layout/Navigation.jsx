@@ -5,20 +5,39 @@ import Button from '../ui/Button';
 import QuoteModal from '../ui/QuoteModal';
 import { useScrollPosition } from '../../hooks/useScrollPosition';
 import { navigationLinks } from '../../data/navigation';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { scrollY } = useScrollPosition();
 
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const handleNavClick = (href) => {
     setIsMenuOpen(false);
-    // Smooth scroll to section
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+
+    if (location.pathname !== "/") {
+      // Si no estás en home, navegá a home y hacé scroll después de cargar
+      navigate("/");
+
+      // Esperá un momento a que el DOM cargue las secciones
+      setTimeout(() => {
+        const element = document.querySelector(href);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 300);
+    } else {
+      // Si ya estás en home, solo hacé scroll
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
     }
   };
+
 
   const handleOpenModal = () => {
     setIsModalOpen(true);

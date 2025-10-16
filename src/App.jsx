@@ -5,6 +5,8 @@ import Home from './pages/Home';
 import TestimoniosPage from './pages/TestimoniosPage';
 import CasosExitoPage from './pages/CasosExitoPage';
 import PoliticaCookies from './pages/politica-cookies';
+import PrivPoli from './pages/PrivPoli';
+import TermsOfService from './pages/TermsOfService';
 
 import './index.css';
 
@@ -17,6 +19,8 @@ function App() {
           <Route path="/testimonios" element={<TestimoniosPage />} />
           <Route path="/casos-de-exito" element={<CasosExitoPage />} />
           <Route path="/politica-cookies" element={<PoliticaCookies />} />
+          <Route path="/terminos-servicios" element={<TermsOfService />} />
+          <Route path="/politica-privacidad" element={<PrivPoli />} />
         </Routes>
       </div>
     </Router>

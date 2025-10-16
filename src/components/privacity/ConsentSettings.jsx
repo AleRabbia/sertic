@@ -38,8 +38,8 @@ const ConsentSettings = ({ isOpen, onClose }) => {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className="bg-white rounded-xl shadow-lg w-full max-w-md p-6">
-        <h2 className="text-2xl font-bold mb-4 text-gray-800">Configuración de cookies</h2>
+      <div className="bg-black rounded-xl shadow-lg w-full max-w-md p-6">
+        <h2 className="text-2xl font-bold mb-4 text-white-800">Configuración de cookies</h2>
         
         <div className="space-y-4">
           <label className="flex items-center space-x-2">
