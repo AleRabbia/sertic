@@ -34,7 +34,9 @@ const TermsOfService = () => {
               Términos de Servicio
             </h1>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Bienvenido a SerTIC Tech Solutions. Al acceder o utilizar nuestros
+              Bienvenido a 
+              <a className="font-semibold"> SerTIC Tech Solutions</a>
+              . Al acceder o utilizar nuestros
               servicios, aceptás los siguientes términos.
             </p>
           </div>
@@ -43,34 +45,35 @@ const TermsOfService = () => {
           <div className="max-w-3xl mx-auto space-y-6 text-gray-300">
             <section>
               <h2 className="text-2xl font-semibold mb-2">
-                1. Uso del servicio
+                1. Alcance de los servicios
               </h2>
               <p>
-                El uso de nuestros servicios implica aceptar las condiciones,
-                límites y responsabilidades establecidas por SerTIC Tech
-                Solutions.
+                SerTIC Tech Solutions brinda servicios profesionales de infraestructura, soporte remoto, 
+                consultoría IT, ciberseguridad y staffing. Cada servicio se presta conforme a los acuerdos 
+                específicos establecidos con cada cliente.
               </p>
             </section>
 
             <section>
               <h2 className="text-2xl font-semibold mb-2">
-                2. Propiedad intelectual
+                2. Responsabilidades
               </h2>
               <p>
-                El contenido, marcas y software son propiedad de SerTIC Tech
-                Solutions. No está permitido su uso sin autorización expresa.
+                El cliente debe proporcionar información y accesos necesarios para la correcta ejecución de 
+                los servicios. SerTIC Tech Solutions aplicará las mejores prácticas técnicas y de seguridad, 
+                sin asumir responsabilidad por fallos derivados de factores externos o de terceros.
               </p>
             </section>
 
             <section>
               <h2 className="text-2xl font-semibold mb-2">
-                3. Limitación de responsabilidad
+                3. Confidencialidad y protección de datos
               </h2>
-              <p>
-                SerTIC Tech Solutions no se hace responsable por pérdidas
-                indirectas, interrupciones del servicio o daños derivados del
-                uso del sitio o sus servicios.
-              </p>
+                <p>
+                    Toda la información compartida será tratada con estricta confidencialidad. 
+                    SerTIC Tech Solutions protege los datos personales conforme a su Política de Privacidad 
+                    y la legislación vigente.
+                </p>
             </section>
 
             <p className="mt-8 text-sm opacity-80">

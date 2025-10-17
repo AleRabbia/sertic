@@ -37,7 +37,9 @@ const PrivPoli = () => {
               Política de Privacidad
             </h1>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              En SerTIC Tech Solutions valoramos tu privacidad. Esta política describe 
+              En
+              <a className="font-semibold"> SerTIC Tech Solutions </a> 
+              valoramos tu privacidad. Esta política describe 
               cómo recopilamos, usamos y protegemos tus datos personales.
             </p>
           </div>
@@ -70,7 +72,10 @@ const PrivPoli = () => {
               </h2>
               <p>
                 Podés solicitar acceso, corrección o 
-                eliminación de tus datos escribiendo a info@sertic.cloud
+                eliminación de tus datos escribiendo a 
+                <a href={`mailto:info@sertic.cloud`}
+                className="hover:text-cyan-400 font-semibold transition-colors text-sm"> info@sertic.cloud</a>
+                .
               </p>
             </section>
 
