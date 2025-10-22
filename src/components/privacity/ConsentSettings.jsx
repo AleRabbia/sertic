@@ -1,4 +1,3 @@
-// src/components/privacity/ConsentSettings.jsx
 import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 
@@ -6,6 +5,7 @@ const ConsentSettings = ({ isOpen, onClose }) => {
   const [analytics, setAnalytics] = useState(false);
   const [ads, setAds] = useState(false);
 
+  // ✅ Este efecto carga las preferencias APENAS se monta el componente
   useEffect(() => {
     const consent = Cookies.get("cookieConsentSettings");
     if (consent) {
@@ -17,13 +17,29 @@ const ConsentSettings = ({ isOpen, onClose }) => {
         console.error("Error al leer cookieConsentSettings");
       }
     }
-  }, []);
+  }, []); // <- importante, sin dependencia de isOpen
+
+  // ✅ También actualizamos si se vuelve a abrir el modal
+  useEffect(() => {
+    if (isOpen) {
+      const consent = Cookies.get("cookieConsentSettings");
+      if (consent) {
+        try {
+          const parsed = JSON.parse(consent);
+          setAnalytics(parsed.analytics);
+          setAds(parsed.ads);
+        } catch {
+          console.error("Error al leer cookieConsentSettings");
+        }
+      }
+    }
+  }, [isOpen]);
 
   const handleSave = () => {
     const settings = { analytics, ads };
     Cookies.set("cookieConsentSettings", JSON.stringify(settings), { expires: 365 });
 
-    // Guardar un flag de consentimiento general
+    // Guardar flag general
     if (analytics || ads) {
       Cookies.set("cookieConsent", "accepted", { expires: 365 });
     } else {
@@ -31,7 +47,7 @@ const ConsentSettings = ({ isOpen, onClose }) => {
     }
 
     onClose();
-    window.location.reload(); // aplicar cambios
+    window.location.reload();
   };
 
   if (!isOpen) return null;
