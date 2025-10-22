@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 import Cookies from "js-cookie";
 
 const CookieBanner = () => {
   const [visible, setVisible] = useState(false);
+
+  const navigate = useNavigate(); 
 
   useEffect(() => {
     const consent = Cookies.get("cookieConsent");
@@ -18,6 +21,11 @@ const CookieBanner = () => {
     }
   };
 
+  const handleCookiesClick = (e) => {
+    e.preventDefault();
+    navigate('/politica-cookies');
+  };
+
   const enableAnalytics = () => {
   if (document.getElementById("ga-script")) return; // evitar duplicados
 
@@ -26,11 +34,7 @@ const CookieBanner = () => {
     script.src = "https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX";
     script.async = true;
     script.id = "ga-script";
-
-    // Manejo si el script no se carga (bloqueado por AdBlock)
-    script.onerror = () => {
-      console.info("ℹ️ Google Analytics bloqueado por el navegador o extensión.");
-    };
+    
 
     document.head.appendChild(script);
 
@@ -58,7 +62,8 @@ const CookieBanner = () => {
     <div className="fixed bottom-0 left-0 w-full bg-gray-900 text-white p-4 flex justify-between items-center shadow-lg z-50">
       <p className="text-sm max-w-[70%]">
         Usamos cookies para mejorar tu experiencia y analizar el uso del sitio.{" "}
-        <a href="/politica-cookies" className="underline">
+        <a href="/politica-cookies" className="underline"
+        onClick={handleCookiesClick}>
           Más info
         </a>
       </p>
