@@ -120,8 +120,9 @@ const Footer = () => {
           <div>
             <h3 className="text-white font-semibold mb-4">Servicios</h3>
             <div className="space-y-2">              
-              <QuickLink href="#servicios">Infraestructura</QuickLink>
-              <QuickLink href="#servicios">Consultoría IT</QuickLink>
+              <QuickLink href="#servicios">Infraestructura IT</QuickLink>
+              <QuickLink href="#servicios">Ciberseguridad y Hardening</QuickLink>
+              <QuickLink href="#servicios">Development y DevOps</QuickLink>
               <QuickLink href="#servicios">Staffing</QuickLink>
             </div>
           </div>

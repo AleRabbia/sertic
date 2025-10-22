@@ -5,7 +5,6 @@ const ConsentSettings = ({ isOpen, onClose }) => {
   const [analytics, setAnalytics] = useState(false);
   const [ads, setAds] = useState(false);
 
-  // ✅ Este efecto carga las preferencias APENAS se monta el componente
   useEffect(() => {
     const consent = Cookies.get("cookieConsentSettings");
     if (consent) {
@@ -17,9 +16,8 @@ const ConsentSettings = ({ isOpen, onClose }) => {
         console.error("Error al leer cookieConsentSettings");
       }
     }
-  }, []); // <- importante, sin dependencia de isOpen
+  }, []); 
 
-  // ✅ También actualizamos si se vuelve a abrir el modal
   useEffect(() => {
     if (isOpen) {
       const consent = Cookies.get("cookieConsentSettings");

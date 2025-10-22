@@ -1,29 +1,63 @@
-import { Headphones, Server, Shield, Users } from 'lucide-react';
+import { Code, Headphones, Server, Shield, Users } from 'lucide-react';
 
-export const services = [
-  
+export const services = 
+
+[
   {
     id: 'infraestructura',
     icon: Server,
     title: "Infraestructura IT",
-    description: "Implementamos y administramos entornos tecnológicos confiables que aseguran el rendimiento y la continuidad de tu operación.",
-    features: ["Servidores físicos y virtuales (Windows & Linux)", "Infraestructura Cloud (AWS, GCP)", "Gestión de Backups", "Monitoreo y soporte técnico especializado" ],
+    description:
+      "Diseñamos, implementamos y administramos entornos tecnológicos confiables que aseguran el rendimiento, la escalabilidad y la continuidad operativa de tu negocio.",
+    features: [
+      "Servidores físicos y virtuales (Windows & Linux)",
+      "Infraestructura Cloud (AWS, GCP)",
+      "Gestión de Backups",
+      "Monitoreo y soporte técnico especializado"
+    ],
     color: "purple"
   },
   {
     id: 'consultoria',
     icon: Shield,
-    title: "Ciberseguridad y Hardening",
-    description: "Auditorías, seguridad informática y planes estratégicos para proteger tu negocio.",
-    features: ["Ciberseguridad", "Auditorías IT", "Normas ISO 27001", "Planes de continuidad"],
+    title: "Ciberseguridad & Hardening",
+    description:
+      "Protegemos tus activos digitales con auditorías, controles y estrategias integrales de seguridad alineadas con los estándares internacionales.",
+    features: [
+      "Ciberseguridad preventiva y correctiva",
+      "Auditorías IT",
+      "Implementación de normas ISO 27001",
+      "Planes de continuidad y recuperación"
+    ],
     color: "pink"
+  },
+  {
+    id: 'development',
+    icon: Code,
+    title: "Development & DevOps",
+    description:
+      "Automatizamos y optimizamos entornos de desarrollo y despliegue, mejorando la eficiencia, estabilidad y trazabilidad de tus aplicaciones.",
+    features: [
+      "Infraestructura como Código (Terraform, Ansible)",
+      "Administración de Kubernetes (EKS, OKD, Rancher)",
+      "CI/CD (GitLab, Jenkins, Azure DevOps)",
+      "Observabilidad (Grafana, Prometheus)"
+    ],
+    color: "cyan"
   },
   {
     id: 'staffing',
     icon: Users,
     title: "Staffing",
-    description: "Talento especializado para reforzar tu equipo de tecnología según tus necesidades.",
-    features: ["Perfiles técnicos", "Asignación flexible", "Soporte a proyectos", "Recursos on-demand"],
+    description:
+      "Sumamos talento especializado a tu equipo para acompañar el crecimiento tecnológico de tu empresa con flexibilidad y experiencia.",
+    features: [
+      "Perfiles técnicos calificados",
+      "Asignación flexible por proyecto o demanda",
+      "Soporte operativo y técnico",
+      "Recursos on-demand"
+    ],
     color: "green"
   }
 ];
+

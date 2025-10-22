@@ -58,7 +58,8 @@ const Hero = () => {
               </Button>
             </div>
           </div>
-          
+          {/* Lo comento hasta que lo pueda acomodar visualmente */}
+          {/*
           <button 
             onClick={handleScrollToServices}
             className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce hover:text-cyan-400 transition-colors duration-200"
@@ -66,6 +67,7 @@ const Hero = () => {
           >
             <ChevronDown className="w-8 h-8 text-cyan-400" />
           </button>
+          */}
         </div>
       </GradientBackground>
     </section>
