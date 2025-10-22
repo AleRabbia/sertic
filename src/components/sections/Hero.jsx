@@ -39,7 +39,7 @@ const Hero = () => {
               que tu empresa necesita
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-gray-300 max-w-3xl mx-auto">
-              Soporte remoto, infraestructura, consultoría IT y staffing adaptados a tus necesidades.
+              Soporte, infraestructura, consultoría IT y staffing adaptados a tus necesidades.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Button 

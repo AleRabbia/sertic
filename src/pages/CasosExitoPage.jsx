@@ -3,18 +3,29 @@ import { Navigation, Footer } from '../components/layout';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Filter, Users, Clock, CheckCircle, TrendingUp } from 'lucide-react';
 import { casosExito, getCasesByCategory, getCasesBySector } from '../data/casosExito';
-
-
+import QuoteModal from '../components/ui/QuoteModal';
 
 const CasosExitoPage = () => {
 
     useEffect(() => {
   window.scrollTo(0, 0);
-}, []);
+  }, []);
 
   const [activeFilter, setActiveFilter] = useState('todos');
   const [filterType, setFilterType] = useState('category');
-const navigate = useNavigate();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+    setIsMenuOpen(false);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const navigate = useNavigate();
   const categoryFilters = [
     { id: 'todos', name: 'Todos los servicios' },
     { id: 'infraestructura', name: 'Infraestructura' },
@@ -306,10 +317,10 @@ const navigate = useNavigate();
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button 
-                onClick={() => window.location.href = '/#contacto'}
+                onClick={handleOpenModal}
                 className="bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-600 hover:to-purple-700 px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105"
               >
-                Solicitar Consulta Gratuita
+                Solicitar Cotización
               </button>
               <button 
                 onClick={() => window.location.href = '/'}
@@ -321,6 +332,11 @@ const navigate = useNavigate();
           </div>
         </div>
       </main>
+      {/* Modal de Cotización */}
+        <QuoteModal 
+          isOpen={isModalOpen} 
+          onClose={handleCloseModal} 
+        />
       
       <Footer />
     </div>

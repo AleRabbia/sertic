@@ -73,7 +73,22 @@ const Footer = () => {
           
           {/* Company Info */}
           <div className="space-y-4">
-            <Logo />
+            <button
+                        onClick={() => {
+                        if (location.pathname !== "/") {
+                          navigate("/");
+                          setTimeout(() => {
+                            window.scrollTo({ top: 0, behavior: "smooth" });
+                          }, 300);
+                        } else {
+                          window.scrollTo({ top: 0, behavior: "smooth" });
+                        }
+                      }}className="focus:outline-none"
+                        aria-label="Ir al inicio"
+                      >
+                        <Logo />
+                      </button>
+                      
             <p className="text-gray-400 text-sm max-w-xs">
               Soluciones IT confiables para empresas. Transformamos la tecnología en el motor de tu crecimiento.
             </p>
