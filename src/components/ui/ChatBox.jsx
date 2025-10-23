@@ -1,5 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Send, Bot, User, Loader, X, MessageCircle } from 'lucide-react';
+import { faqs } from '../../data/faq';
+import Button from '../ui/Button';
+
+const faqOptions = ["SERVICIOS", "HORARIO", "UBICACION", "HABLAR CON UNA PERSONA"];
 
 const Chatbot = () => {
   const [messages, setMessages] = useState([
@@ -29,6 +33,30 @@ const Chatbot = () => {
       inputRef.current.focus();
     }
   }, [isOpen]);
+
+  //FAQ'S
+  const handleFAQClick = (option) => {
+    if (option === "HABLAR CON UNA PERSONA") {
+      window.open("https://wa.me/5493411234567", "_blank");
+      return;
+    }
+
+    const userMessage = {
+      id: Date.now(),
+      text: option,
+      sender: 'user',
+      timestamp: new Date(),
+    };
+
+    const botMessage = {
+      id: Date.now() + 1,
+      text: faqs[option] || "Lo siento, no tengo información sobre eso.",
+      sender: 'bot',
+      timestamp: new Date(),
+    };
+
+    setMessages(prev => [...prev, userMessage, botMessage]);
+  };
 
   const sendMessage = async () => {
     if (!inputMessage.trim() || isLoading) return;
@@ -180,6 +208,19 @@ const Chatbot = () => {
             )}
 
             <div ref={messagesEndRef} />
+          </div>
+
+          {/* FAQ Buttons */}
+          <div className="border-t border-gray-200 bg-gray-100 px-4 py-2 flex flex-wrap gap-2 justify-center">
+            {faqOptions.map((option) => (
+              <Button
+                key={option}
+                onClick={() => handleFAQClick(option)}
+                size="sm"
+              >
+                {option}
+              </Button>
+            ))}
           </div>
 
           {/* Input */}
