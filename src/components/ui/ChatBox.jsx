@@ -37,7 +37,7 @@ const Chatbot = () => {
   //FAQ'S
   const handleFAQClick = (option) => {
     if (option === "HABLAR CON UNA PERSONA") {
-      window.open("https://wa.me/5493411234567", "_blank");
+      window.open("https://wa.me/5493417514628", "_blank");
       return;
     }
 
