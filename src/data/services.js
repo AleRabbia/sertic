@@ -26,7 +26,7 @@ export const services =
     features: [
       "Ciberseguridad preventiva y correctiva",
       "Auditorías IT",
-      "Implementación de normas ISO 27001",
+      "Implementación de controles ISO 27002",
       "Planes de continuidad y recuperación"
     ],
     color: "pink"
