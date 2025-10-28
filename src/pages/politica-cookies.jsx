@@ -13,7 +13,7 @@ const PoliticaCookies = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-sertic-dark via-sertic-black to-sertic-dark">
+    <div className="min-h-screen bg-gradient-to-br from-sertic-blue via-sertic-black to-sertic-blue text-sertic-white overflow-hidden">
       <Navigation />
 
       <main className="pt-24">
@@ -31,7 +31,7 @@ const PoliticaCookies = () => {
 
           {/* Header */}
           <div className="text-center mb-12">
-            <h1 className="bg-gradient-to-r from-sertic-cyan to-sertic-blue bg-clip-text text-transparent">
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-sertic-cyan to-sertic-blue bg-clip-text text-transparent">
               Política de Cookies
             </h1>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
@@ -74,7 +74,7 @@ const PoliticaCookies = () => {
             <div className="mt-8 flex justify-center">
               <button
                 onClick={() => setShowSettings(true)}
-                className="bg-gradient-to-r from-sertic-cyan to-sertic-blue hover:from-cyan-600 hover:to-purple-700 px-8 py-3 rounded-full text-lg font-semibold transition-all duration-300"
+                className="bg-gradient-to-r from-sertic-cyan to-sertic-blue hover:from-sertic-blue hover:to-sertic-cyan px-8 py-3 rounded-full text-lg font-semibold transition-all duration-300"
               >
                 Configurar cookies
               </button>

@@ -1,13 +1,13 @@
-import polo from '../assets/clientes/polo.png';
+import polobn from '../assets/clientes/polobn.png';
 import cessi from '../assets/clientes/cessi.png';
-import iso from '../assets/clientes/iso.svg';
-import kubernetes from '../assets/tecnologias/kubernetes.jpg';
-import aws from '../assets/tecnologias/aws.jpg';
+import isobn from '../assets/clientes/isobn.png';
+import kbnbn from '../assets/tecnologias/kbnbn.png';
+import aws from '../assets/tecnologias/aws.png';
 export const memberships = [
   {
     id: 1,
     name: "Polo Tecnológico Rosario",
-    logo: polo,
+    logo: polobn,
     description: "Miembro del Polo Tecnológico de Rosario",
     website: "https://polotecnologico.net/",
     type: "technology"
@@ -23,7 +23,7 @@ export const memberships = [
   {
     id: 3,
     name: "Certified Kubernetes Administrator (CKA)",
-    logo: kubernetes,
+    logo: kbnbn,
     description: "Certificación internacional otorgada por The Linux Foundation y CNCF para profesionales especializados en administración de Kubernetes.",
     website: "https://training.linuxfoundation.org/certification/certified-kubernetes-administrator-cka/",
     type: "certification"
@@ -39,7 +39,7 @@ export const memberships = [
   {
     id: 5,
     name: "ISO 27002",
-    logo: iso,
+    logo: isobn,
     description: "Aplicamos las buenas prácticas de seguridad definidas en la norma ISO 27002.",
     website: "https://www.iso.org/standard/75652.html",
     type: "standard"

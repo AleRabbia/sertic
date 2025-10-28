@@ -69,7 +69,7 @@ const CasosExitoPage = () => {
 
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white">
+    <div className="min-h-screen bg-gradient-to-br from-sertic-blue via-sertic-black to-sertic-blue text-sertic-white overflow-hidden">
       <Navigation />
       
       <main className="pt-24">
@@ -86,7 +86,7 @@ const CasosExitoPage = () => {
           </div>
 
           <div className="text-center mb-16">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-sertic-cyan to-sertic-blue bg-clip-text text-transparent">
               Casos de Éxito
             </h1>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
