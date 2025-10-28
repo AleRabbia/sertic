@@ -1,8 +1,8 @@
-export const faqs = {HORARIO: "🕘 Nuestro horario de atención es de lunes a viernes, de 9:00 a 18:00 hs.",
+export const faqs = {Horario: "🕘 Nuestro horario de atención es de lunes a viernes, de 9:00 a 18:00 hs.",
   
-  UBICACION: "📍 Estamos en Rosario, pero brindamos servicios IT en todo el país.",
+  Ubicación: "📍 Estamos en Rosario, pero brindamos servicios IT en todo el país.",
   
-  SERVICIOS: `NUESTROS SERVICIOS:
+  Servicios: `NUESTROS SERVICIOS:
  💻 Infraestructura IT
 Diseñamos y administramos entornos tecnológicos confiables:
 • Servidores físicos y virtuales (Windows/Linux)
