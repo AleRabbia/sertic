@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Navigation, Footer } from '../components/layout';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Filter, Users, Clock, CheckCircle, TrendingUp } from 'lucide-react';
-import { casosExito, getCasesByCategory, getCasesBySector } from '../data/casosExito';
+import { casosPublicados, getCasesByCategory, getCasesBySector } from '../data/casosExito';
 import QuoteModal from '../components/ui/QuoteModal';
 
 const CasosExitoPage = () => {
@@ -43,7 +43,7 @@ const CasosExitoPage = () => {
   ];
 
   const getFilteredCases = () => {
-    if (activeFilter === 'todos') return casosExito;
+    if (activeFilter === 'todos') return casosPublicados;
     
     if (filterType === 'category') {
       return getCasesByCategory(activeFilter);
@@ -56,11 +56,11 @@ const CasosExitoPage = () => {
 
   const getCategoryColor = (category) => {
     const colors = {
-      infraestructura: 'from-blue-500/20 to-cyan-600/20 border-blue-500/30 text-blue-300',
-      soporte: 'from-green-500/20 to-emerald-600/20 border-green-500/30 text-green-300',
-      staffing: 'from-purple-500/20 to-violet-600/20 border-purple-500/30 text-purple-300'
+      infraestructura: 'from-sertic-blue-500/20 to-sertic-cyan-600/20 border-blue-500/30 text-sertic-light-300',
+      soporte: 'from-sertic-cyan-500/20 to-sertic-gray-600/20 border-green-500/30 text-sertic-light-300',
+      staffing: 'from-sertic-dark-500/20 to-sertic-blue-600/20 border-purple-500/30 text-sertic-light-300'
     };
-    return colors[category] || 'from-gray-500/20 to-gray-600/20 border-gray-500/30 text-gray-300';
+    return colors[category] || 'from-sertic-gray-500/20 to-sertic-dark-600/20 border-gray-500/30 text-sertic-light-300';
   };
 
   const validCases = filteredCases.filter(
@@ -101,7 +101,7 @@ const CasosExitoPage = () => {
                 onClick={() => {setFilterType('category'); setActiveFilter('todos');}}
                 className={`px-6 py-2 rounded-lg transition-all duration-300 ${
                   filterType === 'category'
-                    ? 'bg-gradient-to-r from-cyan-500 to-purple-600 text-white'
+                    ? 'bg-gradient-to-r from-sertic-cyan to-sertic-blue'
                     : 'text-gray-300 hover:text-white'
                 }`}
               >
@@ -111,7 +111,7 @@ const CasosExitoPage = () => {
                 onClick={() => {setFilterType('sector'); setActiveFilter('todos');}}
                 className={`px-6 py-2 rounded-lg transition-all duration-300 ${
                   filterType === 'sector'
-                    ? 'bg-gradient-to-r from-cyan-500 to-purple-600 text-white'
+                    ? 'bg-gradient-to-r from-sertic-cyan to-sertic-blue '
                     : 'text-gray-300 hover:text-white'
                 }`}
               >
@@ -130,7 +130,7 @@ const CasosExitoPage = () => {
                   onClick={() => setActiveFilter(filter.id)}
                   className={`px-6 py-2 rounded-full transition-all duration-300 ${
                     activeFilter === filter.id
-                      ? 'bg-gradient-to-r from-cyan-500 to-purple-600 text-white'
+                      ? 'bg-gradient-to-r from-sertic-cyan to-sertic-blue'
                       : 'text-gray-300 hover:text-white hover:bg-slate-700/50'
                   }`}
                 >
@@ -190,7 +190,7 @@ const CasosExitoPage = () => {
                   </div>
 
                   {/* Métricas destacadas */}
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                  {/*<div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                     {caso.metrics.uptime && (
                       <div className="text-center">
                         <TrendingUp className="w-5 h-5 text-green-400 mx-auto mb-1" />
@@ -219,7 +219,7 @@ const CasosExitoPage = () => {
                         <div className="text-xs text-gray-400">Equipo</div>
                       </div>
                     )}
-                  </div>
+                  </div>*/}
                 </div>
 
                 {/* Contenido */}
@@ -228,6 +228,32 @@ const CasosExitoPage = () => {
                   <p className="text-gray-300 mb-6 leading-relaxed">
                     {caso.detailedDescription}
                   </p>
+
+                  {/* Que hicimos */}
+                  <div className="mb-6">
+                    <h4 className="text-sm font-semibold text-cyan-400 mb-3">EXPERTISES APLICADAS</h4>
+                    <div className="space-y-2">
+                      {caso.metrics.map((metric, index) => (
+                        <div key={index} className="flex items-center gap-2">
+                          <CheckCircle className="w-4 h-4 text-cyan-400 flex-shrink-0" />
+                          <span className="text-gray-300 text-sm">{metric}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Resultados */}
+                  <div className="mb-6">
+                    <h4 className="text-sm font-semibold text-cyan-400 mb-3">RESULTADOS OBTENIDOS</h4>
+                    <div className="space-y-2">
+                      {caso.results.map((result, index) => (
+                        <div key={index} className="flex items-center gap-2">
+                          <CheckCircle className="w-4 h-4 text-cyan-400 flex-shrink-0" />
+                          <span className="text-gray-300 text-sm">{result}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
 
                   {/* Tecnologías */}
                   <div className="mb-6">
@@ -244,18 +270,7 @@ const CasosExitoPage = () => {
                     </div>
                   </div>
 
-                  {/* Resultados */}
-                  <div className="mb-6">
-                    <h4 className="text-sm font-semibold text-green-400 mb-3">RESULTADOS OBTENIDOS</h4>
-                    <div className="space-y-2">
-                      {caso.results.map((result, index) => (
-                        <div key={index} className="flex items-center gap-2">
-                          <CheckCircle className="w-4 h-4 text-green-400 flex-shrink-0" />
-                          <span className="text-gray-300 text-sm">{result}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
+                  
 
                   {/* Quote del cliente */}
                   {caso.clientQuote && (
@@ -286,24 +301,24 @@ const CasosExitoPage = () => {
 
           {/* Stats generales */}
           <div className="mt-20 bg-gradient-to-r from-slate-800/50 to-slate-900/50 backdrop-blur-sm rounded-3xl p-12 border border-slate-700/50">
-            <h3 className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+            <h3 className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-sertic-cyan via-sertic-blue to-sertic-cyan bg-clip-text text-transparent">
               Nuestros Números
             </h3>
             <div className="grid md:grid-cols-4 gap-8 text-center">
               <div>
-                <div className="text-4xl font-bold text-cyan-400 mb-2">{casosExito.length}+</div>
+                <div className="text-4xl font-bold text-cyan-400 mb-2">{casosPublicados.length}+</div>
                 <div className="text-gray-300">Casos de Éxito</div>
               </div>
               <div>
-                <div className="text-4xl font-bold text-green-400 mb-2">99.8%</div>
+                <div className="text-4xl font-bold text-cyan-400 mb-2">99.8%</div>
                 <div className="text-gray-300">Uptime Promedio</div>
               </div>
               <div>
-                <div className="text-4xl font-bold text-purple-400 mb-2">24/7</div>
+                <div className="text-4xl font-bold text-cyan-400 mb-2">24/7</div>
                 <div className="text-gray-300">Soporte Disponible</div>
               </div>
               <div>
-                <div className="text-4xl font-bold text-yellow-400 mb-2">100%</div>
+                <div className="text-4xl font-bold text-cyan-400 mb-2">100%</div>
                 <div className="text-gray-300">Clientes Satisfechos</div>
               </div>
             </div>
@@ -318,7 +333,7 @@ const CasosExitoPage = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button 
                 onClick={handleOpenModal}
-                className="bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-600 hover:to-purple-700 px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105"
+                className="bg-gradient-to-r from-sertic-cyan to-sertic-cyan hover:from-sertic-blue hover:to-sertic-cyan px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105"
               >
                 Solicitar Cotización
               </button>

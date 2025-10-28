@@ -5,6 +5,7 @@ import unicaba from '../assets/clientes/unicaba.png';
 export const casosExito = [
   {
     id: 1,
+    post: "NO",
     title: "AGROSPRAY",
     category: ["soporte","infraestructura"],
     sector: "agroindustria",
@@ -15,12 +16,12 @@ export const casosExito = [
     duration: "4 meses implementación + soporte ongoing",
     teamSize: "2 especialistas",
     services: ["Infraestructura", "Soporte Técnico", "Monitoreo", "Backup"],
-    metrics: {
-      uptime: "99.8%",
-      responseTime: "<30min",
-      costReduction: "35%",
-      hoursPerMonth: "6hrs infraestructura + 4hrs soporte"
-    },
+    metrics: [
+      "Soporte técnico e infraestructura on site para la operación.",
+      "Gestión de servidores, redes, backup y monitoreo.",
+      "Incorporación de perfiles de Desarrollo Full-Stack, RPA, Chatbot y Análisis Funcional.",
+      "99% client satisfaction"
+    ],
     results: [
       "99.8% de uptime garantizado",
       "Reducción 35% en costos operativos IT",
@@ -33,6 +34,7 @@ export const casosExito = [
   },
   {
     id: 2,
+    post: "SI",
     title: "LETIS",
     category: ["soporte","infraestructura"],
     sector: "servicios",
@@ -43,12 +45,12 @@ export const casosExito = [
     duration: "2+ años de soporte continuo",
     teamSize: "3 especialistas en turnos",
     services: ["Soporte Remoto", "Gestión de Incidencias", "Mantenimiento Preventivo", "Consultoría"],
-    metrics: {
-      hoursPerMonth: "40hrs soporte + 12hrs infraestructura", 
-      responseTime: "<2 horas",
-      resolutionTime: "85% <4 horas",
-      availability: "24/7/365"
-    },
+    metrics: [
+      "Soporte técnico e infraestructura on site para la operación.",
+      "Gestión de servidores, redes, backup y monitoreo.",
+      "Incorporación de perfiles de Desarrollo Full-Stack, RPA, Chatbot y Análisis Funcional.",
+      "99% client satisfaction"
+    ],
     results: [
       "52 horas mensuales de servicio dedicado",
       "Tiempo de respuesta <2 horas",
@@ -61,6 +63,7 @@ export const casosExito = [
   },
   {
     id: 3,
+    post: "NO",
     title: "FULLCONTROL",
     category: "infraestructura",
     sector: "tecnologia",
@@ -71,12 +74,12 @@ export const casosExito = [
     duration: "3 meses implementación + 20hrs/mes administración",
     teamSize: "4 especialistas",
     services: ["Infraestructura Crítica", "Alta Disponibilidad", "Monitoreo 24/7", "Optimización"],
-    metrics: {
-      uptime: "99.9%",
-      costReduction: "30%", 
-      scalability: "Auto-scaling",
-      hoursPerMonth: "20hrs infraestructura"
-    },
+    metrics: [
+      "Soporte técnico e infraestructura on site para la operación.",
+      "Gestión de servidores, redes, backup y monitoreo.",
+      "Incorporación de perfiles de Desarrollo Full-Stack, RPA, Chatbot y Análisis Funcional.",
+      "99% client satisfaction"
+    ],
     results: [
       "99.9% de uptime conseguido",
       "Implementación sin downtime",
@@ -89,6 +92,7 @@ export const casosExito = [
   },
   {
     id: 4,
+    post: "SI",
     title: "UNIVERSIDAD DE LA CIUDAD",
     category: "infraestructura",
     sector: "educacion",
@@ -99,12 +103,12 @@ export const casosExito = [
     duration: "4 meses implementación + 15hrs/mes administración",
     teamSize: "3 especialistas educación",
     services: ["Modernización IT", "Infraestructura Educativa", "Soporte Técnico", "Capacitación"],
-    metrics: {
-      students: "5000+ estudiantes beneficiados",
-      backup: "Backup diario automatizado",
-      recovery: "RTO <4 horas",
-      hoursPerMonth: "15hrs infraestructura"
-    },
+    metrics: [
+      "Soporte técnico e infraestructura on site para la operación.",
+      "Gestión de servidores, redes, backup y monitoreo.",
+      "Incorporación de perfiles de Desarrollo Full-Stack, RPA, Chatbot y Análisis Funcional.",
+      "99% client satisfaction"
+    ],
     results: [
       "5000+ estudiantes con mejor experiencia IT",
       "Backup automatizado diario",
@@ -117,6 +121,7 @@ export const casosExito = [
   },
   {
     id: 5,
+    post: "NO",
     title: "SWIPRO",
     category: ["soporte","infraestructura"],
     sector: "salud",
@@ -127,12 +132,12 @@ export const casosExito = [
     duration: "18 meses de soporte continuo",
     teamSize: "3 especialistas dedicados",
     services: ["Soporte Remoto Especializado", "SLA Garantizado", "Monitoreo Proactivo", "Infraestructura"],
-    metrics: {
-      hoursPerMonth: "15hrs soporte + 6hrs infraestructura",
-      slaCompliance: "98%",
-      responseTime: "<1 hora",
-      satisfaction: "95%"
-    },
+    metrics: [
+      "Soporte técnico e infraestructura on site para la operación.",
+      "Gestión de servidores, redes, backup y monitoreo.",
+      "Incorporación de perfiles de Desarrollo Full-Stack, RPA, Chatbot y Análisis Funcional.",
+      "99% client satisfaction"
+    ],
     results: [
       "21 horas mensuales de servicio dedicado",
       "98% cumplimiento de SLA",
@@ -145,6 +150,7 @@ export const casosExito = [
   },
   {
     id: 6,
+    post: "SI",
     title: "INTA",
     category: ["soporte","infraestructura"],
     sector: "servicios",
@@ -155,12 +161,12 @@ export const casosExito = [
     duration: "2+ años de soporte continuo",
     teamSize: "4 especialistas gobierno",
     services: ["Soporte Gubernamental", "Infraestructura", "Gestión de Datos", "Editorial Support"],
-    metrics: {
-      hoursPerMonth: "14hrs soporte + 4hrs infraestructura",
-      responseTime: "<4 horas",
-      compliance: "100% normativa gubernamental",
-      availability: "99.5%"
-    },
+    metrics: [
+      "Soporte técnico e infraestructura on site para la operación.",
+      "Gestión de servidores, redes, backup y monitoreo.",
+      "Incorporación de perfiles de Desarrollo Full-Stack, RPA, Chatbot y Análisis Funcional.",
+      "99% client satisfaction"
+    ],
     results: [
       "18 horas mensuales de servicio especializado",
       "100% cumplimiento normativa gubernamental",
@@ -173,34 +179,34 @@ export const casosExito = [
   },
   {
     id: 7,
-    title: "KONECTA",
+    post: "SI",
+    title: "KONECTA ARGENTINA",
     category: "staffing",
     sector: "servicios",
     logo: konecta,
     description: "Konecta crea experiencias híbridas para generar nuevo valor para ti, tus clientes y tus empleados. En salas de reuniones y en espacios vitales, convertimos conexiones en momentos significativos.",
-    detailedDescription: "Konecta necesitaba ampliar rápidamente su equipo IT para varios proyectos críticos de transformación digital. Proporcionamos un servicio integral de staffing con profesionales pre-calificados en diferentes especialidades tecnológicas, adaptándonos a los requerimientos específicos de cada proyecto y las necesidades de experiencias híbridas.",
-    technologies: ["Staff Augmentation", "Technical Assessment", "Project Management", "Digital Transformation", "Hybrid Work Solutions"],
-    duration: "12 meses con opción de extensión",
+    detailedDescription: "Operación de call center en Rosario y expansión de capacidades digitales a nivel cono sur.",
+    technologies: ["Windows/Linux", "AWS/GCP", "GitLab CI/CD", "RPA", "ChatBot", "Análisis Funcional"],
+    duration: "Relación desde 2018.",
     teamSize: "15 profesionales en diferentes roles",
     services: ["Staffing IT", "Talent Acquisition", "Technical Consulting", "Project Support"],
-    metrics: {
-      professionals: "15 profesionales asignados",
-      projects: "5 proyectos completados",
-      retention: "92% retention rate",
-      satisfaction: "97% client satisfaction"
-    },
+    metrics: [
+      "Soporte técnico e infraestructura on site para la operación.",
+      "Gestión de servidores, redes, backup y monitoreo.",
+      "Incorporación de perfiles de Desarrollo Full-Stack, RPA, Chatbot y Análisis Funcional.",
+      "99% client satisfaction"
+    ],
     results: [
-      "15 profesionales IT asignados exitosamente",
-      "5 proyectos de transformación completados",
-      "92% de retención de talento",
-      "97% satisfacción del cliente",
-      "Reducción 45% en tiempo de búsqueda"
+      "Continuidad operativa 24×7.",
+      "Tiempos de resolución reducidos.",
+      "Escalado de capacidades de desarrollo y automatización a demanda."
     ],
     clientQuote: "SerTIC nos proporcionó exactamente los perfiles que necesitábamos para nuestros proyectos de experiencias híbridas. Su proceso de selección es muy efectivo.",
     featured: true
   },
   {
     id: 8,
+    post: "SI",
     title: "POLO TECNOLÓGICO ROSARIO",
     category: ["soporte","infraestructura"],
     sector: "tecnologia",
@@ -211,12 +217,12 @@ export const casosExito = [
     duration: "2+ años de servicio continuo",
     teamSize: "3 especialistas ecosistema tech",
     services: ["Infraestructura Compartida", "Soporte Multi-tenant", "Networking", "Seguridad"],
-    metrics: {
-      hoursPerMonth: "10hrs soporte + 6hrs infraestructura",
-      companies: "50+ empresas beneficiadas",
-      uptime: "99.7%",
-      response: "<2 horas"
-    },
+    metrics: [
+      "Soporte técnico e infraestructura on site para la operación.",
+      "Gestión de servidores, redes, backup y monitoreo.",
+      "Incorporación de perfiles de Desarrollo Full-Stack, RPA, Chatbot y Análisis Funcional.",
+      "99% client satisfaction"
+    ],
     results: [
       "16 horas mensuales de servicio especializado",
       "50+ empresas del ecosistema atendidas",
@@ -229,6 +235,7 @@ export const casosExito = [
   },
   {
     id: 9,
+    post: "NO",
     title: "NOCAUT CREATIVE",
     category: "infraestructura",
     sector: "tecnologia",
@@ -239,12 +246,12 @@ export const casosExito = [
     duration: "6 meses implementación + administración continua",
     teamSize: "3 especialistas media",
     services: ["Infraestructura Creativa", "Storage Solutions", "Render Optimization", "Workflow Design"],
-    metrics: {
-      hoursPerMonth: "8hrs infraestructura",
-      storage: "100TB+ capacidad",
-      renderTime: "60% reducción",
-      projects: "200+ proyectos anuales"
-    },
+    metrics: [
+      "Soporte técnico e infraestructura on site para la operación.",
+      "Gestión de servidores, redes, backup y monitoreo.",
+      "Incorporación de perfiles de Desarrollo Full-Stack, RPA, Chatbot y Análisis Funcional.",
+      "99% client satisfaction"
+    ],
     results: [
       "8 horas mensuales de administración",
       "100TB+ de almacenamiento optimizado",
@@ -257,6 +264,7 @@ export const casosExito = [
   },
   {
     id: 10,
+    post: "NO",
     title: "GAMATEC",
     category: ["soporte","infraestructura"],
     sector: "servicios",
@@ -267,12 +275,12 @@ export const casosExito = [
     duration: "18+ meses de soporte continuo",
     teamSize: "2 especialistas diseño",
     services: ["Soporte CAD", "Gestión de Archivos", "Colaboración Remota", "Infraestructura Creativa"],
-    metrics: {
-      hoursPerMonth: "8hrs soporte + 4hrs infraestructura",
-      projects: "100+ proyectos anuales",
-      availability: "99.5% software crítico",
-      collaboration: "Equipos remotos integrados"
-    },
+    metrics: [
+      "Soporte técnico e infraestructura on site para la operación.",
+      "Gestión de servidores, redes, backup y monitoreo.",
+      "Incorporación de perfiles de Desarrollo Full-Stack, RPA, Chatbot y Análisis Funcional.",
+      "99% client satisfaction"
+    ],
     results: [
       "12 horas mensuales de servicio especializado",
       "100+ proyectos de diseño soportados",
@@ -285,6 +293,7 @@ export const casosExito = [
   },
   {
     id: 11,
+    post: "NO",
     title: "BARSANTE",
     category: ["soporte","infraestructura"],
     sector: "servicios",
@@ -295,12 +304,12 @@ export const casosExito = [
     duration: "12+ meses de soporte continuo",
     teamSize: "2 especialistas manufactura",
     services: ["Soporte Especializado", "Sistemas de Producción", "Infraestructura", "Gestión de Calidad"],
-    metrics: {
-      hoursPerMonth: "8hrs soporte + 4hrs infraestructura",
-      productivity: "25% mejora en workflows",
-      quality: "Zero downtime en producción",
-      backup: "Backup diario de diseños"
-    },
+    metrics: [
+      "Soporte técnico e infraestructura on site para la operación.",
+      "Gestión de servidores, redes, backup y monitoreo.",
+      "Incorporación de perfiles de Desarrollo Full-Stack, RPA, Chatbot y Análisis Funcional.",
+      "99% client satisfaction"
+    ],
     results: [
       "12 horas mensuales de servicio especializado",
       "25% mejora en workflows de producción",
@@ -313,6 +322,7 @@ export const casosExito = [
   },
   {
     id: 12,
+    post: "NO",
     title: "FARO ASOCIACIÓN MUTUAL",
     category: ["soporte","infraestructura"],
     sector: "servicios",
@@ -323,12 +333,12 @@ export const casosExito = [
     duration: "2+ años de soporte continuo",
     teamSize: "3 especialistas sector financiero",
     services: ["Soporte Financiero", "Compliance", "Infraestructura Segura", "Gestión de Socios"],
-    metrics: {
-      hoursPerMonth: "8hrs soporte + 4hrs infraestructura",
-      compliance: "100% normativo financiero",
-      security: "Zero brechas de seguridad",
-      availability: "99.8% sistemas críticos"
-    },
+    metrics: [
+      "Soporte técnico e infraestructura on site para la operación.",
+      "Gestión de servidores, redes, backup y monitoreo.",
+      "Incorporación de perfiles de Desarrollo Full-Stack, RPA, Chatbot y Análisis Funcional.",
+      "99% client satisfaction"
+    ],
     results: [
       "12 horas mensuales de servicio especializado",
       "100% cumplimiento normativo financiero",
@@ -341,6 +351,7 @@ export const casosExito = [
   },
   {
     id: 13,
+    post: "NO",
     title: "3dF DESARROLLOS",
     category: ["soporte","infraestructura"],
     sector: "servicios",
@@ -351,12 +362,12 @@ export const casosExito = [
     duration: "14+ meses de soporte continuo",
     teamSize: "2 especialistas arquitectura",
     services: ["Soporte CAD/BIM", "Gestión de Proyectos", "Infraestructura", "Colaboración"],
-    metrics: {
-      hoursPerMonth: "12hrs soporte + 2hrs infraestructura",
-      projects: "50+ proyectos arquitectónicos",
-      availability: "99.5% herramientas críticas",
-      collaboration: "Equipos multidisciplinarios"
-    },
+    metrics: [
+      "Soporte técnico e infraestructura on site para la operación.",
+      "Gestión de servidores, redes, backup y monitoreo.",
+      "Incorporación de perfiles de Desarrollo Full-Stack, RPA, Chatbot y Análisis Funcional.",
+      "99% client satisfaction"
+    ],
     results: [
       "14 horas mensuales de servicio especializado",
       "50+ proyectos arquitectónicos soportados",
@@ -369,6 +380,7 @@ export const casosExito = [
   },
   {
     id: 14,
+    post: "NO",
     title: "ZONA93SA",
     category: ["soporte","infraestructura"],
     sector: "servicios",
@@ -379,12 +391,12 @@ export const casosExito = [
     duration: "16+ meses de soporte continuo",
     teamSize: "2 especialistas retail",
     services: ["Soporte E-commerce", "Gestión de Inventario", "Infraestructura", "Sistemas POS"],
-    metrics: {
-      hoursPerMonth: "12hrs soporte + 4hrs infraestructura",
-      orders: "1000+ pedidos mensuales",
-      uptime: "99.7% tienda online",
-      inventory: "Sincronización en tiempo real"
-    },
+    metrics: [
+      "Soporte técnico e infraestructura on site para la operación.",
+      "Gestión de servidores, redes, backup y monitoreo.",
+      "Incorporación de perfiles de Desarrollo Full-Stack, RPA, Chatbot y Análisis Funcional.",
+      "99% client satisfaction"
+    ],
     results: [
       "16 horas mensuales de servicio especializado",
       "1000+ pedidos mensuales procesados",
@@ -397,6 +409,7 @@ export const casosExito = [
   },
   {
     id: 15,
+    post: "SI",
     title: "CIMOMET S.A.",
     category: ["soporte","infraestructura"],
     sector: "servicios",
@@ -407,12 +420,12 @@ export const casosExito = [
     duration: "Proyecto en desarrollo",
     teamSize: "4 especialistas sector industrial",
     services: ["Infraestructura Industrial", "Sistemas SCADA", "Redes Críticas", "Seguridad"],
-    metrics: {
-      hoursPerMonth: "Infraestructura en implementación",
-      experience: "60+ años trayectoria cliente",
-      sectors: "Múltiples líneas industriales",
-      generation: "4ta generación familiar"
-    },
+    metrics: [
+      "Soporte técnico e infraestructura on site para la operación.",
+      "Gestión de servidores, redes, backup y monitoreo.",
+      "Incorporación de perfiles de Desarrollo Full-Stack, RPA, Chatbot y Análisis Funcional.",
+      "99% client satisfaction"
+    ],
     results: [
       "Modernización infraestructura industrial",
       "Soporte a 60+ años de experiencia",
@@ -455,11 +468,14 @@ export const casosExito = [
   }*/}
 ];
 
-export const getFeaturedCases = () => casosExito.filter(caso => caso.featured);
+
+export const casosPublicados = casosExito.filter(caso => caso.post === "SI");
+
+export const getFeaturedCases = () => casosPublicados.filter(caso => caso.featured);
 
 export const getCasesByCategory = (category) => {
-  if (category === "todos") return casosExito;
-  return casosExito.filter((caso) =>
+  if (category === "todos") return casosPublicados;
+  return casosPublicados.filter((caso) =>
     Array.isArray(caso.category)
       ? caso.category.includes(category)
       : caso.category === category
@@ -468,27 +484,27 @@ export const getCasesByCategory = (category) => {
 
 
 export const getCasesBySector = (sector) => {
-  if (sector === 'todos') return casosExito;
-  return casosExito.filter(caso => caso.sector === sector);
+  if (sector === 'todos') return casosPublicados;
+  return casosPublicados.filter(caso => caso.sector === sector);
 };
 
-export const getCaseById = (id) => casosExito.find(caso => caso.id === parseInt(id));
+export const getCaseById = (id) => casosPublicados.find(caso => caso.id === parseInt(id));
 
 // Estadísticas generales
 export const getStats = () => {
   return {
-    totalCases: casosExito.length,
-    totalClients: casosExito.length,
-    infraHours: casosExito.reduce((sum, caso) => {
+    totalCases: casosPublicados.length,
+    totalClients: casosPublicados.length,
+    infraHours: casosPublicados.reduce((sum, caso) => {
       const infraMatch = caso.metrics.hoursPerMonth?.match(/(\d+)hrs?\s+infraestructura/);
       return sum + (infraMatch ? parseInt(infraMatch[1]) : 0);
     }, 0),
-    supportHours: casosExito.reduce((sum, caso) => {
+    supportHours: casosPublicados.reduce((sum, caso) => {
       const supportMatch = caso.metrics.hoursPerMonth?.match(/(\d+)hrs?\s+soporte/);
       return sum + (supportMatch ? parseInt(supportMatch[1]) : 0);
     }, 0),
-    staffingProjects: casosExito.filter(caso => caso.category === 'staffing').length,
-    sectors: [...new Set(casosExito.map(caso => caso.sector))].length,
+    staffingProjects: casosPublicados.filter(caso => caso.category === 'staffing').length,
+    sectors: [...new Set(casosPublicados.map(caso => caso.sector))].length,
     averageUptime: "99.7%"
   };
 };
