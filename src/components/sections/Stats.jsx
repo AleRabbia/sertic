@@ -72,7 +72,7 @@ const StatCard = ({ stat, index }) => {
       }`}
       style={{ transitionDelay: `${index * 200}ms` }}
     >
-      <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent mb-2">
+      <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-sertic-cyan via-sertic-blue to-sertic-cyan bg-clip-text text-transparent mb-2">
         {displayValue}
       </div>
       <div className="text-gray-400">{stat.label}</div>

@@ -28,18 +28,18 @@ const Hero = () => {
 
   return (
     <section id="inicio" className="min-h-screen flex items-center justify-center relative">
-      <div className="absolute inset-0 bg-black/20"></div>
+      <div className="absolute inset-0 bg-sertic-black/20"></div>
       
       <GradientBackground>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="animate-fade-in">
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent leading-tight">
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-sertic-cyan via-sertic-blue to-sertic-cyan bg-clip-text text-transparent leading-tight">
               La solución IT
               <br />
               que tu empresa necesita
             </h1>
-            <p className="text-xl md:text-2xl mb-8 text-gray-300 max-w-3xl mx-auto">
-              Soporte, infraestructura, consultoría IT y staffing adaptados a tus necesidades.
+            <p className="text-xl md:text-2xl mb-8 text-sertic-light max-w-3xl mx-auto">
+              Infraestructura, ciberseguridad, desarrollo y talento especializado para acompañar tu crecimiento tecnológico.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Button 
@@ -62,10 +62,10 @@ const Hero = () => {
           {/*
           <button 
             onClick={handleScrollToServices}
-            className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce hover:text-cyan-400 transition-colors duration-200"
+            className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce hover:text-sertic-cyan transition-colors duration-200"
             aria-label="Scroll to services"
           >
-            <ChevronDown className="w-8 h-8 text-cyan-400" />
+            <ChevronDown className="w-8 h-8 text-sertic-cyan" />
           </button>
           */}
         </div>

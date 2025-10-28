@@ -5,6 +5,7 @@ import { Card } from '../ui/Card';
 import QuoteModal from '../ui/QuoteModal';
 import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
 import { contactInfo, internationalContacts } from '../../data/contact';
+import { FaWhatsapp } from "react-icons/fa";
 
 const ContactCard = ({ icon: Icon, title, content, color, index }) => {
   const { elementRef, hasBeenVisible } = useIntersectionObserver();
@@ -20,9 +21,9 @@ const ContactCard = ({ icon: Icon, title, content, color, index }) => {
       style={{ transitionDelay: `${index * 150}ms` }}
     >
       <Card className="flex flex-col items-center gap-4 text-center h-full">
-        <Icon className={`w-8 h-8 text-${color}-400`} aria-hidden="true" />        
-        <h3 className={`text-lg font-semibold text-${color}-400`}>{title}</h3>
-        <p className="text-gray-300">{content}</p>
+        <Icon className={`w-8 h-8 text-sertic-${color}`} aria-hidden="true" />        
+        <h3 className={`text-lg font-semibold text-sertic-${color}`}>{title}</h3>
+        <p className="text-sertic-light">{content}</p>
       </Card>
     </div>
   );
@@ -147,14 +148,14 @@ const ContactForm = () => {
     <>
     <Card className="w-full max-w-2xl mx-auto">
       
-      <h2 className="text-2xl font-bold text-center mb-6 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+      <h2 className="text-2xl font-bold text-center mb-6 bg-gradient-to-r from-sertic-cyan to-sertic-blue bg-clip-text text-transparent">
         Solicita más información
       </h2>
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="grid md:grid-cols-2 gap-4">
           <div>
             
-            <label htmlFor="contact-name" className="block text-sm font-medium text-gray-300 mb-2">
+            <label htmlFor="contact-name" className="block text-sm font-medium text-sertic-light mb-2">
               Nombre completo *
             </label>
             <input
@@ -163,8 +164,8 @@ const ContactForm = () => {
               name="name"
               value={formData.name}
               onChange={handleChange}
-              className={`w-full px-4 py-3 bg-slate-800/50 border rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-slate-900 transition-colors ${
-                errors.name ? 'border-red-500 focus:border-red-400' : 'border-slate-600 focus:border-cyan-500'
+              className={`w-full px-4 py-3 bg-sertic-dark/50 border rounded-lg focus:outline-none focus:ring-2 focus:ring-sertic-cyan focus:ring-offset-2 focus:ring-offset-sertic-black transition-colors text-sertic-white ${
+                errors.name ? 'border-red-500 focus:border-red-400' : 'border-sertic-gray focus:border-sertic-cyan'
               }`}
               placeholder="Tu nombre"
               aria-required="true"
@@ -177,7 +178,7 @@ const ContactForm = () => {
           </div>
           <div>
             
-            <label htmlFor="contact-email" className="block text-sm font-medium text-gray-300 mb-2">
+            <label htmlFor="contact-email" className="block text-sm font-medium text-sertic-light mb-2">
               Email *
             </label>
             <input
@@ -186,8 +187,8 @@ const ContactForm = () => {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className={`w-full px-4 py-3 bg-slate-800/50 border rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-slate-900 transition-colors ${
-                errors.email ? 'border-red-500 focus:border-red-400' : 'border-slate-600 focus:border-cyan-500'
+              className={`w-full px-4 py-3 bg-sertic-dark/50 border rounded-lg focus:outline-none focus:ring-2 focus:ring-sertic-cyan focus:ring-offset-2 focus:ring-offset-sertic-black transition-colors text-sertic-white ${
+                errors.email ? 'border-red-500 focus:border-red-400' : 'border-sertic-gray focus:border-sertic-cyan'
               }`}
               placeholder="tu@email.com"
               aria-required="true"
@@ -203,7 +204,7 @@ const ContactForm = () => {
         <div className="grid md:grid-cols-2 gap-4">
           <div>
             
-            <label htmlFor="contact-company" className="block text-sm font-medium text-gray-300 mb-2">
+            <label htmlFor="contact-company" className="block text-sm font-medium text-sertic-light mb-2">
               Empresa
             </label>
             <input
@@ -212,13 +213,13 @@ const ContactForm = () => {
               name="company"
               value={formData.company}
               onChange={handleChange}
-              className="w-full px-4 py-3 bg-slate-800/50 border border-slate-600 rounded-lg focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-slate-900 transition-colors"
+              className="w-full px-4 py-3 bg-sertic-dark/50 border border-sertic-gray rounded-lg focus:border-sertic-cyan focus:outline-none focus:ring-2 focus:ring-sertic-cyan focus:ring-offset-2 focus:ring-offset-sertic-black transition-colors text-sertic-white"
               placeholder="Nombre de tu empresa"
             />
           </div>
           <div>
             
-            <label htmlFor="contact-phone" className="block text-sm font-medium text-gray-300 mb-2">
+            <label htmlFor="contact-phone" className="block text-sm font-medium text-sertic-light mb-2">
               Teléfono
             </label>
             <input
@@ -227,7 +228,7 @@ const ContactForm = () => {
               name="phone"
               value={formData.phone}
               onChange={handleChange}
-              className="w-full px-4 py-3 bg-slate-800/50 border border-slate-600 rounded-lg focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-slate-900 transition-colors"
+              className="w-full px-4 py-3 bg-sertic-dark/50 border border-sertic-gray rounded-lg focus:border-sertic-cyan focus:outline-none focus:ring-2 focus:ring-sertic-cyan focus:ring-offset-2 focus:ring-offset-sertic-black transition-colors text-sertic-white"
               placeholder="+54 341 123 4567"
             />
           </div>
@@ -235,7 +236,7 @@ const ContactForm = () => {
 
         <div>
           
-          <label htmlFor="contact-service" className="block text-sm font-medium text-gray-300 mb-2">
+          <label htmlFor="contact-service" className="block text-sm font-medium text-sertic-light mb-2">
             Servicio de interés
           </label>
           <select
@@ -243,7 +244,7 @@ const ContactForm = () => {
             name="service"
             value={formData.service}
             onChange={handleChange}
-            className="w-full px-4 py-3 bg-slate-800/50 border border-slate-600 rounded-lg focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-slate-900 transition-colors"
+            className="w-full px-4 py-3 bg-sertic-dark/50 border border-sertic-gray rounded-lg focus:border-sertic-cyan focus:outline-none focus:ring-2 focus:ring-sertic-cyan focus:ring-offset-2 focus:ring-offset-sertic-black transition-colors text-sertic-white"
             aria-label="Selecciona el servicio de tu interés"
           >
             <option value="">Selecciona un servicio</option>
@@ -257,7 +258,7 @@ const ContactForm = () => {
 
         <div>
           
-          <label htmlFor="contact-message" className="block text-sm font-medium text-gray-300 mb-2">
+          <label htmlFor="contact-message" className="block text-sm font-medium text-sertic-light mb-2">
             Mensaje *
           </label>
           <textarea
@@ -266,8 +267,8 @@ const ContactForm = () => {
             name="message"
             value={formData.message}
             onChange={handleChange}
-            className={`w-full px-4 py-3 bg-slate-800/50 border rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-slate-900 transition-colors resize-none ${
-              errors.message ? 'border-red-500 focus:border-red-400' : 'border-slate-600 focus:border-cyan-500'
+            className={`w-full px-4 py-3 bg-sertic-dark/50 border rounded-lg focus:outline-none focus:ring-2 focus:ring-sertic-cyan focus:ring-offset-2 focus:ring-offset-sertic-black transition-colors resize-none text-sertic-white ${
+              errors.message ? 'border-red-500 focus:border-red-400' : 'border-sertic-gray focus:border-sertic-cyan'
             }`}
             placeholder="Cuéntanos sobre tu proyecto o necesidades..."
             aria-required="true"
@@ -296,22 +297,22 @@ const ContactForm = () => {
     
     {modal.isOpen && (
       <div 
-        className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+        className="fixed inset-0 bg-sertic-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
         role="dialog"
         aria-modal="true"
         aria-labelledby="modal-title"
         aria-describedby="modal-description"
       >
-        <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl border border-slate-700/50 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+        <div className="bg-gradient-to-br from-sertic-dark to-sertic-black rounded-2xl border border-sertic-gray/50 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
           <div className="p-8">
             <div className="flex justify-between items-center mb-6">
-              <h2 id="modal-title" className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+              <h2 id="modal-title" className="text-2xl font-bold bg-gradient-to-r from-sertic-cyan to-sertic-blue bg-clip-text text-transparent">
                 {modal.isSuccess ? 'Mensaje Enviado' : 'Error'}
               </h2>
               
               <button
                 onClick={() => setModal({ ...modal, isOpen: false })}
-                className="text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-slate-900 rounded"
+                className="text-sertic-gray hover:text-sertic-white focus:outline-none focus:ring-2 focus:ring-sertic-cyan focus:ring-offset-2 focus:ring-offset-sertic-black rounded"
                 aria-label="Cerrar modal"
               >
                 <X className="w-6 h-6" />
@@ -324,13 +325,13 @@ const ContactForm = () => {
               ) : (
                 <XCircle className="w-16 h-16 text-red-500 mx-auto mb-4" aria-hidden="true" />
               )}
-              <h3 className="text-xl font-semibold mb-4">
+              <h3 className="text-xl font-semibold mb-4 text-sertic-white">
                 {modal.isSuccess ? '¡Mensaje Enviado!' : 'Oops...'}
               </h3>
-              <p id="modal-description" className="text-gray-300 mb-6">{modal.message}</p>
+              <p id="modal-description" className="text-sertic-light mb-6">{modal.message}</p>
               <button
                 onClick={() => setModal({ ...modal, isOpen: false })}
-                className="bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-600 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-slate-900 px-6 py-2 rounded-full transition-all duration-300"
+                className="bg-gradient-to-r from-sertic-cyan to-sertic-blue hover:from-sertic-blue hover:to-sertic-cyan focus:outline-none focus:ring-2 focus:ring-sertic-cyan focus:ring-offset-2 focus:ring-offset-sertic-black px-6 py-2 rounded-full transition-all duration-300 text-sertic-white"
                 aria-describedby="modal-description"
               >
                 Cerrar
@@ -367,13 +368,13 @@ const Contact = () => {
       icon: Phone,
       title: "Teléfono",
       content: contactInfo.phone,
-      color: "purple"
+      color: "blue"
     },
     {
       icon: MapPin,
       title: "Ubicación",
       content: contactInfo.location,
-      color: "pink"
+      color: "cyan"
     }
   ];
 
@@ -387,7 +388,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contacto" className="py-20 bg-black/30" aria-labelledby="contact-heading">
+    <section id="contacto" className="py-20 bg-sertic-black/30" aria-labelledby="contact-heading">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div 
           ref={titleRef}
@@ -396,10 +397,10 @@ const Contact = () => {
           }`}
         >
           
-          <h2 id="contact-heading" className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+          <h2 id="contact-heading" className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-sertic-cyan to-sertic-blue bg-clip-text text-transparent">
             ¿Listo para comenzar?
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+          <p className="text-xl text-sertic-light max-w-3xl mx-auto mb-8">
             Contactános y descubre cómo podemos mejorar tu infraestructura, seguridad y soporte tecnológico
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
@@ -422,7 +423,7 @@ const Contact = () => {
             {internationalContacts.map((c) => (
               <div
                 key={c.id}
-                className="group bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm rounded-xl p-6 border border-slate-700/50 hover:border-cyan-500/50 transition-all duration-300"
+                className="group bg-gradient-to-br from-sertic-dark/50 to-sertic-black/50 backdrop-blur-sm rounded-xl p-6 border border-sertic-gray/50 hover:border-sertic-cyan/50 transition-all duration-300"
               >
                 
                 <div className="flex items-center gap-3 mb-4">
@@ -430,19 +431,19 @@ const Contact = () => {
                     {c.flag}
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-lg font-bold text-white group-hover:text-cyan-400 transition-colors">
+                    <h3 className="text-lg font-bold text-sertic-white group-hover:text-sertic-cyan transition-colors">
                       {c.city}
                     </h3>
-                    <p className="text-gray-400 text-sm">{c.country}</p>
+                    <p className="text-sertic-gray text-sm">{c.country}</p>
                   </div>
                 </div>
 
                 {/* Información de contacto */}
                 <div className="space-y-3">
                   <div className="flex items-start gap-2">
-                    <MapPin className="w-5 h-5 text-pink-400 mt-0.5 flex-shrink-0" aria-hidden="true" />
+                    <MapPin className="w-5 h-5 text-sertic-cyan mt-0.5 flex-shrink-0" aria-hidden="true" />
                     <div className="min-w-0 flex-1">
-                      <p className="text-pink-400 font-medium text-sm">Ubicación</p>
+                      <p className="text-sertic-cyan font-medium text-sm">Ubicación</p>
                       {/* solo Argentina con link a Maps */}
                       {c.country === "Argentina" ? (
                         <a
@@ -451,24 +452,24 @@ const Contact = () => {
                           )}`}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-gray-300 hover:text-white text-xs transition-colors block focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-slate-900 rounded"
+                          className="text-sertic-light hover:text-sertic-white text-xs transition-colors block focus:outline-none focus:ring-2 focus:ring-sertic-cyan focus:ring-offset-2 focus:ring-offset-sertic-black rounded"
                           aria-label={`Ver ubicación en Google Maps: ${c.address}`}
                         >
                           {c.address}
                         </a>
                       ) : (
-                        <p className="text-gray-300 text-xs">{c.address}</p>
+                        <p className="text-sertic-light text-xs">{c.address}</p>
                       )}
                     </div>
                   </div>
 
                   <div className="flex items-start gap-2">
-                    <Phone className="w-5 h-5 text-purple-400 mt-0.5 flex-shrink-0" aria-hidden="true" />
+                    <FaWhatsapp className="w-5 h-5 text-sertic-cyan mt-0.5 flex-shrink-0" aria-hidden="true" />
                     <div className="min-w-0 flex-1">
-                      <p className="text-purple-400 font-medium text-sm">Whatsapp</p>
+                      <p className="text-sertic-cyan font-medium text-sm">Whatsapp</p>
                       <a
                         href={`https://wa.me/${c.phone.replace(/[^\d]/g, '')}`}
-                        className="text-gray-300 hover:text-white text-xs transition-colors block focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-slate-900 rounded"
+                        className="text-sertic-light hover:text-sertic-white text-xs transition-colors block focus:outline-none focus:ring-2 focus:ring-sertic-cyan focus:ring-offset-2 focus:ring-offset-sertic-black rounded"
                         aria-label={`Enviar mensaje por WhatsApp al ${c.phone}`}
                       >
                         {c.phone}
@@ -477,12 +478,12 @@ const Contact = () => {
                   </div>
 
                   <div className="flex items-start gap-2">
-                    <Mail className="w-5 h-5 text-cyan-400 mt-0.5 flex-shrink-0" aria-hidden="true" />
+                    <Mail className="w-5 h-5 text-sertic-cyan mt-0.5 flex-shrink-0" aria-hidden="true" />
                     <div className="min-w-0 flex-1">
-                      <p className="text-cyan-400 font-medium text-sm">Email</p>
+                      <p className="text-sertic-cyan font-medium text-sm">Email</p>
                       <a
                         href={`mailto:${c.email}`}
-                        className="text-gray-300 hover:text-white text-xs transition-colors block truncate focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-slate-900 rounded"
+                        className="text-sertic-light hover:text-sertic-white text-xs transition-colors block truncate focus:outline-none focus:ring-2 focus:ring-sertic-cyan focus:ring-offset-2 focus:ring-offset-sertic-black rounded"
                         aria-label={`Enviar email a ${c.email}`}
                       >
                         {c.email}

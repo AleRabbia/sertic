@@ -23,7 +23,9 @@ import ConsentBanner from '../components/privacity/ConsentBanner';
 
 const Home = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-sertic-blue via-sertic-black to-sertic-blue text-sertic-white overflow-hidden">
+    {/*<div className="min-h-screen bg-gradient-to-br from-sertic-dark via-sertic-black to-sertic-dark text-sertic-white overflow-hidden">*/}
+    {/* <div className="min-h-screen bg-gradient-to-br from-sertic-blue via-sertic-black to-sertic-dark text-sertic-white overflow-hidden"> */}
       <Navigation />
       <main>
         <Hero />

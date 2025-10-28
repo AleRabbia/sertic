@@ -15,7 +15,7 @@ export const services =
       "Gestión de Backups",
       "Monitoreo y soporte técnico especializado"
     ],
-    color: "purple"
+    color: "cyan"
   },
   {
     id: 'consultoria',
@@ -29,7 +29,7 @@ export const services =
       "Implementación de controles ISO 27002",
       "Planes de continuidad y recuperación"
     ],
-    color: "pink"
+    color: "cyan"
   },
   {
     id: 'development',
@@ -57,7 +57,7 @@ export const services =
       "Soporte operativo y técnico",
       "Recursos on-demand"
     ],
-    color: "green"
+    color: "cyan"
   }
 ];
 

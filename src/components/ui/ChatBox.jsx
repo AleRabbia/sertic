@@ -3,7 +3,7 @@ import { Send, Bot, User, Loader, X, MessageCircle } from 'lucide-react';
 import { faqs } from '../../data/faq';
 import Button from '../ui/Button';
 
-const faqOptions = ["SERVICIOS", "HORARIO", "UBICACION", "HABLAR CON UNA PERSONA"];
+const faqOptions = ["Servicios", "Horario", "Ubicación", "Hablar con una persona"];
 
 const Chatbot = () => {
   const [messages, setMessages] = useState([
@@ -36,7 +36,7 @@ const Chatbot = () => {
 
   //FAQ'S
   const handleFAQClick = (option) => {
-    if (option === "HABLAR CON UNA PERSONA") {
+    if (option === "Hablar con una persona") {
       window.open("https://wa.me/5493417514628", "_blank");
       return;
     }
@@ -129,21 +129,21 @@ const Chatbot = () => {
         {!isOpen && (
         <button
             onClick={() => setIsOpen(true)}
-            className="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full p-4 shadow-lg transition-all duration-300 transform hover:scale-110 relative"
+            className="bg-gradient-to-r from-sertic-blue to-sertic-cyan text-sertic-white rounded-full p-4 shadow-lg transition-all duration-300 transform hover:scale-110 relative"
             aria-label="Abrir chatbot asistente virtual"
         >
-            <Bot size={24} className="text-white" />
+            <Bot size={24} className="text-sertic-white" />
         </button>
         )}
 
       {/* Ventana de chat */}
       {isOpen && (
-        <div className="bg-white rounded-lg shadow-2xl border border-gray-200 w-96 h-96 flex flex-col overflow-hidden">
+        <div className="bg-sertic-white rounded-lg shadow-2xl border border-sertic-gray/30 w-96 h-96 flex flex-col overflow-hidden">
           {/* Header */}
-          <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-4 flex justify-between items-center">
+          <div className="bg-gradient-to-r from-sertic-blue to-sertic-cyan text-sertic-white p-4 flex justify-between items-center">
             <div className="flex items-center space-x-2">
-              <div className="bg-white rounded-full p-1">
-                <Bot className="text-blue-600" size={20} />
+              <div className="bg-sertic-white rounded-full p-1">
+                <Bot className="text-sertic-blue" size={20} />
               </div>
               <div>
                 <h3 className="font-semibold">Asistente Virtual</h3>
@@ -154,14 +154,14 @@ const Chatbot = () => {
             </div>
             <button
               onClick={() => setIsOpen(false)}
-              className="hover:bg-white/20 rounded-full p-1 transition-colors"
+              className="hover:bg-sertic-white/20 rounded-full p-1 transition-colors"
             >
               <X size={20} />
             </button>
           </div>
 
           {/* Mensajes */}
-          <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50">
+          <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-sertic-light">
             {messages.map((message) => (
               <div
                 key={message.id}
@@ -170,24 +170,24 @@ const Chatbot = () => {
                 <div
                   className={`max-w-xs lg:max-w-md px-4 py-2 rounded-lg shadow-sm ${
                     message.sender === 'user'
-                      ? 'bg-blue-600 text-white rounded-br-none'
-                      : 'bg-white text-gray-800 border border-gray-200 rounded-bl-none'
+                      ? 'bg-sertic-blue text-sertic-white rounded-br-none'
+                      : 'bg-sertic-white text-sertic-black border border-sertic-gray/30 rounded-bl-none'
                   }`}
                 >
                   <div className="flex items-start space-x-2">
                     {message.sender === 'bot' && (
-                      <Bot className="flex-shrink-0 text-blue-600 mt-1" size={16} />
+                      <Bot className="flex-shrink-0 text-sertic-blue mt-1" size={16} />
                     )}
                     <div>
                       <p className="text-sm whitespace-pre-line">{message.text}</p>
                       <p className={`text-xs mt-1 ${
-                        message.sender === 'user' ? 'text-blue-100' : 'text-gray-500'
+                        message.sender === 'user' ? 'text-sertic-cyan/70' : 'text-sertic-gray'
                       }`}>
                         {formatTime(message.timestamp)}
                       </p>
                     </div>
                     {message.sender === 'user' && (
-                      <User className="flex-shrink-0 text-blue-200 mt-1" size={16} />
+                      <User className="flex-shrink-0 text-sertic-cyan mt-1" size={16} />
                     )}
                   </div>
                 </div>
@@ -197,11 +197,11 @@ const Chatbot = () => {
             {/* Indicador de carga */}
             {isLoading && (
               <div className="flex justify-start">
-                <div className="bg-white border border-gray-200 rounded-lg rounded-bl-none px-4 py-2 shadow-sm">
+                <div className="bg-sertic-white border border-sertic-gray/30 rounded-lg rounded-bl-none px-4 py-2 shadow-sm">
                   <div className="flex items-center space-x-2">
-                    <Bot className="text-blue-600" size={16} />
-                    <Loader className="animate-spin text-gray-500" size={16} />
-                    <span className="text-sm text-gray-500">Escribiendo...</span>
+                    <Bot className="text-sertic-blue" size={16} />
+                    <Loader className="animate-spin text-sertic-gray" size={16} />
+                    <span className="text-sm text-sertic-gray">Escribiendo...</span>
                   </div>
                 </div>
               </div>
@@ -211,7 +211,7 @@ const Chatbot = () => {
           </div>
 
           {/* FAQ Buttons */}
-          <div className="border-t border-gray-200 bg-gray-100 px-4 py-2 flex flex-wrap gap-2 justify-center">
+          <div className="border-t border-sertic-gray/30 bg-sertic-light px-4 py-2 flex flex-wrap gap-2 justify-center">
             {faqOptions.map((option) => (
               <Button
                 key={option}
@@ -224,7 +224,7 @@ const Chatbot = () => {
           </div>
 
           {/* Input */}
-          <div className="border-t border-gray-200 p-4 bg-white">
+          <div className="border-t border-sertic-gray/30 p-4 bg-sertic-white">
             <div className="flex space-x-2">
               <input
                 ref={inputRef}
@@ -233,14 +233,14 @@ const Chatbot = () => {
                 onChange={(e) => setInputMessage(e.target.value)}
                 onKeyPress={handleKeyPress}
                 placeholder="Escribe tu mensaje..."
-                className="flex-1 resize-none border border-gray-300 rounded-lg px-3 py-2 focus:outline-none 
-             focus:border-blue-500 min-h-[40px] max-h-[120px] text-gray-900 placeholder-gray-500"
+                className="flex-1 resize-none border border-sertic-gray/50 rounded-lg px-3 py-2 focus:outline-none 
+             focus:border-sertic-blue min-h-[40px] max-h-[120px] text-sertic-black placeholder-sertic-gray"
                 disabled={isLoading}
               />
               <button
                 onClick={sendMessage}
                 disabled={!inputMessage.trim() || isLoading}
-                className="bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white rounded-lg px-4 py-2 transition-colors flex items-center justify-center"
+                className="bg-sertic-blue hover:bg-sertic-cyan disabled:bg-sertic-gray text-sertic-white rounded-lg px-4 py-2 transition-colors flex items-center justify-center"
               >
                 {isLoading ? <Loader className="animate-spin" size={16} /> : <Send size={16} />}
               </button>

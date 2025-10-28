@@ -3,9 +3,9 @@ import logo_blanco from '../../assets/logo_blanco.png'
 
 export const Logo = ({ size = 'md' }) => {
   const sizes = {
-    sm: 'w-8 h-8',
-    md: 'w-10 h-10',
-    lg: 'w-12 h-12'
+    sm: 'h-10',
+    md: 'h-11',
+    lg: 'h-12'
   };
   
   return (
@@ -26,9 +26,6 @@ export const Logo = ({ size = 'md' }) => {
           className="w-full h-full object-contain rounded-xl"
         />
       </div>
-      <span className="text-xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
-        SerTIC Tech Solutions
-      </span>
     </div>
   );
 };

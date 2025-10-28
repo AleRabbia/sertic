@@ -15,7 +15,7 @@ const FeatureItem = ({ icon: Icon, title, description, index }) => {
       }`}
       style={{ transitionDelay: `${index * 200}ms` }}
     >
-      <div className="w-12 h-12 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-lg flex items-center justify-center flex-shrink-0">
+      <div className="w-12 h-12 bg-gradient-to-r from-sertic-blue to-sertic-cyan rounded-lg flex items-center justify-center flex-shrink-0">
         <Icon className="w-6 h-6" />
       </div>
       <div>
@@ -57,10 +57,10 @@ const About = () => {
   ];
 
   const metrics = [
-    { icon: Cloud, value: "24/7", label: "Monitoreo", color: "green" },
-    { icon: Users, value: "20+", label: "Especialistas", color: "pink" },
+    { icon: Cloud, value: "24/7", label: "Monitoreo", color: "cyan" },
+    { icon: Users, value: "20+", label: "Especialistas", color: "cyan" },
     { icon: Server, value: "15+", label: "Tecnologías", color: "cyan" },
-    { icon: Shield, value: "99.9%", label: "Uptime", color: "purple" }
+    { icon: Shield, value: "99.9%", label: "Uptime", color: "cyan" }
   ];
 
   return (
@@ -74,7 +74,7 @@ const About = () => {
                 titleVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}
             >
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-sertic-cyan via-sertic-blue to-sertic-cyan bg-clip-text text-transparent">
                 ¿Por qué SerTIC?
               </h2>
               <p className="text-xl text-gray-300 mb-8">

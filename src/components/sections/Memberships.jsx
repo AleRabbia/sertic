@@ -12,7 +12,7 @@ const Memberships = () => {
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-10">
-          <h2 className="text-3xl md:text-4xl font-bold mb-3 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+          <h2 className="text-3xl md:text-4xl font-bold mb-3 bg-gradient-to-r from-sertic-cyan via-sertic-blue to-sertic-cyan bg-clip-text text-transparent">
             Membresías y Certificaciones
           </h2>
           <p className="text-base text-gray-400">
@@ -79,7 +79,7 @@ const Memberships = () => {
               whileHover={{ scale: 1.04 }}
               className="p-5 bg-slate-800/40 rounded-2xl border border-purple-500/20 backdrop-blur-sm"
             >
-              <Users className="w-8 h-8 text-purple-400 mx-auto mb-2" />
+              <Users className="w-8 h-8 text-cyan-400 mx-auto mb-2" />
               <p className="text-white font-semibold mb-1">Comunidad</p>
               <p className="text-sm text-gray-400">Vinculación con líderes tech</p>
             </motion.div>
@@ -88,7 +88,7 @@ const Memberships = () => {
               whileHover={{ scale: 1.04 }}
               className="p-5 bg-slate-800/40 rounded-2xl border border-pink-500/20 backdrop-blur-sm"
             >
-              <Award className="w-8 h-8 text-pink-400 mx-auto mb-2" />
+              <Award className="w-8 h-8 text-cyan-400 mx-auto mb-2" />
               <p className="text-white font-semibold mb-1">Excelencia</p>
               <p className="text-sm text-gray-400">Compromiso con la mejora continua</p>
             </motion.div>

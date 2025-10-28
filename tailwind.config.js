@@ -1,11 +1,21 @@
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
+      colors: {
+        // Paleta SerTIC
+        'sertic-black': '#000000',
+        'sertic-dark': '#4D4D4D',
+        'sertic-gray': '#686C6C',
+        'sertic-blue': '#14739F',
+        'sertic-cyan': '#05ADEE',
+        'sertic-light': '#EDEEF0',
+        'sertic-white': '#FFFFFF',
+      },
       animation: {
         'fade-in': 'fadeIn 1s ease-in-out',
         'bounce-slow': 'bounce 3s infinite',

@@ -4,13 +4,14 @@ import { Logo } from '../ui/Logo';
 import { contactInfo } from '../../data/contact';
 import { navigationLinks } from '../../data/navigation';
 import { useNavigate } from 'react-router-dom';
+import { FaWhatsapp } from "react-icons/fa";
 
 const SocialLink = ({ href, icon: Icon, label }) => (
   <a
     href={href}
     target="_blank"
     rel="noopener noreferrer"
-    className="w-10 h-10 bg-gradient-to-r from-slate-700 to-slate-800 hover:from-cyan-500 hover:to-purple-600 rounded-lg flex items-center justify-center transition-all duration-300 transform hover:scale-110"
+    className="w-10 h-10 bg-gradient-to-r from-slate-700 to-slate-800 hover:from-sertic-blue hover:to-sertic-cyan rounded-lg flex items-center justify-center transition-all duration-300 transform hover:scale-110"
     aria-label={label}
   >
     <Icon className="w-5 h-5" />
@@ -132,7 +133,7 @@ const Footer = () => {
             <h3 className="text-white font-semibold mb-4">Contacto</h3>
             <div className="space-y-3">
               <div className="flex items-center gap-3 text-gray-400">
-                <Mail className="w-4 h-4 text-cyan-400 flex-shrink-0" />
+                <Mail className="w-4 h-4 text-sertic-cyan flex-shrink-0" />
                 <a 
                   href={`mailto:${contactInfo.email}`}
                   className="hover:text-cyan-400 transition-colors text-sm"
@@ -141,16 +142,16 @@ const Footer = () => {
                 </a>
               </div>
               <div className="flex items-center gap-3 text-gray-400">
-                <Phone className="w-4 h-4 text-purple-400 flex-shrink-0" />
+                <FaWhatsapp className="w-4 h-4 text-sertic-cyan flex-shrink-0" />
                 <a 
                   href={`tel:${contactInfo.phone}`}
-                  className="hover:text-purple-400 transition-colors text-sm"
+                  className="hover:text-cyan-400 transition-colors text-sm"
                 >
                   {contactInfo.phone}
                 </a>
               </div>
               <div className="flex items-start gap-3 text-gray-400">
-                <MapPin className="w-4 h-4 text-pink-400 flex-shrink-0 mt-1" />
+                <MapPin className="w-4 h-4 text-sertic-cyan flex-shrink-0 mt-1" />
                 <span className="text-sm">{contactInfo.location}</span>
               </div>
             </div>
