@@ -144,7 +144,7 @@ const Footer = () => {
               <div className="flex items-center gap-3 text-gray-400">
                 <FaWhatsapp className="w-4 h-4 text-sertic-cyan flex-shrink-0" />
                 <a 
-                  href={`tel:${contactInfo.phone}`}
+                  href={`https://wa.me/${contactInfo.phone.replace(/[^\d]/g, '')}`}
                   className="hover:text-cyan-400 transition-colors text-sm"
                 >
                   {contactInfo.phone}
