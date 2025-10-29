@@ -262,7 +262,7 @@ const QuoteModal = ({ isOpen, onClose }) => {
                 disabled={!isFormValid}
                 className={`w-full px-6 py-3 rounded-full transition-all duration-300 font-medium ${
                   isFormValid
-                    ? 'bg-gradient-to-r from-green-500 to-cyan-600 hover:from-green-600 hover:to-cyan-700 text-white'
+                    ? 'bg-gradient-to-r from-sertic-cyan to-sertic-cyan hover:from-sertic-blue hover:to-sertic-cyan text-white'
                     : 'bg-gray-600 text-gray-400 cursor-not-allowed'
                 }`}
               >
