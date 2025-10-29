@@ -231,7 +231,7 @@ const CasosExitoPage = () => {
 
                   {/* Que hicimos */}
                   <div className="mb-6">
-                    <h4 className="text-sm font-semibold text-cyan-400 mb-3">EXPERTISES APLICADAS</h4>
+                    <h4 className="text-sm font-semibold text-cyan-400 mb-3">SOLUCIÓN IMPLEMENTADA</h4>
                     <div className="space-y-2">
                       {caso.metrics.map((metric, index) => (
                         <div key={index} className="flex items-center gap-2">
