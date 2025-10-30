@@ -257,7 +257,7 @@ const CasosExitoPage = () => {
 
                   {/* Tecnologías */}
                   <div className="mb-6">
-                    <h4 className="text-sm font-semibold text-cyan-400 mb-3">TECNOLOGÍAS UTILIZADAS</h4>
+                    <h4 className="text-sm font-semibold text-cyan-400 mb-3">TECNOLOGÍAS Y PRÁCTICAS UTILIZADAS</h4>
                     <div className="flex flex-wrap gap-2">
                       {caso.technologies.map((tech, index) => (
                         <span

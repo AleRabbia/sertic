@@ -35,28 +35,30 @@ export const casosExito = [
   {
     id: 2,
     post: "SI",
-    title: "LETIS",
+    title: "LETIS - Certificadora de Calidad Orgánica",
     category: ["soporte","infraestructura"],
     sector: "servicios",
     logo: letis,
     description: "LETIS es una empresa dedicada a la certificación y auditoría de normas internacionales de calidad y sustentabilidad en productos y procesos.",
-    detailedDescription: "LETIS requería soporte técnico especializado para sus sistemas críticos de certificación y auditoría. Proporcionamos un equipo dedicado para soporte remoto, gestión de incidencias y mantenimiento preventivo. La criticidad del sector de certificación demandó protocolos especiales y tiempos de respuesta ultra-rápidos para mantener la continuidad operativa.",
-    technologies: ["Remote Support Tools", "ITIL Framework", "Incident Management", "System Monitoring", "Security Protocols"],
-    duration: "2+ años de soporte continuo",
-    teamSize: "3 especialistas en turnos",
+    detailedDescription: "Mantenimiento de activos informáticos e implementación de mejoras. Virtualización de procesos y migración completa a cloud para sus colaboradores de Argentina y de todos los países donde operan.",
+    technologies: ["Windows/Linux" , "Virtualización", "AWS Cloud", "Google Workspace", "GLPI", "Monitoreo con Zabbix", "Cifrado en tránsito y en reposo", "Control de accesos", "Buenas prácticas de backup"],
+    duration: "Relación desde 2005.",
+    teamSize: "4 especialistas en diferentes puestos",
     services: ["Soporte Remoto", "Gestión de Incidencias", "Mantenimiento Preventivo", "Consultoría"],
     metrics: [
-      "Soporte técnico e infraestructura on site para la operación.",
-      "Gestión de servidores, redes, backup y monitoreo.",
-      "Incorporación de perfiles de Desarrollo Full-Stack, RPA, Chatbot y Análisis Funcional.",
-      "99% client satisfaction"
+      "Soporte y gestión integral de parque y servicios.",
+      "Virtualización de servidores y aplicaciones.",
+      "Migración de aplicaciones a AWS.",
+      "Migración a Google Workspace.",
+      "Políticas y operación de backups con pruebas de restauración.",
+      "Monitoreo y hardening de entornos."
     ],
     results: [
-      "52 horas mensuales de servicio dedicado",
-      "Tiempo de respuesta <2 horas",
-      "85% de incidencias resueltas <4hrs",
-      "0 incidencias críticas sin resolver",
-      "Disponibilidad 24/7/365"
+      "Continuidad operativa y menor tiempo de caída.",
+      "Trabajo remoto y colaboración habilitados.",
+      "Menor riesgo de pérdida de datos.",
+      "Escalabilidad sin interrupciones.",
+      "Cumplimiento normativo internacional."
     ],
     clientQuote: "En certificación no podemos permitirnos fallas. El equipo de SerTIC mantiene nuestros sistemas funcionando sin interrupciones.",
     featured: true
@@ -93,28 +95,30 @@ export const casosExito = [
   {
     id: 4,
     post: "SI",
-    title: "UNIVERSIDAD DE LA CIUDAD",
+    title: "UNIVERSIDAD DE LA CIUDAD DE BUENOS AIRES",
     category: "infraestructura",
     sector: "educacion",
     logo: unicaba,
     description: "Trabajamos para ampliar las oportunidades para el desarrollo de las personas, para contribuir en la generación y distribución social del conocimiento.",
-    detailedDescription: "La Universidad de la Ciudad requería modernizar su infraestructura IT para soportar el crecimiento estudiantil y las nuevas modalidades educativas híbridas. Implementamos soluciones de virtualización, backup y soporte técnico especializado para entornos educativos, garantizando la continuidad académica.",
-    technologies: ["Hyper-V", "Office 365 Education", "Backup Solutions", "Network Infrastructure", "Classroom Technology"],
-    duration: "4 meses implementación + 15hrs/mes administración",
-    teamSize: "3 especialistas educación",
+    detailedDescription: "Administración de VMs internas y la infraestructura de la web institucional.",
+    technologies: ['Linux', 'Nginx/Apache', 'PostgreSQL/MySQL', 'Control de accesos','Hardening'],
+    duration: "Relación desde 2023.",
+    teamSize: "3 especialistas en infraestructura",
     services: ["Modernización IT", "Infraestructura Educativa", "Soporte Técnico", "Capacitación"],
     metrics: [
-      "Soporte técnico e infraestructura on site para la operación.",
-      "Gestión de servidores, redes, backup y monitoreo.",
-      "Incorporación de perfiles de Desarrollo Full-Stack, RPA, Chatbot y Análisis Funcional.",
-      "99% client satisfaction"
+      "Gestión integral de VMs y servicios de plataforma.",
+      "Configuración de web server y base de datos.",
+      "Implementación de esquema de despliegue vía SFTP.",
+      "Securización y testing de aplicaciones.",
+      "Monitoreo de servidores y alertas.",
+      "Implementación de sistema de backups y pruebas de restauración."
+
     ],
     results: [
-      "5000+ estudiantes con mejor experiencia IT",
-      "Backup automatizado diario",
-      "RTO menor a 4 horas",
-      "Cumplimiento normativo educativo",
-      "15 horas mensuales de administración dedicada"
+      "Mayor disponibilidad del sitio.",
+      "Despliegues controlados y trazables.",
+      "Reducción de incidentes y tiempos de resolución.",
+      "Resguardo de datos con RPO/RTO definidos."
     ],
     clientQuote: "SerTIC entiende las necesidades específicas del sector educativo. Su solución se adaptó perfectamente a nuestro presupuesto y objetivos académicos.",
     featured: true
@@ -151,28 +155,28 @@ export const casosExito = [
   {
     id: 6,
     post: "SI",
-    title: "INTA",
+    title: "INTA - Agencia Oliveros y dependencias (Santa Fe)",
     category: ["soporte","infraestructura"],
     sector: "servicios",
     logo: "https://www.argentina.gob.ar/sites/default/files/styles/isologo/public/imagenEncabezado/inta_isologo_izqcalado_150px.png?itok=WGLKHLdi",
-    description: "Ediciones INTA Editorial especializada en publicaciones de investigación, desarrollo e innovación tecnológica aplicada al sector del agro",
+    description: "Organismo público descentralizado bajo la Secretaría de Agricultura. Soporte integral para Agencia Oliveros y sedes en Roldán, Casilda, Arroyo Seco, Pago de los Arroyos, Venado Tuerto, Totoras, Cañada de Gómez y Las Rosas.",
     detailedDescription: "El Instituto Nacional de Tecnología Agropecuaria (INTA) requería soporte técnico especializado para mantener sus sistemas de investigación y publicación editorial. Implementamos un servicio integral de soporte con infraestructura dedicada para garantizar la continuidad de sus operaciones críticas en investigación agropecuaria.",
-    technologies: ["Government IT Standards", "Research Systems", "Editorial Platforms", "Data Management", "Backup Solutions"],
-    duration: "2+ años de soporte continuo",
-    teamSize: "4 especialistas gobierno",
+    technologies: ["Windows", "Microsoft 365", "Virtualización", "Switching y Wi-Fi administrado", "VPN","Políticas de respaldo", "Control de accesos" ,"Cumplimiento de buenas prácticas"],
+    duration: "Relación desde 2004.",
+    teamSize: "4 especialistas soporte e Infraestructura",
     services: ["Soporte Gubernamental", "Infraestructura", "Gestión de Datos", "Editorial Support"],
     metrics: [
-      "Soporte técnico e infraestructura on site para la operación.",
-      "Gestión de servidores, redes, backup y monitoreo.",
-      "Incorporación de perfiles de Desarrollo Full-Stack, RPA, Chatbot y Análisis Funcional.",
-      "99% client satisfaction"
+      "Actualización de infraestructura y estandarización de plataformas.",
+      "Hardening y securización de servidores, redes y puestos.",
+      "Mejora y ampliación de conectividad entre sedes.",
+      "Gestión de activos y soporte operativo.",
+      "Monitoreo y backups."
     ],
     results: [
-      "18 horas mensuales de servicio especializado",
-      "100% cumplimiento normativa gubernamental",
-      "Tiempo de respuesta <4 horas",
-      "99.5% disponibilidad de sistemas",
-      "Soporte a investigación agropecuaria nacional"
+      "Reducción de incidentes y tiempos de resolución.",
+      "Continuidad operativa y mayor disponibilidad de servicios.",
+      "Productividad mejorada en procesos técnicos y administrativos.",
+      "Visibilidad del parque y trazabilidad de cambios."
     ],
     clientQuote: "SerTIC comprende las particularidades del sector público. Su servicio garantiza la continuidad de nuestras investigaciones críticas.",
     featured: false
@@ -212,23 +216,24 @@ export const casosExito = [
     sector: "tecnologia",
     logo: "https://polotecnologico.net/wp-content/uploads/2021/09/Logo-Polo-nuevo-2021-01-removebg-preview.png",
     description: "El Polo Tecnológico Rosario es, junto con el Gobierno de la Provincia de Santa Fe y la Municipalidad de Rosario, el promotor principal de Zona i, un parque científico tecnológico.",
-    detailedDescription: "El Polo Tecnológico Rosario requería servicios especializados de infraestructura y soporte para mantener operativo el ecosistema tecnológico de Zona i. Implementamos soluciones escalables que soportan múltiples empresas y startups, garantizando conectividad, seguridad y disponibilidad para todo el parque tecnológico.",
-    technologies: ["Enterprise Networks", "Cloud Infrastructure", "Security Systems", "Collaboration Tools", "IoT Platforms"],
-    duration: "2+ años de servicio continuo",
-    teamSize: "3 especialistas ecosistema tech",
+    detailedDescription: "Modernización de infraestructura y optimización de la gestión de servicios IT.",
+    technologies: ['Servidores Cloud', 'Linux/Windows', 'Zabbix', 'Kaspersky Antivirus', 'Google workspace', 'Control de accesos', 'Hardening', 'Gestión de cambios', 'Revisión periódica de controles'],
+    duration: "Relación desde 2019.",
+    teamSize: "5 profesionales en diferentes roles",
     services: ["Infraestructura Compartida", "Soporte Multi-tenant", "Networking", "Seguridad"],
     metrics: [
-      "Soporte técnico e infraestructura on site para la operación.",
-      "Gestión de servidores, redes, backup y monitoreo.",
-      "Incorporación de perfiles de Desarrollo Full-Stack, RPA, Chatbot y Análisis Funcional.",
-      "99% client satisfaction"
+      "Migración y adopción de servicios en la nube.",
+      "Monitoreo proactivo y alertamiento 24×7.",
+      "Controles y políticas de seguridad alineados a ISO 27002.",
+      "Normalización de backups con pruebas de restauración.",
+      "Gestión de infraestructura de sitios web.",
+      "Capacitaciones y colaboraciones con empresas del sector."
     ],
     results: [
-      "16 horas mensuales de servicio especializado",
-      "50+ empresas del ecosistema atendidas",
-      "99.7% uptime del parque tecnológico",
-      "Tiempo de respuesta <2 horas",
-      "Infraestructura escalable para startups"
+      "Mayor disponibilidad y continuidad del servicio.",
+      "Reducción de incidentes y MTTR.",
+      "Plataforma más segura, escalable y eficiente para el ecosistema.",
+      "Visibilidad en tiempo real del estado de la infraestructura y de los servicios web."
     ],
     clientQuote: "SerTIC es clave para mantener operativo nuestro ecosistema tecnológico. Su experiencia permite que las empresas se enfoquen en innovar.",
     featured: false
@@ -410,28 +415,29 @@ export const casosExito = [
   {
     id: 15,
     post: "SI",
-    title: "CIMOMET S.A.",
+    title: "CIMOMET S.A. - Sector Industrial",
     category: ["soporte","infraestructura"],
     sector: "servicios",
     logo: "https://www.cimomet.ar/images/logoweb.png",
-    description: "CIMOMET S.A. es una empresa que transita ya por su 4ta generación. Con más de 60 años de trayectoria en fabricación de Acero, Caucho, Plásticos, Cemento, y generación de energía.",
+    description: "Necesidad de fortalecer seguridad y disponibilidad del entorno tecnológico.",
     detailedDescription: "CIMOMET S.A., con más de 60 años en el sector industrial, requería modernización de su infraestructura IT para soportar procesos industriales críticos. Implementamos soluciones robustas de infraestructura que garantizan la continuidad operativa en sus múltiples líneas de producción y generación de energía.",
-    technologies: ["Industrial Networks", "SCADA Systems", "Enterprise Servers", "Backup Systems", "Security Infrastructure"],
-    duration: "Proyecto en desarrollo",
-    teamSize: "4 especialistas sector industrial",
+    technologies: ['Windows/Linux', 'Virtualización', 'ESET PROTECT', 'Políticas de acceso', 'Cifrado en tránsito y en reposo', 'GLPI', 'Zabbix', 'Gestión de cambios', 'Revisión periódica de controles'],
+    duration: "Relación desde 2024.",
+    teamSize: "4 especialistas de diferentes roles",
     services: ["Infraestructura Industrial", "Sistemas SCADA", "Redes Críticas", "Seguridad"],
     metrics: [
-      "Soporte técnico e infraestructura on site para la operación.",
-      "Gestión de servidores, redes, backup y monitoreo.",
-      "Incorporación de perfiles de Desarrollo Full-Stack, RPA, Chatbot y Análisis Funcional.",
-      "99% client satisfaction"
+      "Arquitectura IT optimizada y segmentación de red.",
+      "Hardening de servidores, endpoints y servicios críticos.",
+      "Backups automatizados con pruebas de restauración.",
+      "Monitoreo centralizado y alertas.",
+      "Documentación operativa y procedimientos.",
+      "Servidores para diseño industrial"
     ],
     results: [
-      "Modernización infraestructura industrial",
-      "Soporte a 60+ años de experiencia",
-      "Integración múltiples líneas productivas",
-      "Continuidad operativa garantizada",
-      "Preparación para Industria 4.0"
+      "Menor superficie de ataque y riesgos controlados.",
+      "Mayor disponibilidad y continuidad de sistemas.",
+      "MTTR reducido y visibilidad en tiempo real.",
+      "Cumplimiento de buenas prácticas del sector."
     ],
     clientQuote: "Con 60 años en la industria, sabemos reconocer la calidad. SerTIC está modernizando nuestra infraestructura con la seriedad que requiere nuestro legado familiar.",
     featured: false
