@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { ChevronDown } from 'lucide-react';
 import Button from '../ui/Button';
 import { GradientBackground } from '../ui/GradientBackground';
+import SuccessBadge from '../ui/SuccessBadge';
 
 const Hero = () => {
 
@@ -56,6 +57,9 @@ const Hero = () => {
               >
                 Casos de Éxito
               </Button>
+            </div>
+            <div className="mt-6 flex justify-center">
+              <SuccessBadge />
             </div>
           </div>
           {/* Lo comento hasta que lo pueda acomodar visualmente */}

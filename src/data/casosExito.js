@@ -1,6 +1,9 @@
 import konecta from '../assets/clientes/konecta.png';
 import letis from '../assets/clientes/letis.png';
 import unicaba from '../assets/clientes/unicaba.png';
+import polobn from '../assets/clientes/polobn.png';
+import cimomet from '../assets/clientes/cimomet.png';
+import inta from '../assets/clientes/inta.png';
 
 export const casosExito = [
   {
@@ -158,7 +161,7 @@ export const casosExito = [
     title: "INTA - Agencia Oliveros y dependencias (Santa Fe)",
     category: ["soporte","infraestructura"],
     sector: "servicios",
-    logo: "https://www.argentina.gob.ar/sites/default/files/styles/isologo/public/imagenEncabezado/inta_isologo_izqcalado_150px.png?itok=WGLKHLdi",
+    logo: inta,
     description: "Organismo público descentralizado bajo la Secretaría de Agricultura. Soporte integral para Agencia Oliveros y sedes en Roldán, Casilda, Arroyo Seco, Pago de los Arroyos, Venado Tuerto, Totoras, Cañada de Gómez y Las Rosas.",
     detailedDescription: "El Instituto Nacional de Tecnología Agropecuaria (INTA) requería soporte técnico especializado para mantener sus sistemas de investigación y publicación editorial. Implementamos un servicio integral de soporte con infraestructura dedicada para garantizar la continuidad de sus operaciones críticas en investigación agropecuaria.",
     technologies: ["Windows", "Microsoft 365", "Virtualización", "Switching y Wi-Fi administrado", "VPN","Políticas de respaldo", "Control de accesos" ,"Cumplimiento de buenas prácticas"],
@@ -214,7 +217,7 @@ export const casosExito = [
     title: "POLO TECNOLÓGICO ROSARIO",
     category: ["soporte","infraestructura"],
     sector: "tecnologia",
-    logo: "https://polotecnologico.net/wp-content/uploads/2021/09/Logo-Polo-nuevo-2021-01-removebg-preview.png",
+    logo: polobn,
     description: "El Polo Tecnológico Rosario es, junto con el Gobierno de la Provincia de Santa Fe y la Municipalidad de Rosario, el promotor principal de Zona i, un parque científico tecnológico.",
     detailedDescription: "Modernización de infraestructura y optimización de la gestión de servicios IT.",
     technologies: ['Servidores Cloud', 'Linux/Windows', 'Zabbix', 'Kaspersky Antivirus', 'Google workspace', 'Control de accesos', 'Hardening', 'Gestión de cambios', 'Revisión periódica de controles'],
@@ -418,7 +421,7 @@ export const casosExito = [
     title: "CIMOMET S.A. - Sector Industrial",
     category: ["soporte","infraestructura"],
     sector: "servicios",
-    logo: "https://www.cimomet.ar/images/logoweb.png",
+    logo: cimomet,
     description: "Necesidad de fortalecer seguridad y disponibilidad del entorno tecnológico.",
     detailedDescription: "CIMOMET S.A., con más de 60 años en el sector industrial, requería modernización de su infraestructura IT para soportar procesos industriales críticos. Implementamos soluciones robustas de infraestructura que garantizan la continuidad operativa en sus múltiples líneas de producción y generación de energía.",
     technologies: ['Windows/Linux', 'Virtualización', 'ESET PROTECT', 'Políticas de acceso', 'Cifrado en tránsito y en reposo', 'GLPI', 'Zabbix', 'Gestión de cambios', 'Revisión periódica de controles'],
