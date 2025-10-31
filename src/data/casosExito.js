@@ -183,36 +183,8 @@ export const casosExito = [
     ],
     clientQuote: "SerTIC comprende las particularidades del sector público. Su servicio garantiza la continuidad de nuestras investigaciones críticas.",
     featured: false
-  },
-  {
+  },{
     id: 7,
-    post: "SI",
-    title: "KONECTA ARGENTINA",
-    category: "staffing",
-    sector: "servicios",
-    logo: konecta,
-    description: "Konecta crea experiencias híbridas para generar nuevo valor para ti, tus clientes y tus empleados. En salas de reuniones y en espacios vitales, convertimos conexiones en momentos significativos.",
-    detailedDescription: "Operación de call center en Rosario y expansión de capacidades digitales a nivel cono sur.",
-    technologies: ["Windows/Linux", "AWS/GCP", "GitLab CI/CD", "RPA", "ChatBot", "Análisis Funcional"],
-    duration: "Relación desde 2018.",
-    teamSize: "15 profesionales en diferentes roles",
-    services: ["Staffing IT", "Talent Acquisition", "Technical Consulting", "Project Support"],
-    metrics: [
-      "Soporte técnico e infraestructura on site para la operación.",
-      "Gestión de servidores, redes, backup y monitoreo.",
-      "Incorporación de perfiles de Desarrollo Full-Stack, RPA, Chatbot y Análisis Funcional.",
-      "99% client satisfaction"
-    ],
-    results: [
-      "Continuidad operativa 24×7.",
-      "Tiempos de resolución reducidos.",
-      "Escalado de capacidades de desarrollo y automatización a demanda."
-    ],
-    clientQuote: "SerTIC nos proporcionó exactamente los perfiles que necesitábamos para nuestros proyectos de experiencias híbridas. Su proceso de selección es muy efectivo.",
-    featured: true
-  },
-  {
-    id: 8,
     post: "SI",
     title: "POLO TECNOLÓGICO ROSARIO",
     category: ["soporte","infraestructura"],
@@ -241,6 +213,33 @@ export const casosExito = [
     clientQuote: "SerTIC es clave para mantener operativo nuestro ecosistema tecnológico. Su experiencia permite que las empresas se enfoquen en innovar.",
     featured: false
   },
+  {
+    id: 8,
+    post: "SI",
+    title: "KONECTA ARGENTINA",
+    category: "staffing",
+    sector: "servicios",
+    logo: konecta,
+    description: "Konecta crea experiencias híbridas para generar nuevo valor para ti, tus clientes y tus empleados. En salas de reuniones y en espacios vitales, convertimos conexiones en momentos significativos.",
+    detailedDescription: "Operación de call center en Rosario y expansión de capacidades digitales a nivel cono sur.",
+    technologies: ["Windows/Linux", "AWS/GCP", "GitLab CI/CD", "RPA", "ChatBot", "Análisis Funcional"],
+    duration: "Relación desde 2018.",
+    teamSize: "15 profesionales en diferentes roles",
+    services: ["Staffing IT", "Talent Acquisition", "Technical Consulting", "Project Support"],
+    metrics: [
+      "Soporte técnico e infraestructura on site para la operación.",
+      "Gestión de servidores, redes, backup y monitoreo.",
+      "Incorporación de perfiles de Desarrollo Full-Stack, RPA, Chatbot y Análisis Funcional.",
+      "99% client satisfaction"
+    ],
+    results: [
+      "Continuidad operativa 24×7.",
+      "Tiempos de resolución reducidos.",
+      "Escalado de capacidades de desarrollo y automatización a demanda."
+    ],
+    clientQuote: "SerTIC nos proporcionó exactamente los perfiles que necesitábamos para nuestros proyectos de experiencias híbridas. Su proceso de selección es muy efectivo.",
+    featured: true
+  },  
   {
     id: 9,
     post: "NO",

@@ -50,16 +50,18 @@ const Hero = () => {
               >
                 Solicitar Asesoría
               </Button>
-              <Button 
+              { /*<Button 
                 variant="secondary" 
                 size="lg"
                 onClick={handleCasosExitoClick}
               >
                 Casos de Éxito
-              </Button>
-            </div>
-            <div className="mt-6 flex justify-center">
-              <SuccessBadge />
+              </Button> 
+            </div> */}
+            <div onClick={handleCasosExitoClick} className="cursor-pointer" 
+            >
+          <SuccessBadge />
+        </div>
             </div>
           </div>
           {/* Lo comento hasta que lo pueda acomodar visualmente */}

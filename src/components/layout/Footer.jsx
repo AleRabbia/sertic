@@ -5,6 +5,7 @@ import { contactInfo } from '../../data/contact';
 import { navigationLinks } from '../../data/navigation';
 import { useNavigate } from 'react-router-dom';
 import { FaWhatsapp } from "react-icons/fa";
+import powerby from '../../assets/clientes/RabbiaSoft.png';
 
 const SocialLink = ({ href, icon: Icon, label }) => (
   <a
@@ -161,9 +162,22 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-slate-800/50 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            
             <div className="text-gray-400 text-sm">
               &copy; {currentYear} SerTIC Tech Solutions. Todos los derechos reservados.
             </div>
+            { /* 
+
+            <div className="flex items-center gap-2 md:ml-8 opacity-70 hover:opacity-100 transition-opacity md:pl-8 md:border-l md:border-slate-800">
+                <span>Powered by</span>
+                <img 
+                  src={powerby}
+                  alt="Powered by Logo"
+                  className="h-5 w-auto"
+                />
+              </div>
+              */ }
+
             <div className="flex gap-6 text-sm text-gray-400">
               <a className="hover:text-cyan-400 transition-colors"
               onClick={handlePrivacidadClick}
