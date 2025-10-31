@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Navigation, Footer } from '../components/layout';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, Filter, Users, Clock, CheckCircle, TrendingUp } from 'lucide-react';
+import { Award, ArrowLeft, Filter, Users, Clock, CheckCircle, TrendingUp } from 'lucide-react';
 import { casosPublicados, getCasesByCategory, getCasesBySector } from '../data/casosExito';
 import QuoteModal from '../components/ui/QuoteModal';
 
@@ -10,6 +10,34 @@ const CasosExitoPage = () => {
     useEffect(() => {
   window.scrollTo(0, 0);
   }, []);
+
+const [expandedMetrics, setExpandedMetrics] = useState({});
+  const [expandedTechs, setExpandedTechs] = useState({});
+  const [expandedResults, setExpandedResults] = useState({});
+
+  const toggleMetrics = (casoId) => {
+    setExpandedMetrics(prev => ({
+      ...prev,
+      [casoId]: !prev[casoId]
+    }));
+  };
+
+  const toggleTechs = (casoId) => {
+    setExpandedTechs(prev => ({
+      ...prev,
+      [casoId]: !prev[casoId]
+    }));
+  };
+
+  const toggleResults = (casoId) => {
+    setExpandedResults(prev => ({
+      ...prev,
+      [casoId]: !prev[casoId]
+    }));
+  };
+
+  
+
 
   const [activeFilter, setActiveFilter] = useState('todos');
   const [filterType, setFilterType] = useState('category');
@@ -35,11 +63,9 @@ const CasosExitoPage = () => {
 
   const sectorFilters = [
     { id: 'todos', name: 'Todos los sectores' },
-    { id: 'agroindustria', name: 'Agroindustria' },
-    { id: 'salud', name: 'Salud' },
+    { id: 'servicios', name: 'Servicios' },
     { id: 'educacion', name: 'Educación' },
-    { id: 'tecnologia', name: 'Tecnología' },
-    { id: 'servicios', name: 'Servicios' }
+    { id: 'tecnologia', name: 'Tecnología' }
   ];
 
   const getFilteredCases = () => {
@@ -87,7 +113,7 @@ const CasosExitoPage = () => {
 
           <div className="text-center mb-16">
             <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-sertic-cyan to-sertic-blue bg-clip-text text-transparent">
-              Casos de Éxito
+              Transformando Empresas
             </h1>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               Descubre cómo hemos ayudado a empresas de diferentes sectores a transformar su infraestructura tecnológica y optimizar sus operaciones
@@ -158,36 +184,48 @@ const CasosExitoPage = () => {
                       </div>
                       <div>
                         <h2 className="text-2xl font-bold text-white">{caso.title}</h2>
+                        <p className="text-gray-400 text-sm mb-4">{caso.subtitle}</p>
                         <div className="flex gap-2 mt-2">
                           {Array.isArray(caso.category)
-  ? caso.category.map((cat, i) => (
-      <span
-        key={i}
-        className={`px-3 py-1 bg-gradient-to-r ${getCategoryColor(cat)} rounded-full text-xs font-semibold border`}
-      >
-        {cat.charAt(0).toUpperCase() + cat.slice(1)}
-      </span>
-    ))
-  : (
-      <span
-        className={`px-3 py-1 bg-gradient-to-r ${getCategoryColor(caso.category)} rounded-full text-xs font-semibold border`}
-      >
-        {caso.category
-          ? caso.category.charAt(0).toUpperCase() + caso.category.slice(1)
-          : "Sin categoría"}
-      </span>
-    )}
+                            ? caso.category.map((cat, i) => (
+                                <span
+                                  key={i}
+                                  className={`px-3 py-1 bg-gradient-to-r ${getCategoryColor(cat)} rounded-full text-xs font-semibold border`}
+                                >
+                                  {cat.charAt(0).toUpperCase() + cat.slice(1)}
+                                </span>
+                              ))
+                            : (
+                                <span
+                                  className={`px-3 py-1 bg-gradient-to-r ${getCategoryColor(caso.category)} rounded-full text-xs font-semibold border`}
+                                >
+                                  {caso.category
+                                    ? caso.category.charAt(0).toUpperCase() + caso.category.slice(1)
+                                    : "Sin categoría"}
+                                </span>
+                              )}
 
-                          <span className="px-3 py-1 bg-gradient-to-r from-slate-600/30 to-slate-500/30 rounded-full text-xs text-slate-300 border border-slate-500/30">
-                            {caso.sector
-  ? caso.sector.charAt(0).toUpperCase() + caso.sector.slice(1)
-  : "Sin sector"}
+                                                    <span className="px-3 py-1 bg-gradient-to-r from-slate-600/30 to-slate-500/30 rounded-full text-xs text-slate-300 border border-slate-500/30">
+                                                      {caso.sector
+                            ? caso.sector.charAt(0).toUpperCase() + caso.sector.slice(1)
+                            : "Sin sector"}
 
                           </span>
                         </div>
                       </div>
                     </div>
                   </div>
+                  {/* Info rápida */}
+                    <div className="grid md:grid-cols-2 gap-4 text-sm">
+                      <div className="flex items-center gap-2 text-gray-400">
+                        <Clock className="w-4 h-4 text-cyan-400" />
+                        {caso.duration}
+                      </div>
+                      <div className="flex items-center gap-2 text-gray-400">
+                        <Users className="w-4 h-4 text-purple-400" />
+                        {caso.teamSize}
+                      </div>
+                    </div>
 
                   {/* Métricas destacadas */}
                   {/*<div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -231,57 +269,101 @@ const CasosExitoPage = () => {
 
                   {/* Que hicimos */}
                   <div className="mb-6">
-                    <h4 className="text-sm font-semibold text-cyan-400 mb-3">SOLUCIÓN IMPLEMENTADA</h4>
+                    <h4 className="text-xs font-bold text-cyan-400 mb-3 uppercase tracking-wider flex items-center gap-2">
+                      <span className="w-1 h-4 bg-cyan-400 rounded"></span>
+                      Solución Implementada
+                    </h4>
                     <div className="space-y-2">
-                      {caso.metrics.map((metric, index) => (
-                        <div key={index} className="flex items-center gap-2">
-                          <CheckCircle className="w-4 h-4 text-cyan-400 flex-shrink-0" />
-                          <span className="text-gray-300 text-sm">{metric}</span>
-                        </div>
-                      ))}
-                    </div>
+                        {(expandedMetrics[caso.id] ? caso.metrics : caso.metrics.slice(0, 3)).map((metric, index) => (
+                          <div key={index} className="flex items-start gap-2 group/item">
+                            <CheckCircle className="w-4 h-4 text-cyan-400 flex-shrink-0 mt-0.5 group-hover/item:scale-110 transition-transform" />
+                            <span className="text-gray-300 text-sm">{metric}</span>
+                          </div>
+                        ))}
+                        {caso.metrics.length > 3 && (
+                          <button
+                            onClick={() => toggleMetrics(caso.id)}
+                            className="px-3 py-1 bg-slate-700/30 rounded-lg text-xs text-gray-500"
+                          >
+                            {expandedMetrics[caso.id] 
+                              ? '↑ Ver menos' 
+                              : `+${caso.metrics.length - 3} más`
+                            }
+                          </button>
+                        )}
+                      </div>
                   </div>
 
                   {/* Resultados */}
                   <div className="mb-6">
-                    <h4 className="text-sm font-semibold text-cyan-400 mb-3">RESULTADOS OBTENIDOS</h4>
+                    <h4 className="text-xs font-bold text-green-400 mb-3 uppercase tracking-wider flex items-center gap-2">
+                      <span className="w-1 h-4 bg-green-400 rounded"></span>
+                      Resultados Clave
+                    </h4>
                     <div className="space-y-2">
-                      {caso.results.map((result, index) => (
-                        <div key={index} className="flex items-center gap-2">
-                          <CheckCircle className="w-4 h-4 text-cyan-400 flex-shrink-0" />
-                          <span className="text-gray-300 text-sm">{result}</span>
+                          {(expandedResults[caso.id] ? caso.results : caso.results.slice(0, 3)).map((result, index) => (
+                            <div key={index} className="flex items-start gap-2 group/item">
+                              <TrendingUp className="w-4 h-4 text-green-400 flex-shrink-0 mt-0.5 group-hover/item:scale-110 transition-transform" />
+                              <span className="text-gray-300 text-sm">{result}</span>
+                            </div>
+                          ))}
+                          {caso.results.length > 3 && (
+                            <button
+                              onClick={() => toggleResults(caso.id)}
+                              className="px-3 py-1 bg-slate-700/30 rounded-lg text-xs text-gray-500"
+                            >
+                              {expandedResults[caso.id] 
+                                ? '↑ Ver menos' 
+                                : `+${caso.results.length - 3} más`
+                              }
+                            </button>
+                          )}
                         </div>
-                      ))}
-                    </div>
                   </div>
 
-                  {/* Tecnologías */}
+                   {/* Tecnologías */}
                   <div className="mb-6">
-                    <h4 className="text-sm font-semibold text-cyan-400 mb-3">TECNOLOGÍAS Y PRÁCTICAS UTILIZADAS</h4>
+                    <h4 className="text-xs font-bold text-purple-400 mb-3 uppercase tracking-wider flex items-center gap-2">
+                      <span className="w-1 h-4 bg-purple-400 rounded"></span>
+                      Tecnologías
+                    </h4>
                     <div className="flex flex-wrap gap-2">
-                      {caso.technologies.map((tech, index) => (
-                        <span
-                          key={index}
-                          className="px-3 py-1 bg-gradient-to-r from-slate-700/50 to-slate-600/50 rounded-full text-xs text-gray-300 border border-slate-600/50"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
+                      {(expandedTechs[caso.id] ? caso.technologies : caso.technologies.slice(0, 5)).map((tech, index) => (
+                  <span
+                    key={index}
+                    className="px-3 py-1 bg-slate-700/50 hover:bg-slate-700 rounded-lg text-xs text-gray-300 border border-slate-600/50 transition-colors"
+                  >
+                    {tech}
+                  </span>
+                ))}
+                {caso.technologies.length > 5 && (
+                  <button
+                    onClick={() => toggleTechs(caso.id)}
+                    className="px-3 py-1 bg-slate-700/30 rounded-lg text-xs text-gray-500"
+                  >
+                    {expandedTechs[caso.id]
+                      ? '↑ Ver menos'
+                      : `+${caso.technologies.length - 5}`
+                    }
+                  </button>
+                )}
+              </div>              
                   </div>
 
                   
 
                   {/* Quote del cliente */}
                   {caso.clientQuote && (
-                    <div className="bg-gradient-to-r from-cyan-500/10 to-purple-600/10 rounded-xl p-4 border-l-4 border-cyan-500">
-                      <blockquote className="text-gray-300 italic">
-                        "{caso.clientQuote}"
-                      </blockquote>
+                    <div className="bg-gradient-to-r from-cyan-500/10 via-blue-500/10 to-purple-500/10 rounded-xl p-4 border-l-4 border-cyan-500">
+                      <div className="flex items-start gap-3">
+                        <blockquote className="text-gray-300 italic text-sm flex-1 pt-1">
+                          {caso.clientQuote}
+                        </blockquote>
+                      </div>
                     </div>
                   )}
 
-                  {/* Detalles del proyecto */}
+                  {/* Detalles del proyecto 
                   <div className="mt-6 pt-6 border-t border-slate-700">
                     <div className="grid md:grid-cols-2 gap-4 text-sm">
                       <div>
@@ -293,7 +375,7 @@ const CasosExitoPage = () => {
                         <span className="text-white ml-2">{caso.teamSize}</span>
                       </div>
                     </div>
-                  </div>
+                  </div>*/}
                 </div>
               </div>
             ))}
@@ -301,9 +383,12 @@ const CasosExitoPage = () => {
 
           {/* Stats generales */}
           <div className="mt-20 bg-gradient-to-r from-slate-800/50 to-slate-900/50 backdrop-blur-sm rounded-3xl p-12 border border-slate-700/50">
-            <h3 className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-sertic-cyan via-sertic-blue to-sertic-cyan bg-clip-text text-transparent">
-              Nuestros Números
-            </h3>
+            <div className="text-center mb-10">
+              <Award className="w-12 h-12 text-cyan-400 mx-auto mb-4" />
+              <h3 className="text-3xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+                Resultados que Hablan
+              </h3>
+            </div>
             <div className="grid md:grid-cols-4 gap-8 text-center">
               <div>
                 <div className="text-4xl font-bold text-cyan-400 mb-2">{casosPublicados.length}+</div>
