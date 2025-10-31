@@ -22,7 +22,7 @@ const SuccessBadge = () => {
       <div className="flex flex-col ml-2">
         <div className="flex">
           {[...Array(5)].map((_, i) => (
-            <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+            <Star key={i} className="w-4 h-4 fill-cyan-400 text-cyan-400" />
           ))}
         </div>
         <span className="text-sm font-medium text-white/90">+50 casos de éxito</span>
