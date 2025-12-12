@@ -17,8 +17,8 @@ export const teamMembers = [
       experience: "25+ años",
       education: "MBA, Ingeniería en Sistemas",
       linkedin: "#",
-      email: "juan@sertic.com",
-      achievements: ["Certificación PMP", "MBA Stanford", "Speaker TEDx"]
+      email: "hector.garcia@sertic.com.ar",
+      achievements: ["Certificación ISO 27002", "Ciberseguridad"]
     },
     {
       id: 2,
@@ -27,10 +27,10 @@ export const teamMembers = [
       gridPosition: { row: 2, col: 1 },
       photo: Nicolas,
       bio: "Especialista en CI/CD y automatización de infraestructura",
-      experience: "8+ años",
-      education: "Ingeniería en Computación",
+      experience: "15+ años",
+      education: "Ingeniería en Sistemas",
       linkedin: "#",
-      email: "maria@sertic.com",
+      email: "nicolas.romar@sertic.cloud",
       achievements: ["Kubernetes CKA", "AWS DevOps Pro", "Docker Captain"]
     },
     {
@@ -40,10 +40,10 @@ export const teamMembers = [
       gridPosition: { row: 2, col: 3 },
       photo: Ramiro,
       bio: "Experto en arquitectura de redes y seguridad",
-      experience: "12+ años",
+      experience: "15+ años",
       education: "Ingeniería en Redes",
       linkedin: "#",
-      email: "carlos@sertic.com",
+      email: "ramiro.lemos@sertic.com.ar",
       achievements: ["CCNP Security", "CompTIA Security+", "CISSP"]
     },
     {
@@ -52,12 +52,12 @@ export const teamMembers = [
       role: "Comercial",
       gridPosition: { row: 3, col: 1 },
       photo: Alexis,
-      bio: "Estratega de negocios y relaciones corporativas",
-      experience: "10+ años",
-      education: "Lic. en Marketing",
+      bio: "Analista de sistemas y desarrollador de software con orientación comercial",
+      experience: "15+ años",
+      education: "Analisis de Sistemas | Programación",
       linkedin: "#",
-      email: "ana@sertic.com",
-      achievements: ["Top Sales 2023", "Master en Negocios", "Certificación CRM"]
+      email: "alexis.rabbia@sertic.com.ar",
+      achievements: ["Top Sales 2023", "Master en Negocios", "Certificación ODOO"]
     },
     {
       id: 5,
@@ -69,8 +69,8 @@ export const teamMembers = [
       experience: "9+ años",
       education: "Contador Público",
       linkedin: "#",
-      email: "laura@sertic.com",
-      achievements: ["CPA Certificado", "SAP Consultant", "Six Sigma Green Belt"]
+      email: "melania.quillici@sertic.com.ar",
+      achievements: ["SAP Consultant"]
     },
     {
       id: 6,
@@ -79,10 +79,10 @@ export const teamMembers = [
       gridPosition: { row: 3, col: 3 },
       photo: Nicolas,
       bio: "Arquitecto Cloud certificado en AWS y Azure",
-      experience: "7+ años",
+      experience: "10+ años",
       education: "Ingeniería en Software",
       linkedin: "#",
-      email: "diego@sertic.com",
+      email: "patricio.paez@sertic.com.ar",
       achievements: ["AWS Solutions Architect", "Azure Expert", "GCP Professional"]
     }
   ];
