@@ -15,8 +15,13 @@ const Navigation = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const handleNavClick = (href) => {
+  const handleNavClick = (href, isPage) => {
     setIsMenuOpen(false);
+    
+    if (isPage) {
+    navigate(href);
+    return;
+  }
 
     if (location.pathname !== "/") {
       // Si no estás en home, navegá a home y hacé scroll después de cargar
@@ -76,7 +81,7 @@ const Navigation = () => {
               {navigationLinks.map((link) => (
                 <button
                   key={link.href}
-                  onClick={() => handleNavClick(link.href)}
+                  onClick={() => handleNavClick(link.href, link.isPage)}
                   className="hover:text-cyan-400 transition-colors duration-200"
                 >
                   {link.label}
@@ -108,7 +113,7 @@ const Navigation = () => {
               {navigationLinks.map((link) => (
                 <button
                   key={link.href}
-                  onClick={() => handleNavClick(link.href)}
+                  onClick={() => handleNavClick(link.href,link.isPage)}
                   className="block w-full text-left hover:text-cyan-400 transition-colors duration-200"
                 >
                   {link.label}
