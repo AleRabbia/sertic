@@ -62,7 +62,7 @@ export const teamMembers = [
     id: 4,
     name: "Alexis Rabbia",
     role: "Comercial",
-    gridPosition: { row: 3, col: 1 },
+    gridPosition: { row: 3, col: 2 },
     photo: Alexis,
     bio: "Analista de sistemas con orientación comercial",
     experience: "15+ años",
@@ -75,7 +75,7 @@ export const teamMembers = [
     id: 5,
     name: "Melania Quillici",
     role: "Administración",
-    gridPosition: { row: 3, col: 3 },
+    gridPosition: { row: 3, col: 1 },
     photo: Melania,
     bio: "Gestión financiera y operaciones administrativas",
     experience: "9+ años",
@@ -83,5 +83,18 @@ export const teamMembers = [
     linkedin: "#",
     email: "melania.quillici@sertic.com.ar",
     achievements: ["SAP Consultant"]
+  },
+  {
+    id: 7,
+    name: "Digna Martinez",
+    role: "Analista de Sistemas",
+    gridPosition: { row: 3, col: 3 },
+    photo: Melania,
+    bio: "Analista Funcional",
+    experience: "9+ años",
+    education: "Analista de Sistemas",
+    linkedin: "#",
+    email: "digna.martinez@sertic.com.ar",
+    achievements: ["Atlassian"]
   }
 ];
