@@ -98,14 +98,7 @@ const TeamPage = () => {
                         Volver
                       </button>
                     </div>
-          <div className="text-center mb-20">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-sertic-cyan to-sertic-blue bg-clip-text text-transparent">
-              Nuestro Equipo
-            </h1>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Profesionales conectados, trabajando en sinergia para tu éxito
-            </p>
-          </div>
+          
 
           {/* Team Network Container */}
           <div ref={containerRef} className="relative w-full min-h-[600px] mb-20">
@@ -148,7 +141,13 @@ const TeamPage = () => {
             </svg>
 
             {/* Grid de miembros del equipo */}
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-16 md:gap-x-16 md:gap-y-24 max-w-5xl mx-auto py-12">
+            <div className="
+  grid 
+  grid-cols-2 md:grid-cols-3 
+  gap-x-8 md:gap-x-16 
+  gap-y-8 md:gap-y-12 
+  max-w-5xl mx-auto py-12
+">
               {teamMembers.map((member) => {
                 const isActive = activeMember === member.id;
                 const isConnectedToActive = activeMember && connectedIds.includes(member.id);
