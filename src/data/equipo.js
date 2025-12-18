@@ -59,19 +59,6 @@ export const teamMembers = [
     achievements: ["AWS Solutions Architect", "Azure Expert"]
   },
   {
-    id: 4,
-    name: "Alexis Rabbia",
-    role: "Comercial",
-    gridPosition: { row: 3, col: 2 },
-    photo: Alexis,
-    bio: "Analista de sistemas con orientación comercial",
-    experience: "15+ años",
-    education: "Análisis de Sistemas",
-    linkedin: "#",
-    email: "alexis.rabbia@sertic.com.ar",
-    achievements: ["Master en Negocios"]
-  },
-  {
     id: 5,
     name: "Melania Quillici",
     role: "Administración",
@@ -83,6 +70,19 @@ export const teamMembers = [
     linkedin: "#",
     email: "melania.quillici@sertic.com.ar",
     achievements: ["SAP Consultant"]
+  },
+  {
+    id: 4,
+    name: "Alexis Rabbia",
+    role: "Comercial",
+    gridPosition: { row: 3, col: 2 },
+    photo: Alexis,
+    bio: "Analista de sistemas con orientación comercial",
+    experience: "15+ años",
+    education: "Análisis de Sistemas",
+    linkedin: "#",
+    email: "alexis.rabbia@sertic.com.ar",
+    achievements: ["Master en Negocios"]
   },
   {
     id: 7,
