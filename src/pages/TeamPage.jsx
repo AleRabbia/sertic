@@ -68,8 +68,6 @@ const TeamPage = () => {
       { from: 4, to: 7 }  // Comercial ↔ Project Manager
     ];
 
-console.log('conexiones',connections);
-console.log('nodos', nodePositions);
   /* -------------------- NODE POSITIONS (DESKTOP ONLY) -------------------- */
   useEffect(() => {
     if (isMobile) return;

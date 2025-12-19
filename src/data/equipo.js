@@ -22,56 +22,17 @@ export const teamMembers = [
     achievements: ["Certificación ISO 27002", "Ciberseguridad"]
   },
   {
-    id: 2,
-    name: "Nicolás Román",
-    role: "DevOps",
-    gridPosition: { row: 3, col: 1 },
-    photo: Nicolas,
-    bio: "Especialista en CI/CD y automatización de infraestructura",
-    experience: "15+ años",
-    education: "Ingeniería en Sistemas",
-    linkedin: "#",
-    email: "nicolas.romar@sertic.cloud",
-    achievements: ["Kubernetes CKA", "AWS DevOps Pro"]
-  },
-  {
-    id: 3,
-    name: "Ramiro Lemos",
-    role: "Infraestructura",
-    gridPosition: { row: 3, col: 2 },
-    photo: Ramiro,
-    bio: "Experto en arquitectura de redes y seguridad",
-    experience: "15+ años",
-    education: "Ingeniería en Redes",
-    linkedin: "#",
-    email: "ramiro.lemos@sertic.com.ar",
-    achievements: ["CCNP Security", "CISSP"]
-  },
-  {
-    id: 6,
-    name: "Patricio Paez",
-    role: "Cloud",
-    gridPosition: { row: 2, col: 3 },
-    photo: Patricio,
-    bio: "Arquitecto Cloud certificado en AWS y Azure",
-    experience: "10+ años",
-    education: "Ingeniería en Software",
-    linkedin: "#",
-    email: "patricio.paez@sertic.com.ar",
-    achievements: ["AWS Solutions Architect", "Azure Expert"]
-  },
-  {
-    id: 5,
-    name: "Melania Quillici",
-    role: "Administración",
-    gridPosition: { row: 2, col: 2 },
-    photo: Melania,
-    bio: "Gestión financiera y operaciones administrativas",
+    id: 7,
+    name: "Digna Martinez",
+    role: "Project Manager",
+    gridPosition: { row: 2, col: 1 },
+    photo: Digna,
+    bio: "Analista Funcional",
     experience: "9+ años",
-    education: "Contador Público",
+    education: "Analista de Sistemas",
     linkedin: "#",
-    email: "melania.quillici@sertic.com.ar",
-    achievements: ["SAP Consultant"]
+    email: "digna.martinez@sertic.com.ar",
+    achievements: ["Atlassian"]
   },
   {
     id: 4,
@@ -87,17 +48,43 @@ export const teamMembers = [
     achievements: ["Master en Negocios"]
   },
   {
-    id: 7,
-    name: "Digna Martinez",
-    role: "Project Manager",
-    gridPosition: { row: 2, col: 1 },
-    photo: Digna,
-    bio: "Analista Funcional",
-    experience: "9+ años",
-    education: "Analista de Sistemas",
+    id: 3,
+    name: "Ramiro Lemos",
+    role: "Infraestructura",
+    gridPosition: { row: 3, col: 2 },
+    photo: Ramiro,
+    bio: "Experto en arquitectura de redes y seguridad",
+    experience: "15+ años",
+    education: "Ingeniería en Redes",
     linkedin: "#",
-    email: "digna.martinez@sertic.com.ar",
-    achievements: ["Atlassian"]
+    email: "ramiro.lemos@sertic.com.ar",
+    achievements: ["CCNP Security", "CISSP"]
+  },
+  {
+    id: 2,
+    name: "Nicolás Román",
+    role: "DevOps",
+    gridPosition: { row: 3, col: 1 },
+    photo: Nicolas,
+    bio: "Especialista en CI/CD y automatización de infraestructura",
+    experience: "15+ años",
+    education: "Ingeniería en Sistemas",
+    linkedin: "#",
+    email: "nicolas.romar@sertic.cloud",
+    achievements: ["Kubernetes CKA", "AWS DevOps Pro"]
+  },
+  {
+    id: 6,
+    name: "Patricio Paez",
+    role: "Cloud",
+    gridPosition: { row: 2, col: 3 },
+    photo: Patricio,
+    bio: "Arquitecto Cloud certificado en AWS y Azure",
+    experience: "10+ años",
+    education: "Ingeniería en Software",
+    linkedin: "#",
+    email: "patricio.paez@sertic.com.ar",
+    achievements: ["AWS Solutions Architect", "Azure Expert"]
   },
   {
     id: 8,
@@ -111,5 +98,18 @@ export const teamMembers = [
     linkedin: "#",
     email: "francisco.mizzau@sertic.com.ar",
     achievements: ["Atlassian"]
+  },
+  {
+    id: 5,
+    name: "Melania Quillici",
+    role: "Administración",
+    gridPosition: { row: 2, col: 2 },
+    photo: Melania,
+    bio: "Gestión financiera y operaciones administrativas",
+    experience: "9+ años",
+    education: "Contador Público",
+    linkedin: "#",
+    email: "melania.quillici@sertic.com.ar",
+    achievements: ["SAP Consultant"]
   }
 ];
