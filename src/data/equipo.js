@@ -1,9 +1,11 @@
 import HAG from '../assets/equipo/HAG.png';
-import Alexis from '../assets/equipo/Alexis.jpg';
+import Alexis from '../assets/equipo/Alexis.png';
 import Melania from '../assets/equipo/MelaniaQuillici.jpg';
 import Ramiro from '../assets/equipo/RamiroLemos.jpg';
 import Nicolas from '../assets/equipo/nicolasRoman.jpg';
 import Patricio from '../assets/equipo/PatricioSaenz.jpg';
+import Digna from '../assets/equipo/Digna-Martínez.jpg';
+import Francisco from '../assets/equipo/Francisco.png';
 
 export const teamMembers = [
   {
@@ -23,7 +25,7 @@ export const teamMembers = [
     id: 2,
     name: "Nicolás Román",
     role: "DevOps",
-    gridPosition: { row: 2, col: 1 },
+    gridPosition: { row: 3, col: 1 },
     photo: Nicolas,
     bio: "Especialista en CI/CD y automatización de infraestructura",
     experience: "15+ años",
@@ -36,7 +38,7 @@ export const teamMembers = [
     id: 3,
     name: "Ramiro Lemos",
     role: "Infraestructura",
-    gridPosition: { row: 2, col: 2 },
+    gridPosition: { row: 3, col: 2 },
     photo: Ramiro,
     bio: "Experto en arquitectura de redes y seguridad",
     experience: "15+ años",
@@ -62,7 +64,7 @@ export const teamMembers = [
     id: 5,
     name: "Melania Quillici",
     role: "Administración",
-    gridPosition: { row: 3, col: 1 },
+    gridPosition: { row: 2, col: 2 },
     photo: Melania,
     bio: "Gestión financiera y operaciones administrativas",
     experience: "9+ años",
@@ -75,7 +77,7 @@ export const teamMembers = [
     id: 4,
     name: "Alexis Rabbia",
     role: "Comercial",
-    gridPosition: { row: 3, col: 2 },
+    gridPosition: { row: 4, col: 2 },
     photo: Alexis,
     bio: "Analista de sistemas con orientación comercial",
     experience: "15+ años",
@@ -87,14 +89,27 @@ export const teamMembers = [
   {
     id: 7,
     name: "Digna Martinez",
-    role: "Analista de Sistemas",
-    gridPosition: { row: 3, col: 3 },
-    photo: Melania,
+    role: "Project Manager",
+    gridPosition: { row: 2, col: 1 },
+    photo: Digna,
     bio: "Analista Funcional",
     experience: "9+ años",
     education: "Analista de Sistemas",
     linkedin: "#",
     email: "digna.martinez@sertic.com.ar",
+    achievements: ["Atlassian"]
+  },
+  {
+    id: 8,
+    name: "Francisco Mizzau",
+    role: "HR",
+    gridPosition: { row: 3, col: 3 },
+    photo: Francisco,
+    bio: "Recursos Humanos",
+    experience: "9+ años",
+    education: "Recursos Humanos",
+    linkedin: "#",
+    email: "francisco.mizzau@sertic.com.ar",
     achievements: ["Atlassian"]
   }
 ];
