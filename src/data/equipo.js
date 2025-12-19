@@ -48,6 +48,19 @@ export const teamMembers = [
     achievements: ["Master en Negocios"]
   },
   {
+    id: 5,
+    name: "Melania Quillici",
+    role: "Administración",
+    gridPosition: { row: 2, col: 2 },
+    photo: Melania,
+    bio: "Gestión financiera y operaciones administrativas",
+    experience: "9+ años",
+    education: "Contador Público",
+    linkedin: "#",
+    email: "melania.quillici@sertic.com.ar",
+    achievements: ["SAP Consultant"]
+  },
+  {
     id: 3,
     name: "Ramiro Lemos",
     role: "Infraestructura",
@@ -98,18 +111,5 @@ export const teamMembers = [
     linkedin: "#",
     email: "francisco.mizzau@sertic.com.ar",
     achievements: ["Atlassian"]
-  },
-  {
-    id: 5,
-    name: "Melania Quillici",
-    role: "Administración",
-    gridPosition: { row: 2, col: 2 },
-    photo: Melania,
-    bio: "Gestión financiera y operaciones administrativas",
-    experience: "9+ años",
-    education: "Contador Público",
-    linkedin: "#",
-    email: "melania.quillici@sertic.com.ar",
-    achievements: ["SAP Consultant"]
   }
 ];
