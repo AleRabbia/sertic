@@ -15,6 +15,7 @@ module.exports = {
         'sertic-blue': '#253784',
         'sertic-cyan': '#05ADEE',
         'sertic-light': '#EDEEF0',
+        'sertic-orange': '#EC6629',
         'sertic-white': '#FFFFFF',
       },
       fontFamily: {

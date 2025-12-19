@@ -15,7 +15,7 @@ export const heroSlides = [
       action: "contacto"
     },
     icon: TrendingUp,
-    gradient: "from-sertic-cyan via-sertic-blue to-sertic-cyan",
+    gradient: "from-sertic-light via-sertic-celeste to-sertic-white",
     image: NodosImg
   },
   {
@@ -28,7 +28,7 @@ export const heroSlides = [
       action: "contacto"
     },
     icon: Shield,
-    gradient: "from-green-400 via-cyan-500 to-blue-500",
+    gradient: "from-sertic-orange via-sertic-light to-sertic-white",
     image: NubeImg
   },
   {
@@ -41,7 +41,7 @@ export const heroSlides = [
       action: "casos"
     },
     icon: Users,
-    gradient: "from-purple-400 via-pink-500 to-red-500",
+    gradient: "from-sertic-azul-claro via-sertic-celeste to-sertic-light",
     image: DeskImg
   }
 ];
