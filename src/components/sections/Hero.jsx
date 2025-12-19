@@ -13,6 +13,19 @@ const Hero = () => {
 
   const slide = heroSlides[currentSlide];
 
+  /* =========================
+     PRELOAD DE IMÁGENES (CRÍTICO)
+     ========================= */
+  useEffect(() => {
+    heroSlides.forEach((s) => {
+      const img = new Image();
+      img.src = s.image;
+    });
+  }, []);
+
+  /* =========================
+     AUTOPLAY
+     ========================= */
   useEffect(() => {
     if (!isAutoPlaying) return;
 
@@ -38,21 +51,32 @@ const Hero = () => {
   return (
     <section id="inicio" className="relative min-h-screen overflow-hidden">
 
-      {/* Imagen de fondo */}
+      {/* =========================
+          IMÁGENES DE FONDO (CROSSFADE)
+         ========================= */}
       <div className="absolute inset-0">
-        <img
-          src={slide.image}
-          alt={slide.title}
-          className="w-full h-full object-cover object-center"
-        />
+        {heroSlides.map((s, index) => (
+          <img
+            key={s.id}
+            src={s.image}
+            alt={s.title}
+            loading="eager"
+            fetchpriority="high"
+            className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-700 ease-in-out ${
+              index === currentSlide ? 'opacity-100' : 'opacity-0'
+            }`}
+          />
+        ))}
         <div className="absolute inset-0 bg-black/65" />
       </div>
 
-      {/* Contenido */}
+      {/* =========================
+          CONTENIDO
+         ========================= */}
       <div className="relative z-10 min-h-screen flex items-center justify-center text-center px-4">
         <div className="max-w-5xl">
 
-          {/* Logo SOLO en el slide 1 */}
+          {/* Logo SOLO en slide 1 */}
           {currentSlide === 0 && (
             <div className="flex justify-center mb-8">
               <img
@@ -63,8 +87,7 @@ const Hero = () => {
             </div>
           )}
 
-
-          {/* Badge opcional */}
+          {/* Badge */}
           {slide.badge && (
             <div className="inline-block mb-4 px-4 py-2 bg-green-500/20 border border-green-500/40 rounded-full text-green-400 font-semibold text-sm">
               {slide.badge}
@@ -90,7 +113,9 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Flechas */}
+      {/* =========================
+          FLECHAS
+         ========================= */}
       <button
         onClick={() =>
           setCurrentSlide(
@@ -113,7 +138,9 @@ const Hero = () => {
         <ChevronRight className="text-white" />
       </button>
 
-      {/* Dots */}
+      {/* =========================
+          DOTS
+         ========================= */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3 z-20">
         {heroSlides.map((_, i) => (
           <button
@@ -129,7 +156,9 @@ const Hero = () => {
         ))}
       </div>
 
-      {/* Animación */}
+      {/* =========================
+          ANIMACIÓN LOGO
+         ========================= */}
       <style>{`
         @keyframes slow-spin {
           from {
