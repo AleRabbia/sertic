@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-
+import SuccessBadge from '../ui/SuccessBadge';
 import Button from '../ui/Button';
 import { heroSlides } from '../../data/sliceHero';
 import serticLogo from '../../assets/brand/serticLogoWhite.png';
@@ -75,9 +75,9 @@ const Hero = () => {
          ========================= */}
       <div className="relative z-10 min-h-screen flex items-center justify-center text-center px-4">
         <div className="max-w-5xl">
-
+          
           {/* Logo SOLO en slide 1 */}
-          {currentSlide === 0 && (
+          {currentSlide === 0 ? (
             <div className="flex justify-center mb-8">
               <img
                 src={serticLogo}
@@ -85,7 +85,20 @@ const Hero = () => {
                 className="w-20 md:w-28 h-auto opacity-90 animate-spin-slow"
               />
             </div>
+          ) : (
+            <div className="flex justify-center mb-6">
+              <div
+                className={`bg-gradient-to-r ${slide.gradient} bg-clip-text`}
+              >
+                {slide.icon && (
+                  <slide.icon
+                    className="w-12 h-12 md:w-16 md:h-16"
+                  />
+                )}
+              </div>
+            </div>
           )}
+
 
           {/* Badge */}
           {slide.badge && (
@@ -107,9 +120,19 @@ const Hero = () => {
           </p>
 
           {/* CTA */}
-          <Button size="lg" onClick={handleCTA}>
-            {slide.cta.label}
-          </Button>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          {slide.cta.action === 'casos' ? (
+            // Si es casos de éxito → SuccessBadge
+            <div onClick={() => handleCTA(slide.cta.action)} className="cursor-pointer">
+              <SuccessBadge />
+            </div>
+          ) : (
+            // Otros slides → Button normal
+            <Button size="lg" icon onClick={() => handleCTA(slide.cta.action)}>
+              {slide.cta.label}
+            </Button>
+          )}
+          </div>
         </div>
       </div>
 
@@ -146,10 +169,10 @@ const Hero = () => {
           <button
             key={i}
             onClick={() => setCurrentSlide(i)}
-            className={`h-3 rounded-full transition-all ${
+            className={`h-1.5 rounded-full transition-all duration-300 focus:outline-none ${
               currentSlide === i
-                ? 'w-12 bg-sertic-cyan'
-                : 'w-3 bg-white/40'
+                ? 'w-10 bg-sertic-cyan'
+                : 'w-2.5 bg-sertic-white/40'
             }`}
             aria-label={`Ir al slide ${i + 1}`}
           />
