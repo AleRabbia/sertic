@@ -5,7 +5,7 @@ import SuccessBadge from '../ui/SuccessBadge';
 import Button from '../ui/Button';
 import { heroSlides } from '../../data/sliceHero';
 import serticLogo from '../../assets/brand/serticLogoWhite.png';
-
+import serticLogo2 from '../../assets/logo.png';
 const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
@@ -80,7 +80,7 @@ const Hero = () => {
           {currentSlide === 0 ? (
             <div className="flex justify-center mb-8">
               <img
-                src={serticLogo}
+                src={serticLogo2}
                 alt="SerTIC Tech Solutions"
                 className="w-20 md:w-28 h-auto opacity-90 animate-spin-slow"
               />
