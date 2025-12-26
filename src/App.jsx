@@ -8,6 +8,7 @@ import PoliticaCookies from './pages/politica-cookies';
 import PrivPoli from './pages/PrivPoli';
 import TermsOfService from './pages/TermsOfService';
 import TeamPage from './pages/TeamPage';
+import ServiceDetail from './pages/ServiceDetail';
 
 import './index.css';
 
@@ -17,6 +18,7 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/servicios/:slug" element={<ServiceDetail />} />
           <Route path="/testimonios" element={<TestimoniosPage />} />
           <Route path="/casos-de-exito" element={<CasosExitoPage />} />
           <Route path="/nosotros" element={<TeamPage />} />

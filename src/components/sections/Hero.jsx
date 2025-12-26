@@ -61,7 +61,7 @@ const Hero = () => {
             src={s.image}
             alt={s.title}
             loading="eager"
-            fetchpriority="high"
+            fetchPriority="high"
             className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-700 ease-in-out ${
               index === currentSlide ? 'opacity-100' : 'opacity-0'
             }`}

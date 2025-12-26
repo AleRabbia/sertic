@@ -1,12 +1,18 @@
 import React from 'react';
-import { CheckCircle } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { CheckCircle, ArrowRight } from 'lucide-react';
 import { Card } from '../ui/Card';
 import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
 import { services } from '../../data/services';
 
 const ServiceCard = ({ service, index }) => {
+  const navigate = useNavigate();
   const { elementRef, hasBeenVisible } = useIntersectionObserver();
   const IconComponent = service.icon;
+
+  const handleClick = () => {
+    navigate(`/servicios/${service.slug}`);
+  };
 
   return (
     <div 
@@ -18,20 +24,31 @@ const ServiceCard = ({ service, index }) => {
       }`}
       style={{ transitionDelay: `${index * 150}ms` }}
     >
-      <Card className="group h-full flex flex-col">
+      <Card 
+        className="group h-full flex flex-col cursor-pointer hover:border-sertic-cyan/50 transition-all duration-300 transform hover:scale-105"
+        onClick={handleClick}
+      >
         <div className={`text-${service.color}-400 mb-6 group-hover:scale-110 transition-transform duration-300`}>
           <IconComponent className="w-8 h-8" />
         </div>
-        <h3 className="text-xl font-bold mb-4 text-white">{service.title}</h3>
+        <h3 className="text-xl font-bold mb-4 text-white group-hover:text-sertic-cyan transition-colors">
+          {service.title}
+        </h3>
         <p className="text-gray-400 mb-6 flex-grow">{service.description}</p>
-        <ul className="space-y-2">
-          {service.features.map((feature, idx) => (
+        <ul className="space-y-2 mb-6">
+          {service.features.slice(0, 3).map((feature, idx) => (
             <li key={idx} className="flex items-center text-sm text-gray-300">
               <CheckCircle className={`w-4 h-4 text-${service.color}-400 mr-2 flex-shrink-0`} />
               {feature}
             </li>
           ))}
         </ul>
+        <div className="mt-auto">
+          <span className="inline-flex items-center gap-2 text-sertic-cyan font-semibold group-hover:gap-4 transition-all">
+            Ver más detalles
+            <ArrowRight className="w-4 h-4" />
+          </span>
+        </div>
       </Card>
     </div>
   );
