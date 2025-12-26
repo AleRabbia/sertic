@@ -116,7 +116,10 @@ const ServiceDetail = () => {
                   </div>
                 </div>
 
-                <Card hover={false} className="bg-black/60 backdrop-blur-md">
+                <Card
+                  hover={false}
+                  className="hidden lg:block bg-black/60 backdrop-blur-md"
+                >
                   <h3 className="text-2xl font-bold mb-6 text-sertic-cyan">
                     Características Principales
                   </h3>
@@ -129,6 +132,7 @@ const ServiceDetail = () => {
                     ))}
                   </ul>
                 </Card>
+
               </div>
             </div>
           </div>
