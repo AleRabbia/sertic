@@ -7,11 +7,11 @@ import QuoteModal from '../components/ui/QuoteModal';
 
 const CasosExitoPage = () => {
 
-    useEffect(() => {
-  window.scrollTo(0, 0);
+  useEffect(() => {
+    window.scrollTo(0, 0);
   }, []);
 
-const [expandedMetrics, setExpandedMetrics] = useState({});
+  const [expandedMetrics, setExpandedMetrics] = useState({});
   const [expandedTechs, setExpandedTechs] = useState({});
   const [expandedResults, setExpandedResults] = useState({});
 
@@ -36,7 +36,7 @@ const [expandedMetrics, setExpandedMetrics] = useState({});
     }));
   };
 
-  
+
 
 
   const [activeFilter, setActiveFilter] = useState('todos');
@@ -70,7 +70,7 @@ const [expandedMetrics, setExpandedMetrics] = useState({});
 
   const getFilteredCases = () => {
     if (activeFilter === 'todos') return casosPublicados;
-    
+
     if (filterType === 'category') {
       return getCasesByCategory(activeFilter);
     } else {
@@ -90,23 +90,23 @@ const [expandedMetrics, setExpandedMetrics] = useState({});
   };
 
   const validCases = filteredCases.filter(
-  (caso) => caso && caso.category && caso.sector
-);
+    (caso) => caso && caso.category && caso.sector
+  );
 
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-sertic-blue via-sertic-black to-sertic-blue text-sertic-white overflow-hidden">
       <Navigation />
-      
+
       <main className="pt-24">
         {/* Header */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="flex items-center gap-4 mb-8">
-            <button 
+            <button
               onClick={() => navigate('/')}
-              className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors"
+              className="flex items-center gap-2 text-sertic-cyan hover:text-sertic-light transition-colors mb-10 group"
             >
-              <ArrowLeft className="w-5 h-5" />
+              <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
               Volver
             </button>
           </div>
@@ -124,22 +124,20 @@ const [expandedMetrics, setExpandedMetrics] = useState({});
           <div className="flex justify-center mb-8">
             <div className="bg-slate-800/50 backdrop-blur-sm rounded-xl p-1">
               <button
-                onClick={() => {setFilterType('category'); setActiveFilter('todos');}}
-                className={`px-6 py-2 rounded-lg transition-all duration-300 ${
-                  filterType === 'category'
+                onClick={() => { setFilterType('category'); setActiveFilter('todos'); }}
+                className={`px-6 py-2 rounded-lg transition-all duration-300 ${filterType === 'category'
                     ? 'bg-gradient-to-r from-sertic-cyan to-sertic-blue'
                     : 'text-gray-300 hover:text-white'
-                }`}
+                  }`}
               >
                 Por Servicio
               </button>
               <button
-                onClick={() => {setFilterType('sector'); setActiveFilter('todos');}}
-                className={`px-6 py-2 rounded-lg transition-all duration-300 ${
-                  filterType === 'sector'
+                onClick={() => { setFilterType('sector'); setActiveFilter('todos'); }}
+                className={`px-6 py-2 rounded-lg transition-all duration-300 ${filterType === 'sector'
                     ? 'bg-gradient-to-r from-sertic-cyan to-sertic-blue '
                     : 'text-gray-300 hover:text-white'
-                }`}
+                  }`}
               >
                 Por Sector
               </button>
@@ -154,11 +152,10 @@ const [expandedMetrics, setExpandedMetrics] = useState({});
                 <button
                   key={filter.id}
                   onClick={() => setActiveFilter(filter.id)}
-                  className={`px-6 py-2 rounded-full transition-all duration-300 ${
-                    activeFilter === filter.id
+                  className={`px-6 py-2 rounded-full transition-all duration-300 ${activeFilter === filter.id
                       ? 'bg-gradient-to-r from-sertic-cyan to-sertic-blue'
                       : 'text-gray-300 hover:text-white hover:bg-slate-700/50'
-                  }`}
+                    }`}
                 >
                   {filter.name}
                 </button>
@@ -188,27 +185,27 @@ const [expandedMetrics, setExpandedMetrics] = useState({});
                         <div className="flex gap-2 mt-2">
                           {Array.isArray(caso.category)
                             ? caso.category.map((cat, i) => (
-                                <span
-                                  key={i}
-                                  className={`px-3 py-1 bg-gradient-to-r ${getCategoryColor(cat)} rounded-full text-xs font-semibold border`}
-                                >
-                                  {cat.charAt(0).toUpperCase() + cat.slice(1)}
-                                </span>
-                              ))
+                              <span
+                                key={i}
+                                className={`px-3 py-1 bg-gradient-to-r ${getCategoryColor(cat)} rounded-full text-xs font-semibold border`}
+                              >
+                                {cat.charAt(0).toUpperCase() + cat.slice(1)}
+                              </span>
+                            ))
                             : (
-                                <span
-                                  className={`px-3 py-1 bg-gradient-to-r ${getCategoryColor(caso.category)} rounded-full text-xs font-semibold border`}
-                                >
-                                  {caso.category
-                                    ? caso.category.charAt(0).toUpperCase() + caso.category.slice(1)
-                                    : "Sin categoría"}
-                                </span>
-                              )}
+                              <span
+                                className={`px-3 py-1 bg-gradient-to-r ${getCategoryColor(caso.category)} rounded-full text-xs font-semibold border`}
+                              >
+                                {caso.category
+                                  ? caso.category.charAt(0).toUpperCase() + caso.category.slice(1)
+                                  : "Sin categoría"}
+                              </span>
+                            )}
 
-                                                    <span className="px-3 py-1 bg-gradient-to-r from-slate-600/30 to-slate-500/30 rounded-full text-xs text-slate-300 border border-slate-500/30">
-                                                      {caso.sector
-                            ? caso.sector.charAt(0).toUpperCase() + caso.sector.slice(1)
-                            : "Sin sector"}
+                          <span className="px-3 py-1 bg-gradient-to-r from-slate-600/30 to-slate-500/30 rounded-full text-xs text-slate-300 border border-slate-500/30">
+                            {caso.sector
+                              ? caso.sector.charAt(0).toUpperCase() + caso.sector.slice(1)
+                              : "Sin sector"}
 
                           </span>
                         </div>
@@ -216,16 +213,16 @@ const [expandedMetrics, setExpandedMetrics] = useState({});
                     </div>
                   </div>
                   {/* Info rápida */}
-                    <div className="grid md:grid-cols-2 gap-4 text-sm">
-                      <div className="flex items-center gap-2 text-gray-400">
-                        <Clock className="w-4 h-4 text-cyan-400" />
-                        {caso.duration}
-                      </div>
-                      <div className="flex items-center gap-2 text-gray-400">
-                        <Users className="w-4 h-4 text-purple-400" />
-                        {caso.teamSize}
-                      </div>
+                  <div className="grid md:grid-cols-2 gap-4 text-sm">
+                    <div className="flex items-center gap-2 text-gray-400">
+                      <Clock className="w-4 h-4 text-cyan-400" />
+                      {caso.duration}
                     </div>
+                    <div className="flex items-center gap-2 text-gray-400">
+                      <Users className="w-4 h-4 text-purple-400" />
+                      {caso.teamSize}
+                    </div>
+                  </div>
 
                   {/* Métricas destacadas */}
                   {/*<div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -274,24 +271,24 @@ const [expandedMetrics, setExpandedMetrics] = useState({});
                       Solución Implementada
                     </h4>
                     <div className="space-y-2">
-                        {(expandedMetrics[caso.id] ? caso.metrics : caso.metrics.slice(0, 3)).map((metric, index) => (
-                          <div key={index} className="flex items-start gap-2 group/item">
-                            <CheckCircle className="w-4 h-4 text-cyan-400 flex-shrink-0 mt-0.5 group-hover/item:scale-110 transition-transform" />
-                            <span className="text-gray-300 text-sm">{metric}</span>
-                          </div>
-                        ))}
-                        {caso.metrics.length > 3 && (
-                          <button
-                            onClick={() => toggleMetrics(caso.id)}
-                            className="px-3 py-1 bg-slate-700/30 rounded-lg text-xs text-gray-500"
-                          >
-                            {expandedMetrics[caso.id] 
-                              ? '↑ Ver menos' 
-                              : `+${caso.metrics.length - 3} más`
-                            }
-                          </button>
-                        )}
-                      </div>
+                      {(expandedMetrics[caso.id] ? caso.metrics : caso.metrics.slice(0, 3)).map((metric, index) => (
+                        <div key={index} className="flex items-start gap-2 group/item">
+                          <CheckCircle className="w-4 h-4 text-cyan-400 flex-shrink-0 mt-0.5 group-hover/item:scale-110 transition-transform" />
+                          <span className="text-gray-300 text-sm">{metric}</span>
+                        </div>
+                      ))}
+                      {caso.metrics.length > 3 && (
+                        <button
+                          onClick={() => toggleMetrics(caso.id)}
+                          className="px-3 py-1 bg-slate-700/30 rounded-lg text-xs text-gray-500"
+                        >
+                          {expandedMetrics[caso.id]
+                            ? '↑ Ver menos'
+                            : `+${caso.metrics.length - 3} más`
+                          }
+                        </button>
+                      )}
+                    </div>
                   </div>
 
                   {/* Resultados */}
@@ -301,27 +298,27 @@ const [expandedMetrics, setExpandedMetrics] = useState({});
                       Resultados Clave
                     </h4>
                     <div className="space-y-2">
-                          {(expandedResults[caso.id] ? caso.results : caso.results.slice(0, 3)).map((result, index) => (
-                            <div key={index} className="flex items-start gap-2 group/item">
-                              <TrendingUp className="w-4 h-4 text-green-400 flex-shrink-0 mt-0.5 group-hover/item:scale-110 transition-transform" />
-                              <span className="text-gray-300 text-sm">{result}</span>
-                            </div>
-                          ))}
-                          {caso.results.length > 3 && (
-                            <button
-                              onClick={() => toggleResults(caso.id)}
-                              className="px-3 py-1 bg-slate-700/30 rounded-lg text-xs text-gray-500"
-                            >
-                              {expandedResults[caso.id] 
-                                ? '↑ Ver menos' 
-                                : `+${caso.results.length - 3} más`
-                              }
-                            </button>
-                          )}
+                      {(expandedResults[caso.id] ? caso.results : caso.results.slice(0, 3)).map((result, index) => (
+                        <div key={index} className="flex items-start gap-2 group/item">
+                          <TrendingUp className="w-4 h-4 text-green-400 flex-shrink-0 mt-0.5 group-hover/item:scale-110 transition-transform" />
+                          <span className="text-gray-300 text-sm">{result}</span>
                         </div>
+                      ))}
+                      {caso.results.length > 3 && (
+                        <button
+                          onClick={() => toggleResults(caso.id)}
+                          className="px-3 py-1 bg-slate-700/30 rounded-lg text-xs text-gray-500"
+                        >
+                          {expandedResults[caso.id]
+                            ? '↑ Ver menos'
+                            : `+${caso.results.length - 3} más`
+                          }
+                        </button>
+                      )}
+                    </div>
                   </div>
 
-                   {/* Tecnologías */}
+                  {/* Tecnologías */}
                   <div className="mb-6">
                     <h4 className="text-xs font-bold text-purple-400 mb-3 uppercase tracking-wider flex items-center gap-2">
                       <span className="w-1 h-4 bg-purple-400 rounded"></span>
@@ -329,28 +326,28 @@ const [expandedMetrics, setExpandedMetrics] = useState({});
                     </h4>
                     <div className="flex flex-wrap gap-2">
                       {(expandedTechs[caso.id] ? caso.technologies : caso.technologies.slice(0, 5)).map((tech, index) => (
-                  <span
-                    key={index}
-                    className="px-3 py-1 bg-slate-700/50 hover:bg-slate-700 rounded-lg text-xs text-gray-300 border border-slate-600/50 transition-colors"
-                  >
-                    {tech}
-                  </span>
-                ))}
-                {caso.technologies.length > 5 && (
-                  <button
-                    onClick={() => toggleTechs(caso.id)}
-                    className="px-3 py-1 bg-slate-700/30 rounded-lg text-xs text-gray-500"
-                  >
-                    {expandedTechs[caso.id]
-                      ? '↑ Ver menos'
-                      : `+${caso.technologies.length - 5}`
-                    }
-                  </button>
-                )}
-              </div>              
+                        <span
+                          key={index}
+                          className="px-3 py-1 bg-slate-700/50 hover:bg-slate-700 rounded-lg text-xs text-gray-300 border border-slate-600/50 transition-colors"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                      {caso.technologies.length > 5 && (
+                        <button
+                          onClick={() => toggleTechs(caso.id)}
+                          className="px-3 py-1 bg-slate-700/30 rounded-lg text-xs text-gray-500"
+                        >
+                          {expandedTechs[caso.id]
+                            ? '↑ Ver menos'
+                            : `+${caso.technologies.length - 5}`
+                          }
+                        </button>
+                      )}
+                    </div>
                   </div>
 
-                  
+
 
                   {/* Quote del cliente */}
                   {caso.clientQuote && (
@@ -416,13 +413,13 @@ const [expandedMetrics, setExpandedMetrics] = useState({});
               Descubre cómo podemos ayudarte a optimizar tu infraestructura tecnológica y alcanzar tus objetivos empresariales
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button 
+              <button
                 onClick={handleOpenModal}
                 className="bg-gradient-to-r from-sertic-cyan to-sertic-cyan hover:from-sertic-blue hover:to-sertic-cyan px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105"
               >
                 Solicitar Cotización
               </button>
-              <button 
+              <button
                 onClick={() => window.location.href = '/'}
                 className="border border-cyan-500/50 hover:border-cyan-400 px-8 py-4 rounded-full text-lg transition-all duration-300 hover:bg-cyan-500/10"
               >
@@ -433,11 +430,11 @@ const [expandedMetrics, setExpandedMetrics] = useState({});
         </div>
       </main>
       {/* Modal de Cotización */}
-        <QuoteModal 
-          isOpen={isModalOpen} 
-          onClose={handleCloseModal} 
-        />
-      
+      <QuoteModal
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+      />
+
       <Footer />
     </div>
   );

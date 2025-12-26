@@ -131,12 +131,12 @@ const TeamPage = () => {
         <div className="max-w-7xl mx-auto px-4 relative z-10">
           {/* HEADER */}
           <button
-            onClick={() => navigate('/')}
-            className="flex items-center gap-2 text-gray-300 hover:text-white mb-8"
-          >
-            <ArrowLeft className="w-5 h-5" />
-            Volver
-          </button>
+                          onClick={() => navigate('/')}
+                          className="flex items-center gap-2 text-sertic-cyan hover:text-sertic-light transition-colors mb-10 group"
+                        >
+                          <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
+                          Volver
+                        </button>
 
           {/* ================= MOBILE ================= */}
           {isMobile ? (

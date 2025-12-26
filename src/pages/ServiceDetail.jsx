@@ -26,7 +26,7 @@ const ServiceDetail = () => {
             onClick={() => navigate('/')}
             className="bg-gradient-to-r from-sertic-cyan to-sertic-blue px-6 py-3 rounded-full hover:scale-105 transition-transform"
           >
-            Volver al inicio
+            Volver
           </button>
         </div>
       </div>
@@ -75,7 +75,7 @@ const ServiceDetail = () => {
                 className="flex items-center gap-2 text-sertic-cyan hover:text-sertic-light transition-colors mb-10 group"
               >
                 <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
-                Volver a servicios
+                Volver
               </button>
 
               <div className="grid lg:grid-cols-2 gap-12 items-center">
