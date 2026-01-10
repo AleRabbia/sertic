@@ -11,3 +11,6 @@ export {default as Memberships} from './Memberships';
 export {default as Technologies} from './Technologies';
 export {default as ContactInternational} from './InternationalContacts';
 export {default as HeroCarousel} from './HeroCarrousel';
+export {default as ClientsMarquee} from './ClientsMarquee';
+export { default as ContactStick } from './ContactStick';
+export { default as ContactForm } from './ContactForm';

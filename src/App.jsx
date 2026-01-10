@@ -9,6 +9,7 @@ import PrivPoli from './pages/PrivPoli';
 import TermsOfService from './pages/TermsOfService';
 import TeamPage from './pages/TeamPage';
 import ServiceDetail from './pages/ServiceDetail';
+import ContactPage from './pages/ContactPage';
 
 import './index.css';
 
@@ -25,6 +26,7 @@ function App() {
           <Route path="/politica-cookies" element={<PoliticaCookies />} />
           <Route path="/terminos-servicios" element={<TermsOfService />} />
           <Route path="/politica-privacidad" element={<PrivPoli />} />
+          <Route path="/contacto" element={<ContactPage />} />
         </Routes>
       </div>
     </Router>

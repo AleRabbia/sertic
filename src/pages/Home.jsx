@@ -11,13 +11,14 @@ import {
   Services,
   About,
   Testimonials,
-  Contact,
+  ContactStick,
   CasosExito,
   CasosExitoPreview,
   TestimonialsPreview,
   Technologies,
   Memberships,
-  ContactInternational
+  ContactInternational,
+  ClientsMarquee
 } from '../components/sections';
 import ConsentBanner from '../components/privacity/ConsentBanner';
 
@@ -35,8 +36,9 @@ const Home = () => {
         <Memberships />        
         {/* <CasosExitoPreview/> */}
         <About />
-        {/* <TestimonialsPreview /> */}
-        <Contact />        
+        <ContactStick /> 
+
+        <ClientsMarquee />       
       </main>
       <Footer />
       <Chatbot />
