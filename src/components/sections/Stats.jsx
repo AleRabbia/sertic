@@ -3,7 +3,7 @@ import { useAnimatedCounter } from '../../hooks/useAnimatedCounter';
 
 // stats locales
 const stats = [
-  { number: "5000+", label: "Tickets Resueltos con Éxito" },
+  { number: "6000+", label: "Tickets Resueltos con Éxito" },
   { number: "50+", label: "Empresas Confían en Nosotros" },
   { number: "15+", label: "Años de Experiencia" },
   { number: "24/7", label: "Soporte Remoto y Monitoreo" }
