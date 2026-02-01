@@ -156,7 +156,7 @@ const QuoteModal = ({ isOpen, onClose }) => {
         <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl border border-slate-700/50 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
           <div className="p-8">
             <div className="flex justify-between items-center mb-6">
-              <h2 id="quote-title" className="text-2xl font-bold bg-gradient-to-r from-sertic-cyan via-sertic-blue to-sertic-cyan bg-clip-text text-transparent">
+              <h2 id="quote-title" className="text-4xl font-bold bg-gradient-to-r from-sertic-cyan to-sertic-blue bg-clip-text text-transparent mb-4">
                 Solicitar Cotización
               </h2>
               <button onClick={onClose} className="text-gray-400 hover:text-white"

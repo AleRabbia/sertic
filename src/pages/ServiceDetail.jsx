@@ -1,15 +1,19 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { ArrowLeft, CheckCircle, TrendingUp, Calendar, Mail } from 'lucide-react';
 import { Navigation, Footer } from '../components/layout';
 import { Card } from '../components/ui/Card';
 import { getServiceBySlug, getRelatedServices } from '../data/services';
+import QuoteModal from '../components/ui/QuoteModal';
+import Button from '../components/ui/Button';
 
 const ServiceDetail = () => {
   const { slug } = useParams();
   const navigate = useNavigate();
   const service = getServiceBySlug(slug);
   const relatedServices = getRelatedServices(slug, 3);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -35,8 +39,13 @@ const ServiceDetail = () => {
 
   const IconComponent = service.icon;
 
-  const handleContactClick = () => {
-    navigate('/#contacto');
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+    setIsMenuOpen(false);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
   };
 
   const handleScheduleMeeting = () => {
@@ -98,13 +107,11 @@ const ServiceDetail = () => {
                   </p>
 
                   <div className="flex flex-wrap gap-4">
-                    <button
-                      onClick={handleContactClick}
-                      className="bg-gradient-to-r from-sertic-cyan to-sertic-blue px-8 py-4 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center gap-2"
-                    >
-                      <Mail className="w-5 h-5" />
-                      Solicitar Cotización
-                    </button>
+                    <Button size="lg" icon aria-label="Solicitar cotización de servicios"
+                                  onClick={handleOpenModal}
+                                >
+                                  Solicitar Cotización
+                                </Button>
 
                     <button
                       onClick={handleScheduleMeeting}
@@ -115,6 +122,12 @@ const ServiceDetail = () => {
                     </button>
                   </div>
                 </div>
+
+                {/* Modal de Cotización */}
+        <QuoteModal 
+          isOpen={isModalOpen} 
+          onClose={handleCloseModal} 
+        />
 
                 <Card
                   hover={false}
@@ -220,6 +233,11 @@ const ServiceDetail = () => {
            ========================= */}
         {relatedServices.length > 0 && (
           <section className="py-20 bg-sertic-black/30">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-bold bg-gradient-to-r from-sertic-cyan to-sertic-blue bg-clip-text text-transparent">
+                Otros Servicios
+              </h2>
+            </div>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="grid md:grid-cols-3 gap-8">
                 {relatedServices.map((related) => {

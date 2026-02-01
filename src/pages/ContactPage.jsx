@@ -168,9 +168,7 @@ const ContactPage = () => {
               }`}
             >
               <div className="max-w-2xl mx-auto">
-                <Card className="bg-gradient-to-br from-sertic-dark/70 to-sertic-black/70 border border-sertic-gray/40">
-                  <ContactForm />
-                </Card>
+                <ContactForm />
               </div>
             </div>
           </div>

@@ -52,7 +52,7 @@ const TeamPage = () => {
 
   /* -------------------- POSICIONES EXACTAS SEGÚN FIGMA (CENTRADAS) -------------------- */
   const offsetX = -8;
-  
+
   const desktopPositions = {
     1: { x: 60.5 + offsetX, y: 37.6 },
     2: { x: 28.5 + offsetX, y: 24.9 },
@@ -122,19 +122,19 @@ const TeamPage = () => {
     const dx = x2 - x1;
     const dy = y2 - y1;
     const distance = Math.sqrt(dx * dx + dy * dy);
-    
+
     const nodeRadius = 64;
     const angle = Math.atan2(dy, dx);
-    
+
     const x1Adjusted = x1 + Math.cos(angle) * nodeRadius;
     const y1Adjusted = y1 + Math.sin(angle) * nodeRadius;
     const x2Adjusted = x2 - Math.cos(angle) * nodeRadius;
     const y2Adjusted = y2 - Math.sin(angle) * nodeRadius;
-    
+
     const offset = distance * 0.00;
-    
+
     let cpX, cpY;
-    
+
     if (curveDir === 'left') {
       cpX = (x1Adjusted + x2Adjusted) / 2 - offset;
       cpY = (y1Adjusted + y2Adjusted) / 2;
@@ -151,7 +151,7 @@ const TeamPage = () => {
       cpX = (x1Adjusted + x2Adjusted) / 2 - dy * 0.2;
       cpY = (y1Adjusted + y2Adjusted) / 2 + dx * 0.2;
     }
-    
+
     return `M ${x1Adjusted} ${y1Adjusted} Q ${cpX} ${cpY} ${x2Adjusted} ${y2Adjusted}`;
   };
 
@@ -194,47 +194,47 @@ const TeamPage = () => {
   };
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
-  if (!validateForm()) return;
+    e.preventDefault();
+    if (!validateForm()) return;
 
-  setIsSubmitting(true);
+    setIsSubmitting(true);
 
-  try {
-    //por ahora solo envia el titulo del adjunto
-    const response = await fetch(import.meta.env.VITE_N8N_CAREERS_WEBHOOK_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        ...formData,
-        phone: formData.phone || 'No especificado',
-        linkedin: formData.linkedin || 'No especificado',
-        message: formData.message || 'Sin mensaje adicional',
-        cv: formData.cv ? formData.cv.name : 'No adjuntado'
-      })
-    });
+    try {
+      //por ahora solo envia el titulo del adjunto
+      const response = await fetch(import.meta.env.VITE_N8N_CAREERS_WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...formData,
+          phone: formData.phone || 'No especificado',
+          linkedin: formData.linkedin || 'No especificado',
+          message: formData.message || 'Sin mensaje adicional',
+          cv: formData.cv ? formData.cv.name : 'No adjuntado'
+        })
+      });
 
-    if (response.ok) {
+      if (response.ok) {
+        setModal({
+          isOpen: true,
+          isSuccess: true,
+          message: '¡Tu postulación ha sido enviada correctamente! Nos pondremos en contacto contigo pronto.'
+        }); // <-- Faltaba cerrar esta llave y el punto y coma
+      } else {
+        // Es buena práctica lanzar un error si la respuesta no es 200 OK
+        throw new Error('Error en la respuesta del servidor');
+      }
+    } catch (error) { // <-- El catch debe recibir el parámetro (error)
       setModal({
         isOpen: true,
-        isSuccess: true,
-        message: '¡Tu postulación ha sido enviada correctamente! Nos pondremos en contacto contigo pronto.'
-      }); // <-- Faltaba cerrar esta llave y el punto y coma
-    } else {
-      // Es buena práctica lanzar un error si la respuesta no es 200 OK
-      throw new Error('Error en la respuesta del servidor');
+        isSuccess: false,
+        message: 'Hubo un problema al enviar tu postulación. Intenta nuevamente.'
+      });
+    } finally {
+      setIsSubmitting(false);
     }
-  } catch (error) { // <-- El catch debe recibir el parámetro (error)
-    setModal({
-      isOpen: true,
-      isSuccess: false,
-      message: 'Hubo un problema al enviar tu postulación. Intenta nuevamente.'
-    });
-  } finally {
-    setIsSubmitting(false);
-  }
-};
-//para que envie el adjunto debo modif n8n y este metodo
-{/*const handleSubmit = async (e) => {
+  };
+  //para que envie el adjunto debo modif n8n y este metodo
+  {/*const handleSubmit = async (e) => {
   e.preventDefault();
   if (!validateForm()) return;
 
@@ -412,9 +412,8 @@ const TeamPage = () => {
                         top: `${pos.y}%`,
                         transform: 'translate(-50%, -50%)'
                       }}
-                      className={`flex flex-col items-center transition-all duration-300 ${
-                        dim ? 'opacity-30' : ''
-                      }`}
+                      className={`flex flex-col items-center transition-all duration-300 ${dim ? 'opacity-30' : ''
+                        }`}
                       onMouseEnter={() => setHoveredMember(m.id)}
                       onMouseLeave={() => setHoveredMember(null)}
                       onClick={() => setSelectedMember(m)}
@@ -422,18 +421,16 @@ const TeamPage = () => {
                       <div className="relative group cursor-pointer">
                         {/* GLOW */}
                         <div
-                          className={`absolute inset-0 rounded-full blur-2xl transition-all duration-300 ${
-                            isActive
+                          className={`absolute inset-0 rounded-full blur-2xl transition-all duration-300 ${isActive
                               ? 'bg-sertic-cyan/40 scale-150'
                               : 'bg-sertic-cyan/0 group-hover:bg-sertic-cyan/20 scale-125'
-                          }`}
+                            }`}
                         />
 
                         {/* AVATAR */}
                         <div
-                          className={`relative w-32 h-32 rounded-full p-1 transition-all duration-300 ${
-                            isActive ? 'scale-110' : 'group-hover:scale-105'
-                          } bg-gradient-to-br from-sertic-cyan via-sertic-blue to-sertic-cyan`}
+                          className={`relative w-32 h-32 rounded-full p-1 transition-all duration-300 ${isActive ? 'scale-110' : 'group-hover:scale-105'
+                            } bg-gradient-to-br from-sertic-cyan via-sertic-blue to-sertic-cyan`}
                         >
                           <img
                             src={m.photo}
@@ -465,7 +462,7 @@ const TeamPage = () => {
                   Nuestra Misión
                 </h2>
               </div>
-              
+
               <p className="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed">
                 Transformar la tecnología en el motor del crecimiento de nuestros clientes, brindando soluciones IT innovadoras, seguras y confiables.
               </p>
@@ -477,14 +474,14 @@ const TeamPage = () => {
                   </div>
                   <div className="text-gray-400">Años de experiencia</div>
                 </div>
-                
+
                 <div className="text-center p-6 bg-gradient-to-br from-sertic-cyan/10 to-sertic-blue/10 rounded-2xl border border-sertic-cyan/20">
                   <div className="text-4xl font-bold bg-gradient-to-r from-sertic-cyan to-sertic-blue bg-clip-text text-transparent mb-2">
                     50+
                   </div>
                   <div className="text-gray-400">Clientes satisfechos</div>
                 </div>
-                
+
                 <div className="text-center p-6 bg-gradient-to-br from-sertic-cyan/10 to-sertic-blue/10 rounded-2xl border border-sertic-cyan/20">
                   <div className="text-4xl font-bold bg-gradient-to-r from-sertic-cyan to-sertic-blue bg-clip-text text-transparent mb-2">
                     24/7
@@ -562,122 +559,154 @@ const TeamPage = () => {
           <section className="mb-24">
             <div className="text-center mb-12">
               <h2 className="text-4xl font-bold bg-gradient-to-r from-sertic-cyan to-sertic-blue bg-clip-text text-transparent mb-4">
-                Trabaja con Nosotros
+                Trabajá con Nosotros
               </h2>
               <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-                ¿Te apasiona la tecnología? Únete a nuestro equipo y forma parte de la transformación digital
+                ¿Te apasiona la tecnología? Sumate a nuestro equipo y formá parte de la transformación digital
               </p>
             </div>
 
-            <div className="max-w-3xl mx-auto bg-gradient-to-br from-sertic-dark/80 to-black/50 backdrop-blur-sm border border-sertic-cyan/20 rounded-3xl p-8 md:p-12">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
+            <div className="max-w-3xl mx-auto bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl border border-slate-700/50">
+              <div className="p-8 md:p-12">
+                <form onSubmit={handleSubmit} className="space-y-6">
+
+                  {/* Nombre + Email */}
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-300 mb-2">
+                        Nombre completo *
+                      </label>
+                      <input
+                        type="text"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        className={`w-full px-4 py-3 bg-slate-700/50 border rounded-lg text-white focus:outline-none transition-colors ${errors.name
+                            ? 'border-red-500 focus:border-red-400'
+                            : 'border-slate-600 focus:border-cyan-500'
+                          }`}
+                      />
+                      {errors.name && (
+                        <p className="mt-1 text-sm text-red-400">{errors.name}</p>
+                      )}
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-gray-300 mb-2">
+                        Email *
+                      </label>
+                      <input
+                        type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        className={`w-full px-4 py-3 bg-slate-700/50 border rounded-lg text-white focus:outline-none transition-colors ${errors.email
+                            ? 'border-red-500 focus:border-red-400'
+                            : 'border-slate-600 focus:border-cyan-500'
+                          }`}
+                      />
+                      {errors.email && (
+                        <p className="mt-1 text-sm text-red-400">{errors.email}</p>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Teléfono + Posición */}
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-300 mb-2">
+                        Teléfono
+                      </label>
+                      <input
+                        type="tel"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white focus:border-cyan-500 focus:outline-none transition-colors"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-gray-300 mb-2">
+                        Posición de interés *
+                      </label>
+                      <input
+                        type="text"
+                        name="position"
+                        value={formData.position}
+                        onChange={handleChange}
+                        placeholder="Ej: DevOps Engineer"
+                        className={`w-full px-4 py-3 bg-slate-700/50 border rounded-lg text-white focus:outline-none transition-colors ${errors.position
+                            ? 'border-red-500 focus:border-red-400'
+                            : 'border-slate-600 focus:border-cyan-500'
+                          }`}
+                      />
+                      {errors.position && (
+                        <p className="mt-1 text-sm text-red-400">{errors.position}</p>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* LinkedIn */}
                   <div>
-                    <label className="block text-sm text-gray-300 mb-2">Nombre completo *</label>
+                    <label className="block text-sm font-medium text-gray-300 mb-2">
+                      LinkedIn (opcional)
+                    </label>
                     <input
-                      type="text"
-                      name="name"
-                      value={formData.name}
+                      type="url"
+                      name="linkedin"
+                      value={formData.linkedin}
                       onChange={handleChange}
-                      className={`w-full px-4 py-3 bg-sertic-dark/50 border rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-sertic-cyan ${
-                        errors.name ? 'border-red-500' : 'border-sertic-gray'
+                      placeholder="https://linkedin.com/in/tu-perfil"
+                      className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white focus:border-cyan-500 focus:outline-none transition-colors"
+                    />
+                  </div>
+
+                  {/* CV */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-300 mb-2">
+                      CV / Currículum
+                    </label>
+                    <input
+                      type="file"
+                      name="cv"
+                      onChange={handleFileChange}
+                      accept=".pdf,.doc,.docx"
+                      className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white focus:outline-none file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-gradient-to-r file:from-sertic-cyan file:to-sertic-blue file:text-white hover:file:opacity-90"
+                    />
+                  </div>
+
+                  {/* Mensaje */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-300 mb-2">
+                      Mensaje (opcional)
+                    </label>
+                    <textarea
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      rows={4}
+                      placeholder="Contanos por qué te gustaría trabajar con nosotros..."
+                      className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white resize-none focus:border-cyan-500 focus:outline-none transition-colors"
+                    />
+                  </div>
+
+                  {/* Botón */}
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className={`w-full px-6 py-3 rounded-full font-medium transition-all ${isSubmitting
+                        ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
+                        : 'bg-gradient-to-r from-sertic-cyan to-sertic-blue text-white hover:shadow-lg hover:shadow-cyan-500/30'
                       }`}
-                    />
-                    {errors.name && <p className="mt-1 text-sm text-red-400">{errors.name}</p>}
-                  </div>
-
-                  <div>
-                    <label className="block text-sm text-gray-300 mb-2">Email *</label>
-                    <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      className={`w-full px-4 py-3 bg-sertic-dark/50 border rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-sertic-cyan ${
-                        errors.email ? 'border-red-500' : 'border-sertic-gray'
-                      }`}
-                    />
-                    {errors.email && <p className="mt-1 text-sm text-red-400">{errors.email}</p>}
-                  </div>
-                </div>
-
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm text-gray-300 mb-2">Teléfono</label>
-                    <input
-                      type="tel"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 bg-sertic-dark/50 border border-sertic-gray rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-sertic-cyan"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm text-gray-300 mb-2">Posición de interés *</label>
-                    <input
-                      type="text"
-                      name="position"
-                      value={formData.position}
-                      onChange={handleChange}
-                      className={`w-full px-4 py-3 bg-sertic-dark/50 border rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-sertic-cyan ${
-                        errors.position ? 'border-red-500' : 'border-sertic-gray'
-                      }`}
-                      placeholder="ej: DevOps Engineer"
-                    />
-                    {errors.position && <p className="mt-1 text-sm text-red-400">{errors.position}</p>}
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-sm text-gray-300 mb-2">LinkedIn (opcional)</label>
-                  <input
-                    type="url"
-                    name="linkedin"
-                    value={formData.linkedin}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 bg-sertic-dark/50 border border-sertic-gray rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-sertic-cyan"
-                    placeholder="https://linkedin.com/in/tu-perfil"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm text-gray-300 mb-2">CV / Currículum</label>
-                  <input
-                    type="file"
-                    name="cv"
-                    onChange={handleFileChange}
-                    accept=".pdf,.doc,.docx"
-                    className="w-full px-4 py-3 bg-sertic-dark/50 border border-sertic-gray rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-sertic-cyan file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-sertic-cyan file:text-white hover:file:bg-sertic-cyan/80"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm text-gray-300 mb-2">Mensaje (opcional)</label>
-                  <textarea
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    rows={4}
-                    className="w-full px-4 py-3 bg-sertic-dark/50 border border-sertic-gray rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-sertic-cyan resize-none"
-                    placeholder="Cuéntanos por qué te gustaría trabajar con nosotros..."
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className={`w-full py-4 rounded-xl font-semibold text-lg transition-all duration-300 ${
-                    isSubmitting
-                      ? 'bg-gray-600 cursor-not-allowed'
-                      : 'bg-gradient-to-r from-sertic-cyan to-sertic-blue hover:shadow-lg hover:shadow-sertic-cyan/50'
-                  }`}
-                >
-                  {isSubmitting ? 'Enviando...' : 'Enviar Postulación'}
-                </button>
-              </form>
+                  >
+                    {isSubmitting ? 'Enviando…' : 'Enviar Postulación'}
+                  </button>
+                </form>
+              </div>
             </div>
           </section>
+
 
           {/* ================= MODAL TEAM MEMBER ================= */}
           {selectedMember && (

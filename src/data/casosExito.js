@@ -1,9 +1,18 @@
-import konecta from '../assets/clientes/konecta.png';
+import konecta from '../assets/clientes/konecta_circle.png';
 import letis from '../assets/clientes/letis.png';
 import unicaba from '../assets/clientes/unicaba.png';
 import polobn from '../assets/clientes/polobn.png';
 import cimomet from '../assets/clientes/cimomet.png';
 import inta from '../assets/clientes/inta.png';
+import agrospray from '../assets/clientes/agrospray.svg';
+import fc from '../assets/clientes/full control.png';
+import swipro from '../assets/clientes/15 - SWIPRO.png';
+import nocaut from '../assets/clientes/nocaut.png';
+import barsante from '../assets/clientes/3 - Barsante.png';
+import faro from '../assets/clientes/faro.png';
+import Tdf from '../assets/clientes/3dF.svg';
+import zona from '../assets/clientes/zona93.png';
+
 
 export const casosExito = [
   {
@@ -12,7 +21,7 @@ export const casosExito = [
     title: "AGROSPRAY",
     category: ["soporte","infraestructura"],
     sector: "agroindustria",
-    logo: "https://agrospray.com.ar/wp-content/uploads/2021/11/logo-agrospray-w.png",
+    logo: agrospray,
     description: "AgroSpray es una empresa que ofrece soluciones integrales para el agro, como coadyuvantes, servicios de pulverización, asesoría y capacitación",
     detailedDescription: "AgroSpray necesitaba una infraestructura robusta para manejar sus operaciones críticas en el sector agroindustrial. Implementamos una solución completa que incluye modernización de servidores, backup automatizado, monitoreo 24/7 y soporte dedicado. El proyecto abarcó la migración de sistemas legacy y la implementación de mejores prácticas de seguridad para soportar sus servicios de pulverización y asesoría técnica.",
     technologies: ["VMware vSphere", "Windows Server", "Veeam Backup", "Monitoring Tools", "Active Directory"],
@@ -73,7 +82,7 @@ export const casosExito = [
     title: "FULLCONTROL",
     category: "infraestructura",
     sector: "tecnologia",
-    logo: "https://www.fullcontrol.com.ar/images/logo.png",
+    logo: fc,
     description: "FULL CONTROL ofrece sistemas de control de acceso, alarma, video y monitoreo para edificios, hogares, countries, empresas y construcción.",
     detailedDescription: "FULLCONTROL necesitaba una infraestructura crítica robusta para soportar sus sistemas de control de acceso y monitoreo. Diseñamos e implementamos una arquitectura de alta disponibilidad con failover automático, escalabilidad bajo demanda y optimización de costos para garantizar la operación continua de sus servicios de seguridad.",
     technologies: ["High Availability Systems", "Load Balancers", "Auto Scaling", "Monitoring Infrastructure", "Backup Systems"],
@@ -133,7 +142,7 @@ export const casosExito = [
     title: "SWIPRO",
     category: ["soporte","infraestructura"],
     sector: "salud",
-    logo: "https://swipro.com.ar/wp-content/uploads/2022/05/Logo-Swipro-para-fondo-claro.png",
+    logo: swipro,
     description: "Más de 20 años de trayectoria en la comercialización de prótesis ortopédicas importadas de cadera y de rodilla de la más alta calidad.",
     detailedDescription: "SWIPRO, con más de 20 años en el sector de prótesis ortopédicas, requería soporte técnico confiable y especializado para mantener sus operaciones críticas sin interrupciones. Implementamos un modelo de soporte híbrido con gestión proactiva y reactiva de incidencias, adaptado a las necesidades específicas del sector salud.",
     technologies: ["Remote Monitoring", "Medical Software Support", "Proactive Maintenance", "Performance Monitoring"],
@@ -184,7 +193,8 @@ export const casosExito = [
     ],
     clientQuote: "SerTIC comprende las particularidades del sector público. Su servicio garantiza la continuidad de nuestras investigaciones críticas.",
     featured: false
-  },{
+  },
+  {
     id: 7,
     post: "SI",
     title: "POLO TECNOLÓGICO ROSARIO",
@@ -248,7 +258,7 @@ export const casosExito = [
     title: "NOCAUT CREATIVE",
     category: "infraestructura",
     sector: "tecnologia",
-    logo: "https://nocaut.tv/images/logo-white.png",
+    logo: nocaut,
     description: "Producimos y lideramos proyectos de comunicación audiovisual. Trabajamos en todas las etapas del proceso creativo con más de veinte años junto a clientes globales y locales.",
     detailedDescription: "Nocaut Creative necesitaba una infraestructura robusta para manejar proyectos audiovisuales de gran envergadura. Implementamos soluciones de almacenamiento masivo, render farms y workflows optimizados para producción audiovisual, garantizando tiempos de entrega sin comprometer la calidad creativa.",
     technologies: ["High-Performance Storage", "Render Farms", "Media Workflows", "Backup Systems", "Collaboration Platforms"],
@@ -272,41 +282,12 @@ export const casosExito = [
     featured: false
   },
   {
-    id: 10,
-    post: "NO",
-    title: "GAMATEC",
-    category: ["soporte","infraestructura"],
-    sector: "servicios",
-    logo: "https://www.gamatecoficinas.com/web/image/website/1/logo/Gamatec?unique=e3885d6",
-    description: "En Gamatec diseñamos oficinas para un mundo centrado en las personas. Construimos y equipamos espacios de trabajo adaptados a las nuevas dinámicas corporativas.",
-    detailedDescription: "GAMATEC, especialista en diseño de oficinas, requería soporte técnico especializado para sus herramientas de diseño y sistemas de gestión de proyectos. Implementamos soluciones que garantizan la disponibilidad de software CAD, gestión de archivos pesados y colaboración remota con clientes.",
-    technologies: ["CAD Software Support", "File Management", "Cloud Collaboration", "Design Workflows", "Remote Support"],
-    duration: "18+ meses de soporte continuo",
-    teamSize: "2 especialistas diseño",
-    services: ["Soporte CAD", "Gestión de Archivos", "Colaboración Remota", "Infraestructura Creativa"],
-    metrics: [
-      "Soporte técnico e infraestructura on site para la operación.",
-      "Gestión de servidores, redes, backup y monitoreo.",
-      "Incorporación de perfiles de Desarrollo Full-Stack, RPA, Chatbot y Análisis Funcional.",
-      "99% client satisfaction"
-    ],
-    results: [
-      "12 horas mensuales de servicio especializado",
-      "100+ proyectos de diseño soportados",
-      "99.5% disponibilidad software crítico",
-      "Colaboración fluida con equipos remotos",
-      "Optimización workflows de diseño"
-    ],
-    clientQuote: "SerTIC mantiene nuestras herramientas de diseño funcionando perfectamente. Su soporte especializado es invaluable para nuestro trabajo creativo.",
-    featured: false
-  },
-  {
     id: 11,
     post: "NO",
     title: "BARSANTE",
     category: ["soporte","infraestructura"],
     sector: "servicios",
-    logo: "https://barsante.com.ar/wp-content/uploads/2023/07/LOGO-BARSANTE-blanco.svg",
+    logo: barsante,
     description: "La calidad y la artesanía de los muebles de BARSANTE® son simplemente incomparables. Cada pieza de mobiliario es una obra maestra de diseño y funcionalidad, fabricada con los más altos estándares.",
     detailedDescription: "BARSANTE, reconocida por su excelencia en manufactura de muebles artesanales, necesitaba modernizar sus sistemas de gestión y producción. Implementamos soluciones de soporte técnico especializado y mejoras de infraestructura para optimizar sus procesos de diseño y fabricación de alta gama.",
     technologies: ["ERP Manufacturing", "Design Software", "Production Management", "Quality Control Systems", "Backup Solutions"],
@@ -335,7 +316,7 @@ export const casosExito = [
     title: "FARO ASOCIACIÓN MUTUAL",
     category: ["soporte","infraestructura"],
     sector: "servicios",
-    logo: "https://ugc.production.linktr.ee/c46eee90-429c-489b-bc16-6825e226760f_Imagen-de-WhatsApp-2025-07-12-a-las-19.19.25-efd6b06a.jpeg?io=true&size=avatar-v3_0",
+    logo: faro,
     description: "Descubre Mutual Faro, la mutual en Rosario que ofrece préstamos accesibles, loteos y convenios. Tu decisión inteligente para un futuro seguro e innovador.",
     detailedDescription: "Mutual Faro requería un soporte técnico confiable para sus sistemas financieros críticos y plataformas de gestión de socios. Implementamos soluciones especializadas para el sector mutual, garantizando seguridad, disponibilidad y cumplimiento normativo en todas sus operaciones financieras.",
     technologies: ["Financial Systems", "Security Protocols", "Regulatory Compliance", "Member Management", "Backup & Recovery"],
@@ -364,7 +345,7 @@ export const casosExito = [
     title: "3dF DESARROLLOS",
     category: ["soporte","infraestructura"],
     sector: "servicios",
-    logo: "https://www.desarrollos3df.com/images/icon/Oficinas%203dF%20SVG/20250818%20Oficinas%20de%20diseno%203dF-02.svg",
+    logo: Tdf,
     description: "Somos un equipo de jóvenes profesionales enfocados en el diseño, el desarrollo, la dirección y ejecución de obras de arquitectura en múltiples escalas y tipologías.",
     detailedDescription: "3dF Desarrollos, especialistas en arquitectura y desarrollo de obras, necesitaba soporte técnico para sus herramientas de diseño arquitectónico y gestión de proyectos. Implementamos soluciones que garantizan la disponibilidad de software CAD, gestión de archivos de gran tamaño y colaboración con equipos multidisciplinarios.",
     technologies: ["AutoCAD", "BIM Software", "Project Management", "File Servers", "Cloud Collaboration"],
@@ -393,7 +374,7 @@ export const casosExito = [
     title: "ZONA93SA",
     category: ["soporte","infraestructura"],
     sector: "servicios",
-    logo: "https://acdn-us.mitiendanube.com/stores/005/345/958/themes/common/logo-630362162-1758211560-547c0dc2b20347685e3d791f1dce798a1758211560-320-0.webp",
+    logo: zona,
     description: "En Zona 93 S.A., creemos que comprar calzado no debería ser una tarea complicada ni costosa. Por eso, nos especializamos en ofrecer zapatillas de calidad internacional a precios increíbles.",
     detailedDescription: "Zona93SA necesitaba soporte técnico especializado para su plataforma e-commerce y sistemas de gestión de inventario. Implementamos soluciones que garantizan la disponibilidad de su tienda online, gestión eficiente de stock y procesos de venta optimizados para el sector retail de calzado.",
     technologies: ["E-commerce Platforms", "Inventory Management", "POS Systems", "Payment Gateways", "CRM Integration"],

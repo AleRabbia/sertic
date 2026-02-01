@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { X, CheckCircle, XCircle } from 'lucide-react';
-import Button from '../ui/Button';
-import { Card } from '../ui/Card';
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -25,12 +23,16 @@ const ContactForm = () => {
     const newErrors = {};
 
     if (!formData.name.trim()) newErrors.name = 'El nombre es requerido';
+
     if (!formData.email.trim()) {
       newErrors.email = 'El email es requerido';
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
       newErrors.email = 'Email inválido';
     }
-    if (!formData.message.trim()) newErrors.message = 'El mensaje es requerido';
+
+    if (!formData.message.trim()) {
+      newErrors.message = 'El mensaje es requerido';
+    }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -39,7 +41,9 @@ const ContactForm = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
-    if (errors[name]) setErrors(prev => ({ ...prev, [name]: '' }));
+    if (errors[name]) {
+      setErrors(prev => ({ ...prev, [name]: '' }));
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -101,145 +105,157 @@ const ContactForm = () => {
 
   return (
     <>
-      <Card className="p-8 bg-transparent shadow-none border-none">
-        <h3 className="text-2xl font-bold mb-6 text-sertic-white">
-          Solicitar información
-        </h3>
+      <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl border border-slate-700/50 max-w-2xl mx-auto">
+        <div className="p-8">
+          <h2 className="text-4xl font-bold bg-gradient-to-r from-sertic-cyan to-sertic-blue bg-clip-text text-transparent mb-4">
+            Solicitar información
+          </h2>
 
-        <form onSubmit={handleSubmit} className="space-y-5">
-          <div className="grid md:grid-cols-2 gap-4">
-            <Input
-              label="Nombre completo *"
-              name="name"
-              value={formData.name}
-              error={errors.name}
-              onChange={handleChange}
-            />
-            <Input
-              label="Email *"
-              name="email"
-              type="email"
-              value={formData.email}
-              error={errors.email}
-              onChange={handleChange}
-            />
-          </div>
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="grid md:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-300 mb-2">
+                  Nombre completo *
+                </label>
+                <input
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  className={`w-full px-4 py-3 bg-slate-700/50 border rounded-lg text-white focus:outline-none transition-colors ${
+                    errors.name
+                      ? 'border-red-500 focus:border-red-400'
+                      : 'border-slate-600 focus:border-cyan-500'
+                  }`}
+                />
+                {errors.name && (
+                  <p className="mt-1 text-sm text-red-400">{errors.name}</p>
+                )}
+              </div>
 
-          <div className="grid md:grid-cols-2 gap-4">
-            <Input
-              label="Empresa"
-              name="company"
-              value={formData.company}
-              onChange={handleChange}
-            />
-            <Input
-              label="Teléfono"
-              name="phone"
-              value={formData.phone}
-              onChange={handleChange}
-            />
-          </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-300 mb-2">
+                  Email *
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  className={`w-full px-4 py-3 bg-slate-700/50 border rounded-lg text-white focus:outline-none transition-colors ${
+                    errors.email
+                      ? 'border-red-500 focus:border-red-400'
+                      : 'border-slate-600 focus:border-cyan-500'
+                  }`}
+                />
+                {errors.email && (
+                  <p className="mt-1 text-sm text-red-400">{errors.email}</p>
+                )}
+              </div>
+            </div>
 
-          <Select
-            label="Servicio de interés"
-            name="service"
-            value={formData.service}
-            onChange={handleChange}
-          />
+            <div className="grid md:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-300 mb-2">
+                  Teléfono
+                </label>
+                <input
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white focus:border-cyan-500 focus:outline-none transition-colors"
+                />
+              </div>
 
-          <Textarea
-            label="Mensaje *"
-            name="message"
-            value={formData.message}
-            error={errors.message}
-            onChange={handleChange}
-          />
+              <div>
+                <label className="block text-sm font-medium text-gray-300 mb-2">
+                  Empresa
+                </label>
+                <input
+                  name="company"
+                  value={formData.company}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white focus:border-cyan-500 focus:outline-none transition-colors"
+                />
+              </div>
+            </div>
 
-          <Button
-            type="submit"
-            className="w-full"
-            disabled={!isFormValid}
-          >
-            {isSubmitting ? 'Enviando…' : 'Enviar mensaje'}
-          </Button>
-        </form>
-      </Card>
+            <div>
+              <label className="block text-sm font-medium text-gray-300 mb-2">
+                Servicio de interés
+              </label>
+              <select
+                name="service"
+                value={formData.service}
+                onChange={handleChange}
+                className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white focus:border-cyan-500 focus:outline-none transition-colors"
+              >
+                <option value="">Selecciona un servicio</option>
+                <option value="soporte-remoto">Soporte IT</option>
+                <option value="infraestructura">Infraestructura IT</option>
+                <option value="consultoria">Ciberseguridad</option>
+                <option value="staffing">Staffing</option>
+                <option value="todos">Todos</option>
+              </select>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-300 mb-2">
+                Mensaje *
+              </label>
+              <textarea
+                rows={4}
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                className={`w-full px-4 py-3 bg-slate-700/50 border rounded-lg text-white resize-none focus:outline-none transition-colors ${
+                  errors.message
+                    ? 'border-red-500 focus:border-red-400'
+                    : 'border-slate-600 focus:border-cyan-500'
+                }`}
+              />
+              {errors.message && (
+                <p className="mt-1 text-sm text-red-400">{errors.message}</p>
+              )}
+            </div>
+
+            <button
+              type="submit"
+              disabled={!isFormValid}
+              className={`w-full px-6 py-3 rounded-full font-medium transition-all ${
+                isFormValid
+                  ? 'bg-gradient-to-r from-sertic-cyan to-sertic-blue text-white'
+                  : 'bg-gray-600 text-gray-400 cursor-not-allowed'
+              }`}
+            >
+              {isSubmitting ? 'Enviando…' : 'Enviar mensaje'}
+            </button>
+          </form>
+        </div>
+      </div>
 
       {modal.isOpen && (
-        <Modal modal={modal} onClose={() => setModal({ ...modal, isOpen: false })} />
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl border border-slate-700/50 max-w-md w-full p-8 text-center">
+            {modal.isSuccess ? (
+              <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
+            ) : (
+              <XCircle className="w-16 h-16 text-red-500 mx-auto mb-4" />
+            )}
+            <h3 className="text-xl font-semibold mb-4 text-white">
+              {modal.isSuccess ? 'Mensaje enviado' : 'Error'}
+            </h3>
+            <p className="text-gray-300 mb-6">{modal.message}</p>
+            <button
+              onClick={() => setModal({ ...modal, isOpen: false })}
+              className="bg-gradient-to-r from-cyan-500 to-purple-600 px-6 py-2 rounded-full text-white"
+            >
+              Cerrar
+            </button>
+          </div>
+        </div>
       )}
     </>
   );
 };
 
 export default ContactForm;
-
-/* =========================
-   Subcomponentes
-========================= */
-
-const baseInput =
-  'w-full px-4 py-3 bg-sertic-dark/50 border rounded-lg text-sertic-white ' +
-  'focus:outline-none focus:ring-2 focus:ring-sertic-cyan';
-
-const Input = ({ label, error, ...props }) => (
-  <div>
-    <label className="block text-sm text-sertic-light mb-2">{label}</label>
-    <input
-      {...props}
-      className={`${baseInput} ${error ? 'border-red-500' : 'border-sertic-gray'}`}
-    />
-    {error && <p className="mt-1 text-sm text-red-400">{error}</p>}
-  </div>
-);
-
-const Textarea = ({ label, error, ...props }) => (
-  <div>
-    <label className="block text-sm text-sertic-light mb-2">{label}</label>
-    <textarea
-      rows={4}
-      {...props}
-      className={`${baseInput} resize-none ${error ? 'border-red-500' : 'border-sertic-gray'}`}
-    />
-    {error && <p className="mt-1 text-sm text-red-400">{error}</p>}
-  </div>
-);
-
-const Select = ({ label, ...props }) => (
-  <div>
-    <label className="block text-sm text-sertic-light mb-2">{label}</label>
-    <select
-      {...props}
-      className={`${baseInput} border-sertic-gray`}
-    >
-      <option value="">Selecciona un servicio</option>
-      <option value="soporte-remoto">Soporte IT</option>
-      <option value="infraestructura">Infraestructura IT</option>
-      <option value="consultoria">Ciberseguridad y Hardening</option>
-      <option value="staffing">Staffing</option>
-      <option value="todos">Todos los servicios</option>
-    </select>
-  </div>
-);
-
-const Modal = ({ modal, onClose }) => (
-  <div className="fixed inset-0 z-50 bg-sertic-black/60 backdrop-blur flex items-center justify-center p-4">
-    <div className="bg-sertic-black border border-sertic-gray rounded-2xl max-w-md w-full p-8 text-center">
-      {modal.isSuccess ? (
-        <CheckCircle className="w-14 h-14 text-green-500 mx-auto mb-4" />
-      ) : (
-        <XCircle className="w-14 h-14 text-red-500 mx-auto mb-4" />
-      )}
-      <h3 className="text-xl font-bold text-sertic-white mb-2">
-        {modal.isSuccess ? 'Mensaje enviado' : 'Error'}
-      </h3>
-      <p className="text-sertic-light mb-6">{modal.message}</p>
-      <button
-        onClick={onClose}
-        className="px-6 py-2 rounded-full bg-gradient-to-r from-sertic-cyan to-sertic-blue text-white"
-      >
-        Cerrar
-      </button>
-    </div>
-  </div>
-);
