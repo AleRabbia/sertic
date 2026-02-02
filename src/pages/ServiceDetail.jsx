@@ -13,7 +13,7 @@ const ServiceDetail = () => {
   const service = getServiceBySlug(slug);
   const relatedServices = getRelatedServices(slug, 3);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -59,12 +59,12 @@ const ServiceDetail = () => {
     <div className="min-h-screen bg-gradient-to-br from-sertic-blue via-sertic-black to-sertic-blue text-sertic-white">
       <Navigation />
 
-      <main className="pt-24">
+      <main className="relative">
 
         {/* =========================
             HERO CON IMAGEN DEL SERVICIO
            ========================= */}
-        <section className="relative min-h-[90vh] overflow-hidden">
+        <section className="relative min-h-screen overflow-hidden flex items-center">
           <div className="absolute inset-0">
             <img
               src={service.heroImage}
@@ -76,7 +76,7 @@ const ServiceDetail = () => {
             <div className="absolute inset-0 bg-black/65" />
           </div>
 
-          <div className="relative z-10 min-h-[90vh] flex items-center">
+          <div className="relative z-10 min-h-screen flex items-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
 
               <button
@@ -108,26 +108,28 @@ const ServiceDetail = () => {
 
                   <div className="flex flex-wrap gap-4">
                     <Button size="lg" icon aria-label="Solicitar cotización de servicios"
-                                  onClick={handleOpenModal}
-                                >
-                                  Solicitar Cotización
-                                </Button>
-
-                    <button
-                      onClick={handleScheduleMeeting}
-                      className="bg-sertic-dark/60 border border-sertic-cyan/50 px-8 py-4 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 flex items-center gap-2"
+                      onClick={handleOpenModal}
                     >
-                      <Calendar className="w-5 h-5" />
+                      Solicitar Cotización
+                    </Button>
+
+                    <Button
+                      variant="secondary"
+                      size="lg"
+                      onClick={handleScheduleMeeting}
+
+                    >
+                      <Calendar className="w-5 h-5 mr-2" />
                       Agendar Reunión
-                    </button>
+                    </Button>
                   </div>
                 </div>
 
                 {/* Modal de Cotización */}
-        <QuoteModal 
-          isOpen={isModalOpen} 
-          onClose={handleCloseModal} 
-        />
+                <QuoteModal
+                  isOpen={isModalOpen}
+                  onClose={handleCloseModal}
+                />
 
                 <Card
                   hover={false}
