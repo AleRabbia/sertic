@@ -795,41 +795,53 @@ const TeamPage = () => {
           {/* ================= MODAL TEAM MEMBER ================= */}
           {selectedMember && (
             <div
-              className="fixed inset-0 z-50 bg-black/60 backdrop-blur flex items-center justify-center p-4"
+              className="fixed inset-0 z-50 bg-black/60 backdrop-blur
+               flex justify-center overflow-y-auto px-4 pt-20 md:pt-0"
               onClick={() => setSelectedMember(null)}
             >
               <div
                 onClick={e => e.stopPropagation()}
-                className="max-w-2xl w-full max-h-[90vh] overflow-y-auto
-                 bg-gradient-to-br from-slate-800 to-slate-900
-                 border border-slate-700/50
-                 rounded-2xl p-8 md:p-10 relative"
+                className="
+        w-full max-w-2xl
+        bg-gradient-to-br from-slate-800 to-slate-900
+        border border-slate-700/50
+        rounded-2xl
+        p-6 md:p-10
+        relative
+        my-6 md:my-auto
+        max-h-[calc(100vh-3rem)]
+        overflow-y-auto
+      "
               >
                 {/* Cerrar */}
                 <button
                   onClick={() => setSelectedMember(null)}
-                  className="absolute top-5 right-5 p-2 rounded-full
-                   bg-slate-700/50 hover:bg-slate-600/60 transition"
+                  className="sticky top-20 md:top-4 ml-auto mb-4 p-2 rounded-full
+                   bg-slate-700/50 hover:bg-slate-600/60 transition z-10"
                 >
                   <X className="text-gray-300" />
                 </button>
 
                 {/* Header */}
-                <div className="flex flex-col md:flex-row gap-6 mb-8">
+                <div className="flex flex-col sm:flex-row gap-6 mb-8 items-center sm:items-start">
                   <img
                     src={selectedMember.photo}
                     alt={selectedMember.name}
-                    className="w-32 h-32 rounded-xl object-cover border border-slate-600"
+                    className="w-28 h-28 sm:w-32 sm:h-32
+                     rounded-xl object-cover
+                     border border-slate-600"
                   />
 
-                  <div>
-                    <h2 className="text-3xl font-bold text-white">
+                  <div className="text-center sm:text-left">
+                    <h2 className="text-2xl sm:text-3xl font-bold text-white">
                       {selectedMember.name}
                     </h2>
 
-                    <span className="inline-block mt-2 px-4 py-1.5 rounded-full
-                           bg-gradient-to-r from-sertic-cyan to-sertic-blue
-                           text-sm font-medium text-white">
+                    <span
+                      className="inline-block mt-2 px-4 py-1.5 rounded-full
+                       bg-gradient-to-r from-sertic-cyan to-sertic-blue
+                       text-sm font-medium text-white"
+                    >
                       {selectedMember.role}
                     </span>
 
@@ -840,7 +852,7 @@ const TeamPage = () => {
                 </div>
 
                 {/* Info */}
-                <div className="grid md:grid-cols-2 gap-4 mb-8">
+                <div className="grid sm:grid-cols-2 gap-4 mb-8">
                   <div className="bg-slate-700/40 border border-slate-600 rounded-lg p-4">
                     <Briefcase className="text-cyan-400 mb-2" />
                     <p className="text-sm text-gray-200 font-medium">
@@ -878,7 +890,7 @@ const TeamPage = () => {
                 </div>
 
                 {/* Acciones */}
-                <div className="grid md:grid-cols-2 gap-4">
+                <div className="grid sm:grid-cols-2 gap-4">
                   <a
                     href={selectedMember.linkedin}
                     target="_blank"
@@ -904,6 +916,7 @@ const TeamPage = () => {
               </div>
             </div>
           )}
+
 
 
           {/* ================= MODAL DE CONFIRMACIÓN ================= */}
