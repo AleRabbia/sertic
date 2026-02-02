@@ -1,11 +1,11 @@
-import HAG from '../assets/equipo/HAG.png';
-import Alexis from '../assets/equipo/Alexis.png';
-import Melania from '../assets/equipo/MelaniaQuillici.jpg';
-import Ramiro from '../assets/equipo/RamiroLemos.jpg';
-import Nicolas from '../assets/equipo/nicolasRoman.jpg';
-import Patricio from '../assets/equipo/PatricioSaenz.jpg';
-import Digna from '../assets/equipo/Digna-Martínez.jpg';
-import Francisco from '../assets/equipo/Francisco.png';
+import HAG from '../assets/equipo/1.png';
+import Alexis from '../assets/equipo/2.png';
+import Melania from '../assets/equipo/5.png';
+import Ramiro from '../assets/equipo/8.png';
+import Nicolas from '../assets/equipo/6.png';
+import Patricio from '../assets/equipo/7.png';
+import Digna from '../assets/equipo/3.png';
+import Francisco from '../assets/equipo/4.png';
 
 export const teamMembers = [
   {

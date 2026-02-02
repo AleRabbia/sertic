@@ -16,6 +16,8 @@ import {
 import { teamMembers } from '../data/equipo';
 import { Navigation, Footer } from '../components/layout';
 import { useNavigate } from 'react-router-dom';
+import { Card } from '../components/ui/Card';
+import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 
 const TeamPage = () => {
   const [selectedMember, setSelectedMember] = useState(null);
@@ -39,8 +41,129 @@ const TeamPage = () => {
     message: ''
   });
 
+  const ValueCard = ({ icon: Icon, title, description, index }) => {
+    const { elementRef, hasBeenVisible } = useIntersectionObserver();
+
+    return (
+      <div
+        ref={elementRef}
+        className={`transition-all duration-700 ${hasBeenVisible
+          ? 'opacity-100 translate-y-0'
+          : 'opacity-0 translate-y-8'
+          }`}
+        style={{ transitionDelay: `${index * 150}ms` }}
+      >
+        <Card
+          className="
+          group h-full flex flex-col
+          hover:border-sertic-cyan/50
+          transition-all duration-300
+          transform hover:scale-105
+        "
+        >
+          <div className="mb-6 text-sertic-cyan group-hover:scale-110 transition-transform duration-300">
+            <Icon className="w-8 h-8" />
+          </div>
+
+          <h3 className="text-xl font-bold mb-4 text-white group-hover:text-sertic-cyan transition-colors">
+            {title}
+          </h3>
+
+          <p className="text-gray-400 leading-relaxed">
+            {description}
+          </p>
+        </Card>
+      </div>
+    );
+  };
+
+
   const containerRef = useRef(null);
   const navigate = useNavigate();
+  const useAnimatedCounter = (end, duration = 1000, start = 0) => {
+    const [count, setCount] = useState(start);
+
+    const startAnimation = () => {
+      const startTime = performance.now();
+
+      const animate = (currentTime) => {
+        const progress = Math.min((currentTime - startTime) / duration, 1);
+        const value = Math.floor(progress * (end - start) + start);
+        setCount(value);
+
+        if (progress < 1) requestAnimationFrame(animate);
+      };
+
+      requestAnimationFrame(animate);
+    };
+
+    return { count, startAnimation };
+  };
+
+  const useIntersectionTrigger = () => {
+    const [triggered, setTriggered] = useState(false);
+    const ref = useRef(null);
+
+    useEffect(() => {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting && !triggered) {
+            setTriggered(true);
+          }
+        },
+        { threshold: 0.3 }
+      );
+
+      if (ref.current) observer.observe(ref.current);
+
+      return () => observer.disconnect();
+    }, [triggered]);
+
+    return { ref, triggered };
+  };
+  const MissionStat = ({ value, label, delay = 0 }) => {
+    const { ref, triggered } = useIntersectionTrigger();
+    const [started, setStarted] = useState(false);
+
+    const numericValue =
+      value === '24/7'
+        ? null
+        : parseInt(value.replace('+', ''));
+
+    const { count, startAnimation } = useAnimatedCounter(
+      numericValue || 0,
+      1000,
+      0
+    );
+
+    useEffect(() => {
+      if (triggered && numericValue && !started) {
+        setStarted(true);
+        startAnimation();
+      }
+    }, [triggered, numericValue, started, startAnimation]);
+
+    const displayValue = numericValue
+      ? `${count}${value.includes('+') ? '+' : ''}`
+      : value;
+
+    return (
+      <div
+        ref={ref}
+        className={`text-center transition-all duration-700 ease-out ${triggered
+          ? 'opacity-100 translate-y-0'
+          : 'opacity-0 translate-y-8'
+          }`}
+        style={{ transitionDelay: `${delay}ms` }}
+      >
+        <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-sertic-cyan via-sertic-blue to-sertic-cyan bg-clip-text text-transparent mb-2">
+          {displayValue}
+        </div>
+        <div className="text-gray-400">{label}</div>
+      </div>
+    );
+  };
+
 
   /* -------------------- MOBILE DETECTION -------------------- */
   useEffect(() => {
@@ -422,8 +545,8 @@ const TeamPage = () => {
                         {/* GLOW */}
                         <div
                           className={`absolute inset-0 rounded-full blur-2xl transition-all duration-300 ${isActive
-                              ? 'bg-sertic-cyan/40 scale-150'
-                              : 'bg-sertic-cyan/0 group-hover:bg-sertic-cyan/20 scale-125'
+                            ? 'bg-sertic-cyan/40 scale-150'
+                            : 'bg-sertic-cyan/0 group-hover:bg-sertic-cyan/20 scale-125'
                             }`}
                         />
 
@@ -454,42 +577,26 @@ const TeamPage = () => {
           )}
 
           {/* ================= NUESTRA MISIÓN ================= */}
-          <section className="mb-24">
-            <div className="bg-gradient-to-br from-sertic-dark/80 to-black/50 backdrop-blur-sm border border-sertic-cyan/20 rounded-3xl p-8 md:p-12">
-              <div className="flex items-center gap-3 mb-6">
-                <Target className="w-8 h-8 text-sertic-cyan" />
-                <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-sertic-cyan to-sertic-blue bg-clip-text text-transparent">
-                  Nuestra Misión
-                </h2>
-              </div>
+          <section className="text-center mb-24">
 
-              <p className="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed">
-                Transformar la tecnología en el motor del crecimiento de nuestros clientes, brindando soluciones IT innovadoras, seguras y confiables.
-              </p>
-
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="text-center p-6 bg-gradient-to-br from-sertic-cyan/10 to-sertic-blue/10 rounded-2xl border border-sertic-cyan/20">
-                  <div className="text-4xl font-bold bg-gradient-to-r from-sertic-cyan to-sertic-blue bg-clip-text text-transparent mb-2">
-                    15+
-                  </div>
-                  <div className="text-gray-400">Años de experiencia</div>
-                </div>
-
-                <div className="text-center p-6 bg-gradient-to-br from-sertic-cyan/10 to-sertic-blue/10 rounded-2xl border border-sertic-cyan/20">
-                  <div className="text-4xl font-bold bg-gradient-to-r from-sertic-cyan to-sertic-blue bg-clip-text text-transparent mb-2">
-                    50+
-                  </div>
-                  <div className="text-gray-400">Clientes satisfechos</div>
-                </div>
-
-                <div className="text-center p-6 bg-gradient-to-br from-sertic-cyan/10 to-sertic-blue/10 rounded-2xl border border-sertic-cyan/20">
-                  <div className="text-4xl font-bold bg-gradient-to-r from-sertic-cyan to-sertic-blue bg-clip-text text-transparent mb-2">
-                    24/7
-                  </div>
-                  <div className="text-gray-400">Soporte disponible</div>
-                </div>
-              </div>
+            <div className="flex items-center justify-center mb-6">
+              <h2 className="text-4xl font-bold bg-gradient-to-r from-sertic-cyan to-sertic-blue bg-clip-text text-transparent">
+                Nuestra Misión
+              </h2>
             </div>
+
+            <p className="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed">
+              Transformar la tecnología en el motor del crecimiento de nuestros clientes, brindando soluciones IT innovadoras, seguras y confiables.
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <MissionStat value="15+" label="Años de experiencia" delay={0} />
+              <MissionStat value="50+" label="Clientes satisfechos" delay={200} />
+              <MissionStat value="24/7" label="Soporte disponible" delay={400} />
+            </div>
+
+
+
           </section>
 
           {/* ================= NUESTROS VALORES ================= */}
@@ -499,58 +606,35 @@ const TeamPage = () => {
                 Nuestros Valores
               </h2>
             </div>
+            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <ValueCard
+                  index={0}
+                  icon={Lightbulb}
+                  title="Innovación"
+                  description="Buscamos constantemente nuevas formas de mejorar y evolucionar"
+                />
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {/* Innovación */}
-              <div className="bg-gradient-to-br from-sertic-dark/80 to-black/50 backdrop-blur-sm border border-sertic-cyan/20 rounded-2xl p-8 hover:border-sertic-cyan/50 transition-all duration-300 group">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-14 h-14 bg-gradient-to-br from-sertic-cyan to-sertic-blue rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <Lightbulb className="w-7 h-7" />
-                  </div>
-                  <h3 className="text-2xl font-bold">Innovación</h3>
-                </div>
-                <p className="text-gray-400 leading-relaxed">
-                  Buscamos constantemente nuevas formas de mejorar y evolucionar
-                </p>
-              </div>
+                <ValueCard
+                  index={1}
+                  icon={Heart}
+                  title="Compromiso"
+                  description="Dedicación total al éxito de nuestros clientes"
+                />
 
-              {/* Compromiso */}
-              <div className="bg-gradient-to-br from-sertic-dark/80 to-black/50 backdrop-blur-sm border border-sertic-cyan/20 rounded-2xl p-8 hover:border-sertic-cyan/50 transition-all duration-300 group">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-14 h-14 bg-gradient-to-br from-sertic-cyan to-sertic-blue rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <Heart className="w-7 h-7" />
-                  </div>
-                  <h3 className="text-2xl font-bold">Compromiso</h3>
-                </div>
-                <p className="text-gray-400 leading-relaxed">
-                  Dedicación total al éxito de nuestros clientes
-                </p>
-              </div>
+                <ValueCard
+                  index={2}
+                  icon={Award}
+                  title="Excelencia"
+                  description="Calidad superior en cada proyecto que emprendemos"
+                />
 
-              {/* Excelencia */}
-              <div className="bg-gradient-to-br from-sertic-dark/80 to-black/50 backdrop-blur-sm border border-sertic-cyan/20 rounded-2xl p-8 hover:border-sertic-cyan/50 transition-all duration-300 group">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-14 h-14 bg-gradient-to-br from-sertic-cyan to-sertic-blue rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <Award className="w-7 h-7" />
-                  </div>
-                  <h3 className="text-2xl font-bold">Excelencia</h3>
-                </div>
-                <p className="text-gray-400 leading-relaxed">
-                  Calidad superior en cada proyecto que emprendemos
-                </p>
-              </div>
-
-              {/* Transparencia */}
-              <div className="bg-gradient-to-br from-sertic-dark/80 to-black/50 backdrop-blur-sm border border-sertic-cyan/20 rounded-2xl p-8 hover:border-sertic-cyan/50 transition-all duration-300 group">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-14 h-14 bg-gradient-to-br from-sertic-cyan to-sertic-blue rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <MessageSquare className="w-7 h-7" />
-                  </div>
-                  <h3 className="text-2xl font-bold">Transparencia</h3>
-                </div>
-                <p className="text-gray-400 leading-relaxed">
-                  Comunicación clara y honesta en todo momento
-                </p>
+                <ValueCard
+                  index={3}
+                  icon={MessageSquare}
+                  title="Transparencia"
+                  description="Comunicación clara y honesta en todo momento"
+                />
               </div>
             </div>
           </section>
@@ -582,8 +666,8 @@ const TeamPage = () => {
                         value={formData.name}
                         onChange={handleChange}
                         className={`w-full px-4 py-3 bg-slate-700/50 border rounded-lg text-white focus:outline-none transition-colors ${errors.name
-                            ? 'border-red-500 focus:border-red-400'
-                            : 'border-slate-600 focus:border-cyan-500'
+                          ? 'border-red-500 focus:border-red-400'
+                          : 'border-slate-600 focus:border-cyan-500'
                           }`}
                       />
                       {errors.name && (
@@ -601,8 +685,8 @@ const TeamPage = () => {
                         value={formData.email}
                         onChange={handleChange}
                         className={`w-full px-4 py-3 bg-slate-700/50 border rounded-lg text-white focus:outline-none transition-colors ${errors.email
-                            ? 'border-red-500 focus:border-red-400'
-                            : 'border-slate-600 focus:border-cyan-500'
+                          ? 'border-red-500 focus:border-red-400'
+                          : 'border-slate-600 focus:border-cyan-500'
                           }`}
                       />
                       {errors.email && (
@@ -637,8 +721,8 @@ const TeamPage = () => {
                         onChange={handleChange}
                         placeholder="Ej: DevOps Engineer"
                         className={`w-full px-4 py-3 bg-slate-700/50 border rounded-lg text-white focus:outline-none transition-colors ${errors.position
-                            ? 'border-red-500 focus:border-red-400'
-                            : 'border-slate-600 focus:border-cyan-500'
+                          ? 'border-red-500 focus:border-red-400'
+                          : 'border-slate-600 focus:border-cyan-500'
                           }`}
                       />
                       {errors.position && (
@@ -696,8 +780,8 @@ const TeamPage = () => {
                     type="submit"
                     disabled={isSubmitting}
                     className={`w-full px-6 py-3 rounded-full font-medium transition-all ${isSubmitting
-                        ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
-                        : 'bg-gradient-to-r from-sertic-cyan to-sertic-blue text-white hover:shadow-lg hover:shadow-cyan-500/30'
+                      ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
+                      : 'bg-gradient-to-r from-sertic-cyan to-sertic-blue text-white hover:shadow-lg hover:shadow-cyan-500/30'
                       }`}
                   >
                     {isSubmitting ? 'Enviando…' : 'Enviar Postulación'}
@@ -711,55 +795,81 @@ const TeamPage = () => {
           {/* ================= MODAL TEAM MEMBER ================= */}
           {selectedMember && (
             <div
-              className="fixed inset-0 bg-black/60 backdrop-blur z-50 flex items-center justify-center p-4"
+              className="fixed inset-0 z-50 bg-black/60 backdrop-blur flex items-center justify-center p-4"
               onClick={() => setSelectedMember(null)}
             >
               <div
                 onClick={e => e.stopPropagation()}
-                className="bg-gradient-to-br from-sertic-dark to-black max-w-2xl w-full rounded-3xl border border-sertic-cyan/30 p-8 relative max-h-[90vh] overflow-y-auto"
+                className="max-w-2xl w-full max-h-[90vh] overflow-y-auto
+                 bg-gradient-to-br from-slate-800 to-slate-900
+                 border border-slate-700/50
+                 rounded-2xl p-8 md:p-10 relative"
               >
+                {/* Cerrar */}
                 <button
                   onClick={() => setSelectedMember(null)}
-                  className="absolute top-6 right-6 bg-white/10 p-2 rounded-full hover:bg-white/20 transition"
+                  className="absolute top-5 right-5 p-2 rounded-full
+                   bg-slate-700/50 hover:bg-slate-600/60 transition"
                 >
-                  <X />
+                  <X className="text-gray-300" />
                 </button>
 
-                <div className="flex gap-6 mb-6">
+                {/* Header */}
+                <div className="flex flex-col md:flex-row gap-6 mb-8">
                   <img
                     src={selectedMember.photo}
                     alt={selectedMember.name}
-                    className="w-32 h-32 rounded-2xl border-4 border-sertic-cyan object-cover"
+                    className="w-32 h-32 rounded-xl object-cover border border-slate-600"
                   />
+
                   <div>
-                    <h2 className="text-3xl font-bold">{selectedMember.name}</h2>
-                    <span className="inline-block mt-2 px-4 py-2 rounded-full bg-gradient-to-r from-sertic-cyan to-sertic-blue font-bold">
+                    <h2 className="text-3xl font-bold text-white">
+                      {selectedMember.name}
+                    </h2>
+
+                    <span className="inline-block mt-2 px-4 py-1.5 rounded-full
+                           bg-gradient-to-r from-sertic-cyan to-sertic-blue
+                           text-sm font-medium text-white">
                       {selectedMember.role}
                     </span>
-                    <p className="mt-4 text-gray-300">{selectedMember.bio}</p>
+
+                    <p className="mt-4 text-gray-300 leading-relaxed">
+                      {selectedMember.bio}
+                    </p>
                   </div>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-4 mb-6">
-                  <div className="bg-white/5 p-4 rounded-xl">
-                    <Briefcase className="text-sertic-cyan mb-2" />
-                    <p className="font-bold">{selectedMember.experience}</p>
+                {/* Info */}
+                <div className="grid md:grid-cols-2 gap-4 mb-8">
+                  <div className="bg-slate-700/40 border border-slate-600 rounded-lg p-4">
+                    <Briefcase className="text-cyan-400 mb-2" />
+                    <p className="text-sm text-gray-200 font-medium">
+                      {selectedMember.experience}
+                    </p>
                   </div>
-                  <div className="bg-white/5 p-4 rounded-xl">
-                    <GraduationCap className="text-sertic-blue mb-2" />
-                    <p className="font-bold">{selectedMember.education}</p>
+
+                  <div className="bg-slate-700/40 border border-slate-600 rounded-lg p-4">
+                    <GraduationCap className="text-blue-400 mb-2" />
+                    <p className="text-sm text-gray-200 font-medium">
+                      {selectedMember.education}
+                    </p>
                   </div>
                 </div>
 
-                <div className="mb-6">
-                  <h3 className="font-bold mb-3 flex items-center gap-2">
-                    <Award /> Logros
+                {/* Logros */}
+                <div className="mb-8">
+                  <h3 className="font-semibold text-white mb-3 flex items-center gap-2">
+                    <Award className="text-cyan-400" />
+                    Logros
                   </h3>
+
                   <div className="flex flex-wrap gap-2">
                     {selectedMember.achievements.map((a, i) => (
                       <span
                         key={i}
-                        className="px-3 py-1 rounded-full bg-sertic-cyan/20 border border-sertic-cyan/30 text-sm"
+                        className="px-3 py-1 text-sm rounded-full
+                         bg-slate-700/50 border border-slate-600
+                         text-gray-200"
                       >
                         {a}
                       </span>
@@ -767,25 +877,34 @@ const TeamPage = () => {
                   </div>
                 </div>
 
-                <div className="flex gap-4">
+                {/* Acciones */}
+                <div className="grid md:grid-cols-2 gap-4">
                   <a
                     href={selectedMember.linkedin}
                     target="_blank"
                     rel="noreferrer"
-                    className="flex-1 flex items-center justify-center gap-2 p-4 rounded-xl bg-sertic-cyan/20 border border-sertic-cyan hover:bg-sertic-cyan/30 transition"
+                    className="flex items-center justify-center gap-2 px-4 py-3 rounded-lg
+                     bg-slate-700/50 border border-slate-600
+                     hover:border-cyan-500 hover:text-cyan-400 transition"
                   >
-                    <Linkedin /> LinkedIn
+                    <Linkedin />
+                    LinkedIn
                   </a>
+
                   <a
                     href={`mailto:${selectedMember.email}`}
-                    className="flex-1 flex items-center justify-center gap-2 p-4 rounded-xl bg-sertic-blue/20 border border-sertic-blue hover:bg-sertic-blue/30 transition"
+                    className="flex items-center justify-center gap-2 px-4 py-3 rounded-lg
+                     bg-slate-700/50 border border-slate-600
+                     hover:border-blue-500 hover:text-blue-400 transition"
                   >
-                    <Mail /> Email
+                    <Mail />
+                    Email
                   </a>
                 </div>
               </div>
             </div>
           )}
+
 
           {/* ================= MODAL DE CONFIRMACIÓN ================= */}
           {modal.isOpen && (
