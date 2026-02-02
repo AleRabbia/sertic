@@ -237,9 +237,9 @@ const ContactForm = () => {
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
           <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl border border-slate-700/50 max-w-md w-full p-8 text-center">
             {modal.isSuccess ? (
-              <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
+              <CheckCircle className="w-16 h-16 text-sertic-cyan mx-auto mb-4" />
             ) : (
-              <XCircle className="w-16 h-16 text-red-500 mx-auto mb-4" />
+              <XCircle className="w-16 h-16 text-sertic-orange mx-auto mb-4" />
             )}
             <h3 className="text-xl font-semibold mb-4 text-white">
               {modal.isSuccess ? 'Mensaje enviado' : 'Error'}
@@ -247,7 +247,7 @@ const ContactForm = () => {
             <p className="text-gray-300 mb-6">{modal.message}</p>
             <button
               onClick={() => setModal({ ...modal, isOpen: false })}
-              className="bg-gradient-to-r from-cyan-500 to-purple-600 px-6 py-2 rounded-full text-white"
+              className="bg-gradient-to-r from-sertic-cyan to-sertic-blue hover:from-sertic-cyan-600 hover:to-sertic-blue-700 px-6 py-2 rounded-full transition-all duration-300"
             >
               Cerrar
             </button>

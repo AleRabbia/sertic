@@ -294,9 +294,9 @@ const QuoteModal = ({ isOpen, onClose }) => {
 
               <div className="text-center py-8">
                 {modal.isSuccess ? (
-                  <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
+                  <CheckCircle className="w-16 h-16 text-sertic-cyan mx-auto mb-4" />
                 ) : (
-                  <XCircle className="w-16 h-16 text-red-500 mx-auto mb-4" />
+                  <XCircle className="w-16 h-16 text-sertic-orange mx-auto mb-4" />
                 )}
                 <h3 className="text-xl font-semibold mb-4">
                   {modal.isSuccess ? '¡Cotización Enviada!' : 'Oops...'}
@@ -304,7 +304,7 @@ const QuoteModal = ({ isOpen, onClose }) => {
                 <p className="text-gray-300 mb-6">{modal.message}</p>
                 <button
                   onClick={() => setModal({ ...modal, isOpen: false })}
-                  className="bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-600 hover:to-purple-700 px-6 py-2 rounded-full transition-all duration-300"
+                  className="bg-gradient-to-r from-sertic-cyan to-sertic-blue hover: px-6 py-2 rounded-full transition-all duration-300"
                 >
                   Cerrar
                 </button>
