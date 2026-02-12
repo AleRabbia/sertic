@@ -32,7 +32,7 @@ const Hero = () => {
 
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
-    }, 5000);
+    }, 8000); // aumentar a 8 segundos para dar más tiempo a leer
 
     return () => clearInterval(interval);
   }, [isAutoPlaying]);

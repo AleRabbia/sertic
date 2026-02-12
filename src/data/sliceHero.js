@@ -37,7 +37,7 @@ export const heroSlides = [
     id: 3,
     title: "Casos de éxito que inspiran",
     subtitle:
-      "Conocé cómo empresas como AGROSPRAY, LETIS y FULLCONTROL transformaron su infraestructura junto a SerTIC.",
+      "Conocé cómo empresas como INTA, LETIS y KONECTA transformaron su infraestructura junto a SerTIC.",
     cta: {
       label: "Ver casos de éxito",
       action: "casos"

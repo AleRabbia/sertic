@@ -1,0 +1,38 @@
+name: Lighthouse CI
+
+on:
+  workflow_dispatch:
+    inputs:
+      target_url:
+        description: 'Full URL to measure (e.g. https://your-site.com)'
+        required: false
+  push:
+    branches:
+      - main
+
+jobs:
+  lighthouse:
+    name: Run Lighthouse CI
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run Lighthouse CI (autorun)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MEASURE_URL: ${{ secrets.MEASURE_URL }}
+        run: |
+          set -e
+          # Prefer workflow_dispatch input, then secret, else fail
+          URL="${{ github.event.inputs.target_url }}"
+          if [ -z "$URL" ]; then URL="$MEASURE_URL"; fi
+          if [ -z "$URL" ]; then echo "No URL provided. Set workflow input or secret MEASURE_URL."; exit 1; fi
+
+          echo "Running LHCI against $URL"
+          npx -y @lhci/cli@0.11.1 autorun --upload.target=temporary-public-storage --config=.lighthouserc.js --url="$URL"

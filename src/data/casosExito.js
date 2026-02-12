@@ -12,7 +12,10 @@ import barsante from '../assets/clientes/3 - Barsante.png';
 import faro from '../assets/clientes/faro.png';
 import Tdf from '../assets/clientes/3dF.svg';
 import zona from '../assets/clientes/zona93.png';
-
+import Enesimal from '../assets/clientes/enesimal.webp';
+import Delta  from '../assets/clientes/Delta.png';
+import Gamma from '../assets/clientes/20 - grupogamma.png';
+import Llerena from '../assets/clientes/llerena.png';
 
 export const casosExito = [
   {
@@ -427,36 +430,26 @@ export const casosExito = [
     clientQuote: "Con 60 años en la industria, sabemos reconocer la calidad. SerTIC está modernizando nuestra infraestructura con la seriedad que requiere nuestro legado familiar.",
     featured: false
   },
-  // CASOS EVENTUALES - TRABAJOS PUNTUALES
-  {/*
   {
     id: 16,
-    title: "PROYECTO MIGRACIÓN CLOUD",
-    category: "infraestructura",
-    sector: "eventual",
-    logo: null,
-    description: "Migración completa de infraestructura local a AWS para empresa de servicios logísticos con operaciones 24/7.",
-    detailedDescription: "Cliente eventual del sector logístico requería migración urgente de su infraestructura on-premise a la nube debido a crecimiento exponencial. Ejecutamos una migración completa en 3 meses sin downtime, incluyendo bases de datos críticas, aplicaciones web y sistemas de tracking en tiempo real.",
-    technologies: ["AWS Migration", "Database Migration", "Load Balancers", "Auto Scaling", "Disaster Recovery"],
-    duration: "3 meses - proyecto finalizado",
-    teamSize: "5 especialistas cloud",
-    services: ["Cloud Migration", "Architecture Design", "Performance Optimization", "Training"],
-    metrics: {
-      timeline: "3 meses sin downtime",
-      costSaving: "40% reducción costos",
-      performance: "300% mejora rendimiento",
-      scalability: "Auto-scaling implementado"
-    },
-    results: [
-      "Migración exitosa sin downtime",
-      "40% reducción en costos operativos",
-      "300% mejora en rendimiento",
-      "Auto-scaling para picos de demanda",
-      "Disaster recovery implementado"
-    ],
-    clientQuote: "La migración fue perfecta. SerTIC logró lo que creíamos imposible: migrar sin parar las operaciones.",
-    featured: true
-  }*/}
+    title: "DELTA ASCENSORES",
+    logo: Delta
+  },
+  {
+    id: 17,
+    title: "GRUPO GAMMA",
+    logo: Gamma
+  },
+  {
+    id: 18,
+    title: "ENESIMAL",
+    logo: Enesimal
+  },
+  {
+    id: 19,
+    title: "LLERENA & ASOCIADOS",
+    logo: Llerena
+  }
 ];
 
 
