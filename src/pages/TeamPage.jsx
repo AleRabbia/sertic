@@ -323,73 +323,48 @@ const TeamPage = () => {
     setIsSubmitting(true);
 
     try {
-      //por ahora solo envia el titulo del adjunto
-      const response = await fetch(import.meta.env.VITE_N8N_CAREERS_WEBHOOK_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          ...formData,
-          phone: formData.phone || 'No especificado',
-          linkedin: formData.linkedin || 'No especificado',
-          message: formData.message || 'Sin mensaje adicional',
-          cv: formData.cv ? formData.cv.name : 'No adjuntado'
-        })
-      });
+      const webhookUrl = import.meta.env.VITE_N8N_CAREERS_WEBHOOK_URL;
+      
+      if (!webhookUrl) {
+        // Modo simulación: sin configuración de n8n aún
+        await new Promise(resolve => setTimeout(resolve, 1500));
+        
+        setModal({
+          isOpen: true,
+          isSuccess: true,
+          message: '¡Tu postulación ha sido recibida! Nos pondremos en contacto contigo pronto.'
+        });
+      } else {
+        // Modo producción: enviar a n8n vía FormData (incluye CV)
+        const formDataToSend = new FormData();
+        formDataToSend.append('name', formData.name);
+        formDataToSend.append('email', formData.email);
+        formDataToSend.append('phone', formData.phone || 'No especificado');
+        formDataToSend.append('position', formData.position);
+        formDataToSend.append('linkedin', formData.linkedin || 'No especificado');
+        formDataToSend.append('message', formData.message || 'Sin mensaje adicional');
+        
+        if (formData.cv) {
+          formDataToSend.append('cv', formData.cv);
+        }
 
-      if (response.ok) {
+        const response = await fetch(webhookUrl, {
+          method: 'POST',
+          body: formDataToSend
+        });
+
+        if (!response.ok) {
+          throw new Error('Error en la respuesta del servidor');
+        }
+
         setModal({
           isOpen: true,
           isSuccess: true,
           message: '¡Tu postulación ha sido enviada correctamente! Nos pondremos en contacto contigo pronto.'
-        }); // <-- Faltaba cerrar esta llave y el punto y coma
-      } else {
-        // Es buena práctica lanzar un error si la respuesta no es 200 OK
-        throw new Error('Error en la respuesta del servidor');
+        });
       }
-    } catch (error) { // <-- El catch debe recibir el parámetro (error)
-      setModal({
-        isOpen: true,
-        isSuccess: false,
-        message: 'Hubo un problema al enviar tu postulación. Intenta nuevamente.'
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-  //para que envie el adjunto debo modif n8n y este metodo
-  {/*const handleSubmit = async (e) => {
-  e.preventDefault();
-  if (!validateForm()) return;
 
-  setIsSubmitting(true);
-
-  try {
-    // Crear FormData en lugar de JSON
-    const formDataToSend = new FormData();
-    formDataToSend.append('name', formData.name);
-    formDataToSend.append('email', formData.email);
-    formDataToSend.append('phone', formData.phone || 'No especificado');
-    formDataToSend.append('position', formData.position);
-    formDataToSend.append('linkedin', formData.linkedin || 'No especificado');
-    formDataToSend.append('message', formData.message || 'Sin mensaje adicional');
-    
-    // Adjuntar el archivo CV si existe
-    if (formData.cv) {
-      formDataToSend.append('cv', formData.cv);
-    }
-
-    const response = await fetch(import.meta.env.VITE_N8N_CAREERS_WEBHOOK_URL, {
-      method: 'POST',
-      body: formDataToSend  // NO incluyas Content-Type, el navegador lo configura automáticamente
-    });
-
-    if (response.ok) {
-      setModal({
-        isOpen: true,
-        isSuccess: true,
-        message: '¡Tu postulación ha sido enviada correctamente! Nos pondremos en contacto contigo pronto.'
-      });
-      
+      // Resetear el formulario tras envío exitoso
       setFormData({
         name: '',
         email: '',
@@ -400,23 +375,17 @@ const TeamPage = () => {
         message: ''
       });
       setErrors({});
-    } else {
+    } catch (error) {
+      console.error('Error al enviar postulación:', error);
       setModal({
         isOpen: true,
         isSuccess: false,
-        message: 'Error al enviar la postulación'
+        message: 'Hubo un problema al enviar tu postulación. Intenta nuevamente.'
       });
+    } finally {
+      setIsSubmitting(false);
     }
-  } catch {
-    setModal({
-      isOpen: true,
-      isSuccess: false,
-      message: 'Hubo un problema al enviar tu postulación. Intenta nuevamente.'
-    });
-  } finally {
-    setIsSubmitting(false);
-  }
-}; */}
+  };
 
   /* ============================================================ */
   return (
@@ -466,6 +435,7 @@ const TeamPage = () => {
                 >
                   <div className="flex gap-4">
                     <img
+                      loading="lazy"
                       src={m.photo}
                       alt={m.name}
                       className="w-20 h-20 rounded-xl object-cover border-2 border-sertic-cyan"

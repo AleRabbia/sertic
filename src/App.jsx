@@ -1,15 +1,16 @@
 // src/App.jsx
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import TestimoniosPage from './pages/TestimoniosPage';
-import CasosExitoPage from './pages/CasosExitoPage';
-import PoliticaCookies from './pages/politica-cookies';
-import PrivPoli from './pages/PrivPoli';
-import TermsOfService from './pages/TermsOfService';
-import TeamPage from './pages/TeamPage';
-import ServiceDetail from './pages/ServiceDetail';
-import ContactPage from './pages/ContactPage';
+
+const Home = lazy(() => import('./pages/Home'));
+const TestimoniosPage = lazy(() => import('./pages/TestimoniosPage'));
+const CasosExitoPage = lazy(() => import('./pages/CasosExitoPage'));
+const PoliticaCookies = lazy(() => import('./pages/politica-cookies'));
+const PrivPoli = lazy(() => import('./pages/PrivPoli'));
+const TermsOfService = lazy(() => import('./pages/TermsOfService'));
+const TeamPage = lazy(() => import('./pages/TeamPage'));
+const ServiceDetail = lazy(() => import('./pages/ServiceDetail'));
+const ContactPage = lazy(() => import('./pages/ContactPage'));
 
 import './index.css';
 
@@ -17,17 +18,19 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/servicios/:slug" element={<ServiceDetail />} />
-          <Route path="/testimonios" element={<TestimoniosPage />} />
-          <Route path="/casos-de-exito" element={<CasosExitoPage />} />
-          <Route path="/nosotros" element={<TeamPage />} />
-          <Route path="/politica-cookies" element={<PoliticaCookies />} />
-          <Route path="/terminos-servicios" element={<TermsOfService />} />
-          <Route path="/politica-privacidad" element={<PrivPoli />} />
-          <Route path="/contacto" element={<ContactPage />} />
-        </Routes>
+        <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Cargando…</div>}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/servicios/:slug" element={<ServiceDetail />} />
+            <Route path="/testimonios" element={<TestimoniosPage />} />
+            <Route path="/casos-de-exito" element={<CasosExitoPage />} />
+            <Route path="/nosotros" element={<TeamPage />} />
+            <Route path="/politica-cookies" element={<PoliticaCookies />} />
+            <Route path="/terminos-servicios" element={<TermsOfService />} />
+            <Route path="/politica-privacidad" element={<PrivPoli />} />
+            <Route path="/contacto" element={<ContactPage />} />
+          </Routes>
+        </Suspense>
       </div>
     </Router>
   );

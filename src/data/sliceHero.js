@@ -1,8 +1,4 @@
 import { TrendingUp, Shield, Users } from 'lucide-react';
-import NodosImg from '../assets/hero/nodos.jpeg';
-import ChipImg from '../assets/hero/chip.jpeg';
-import NubeImg from '../assets/hero/nube.jpeg';
-import DeskImg from '../assets/hero/escritorio.jpeg';
 
 export const heroSlides = [
   {
@@ -16,7 +12,11 @@ export const heroSlides = [
     },
     icon: TrendingUp,
     gradient: "from-sertic-light via-sertic-celeste to-sertic-white",
-    image: NodosImg
+    // Use public URL paths instead of imports
+    // This ensures <picture> element can serve AVIF/WebP without browser bundling the original
+    image: '/hero/nodos.jpeg',
+    avif: '/hero/nodos.avif',
+    webp: '/hero/nodos.webp'
   },
   {
     id: 2,
@@ -29,7 +29,9 @@ export const heroSlides = [
     },
     icon: Shield,
     gradient: "from-sertic-orange via-sertic-light to-sertic-white",
-    image: NubeImg
+    image: '/hero/nube.jpeg',
+    avif: '/hero/nube.avif',
+    webp: '/hero/nube.webp'
   },
   {
     id: 3,
@@ -42,6 +44,8 @@ export const heroSlides = [
     },
     icon: Users,
     gradient: "from-sertic-azul-claro via-sertic-celeste to-sertic-light",
-    image: DeskImg
+    image: '/hero/escritorio.jpeg',
+    avif: '/hero/escritorio.avif',
+    webp: '/hero/escritorio.webp'
   }
 ];

@@ -27,6 +27,7 @@ const LogoMarquee = ({ items, speed = 40 }) => {
             className="flex items-center justify-center opacity-60 hover:opacity-100 transition-opacity"
           >
             <img
+              loading="lazy"
               src={item.logo}
               alt={item.name}
               className="

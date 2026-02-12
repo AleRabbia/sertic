@@ -14,9 +14,10 @@ const Hero = () => {
   const slide = heroSlides[currentSlide];
 
   /* =========================
-     PRELOAD DE IMÁGENES (CRÍTICO)
+     PRELOAD HERO IMAGES
      ========================= */
   useEffect(() => {
+    // Preload current and next slide image
     heroSlides.forEach((s) => {
       const img = new Image();
       img.src = s.image;
@@ -55,18 +56,38 @@ const Hero = () => {
           IMÁGENES DE FONDO (CROSSFADE)
          ========================= */}
       <div className="absolute inset-0">
-        {heroSlides.map((s, index) => (
-          <img
-            key={s.id}
-            src={s.image}
-            alt={s.title}
-            loading="eager"
-            fetchPriority="high"
-            className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-700 ease-in-out ${
+        {heroSlides.map((s, index) => {
+          // Generate responsive srcsets for AVIF and WebP
+          // Assumes files exist as: /hero/nodos.avif, /hero/nodos-480.avif, etc.
+          const baseName = (s.image || '').split('/').pop()?.replace(/\.[^.]+$/, '');
+          const sizes = [480, 768, 1280, 1920];
+          
+          const avifSrcSet = baseName
+            ? sizes.map((w) => `/hero/${baseName}-${w}.avif ${w}w`).join(', ')
+            : '';
+          const webpSrcSet = baseName
+            ? sizes.map((w) => `/hero/${baseName}-${w}.webp ${w}w`).join(', ')
+            : '';
+
+          return (
+            <picture key={s.id} className={`absolute inset-0 block ${
               index === currentSlide ? 'opacity-100' : 'opacity-0'
-            }`}
-          />
-        ))}
+            }`}>
+              {avifSrcSet && <source type="image/avif" srcSet={avifSrcSet} sizes="100vw" />}
+              {webpSrcSet && <source type="image/webp" srcSet={webpSrcSet} sizes="100vw" />}
+              <img
+                src={s.image}
+                alt={s.title}
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
+                width={1920}
+                height={1080}
+                className="absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-700 ease-in-out"
+              />
+            </picture>
+          );
+        })}
         <div className="absolute inset-0 bg-black/65" />
       </div>
 
@@ -82,6 +103,9 @@ const Hero = () => {
               <img
                 src={serticLogo}
                 alt="SerTIC Tech Solutions"
+                width={112}
+                height={112}
+                decoding="async"
                 className="w-20 md:w-28 h-auto opacity-90 animate-spin-slow"
               />
             </div>

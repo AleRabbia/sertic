@@ -200,6 +200,9 @@ const HeroCarousel = () => {
                                 loading="lazy"
                                 src={tech.logo}
                                 alt={`Logo de ${tech.name}`}
+                                width={64}
+                                height={64}
+                                decoding="async"
                                 className="max-w-full max-h-full object-contain opacity-90"
                               />
                             </div>
@@ -248,8 +251,12 @@ const HeroCarousel = () => {
                           >
                             <div className="w-20 h-20 bg-white rounded-2xl p-4 mx-auto mb-6 shadow-2xl">
                               <img
+                                loading="lazy"
                                 src={membership.logo}
                                 alt={`Logo de ${membership.name}`}
+                                width={80}
+                                height={80}
+                                decoding="async"
                                 className="w-full h-full object-contain"
                               />
                             </div>

@@ -22,10 +22,10 @@ const SuccessBadge = ({ onClick }) => {
       >
         {/* Logos */}
         <div className="flex -space-x-3">
-          <img src={letis} className="w-9 h-9 bg-gradient-to-r from-sertic-cyan to-sertic-blue rounded-full border border-white/20" alt="letis" />
-          <img src={unicaba} className="w-9 h-9 bg-gradient-to-r from-sertic-cyan to-sertic-blue rounded-full border border-white/20 object-cover" alt="polobn" />
-          <img src={konecta} className="w-9 h-9 bg-gradient-to-r from-sertic-cyan to-sertic-blue rounded-full border border-white/20 object-cover" alt="cimomet" />
-          <img src={inta} className="w-9 h-9 bg-gradient-to-r from-sertic-cyan to-sertic-blue rounded-full border border-white/20 object-cover" alt="inta" />
+          <img loading="lazy" src={letis} className="w-9 h-9 bg-gradient-to-r from-sertic-cyan to-sertic-blue rounded-full border border-white/20" alt="letis" />
+          <img loading="lazy" src={unicaba} className="w-9 h-9 bg-gradient-to-r from-sertic-cyan to-sertic-blue rounded-full border border-white/20 object-cover" alt="polobn" />
+          <img loading="lazy" src={konecta} className="w-9 h-9 bg-gradient-to-r from-sertic-cyan to-sertic-blue rounded-full border border-white/20 object-cover" alt="cimomet" />
+          <img loading="lazy" src={inta} className="w-9 h-9 bg-gradient-to-r from-sertic-cyan to-sertic-blue rounded-full border border-white/20 object-cover" alt="inta" />
         </div>
 
         {/* Stars & text */}

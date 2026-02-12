@@ -109,6 +109,7 @@ const CasosExito = () => {
             >
               <div className="relative overflow-hidden">
                 <img
+                  loading="lazy"
                   src={c.image}
                   alt={`Imagen ilustrativa de ${c.title}`}
                   className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"

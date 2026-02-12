@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "images:convert": "node tools/convert-hero-images.js",
     "lint": "eslint .",
     "preview": "vite preview"
   },
@@ -36,6 +37,8 @@
     "eslint-plugin-react-refresh": "^0.4.20",
     "globals": "^16.3.0",
     "postcss": "^8.5.6",
+    "rollup-plugin-visualizer": "^6.0.5",
+    "sharp": "^0.34.5",
     "tailwindcss": "^3.4.17",
     "vite": "^7.1.2"
   }

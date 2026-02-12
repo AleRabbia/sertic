@@ -82,6 +82,7 @@ const CasosExitoPage = () => {
             <div className="flex items-start gap-4 mb-4">
               <div className="w-14 h-14 bg-gradient-to-br from-sertic-cyan/20 to-sertic-blue/20 backdrop-blur-sm rounded-lg p-2 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
                 <img
+                  loading="lazy"
                   src={caso.logo}
                   alt={caso.title}
                   className="max-w-full max-h-full object-contain"
