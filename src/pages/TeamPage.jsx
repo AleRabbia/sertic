@@ -472,7 +472,7 @@ const TeamPage = () => {
                     />
                     <div>
                       <h3 className="font-bold">{m.name}</h3>
-                      <span className="text-sm px-3 py-1 rounded-full bg-gradient-to-r from-sertic-blue to-sertic-cyan inline-block mt-1">
+                      <span className="inline-block mt-1 border border-sertic-cyan/50  px-4 py-1.5 rounded-full bg-gradient-to-r from-sertic-cyan/20 to-sertic-blue/20 text-sm font-medium text-sertic-light">
                         {m.role}
                       </span>
                     </div>
@@ -564,7 +564,7 @@ const TeamPage = () => {
 
                         <div className="mt-4 text-center">
                           <h3 className="font-bold text-white text-lg">{m.name}</h3>
-                          <span className="inline-block mt-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-sertic-blue to-sertic-cyan text-sm font-semibold shadow-lg">
+                          <span className="border border-sertic-cyan/50  px-4 py-1.5 rounded-full bg-gradient-to-r from-sertic-cyan/20 to-sertic-blue/20 text-sm font-medium text-sertic-light">
                             {m.role}
                           </span>
                         </div>
@@ -838,10 +838,7 @@ const TeamPage = () => {
                     </h2>
 
                     <span
-                      className="inline-block mt-2 px-4 py-1.5 rounded-full
-                       bg-gradient-to-r from-sertic-cyan to-sertic-blue
-                       text-sm font-medium text-white"
-                    >
+                      className="inline-block mt-2 border border-sertic-cyan/50  px-4 py-1.5 rounded-full bg-gradient-to-r from-sertic-cyan/20 to-sertic-blue/20 text-sm font-medium text-sertic-light">
                       {selectedMember.role}
                     </span>
 
