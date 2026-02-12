@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import { ArrowLeft, CheckCircle, TrendingUp, Calendar, Mail } from 'lucide-react';
+import { ArrowLeft, CheckCircle, TrendingUp, Calendar, Mail, ArrowRight } from 'lucide-react';
 import { Navigation, Footer } from '../components/layout';
 import { Card } from '../components/ui/Card';
 import { getServiceBySlug, getRelatedServices } from '../data/services';
 import QuoteModal from '../components/ui/QuoteModal';
 import Button from '../components/ui/Button';
+import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 
 const ServiceDetail = () => {
   const { slug } = useParams();
@@ -14,6 +15,43 @@ const ServiceDetail = () => {
   const relatedServices = getRelatedServices(slug, 3);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+const FeatureCard = ({ icon: Icon, title, description, index }) => {
+  const { elementRef, hasBeenVisible } = useIntersectionObserver();
+
+  return (
+    <div
+      ref={elementRef}
+      className={`transition-all duration-700 ${
+        hasBeenVisible
+          ? 'opacity-100 translate-y-0'
+          : 'opacity-0 translate-y-8'
+      }`}
+      style={{ transitionDelay: `${index * 150}ms` }}
+    >
+      <Card
+        className="
+          group h-full flex flex-col
+          hover:border-sertic-cyan/50
+          transition-all duration-300
+          transform hover:scale-105
+        "
+      >
+        <div className="mb-6 text-sertic-cyan group-hover:scale-110 transition-transform duration-300">
+          <Icon className="w-8 h-8" />
+        </div>
+
+        <h3 className="text-xl font-bold mb-4 text-white group-hover:text-sertic-cyan transition-colors">
+          {title}
+        </h3>
+
+        <p className="text-gray-400 leading-relaxed">
+          {description}
+        </p>
+      </Card>
+    </div>
+  );
+};
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -75,7 +113,6 @@ const ServiceDetail = () => {
             />
             <div className="absolute inset-0 bg-black/65" />
           </div>
-
           <div className="relative z-10 min-h-screen flex items-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
 
@@ -154,81 +191,94 @@ const ServiceDetail = () => {
         </section>
 
         {/* =========================
-            FEATURES DETALLADOS
-           ========================= */}
-        <section className="py-20 bg-sertic-black/30">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid md:grid-cols-2 gap-8">
-              {service.detailedFeatures.map((feature, idx) => {
-                const FeatureIcon = feature.icon;
-                return (
-                  <Card key={idx}>
-                    <div className="flex items-start gap-4">
-                      <div className={`bg-gradient-to-br from-sertic-cyan to-sertic-blue p-3 rounded-xl`}>
-                        <FeatureIcon className="w-6 h-6 text-white" />
-                      </div>
-                      <div>
-                        <h3 className="text-xl font-bold mb-2 text-white">
-                          {feature.title}
-                        </h3>
-                        <p className="text-sertic-light">
-                          {feature.description}
-                        </p>
-                      </div>
-                    </div>
-                  </Card>
-                );
-              })}
-            </div>
-          </div>
-        </section>
+    FEATURES DETALLADOS
+   ========================= */}
+<section className="py-20 bg-sertic-black/30">
+  <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {service.detailedFeatures.map((feature, idx) => (
+        <FeatureCard
+          key={idx}
+          index={idx}
+          icon={feature.icon}
+          title={feature.title}
+          description={feature.description}
+        />
+      ))}
+    </div>
+  </div>
+</section>
 
-        {/* =========================
-            BENEFICIOS
-           ========================= */}
-        <section className="py-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-sertic-cyan to-sertic-blue bg-clip-text text-transparent">
-                  Beneficios Clave
-                </h2>
+       {/* =========================
+    BENEFICIOS Y STACK TECNOLÓGICO
+   ========================= */}
+<section className="py-20 bg-black/30">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    {/* Beneficios */}
+    <div className="mb-20 flex flex-col items-center">
+      <div className="text-center mb-12">
+        <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-sertic-cyan via-sertic-blue to-sertic-cyan bg-clip-text text-transparent">
+          Beneficios Clave
+        </h2>
+        <p className="text-lg text-gray-300">Descubre las ventajas de elegir nuestros servicios</p>
+      </div>
 
-                <div className="space-y-4">
-                  {service.benefits.map((benefit, idx) => (
-                    <div
-                      key={idx}
-                      className="flex items-center gap-4 bg-sertic-dark/30 p-4 rounded-xl border border-sertic-gray/20"
-                    >
-                      <div className="bg-gradient-to-br from-sertic-cyan to-sertic-blue p-2 rounded-lg">
-                        <TrendingUp className="w-5 h-5 text-white" />
-                      </div>
-                      <span className="text-sertic-light font-medium">
-                        {benefit}
-                      </span>
-                    </div>
-                  ))}
+      <div className="space-y-4 max-w-2xl">
+        {service.benefits.map((benefit, idx) => {
+          const { elementRef, hasBeenVisible } = useIntersectionObserver();
+          return (
+            <div
+              key={idx}
+              ref={elementRef}
+              className={`transition-all duration-700 ${
+                hasBeenVisible
+                  ? 'opacity-100 translate-y-0'
+                  : 'opacity-0 translate-y-8'
+              }`}
+              style={{ transitionDelay: `${idx * 150}ms` }}
+            >
+              <div className="flex items-center gap-4 bg-sertic-dark/30 p-4 rounded-xl border border-sertic-gray/20 hover:border-sertic-cyan/50 transition-all duration-300">
+                <div className="bg-gradient-to-br from-sertic-cyan to-sertic-blue p-2 rounded-lg flex-shrink-0">
+                  <TrendingUp className="w-5 h-5 text-white" />
                 </div>
+                <span className="text-sertic-light font-medium">
+                  {benefit}
+                </span>
               </div>
-
-              <Card hover={false}>
-                <h3 className="text-2xl font-bold mb-6 text-sertic-cyan">
-                  Stack Tecnológico
-                </h3>
-                <div className="flex flex-wrap gap-3">
-                  {service.technologies.map((tech, idx) => (
-                    <span
-                      key={idx}
-                      className="bg-sertic-dark/50 border border-sertic-cyan/30 px-4 py-2 rounded-full text-sm font-medium text-sertic-light"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </Card>
             </div>
-          </div>
-        </section>
+          );
+        })}
+      </div>
+    </div>
+  </div>
+
+  {/* Stack Tecnológico - FUERA del contenedor con max-w */}
+  <div>
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-12">
+      <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-sertic-cyan via-sertic-blue to-sertic-cyan bg-clip-text text-transparent">
+        Stack Tecnológico
+      </h2>
+      <p className="text-lg text-gray-300">Tecnologías modernas y confiables para tu proyecto</p>
+    </div>
+
+    <div className="relative w-full overflow-hidden">
+      {/* Gradientes laterales */}
+      <div className="pointer-events-none absolute left-0 top-0 h-full w-32 bg-gradient-to-r from-black/30 via-black/20 to-transparent z-10" />
+      <div className="pointer-events-none absolute right-0 top-0 h-full w-32 bg-gradient-to-l from-black/30 via-black/20 to-transparent z-10" />
+
+      <div className="group flex w-max items-center gap-6 animate-marquee hover:[animation-play-state:paused] py-8" style={{ animationDuration: '30s' }}>
+        {[...service.technologies, ...service.technologies, ...service.technologies].map((tech, index) => (
+          <span
+            key={index}
+            className="bg-gradient-to-r from-sertic-cyan/20 to-sertic-blue/20 border border-sertic-cyan/50 px-6 py-3 rounded-full text-sm font-medium text-sertic-light hover:border-sertic-cyan hover:bg-gradient-to-r hover:from-sertic-cyan/30 hover:to-sertic-blue/30 transition-all duration-300 whitespace-nowrap flex-shrink-0"
+          >
+            {tech}
+          </span>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
 
         {/* =========================
             SERVICIOS RELACIONADOS
@@ -241,27 +291,44 @@ const ServiceDetail = () => {
               </h2>
             </div>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="grid md:grid-cols-3 gap-8">
-                {relatedServices.map((related) => {
+              <div className="grid md:grid-cols-3 gap-8 items-stretch">
+                {relatedServices.map((related, index) => {
                   const RelatedIcon = related.icon;
+                  const { elementRef, hasBeenVisible } = useIntersectionObserver();
+                  
                   return (
-                    <Link
+                    <div
                       key={related.id}
-                      to={`/servicios/${related.slug}`}
-                      className="group"
+                      ref={elementRef}
+                      className={`transition-all duration-700 ${
+                        hasBeenVisible 
+                          ? 'opacity-100 translate-y-0' 
+                          : 'opacity-0 translate-y-8'
+                      }`}
+                      style={{ transitionDelay: `${index * 150}ms` }}
                     >
-                      <Card className="h-full cursor-pointer">
-                        <div className={`text-${related.color}-400 mb-6`}>
-                          <RelatedIcon className="w-8 h-8" />
-                        </div>
-                        <h3 className="text-xl font-bold mb-4 text-white">
-                          {related.title}
-                        </h3>
-                        <p className="text-sertic-light">
-                          {related.description}
-                        </p>
-                      </Card>
-                    </Link>
+                      <Link
+                        to={`/servicios/${related.slug}`}
+                        className="group h-full block"
+                      >
+                        <Card className="group h-full flex flex-col cursor-pointer hover:border-sertic-cyan/50 transition-all duration-300 transform hover:scale-105">
+                          <div className={`text-${related.color}-400 mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                            <RelatedIcon className="w-8 h-8" />
+                          </div>
+                          <h3 className="text-xl font-bold mb-4 text-white group-hover:text-sertic-cyan transition-colors">
+                            {related.title}
+                          </h3>
+                          <p className="text-gray-400 mb-6 flex-grow">{related.description}</p>
+                          
+                          <div className="mt-auto">
+                            <span className="inline-flex items-center gap-2 text-sertic-cyan font-semibold group-hover:gap-4 transition-all">
+                              Ver más detalles
+                              <ArrowRight className="w-4 h-4" />
+                            </span>
+                          </div>
+                        </Card>
+                      </Link>
+                    </div>
                   );
                 })}
               </div>
