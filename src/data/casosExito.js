@@ -447,7 +447,7 @@ export const casosExito = [
   },
   {
     id: 19,
-    title: "LLERENA & ASOCIADOS",
+    title: "LLERENA & ASOC.",
     logo: Llerena
   }
 ];
