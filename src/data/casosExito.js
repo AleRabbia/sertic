@@ -15,7 +15,7 @@ import zona from '../assets/clientes/zona93.png';
 import Enesimal from '../assets/clientes/enesimal.webp';
 import Delta  from '../assets/clientes/Delta.png';
 import Gamma from '../assets/clientes/20 - grupogamma.png';
-import Llerena from '../assets/clientes/LLERENA.png';
+import Llerena from '../assets/clientes/LLERENA.png'; //CORRECCIÓN NOMBRE DE ARCHIVO
 
 export const casosExito = [
   {
