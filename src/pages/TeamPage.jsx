@@ -175,7 +175,7 @@ const TeamPage = () => {
 
   /* -------------------- POSICIONES EXACTAS SEGÚN FIGMA (CENTRADAS) -------------------- */
   const offsetX = -8;
-
+/*
   const desktopPositions = {
     1: { x: 60.5 + offsetX, y: 37.6 },
     2: { x: 28.5 + offsetX, y: 24.9 },
@@ -186,9 +186,9 @@ const TeamPage = () => {
     7: { x: 26.8 + offsetX, y: 59.3 },
     8: { x: 83.7 + offsetX, y: 82.4 }
   };
-
+*/
   /* -------------------- CONNECTIONS -------------------- */
-  const connections = [
+ /* const connections = [
     { from: 1, to: 7, curve: 'left' },
     { from: 1, to: 5, curve: 'right' },
     { from: 1, to: 6, curve: 'right' },
@@ -204,6 +204,31 @@ const TeamPage = () => {
     { from: 5, to: 4, curve: 'left' },
     { from: 4, to: 7, curve: 'up' }
   ];
+*/
+
+ const desktopPositions = {
+    1: { x: 50, y: 50 },      // Héctor - CENTRO
+    7: { x: 50, y: 15 },      // ARRIBA
+    2: { x: 70, y: 28 },      // ARRIBA DERECHA
+    5: { x: 30, y: 28 },      // ARRIBA IZQUIERDA
+    3: { x: 73, y: 62 },      // ABAJO DERECHA
+    6: { x: 60, y: 85 },      // ABAJO 2
+    4: { x: 27, y: 62 },      // ABAJO IZQUIERDA
+    
+    8: { x: 40, y: 85 },      // ABAJO 1
+  };
+
+  /* -------------------- CONNECTIONS (RADIAL DESDE EL CENTRO) -------------------- */
+  const connections = [
+    { from: 1, to: 2, curve: 'auto' },  // Centro -> Arriba
+    { from: 1, to: 3, curve: 'auto' },  // Centro -> Arriba Derecha
+    { from: 1, to: 4, curve: 'auto' },  // Centro -> Abajo Derecha
+    { from: 1, to: 5, curve: 'auto' },  // Centro -> Abajo
+    { from: 1, to: 6, curve: 'auto' },  // Centro -> Abajo Izquierda
+    { from: 1, to: 7, curve: 'auto' },  // Centro -> Arriba Izquierda
+    { from: 1, to: 8, curve: 'auto'},   // Centro -> Abajo
+  ];
+
 
   /* -------------------- NODE POSITIONS (DESKTOP) -------------------- */
   useEffect(() => {
@@ -345,7 +370,7 @@ const TeamPage = () => {
         formDataToSend.append('message', formData.message || 'Sin mensaje adicional');
         
         if (formData.cv) {
-          formDataToSend.append('cv', formData.cv);
+          formDataToSend.append('data', formData.cv, formData.cv.name);
         }
 
         const response = await fetch(webhookUrl, {
@@ -560,7 +585,7 @@ const TeamPage = () => {
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <MissionStat value="15+" label="Años de experiencia" delay={0} />
+              <MissionStat value="25+" label="Años de experiencia" delay={0} />
               <MissionStat value="50+" label="Clientes satisfechos" delay={200} />
               <MissionStat value="24/7" label="Soporte disponible" delay={400} />
             </div>
