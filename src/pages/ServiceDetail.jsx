@@ -8,14 +8,6 @@ import QuoteModal from '../components/ui/QuoteModal';
 import Button from '../components/ui/Button';
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 
-const ServiceDetail = () => {
-  const { slug } = useParams();
-  const navigate = useNavigate();
-  const service = getServiceBySlug(slug);
-  const relatedServices = getRelatedServices(slug, 3);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
 const FeatureCard = ({ icon: Icon, title, description, index }) => {
   const { elementRef, hasBeenVisible } = useIntersectionObserver();
 
@@ -52,6 +44,14 @@ const FeatureCard = ({ icon: Icon, title, description, index }) => {
     </div>
   );
 };
+
+const ServiceDetail = () => {
+  const { slug } = useParams();
+  const navigate = useNavigate();
+  const service = getServiceBySlug(slug);
+  const relatedServices = getRelatedServices(slug, 3);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
