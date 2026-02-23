@@ -45,7 +45,7 @@ const ServiceCard = ({ service, index }) => {
         </ul>
         <div className="mt-auto">
           <span className="inline-flex items-center gap-2 text-sertic-cyan font-semibold group-hover:gap-4 transition-all">
-            Ver más detalles
+            Detalles
             <ArrowRight className="w-4 h-4" />
           </span>
         </div>
