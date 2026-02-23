@@ -157,7 +157,7 @@ const ContactPage = () => {
           {/* Contenido del Hero */}
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-24">
             {/* Botón Volver */}
-            <div className="absolute top-24 left-0 right-0 z-20">
+            <div className="absolute top-0 left-0 right-0 z-20">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <button
                   onClick={() => navigate('/')}

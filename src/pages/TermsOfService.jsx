@@ -21,9 +21,9 @@ const TermsOfService = () => {
           <div className="flex items-center gap-4 mb-8">
             <button
               onClick={() => navigate("/")}
-              className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors"
+              className="flex items-center gap-2 text-sertic-cyan hover:text-sertic-light transition group"
             >
-              <ArrowLeft className="w-5 h-5" />
+              <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
               Volver
             </button>
           </div>
