@@ -1,11 +1,11 @@
-import React from 'react';
-import { Linkedin, Twitter, Github, Mail, Phone, MapPin } from 'lucide-react';
-import { Logo } from '../ui/Logo';
-import { contactInfo } from '../../data/contact';
-import { navigationLinks } from '../../data/navigation';
-import { useNavigate } from 'react-router-dom';
+import React from "react";
+import { Linkedin, Twitter, Github, Mail, MapPin } from "lucide-react";
+import { Logo } from "../ui/Logo";
+import { contactInfo } from "../../data/contact";
+import { navigationLinks } from "../../data/navigation";
+import { useNavigate, useLocation } from "react-router-dom";
 import { FaWhatsapp } from "react-icons/fa";
-import powerby from '../../assets/clientes/RabbiaSoft.png';
+import { services } from "../../data/services";
 
 const SocialLink = ({ href, icon: Icon, label }) => (
   <a
@@ -19,84 +19,97 @@ const SocialLink = ({ href, icon: Icon, label }) => (
   </a>
 );
 
-const QuickLink = ({ href, children }) => (
-  <a
-    href={href}
-    className="text-gray-400 hover:text-cyan-400 transition-colors duration-200 block py-1"
-    onClick={(e) => {
-      e.preventDefault();
-      const element = document.querySelector(href);
+const QuickLink = ({ href, children }) => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleClick = (e) => {
+    e.preventDefault();
+
+    if (!href.startsWith("#")) {
+      navigate(href);
+      return;
+    }
+
+    const id = href.replace("#", "");
+
+    if (location.pathname !== "/") {
+      navigate("/");
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 300);
+    } else {
+      const element = document.getElementById(id);
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+        element.scrollIntoView({ behavior: "smooth" });
       }
-    }}
-  >
-    {children}
-  </a>
-);
+    }
+  };
+
+  return (
+    <a
+      href={href}
+      onClick={handleClick}
+      className="text-gray-400 hover:text-cyan-400 transition-colors duration-200 block py-1"
+    >
+      {children}
+    </a>
+  );
+};
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const socialLinks = [
-    { 
-      href: contactInfo.social?.linkedin || '#', 
-      icon: Linkedin, 
-      label: 'LinkedIn' 
+    {
+      href: contactInfo.social?.linkedin || "#",
+      icon: Linkedin,
+      label: "LinkedIn",
     },
-    { 
-      href: contactInfo.social?.twitter || '#', 
-      icon: Twitter, 
-      label: 'Twitter' 
+    {
+      href: contactInfo.social?.twitter || "#",
+      icon: Twitter,
+      label: "Twitter",
     },
-    { 
-      href: contactInfo.social?.github || '#', 
-      icon: Github, 
-      label: 'GitHub' 
-    }
+    { href: contactInfo.social?.github || "#", icon: Github, label: "GitHub" },
   ];
-
-  const handleCookiesClick = () => {
-    navigate('/politica-cookies');
-  };
-
-  const handlePrivacidadClick = () => {
-    navigate('/politica-privacidad');
-  };
-
-  const handleTerminosClick = () => {
-    navigate('/terminos-servicios');
-  };
 
   return (
     <footer className="bg-black/50 py-12 border-t border-slate-800/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
-          
           {/* Company Info */}
           <div className="space-y-4">
             <button
-                        onClick={() => {
-                        if (location.pathname !== "/") {
-                          navigate("/");
-                          setTimeout(() => {
-                            window.scrollTo({ top: 0, behavior: "smooth" });
-                          }, 300);
-                        } else {
-                          window.scrollTo({ top: 0, behavior: "smooth" });
-                        }
-                      }}className="focus:outline-none"
-                        aria-label="Ir al inicio"
-                      >
-                        <Logo />
-                      </button>
-                      
+              onClick={() => {
+                if (location.pathname !== "/") {
+                  navigate("/");
+                  setTimeout(() => {
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }, 300);
+                } else {
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }
+              }}
+              className="focus:outline-none"
+              aria-label="Ir al inicio"
+            >
+              <Logo />
+            </button>
+
             <p className="text-gray-400 text-sm max-w-xs">
-              Soluciones IT confiables para empresas. Transformamos la tecnología en el motor de tu crecimiento.
+              Soluciones IT confiables para empresas. Transformamos la
+              tecnología en el motor de tu crecimiento.
             </p>
+
             <div className="flex space-x-3">
               {socialLinks.map((social) => (
-                <SocialLink 
+                <SocialLink
                   key={social.label}
                   href={social.href}
                   icon={social.icon}
@@ -121,11 +134,16 @@ const Footer = () => {
           {/* Services */}
           <div>
             <h3 className="text-white font-semibold mb-4">Servicios</h3>
-            <div className="space-y-2">              
-              <QuickLink href="#servicios">Infraestructura IT</QuickLink>
-              <QuickLink href="#servicios">Ciberseguridad y Hardening</QuickLink>
-              <QuickLink href="#servicios">Development y DevOps</QuickLink>
-              <QuickLink href="#servicios">Staffing</QuickLink>
+            <div className="space-y-2">
+              {services.map((service) => (
+                <button
+                  key={service.id}
+                  onClick={() => navigate(`/servicios/${service.slug}`)}
+                  className="text-gray-400 hover:text-cyan-400 transition-colors duration-200 block py-1 text-left"
+                >
+                  {service.title}
+                </button>
+              ))}
             </div>
           </div>
 
@@ -135,22 +153,24 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center gap-3 text-gray-400">
                 <Mail className="w-4 h-4 text-sertic-cyan flex-shrink-0" />
-                <a 
+                <a
                   href={`mailto:${contactInfo.email}`}
                   className="hover:text-cyan-400 transition-colors text-sm"
                 >
                   {contactInfo.email}
                 </a>
               </div>
+
               <div className="flex items-center gap-3 text-gray-400">
                 <FaWhatsapp className="w-4 h-4 text-sertic-cyan flex-shrink-0" />
-                <a 
-                  href={`https://wa.me/${contactInfo.phone.replace(/[^\d]/g, '')}`}
+                <a
+                  href={`https://wa.me/${contactInfo.phone.replace(/[^\d]/g, "")}`}
                   className="hover:text-cyan-400 transition-colors text-sm"
                 >
                   {contactInfo.phone}
                 </a>
               </div>
+
               <div className="flex items-start gap-3 text-gray-400">
                 <MapPin className="w-4 h-4 text-sertic-cyan flex-shrink-0 mt-1" />
                 <span className="text-sm">{contactInfo.location}</span>
@@ -162,38 +182,32 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-slate-800/50 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            
             <div className="text-gray-400 text-sm">
-              &copy; {currentYear} SerTIC Tech Solutions. Todos los derechos reservados.
+              &copy; {currentYear} SerTIC Tech Solutions. Todos los derechos
+              reservados.
             </div>
-            { /* 
-
-            <div className="flex items-center gap-2 md:ml-8 opacity-70 hover:opacity-100 transition-opacity md:pl-8 md:border-l md:border-slate-800">
-                <span>Powered by</span>
-                <img 
-                  src={powerby}
-                  alt="Powered by Logo"
-                  className="h-5 w-auto"
-                />
-              </div>
-              */ }
 
             <div className="flex gap-6 text-sm text-gray-400">
-              <a className="hover:text-cyan-400 transition-colors"
-              onClick={handlePrivacidadClick}
+              <button
+                onClick={() => navigate("/politica-privacidad")}
+                className="hover:text-cyan-400 transition-colors"
               >
                 Política de Privacidad
-              </a>
-              <a className="hover:text-cyan-400 transition-colors"
-              onClick={handleTerminosClick}
+              </button>
+
+              <button
+                onClick={() => navigate("/terminos-servicios")}
+                className="hover:text-cyan-400 transition-colors"
               >
                 Términos de Servicio
-              </a>
-              <a className="hover:text-cyan-400 transition-colors"
-                onClick={handleCookiesClick}
+              </button>
+
+              <button
+                onClick={() => navigate("/politica-cookies")}
+                className="hover:text-cyan-400 transition-colors"
               >
                 Cookies
-              </a>
+              </button>
             </div>
           </div>
         </div>

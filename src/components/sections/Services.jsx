@@ -34,7 +34,7 @@ const ServiceCard = ({ service, index }) => {
         <h3 className="text-xl font-bold mb-4 text-white group-hover:text-sertic-cyan transition-colors">
           {service.title}
         </h3>
-        <p className="text-gray-400 mb-6 flex-grow">{service.description}</p>
+        <p className="text-sm text-gray-400 mb-6 flex-grow">{service.description}</p>
         <ul className="space-y-2 mb-6">
           {service.features.slice(0, 3).map((feature, idx) => (
             <li key={idx} className="flex items-center text-sm text-gray-300">

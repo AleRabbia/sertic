@@ -5,6 +5,7 @@ import { Navigation, Footer } from '../components/layout';
 import Button from '../components/ui/Button';
 import { Card } from '../components/ui/Card';
 import QuoteModal from '../components/ui/QuoteModal';
+import CalendlyModal from '../components/ui/Calendlymodal';
 import { internationalContacts } from '../data/contact';
 import ContactForm from '../components/sections/ContactForm';
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
@@ -105,6 +106,7 @@ const InternationalContactCard = ({ country, flag, city, address, phone, email }
 const ContactPage = () => {
   const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isCalendlyModalOpen, setIsCalendlyModalOpen] = useState(false); 
   const { elementRef: titleRef, hasBeenVisible: titleVisible } = useIntersectionObserver();
 
   useEffect(() => {
@@ -189,7 +191,7 @@ const ContactPage = () => {
                   <Button
                     variant="secondary"
                     size="lg"
-                    onClick={handleScheduleMeeting}
+                    onClick={() => setIsCalendlyModalOpen(true)}
                   >
                     <Calendar className="w-5 h-5 mr-2" />
                     Agendar reunión
@@ -233,6 +235,11 @@ const ContactPage = () => {
       <QuoteModal
         isOpen={isModalOpen}
         onClose={handleCloseModal}
+      />
+
+      <CalendlyModal
+        isOpen={isCalendlyModalOpen}
+        onClose={() => setIsCalendlyModalOpen(false)}
       />
 
       {/* Footer */}

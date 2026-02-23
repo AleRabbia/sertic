@@ -40,7 +40,10 @@ const TeamPage = () => {
     isSuccess: false,
     message: ''
   });
-
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const ValueCard = ({ icon: Icon, title, description, index }) => {
     const { elementRef, hasBeenVisible } = useIntersectionObserver();
 

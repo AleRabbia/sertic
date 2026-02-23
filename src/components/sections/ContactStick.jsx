@@ -3,6 +3,7 @@ import { Mail, Phone, MapPin, Send, Calendar, X, CheckCircle, XCircle } from 'lu
 import Button from '../ui/Button';
 import { Card } from '../ui/Card';
 import QuoteModal from '../ui/QuoteModal';
+import CalendlyModal from '../ui/Calendlymodal';
 import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
 import { contactInfo, internationalContacts } from '../../data/contact';
 import { FaWhatsapp } from "react-icons/fa";
@@ -348,6 +349,7 @@ const ContactForm = () => {
 const ContactStick = () => {
   const { elementRef: titleRef, hasBeenVisible: titleVisible } = useIntersectionObserver();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isCalendlyModalOpen, setIsCalendlyModalOpen] = useState(false); 
   const [isModalOpen, setIsModalOpen] = useState(false);
   
 
@@ -410,7 +412,8 @@ const ContactStick = () => {
             >
               Solicitar Cotización
             </Button>
-            <Button variant="secondary" size="lg" aria-label="Agendar una reunión" onClick={handleScheduleMeeting}>
+            <Button variant="secondary" size="lg" aria-label="Agendar una reunión" 
+            onClick={() =>setIsCalendlyModalOpen(true)}>
               <Calendar className="w-5 h-5 mr-2" aria-hidden="true" />
               Agendar Reunión
             </Button>
@@ -423,6 +426,11 @@ const ContactStick = () => {
           isOpen={isModalOpen} 
           onClose={handleCloseModal} 
         />
+
+        <CalendlyModal
+        isOpen={isCalendlyModalOpen}
+        onClose={() => setIsCalendlyModalOpen(false)}
+      />
       </div>
     </section>
   );

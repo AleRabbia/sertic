@@ -12,16 +12,15 @@ export const services = [
     icon: Server,
     title: "Infraestructura IT",
     heroImage: Infra,
-    description: "Diseñamos, implementamos y administramos entornos tecnológicos confiables que aseguran el rendimiento, la escalabilidad y la continuidad operativa de tu negocio.",
+    description: "Rendimiento, escalabilidad y continuidad.",
     
     // Información extendida para la página de detalle
     fullDescription: "Transformamos tu infraestructura tecnológica en una ventaja competitiva. Nuestro equipo especializado diseña, implementa y gestiona soluciones robustas que garantizan la continuidad operativa de tu negocio 24/7.",
     
     features: [
-      "Servidores físicos y virtuales (Windows & Linux)",
-      "Infraestructura Cloud (AWS, GCP)",
-      "Gestión de Backups",
-      "Monitoreo y soporte técnico especializado"
+      "Servidores & Virtualización",
+      "Cloud (AWS/GCP)",
+      "Backups & DR",
     ],
     
     // Detalles expandidos
@@ -98,15 +97,14 @@ export const services = [
     icon: Shield,
     heroImage : ciberseguridad,
     title: "Ciberseguridad & Hardening",
-    description: "Protegemos tus activos digitales con auditorías, controles y estrategias integrales de seguridad alineadas con los estándares internacionales.",
+    description: "Reducimos riesgos y fortalecemos tus activos.",
     
     fullDescription: "En un mundo digital donde las amenazas evolucionan constantemente, protegemos tu empresa con soluciones de ciberseguridad robustas basadas en estándares internacionales y mejores prácticas de la industria.",
     
     features: [
-      "Ciberseguridad preventiva y correctiva",
+      "Preventiva & correctiva",
       "Auditorías IT",
-      "Implementación de controles ISO 27002",
-      "Planes de continuidad y recuperación"
+      "Controles ISO 27002"
     ],
     
     detailedFeatures: [
@@ -182,15 +180,14 @@ export const services = [
     icon: Code,
     heroImage : devops,
     title: "Development & DevOps",
-    description: "Automatizamos y optimizamos entornos de desarrollo y despliegue, mejorando la eficiencia, estabilidad y trazabilidad de tus aplicaciones.",
+    description: "Automatización para despliegues confiables.",
     
     fullDescription: "Aceleramos tu ciclo de desarrollo con prácticas DevOps modernas, automatización de infraestructura y pipelines CI/CD robustos que reducen el time-to-market y mejoran la calidad del software.",
     
     features: [
-      "Infraestructura como Código (Terraform, Ansible)",
-      "Administración de Kubernetes (EKS, OKD, Rancher)",
-      "CI/CD (GitLab, Jenkins, Azure DevOps)",
-      "Observabilidad (Grafana, Prometheus)"
+      "IaC (Terraform/Ansible)",
+      "Kubernetes (EKS/OKD)",
+      "CI/CD (GitLab/Jenkins)"
     ],
     
     detailedFeatures: [
@@ -268,15 +265,14 @@ export const services = [
     icon: Users,
     heroImage : staffing,
     title: "Staffing IT",
-    description: "Sumamos talento especializado a tu equipo para acompañar el crecimiento tecnológico de tu empresa con flexibilidad y experiencia.",
+    description: "Talento técnico para escalar con flexibilidad.",
     
     fullDescription: "Potenciamos tu equipo con profesionales IT altamente calificados. Nuestro modelo flexible te permite escalar recursos según las necesidades de tus proyectos sin los costos de contratación permanente.",
     
     features: [
-      "Perfiles técnicos calificados",
-      "Asignación flexible por proyecto o demanda",
-      "Soporte operativo y técnico",
-      "Recursos on-demand"
+      "Perfiles calificados",
+      "Asignación flexible",
+      "Soporte técnico"
     ],
     
     detailedFeatures: [

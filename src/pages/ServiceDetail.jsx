@@ -113,7 +113,7 @@ const ServiceDetail = () => {
             />
             <div className="absolute inset-0 bg-black/65" />
           </div>
-          <div className="relative z-10 min-h-screen flex items-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="relative z-10 w-full py-24 lg:min-h-screen flex items-start lg:items-center">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
 
               <button
@@ -135,7 +135,7 @@ const ServiceDetail = () => {
                     </span>
                   </div>
 
-                  <h1 className={`text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r ${service.gradient} bg-clip-text text-transparent`}>
+                  <h1 className={`text-4xl sm:text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r ${service.gradient} bg-clip-text text-transparent`}>
                     {service.title}
                   </h1>
 
