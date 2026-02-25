@@ -5,6 +5,7 @@ import { Navigation, Footer } from '../components/layout';
 import { Card } from '../components/ui/Card';
 import { getServiceBySlug, getRelatedServices } from '../data/services';
 import QuoteModal from '../components/ui/QuoteModal';
+import CalendlyModal from '../components/ui/Calendlymodal';
 import Button from '../components/ui/Button';
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 
@@ -51,6 +52,7 @@ const ServiceDetail = () => {
   const service = getServiceBySlug(slug);
   const relatedServices = getRelatedServices(slug, 3);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isCalendlyModalOpen, setIsCalendlyModalOpen] = useState(false); 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
@@ -153,9 +155,8 @@ const ServiceDetail = () => {
                     <Button
                       variant="secondary"
                       size="lg"
-                      onClick={handleScheduleMeeting}
-
-                    >
+                      onClick={() => setIsCalendlyModalOpen(true)}
+                  >
                       <Calendar className="w-5 h-5 mr-2" />
                       Agendar Reunión
                     </Button>
@@ -167,6 +168,11 @@ const ServiceDetail = () => {
                   isOpen={isModalOpen}
                   onClose={handleCloseModal}
                 />
+
+                <CalendlyModal
+        isOpen={isCalendlyModalOpen}
+        onClose={() => setIsCalendlyModalOpen(false)}
+      />
 
                 <Card
                   hover={false}

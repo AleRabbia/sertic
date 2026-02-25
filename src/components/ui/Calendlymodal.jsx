@@ -270,7 +270,7 @@ const CalendlyModal = ({ isOpen, onClose }) => {
 
               <div className="grid md:grid-cols-2 gap-4">
                 <InputField label="Email *" name="email" type="email" value={form.email} onChange={handleChange} error={errors.email} placeholder="correo@empresa.com" />
-                <InputField label="Teléfono" name="phone" type="tel" value={form.phone} onChange={handleChange} placeholder="+54 11 ..." />
+                <InputField label="Teléfono" name="phone" type="tel" value={form.phone} onChange={handleChange} placeholder="+54 341 ..." />
               </div>
 
               {/* Fecha */}
