@@ -47,12 +47,12 @@ const About = () => {
     {
       icon: Shield,
       title: "Seguridad y Cumplimiento",
-      description: "Protegemos tus datos y sistemas siguiendo estándares de seguridad y normativas como ISO 27001 y NIST."
+      description: "Aplicamos controles y procesos alineados a ISO/IEC 27002 y NIST CSF 2.0 para gestionar riesgos, proteger accesos y responder a incidentes. Acompañamos medidas vinculadas a NIS2 cuando corresponda."
     },
     {
       icon: Headphones,
       title: "Soporte Continuo",
-      description: "Nuestro soporte remoto 24/7 garantiza que tu infraestructura y sistemas funcionen sin interrupciones."
+      description: "Guardia 24/7 para incidentes y alertas críticas, con triage, escalamiento y recuperación. Las solicitudes se gestionan por mesa de ayuda según SLA."
     }
   ];
 
@@ -60,7 +60,7 @@ const About = () => {
     { icon: Cloud, value: "24/7", label: "Monitoreo", color: "cyan" },
     { icon: Users, value: "20+", label: "Especialistas", color: "cyan" },
     { icon: Server, value: "15+", label: "Tecnologías", color: "cyan" },
-    { icon: Shield, value: "99.9%", label: "Uptime", color: "cyan" }
+    { icon: Shield, value: "Hardening", label: "Infraestructura segura", color: "cyan" }
   ];
 
   return (

@@ -8,7 +8,7 @@ export const useAnimatedCounter = (end, duration = 2000, start = 0) => {
     if (isAnimating) return;
     
     setIsAnimating(true);
-    const increment = (end - start) / (duration / 16); // 60fps
+    const increment = (end - start) / (duration / 16);
     let current = start;
 
     const timer = setInterval(() => {

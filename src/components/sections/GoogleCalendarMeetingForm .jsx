@@ -25,7 +25,6 @@ const GoogleCalendarMeetingForm = ({ isOpen, onClose }) => {
     if (!formData.date) newErrors.date = 'Fecha requerida';
     if (!formData.time) newErrors.time = 'Hora requerida';
     
-    // Validar que la fecha no sea en el pasado
     const selectedDateTime = new Date(`${formData.date}T${formData.time}`);
     const now = new Date();
     if (selectedDateTime <= now) {
@@ -47,15 +46,12 @@ const GoogleCalendarMeetingForm = ({ isOpen, onClose }) => {
 
   const createGoogleCalendarEvent = () => {
     if (!validateForm()) return;
-
-    // Crear fechas para el evento
+    
     const startDateTime = new Date(`${formData.date}T${formData.time}`);
     const endDateTime = new Date(startDateTime.getTime() + (parseInt(formData.duration) * 60 * 1000));
-
-    // Formatear fechas para Google Calendar (formato ISO sin milisegundos)
+    
     const formatDate = (date) => date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
     
-    // Mapear temas
     const topicNames = {
       'consulta-general': 'Consulta General',
       'soporte-remoto': 'Soporte Remoto',
@@ -63,8 +59,7 @@ const GoogleCalendarMeetingForm = ({ isOpen, onClose }) => {
       'consultoria': 'Consultoría',
       'staffing': 'Staffing'
     };
-
-    // Crear detalles del evento
+    
     const eventTitle = `Reunión: ${topicNames[formData.topic]} - ${formData.name}`;
     
     const eventDetails = `📋 DETALLES DE LA REUNIÓN
@@ -132,13 +127,12 @@ Para cualquier consulta previa, contacta a:
       }
     }, 8000);
   };
-
-  // Generar opciones de horario (9 AM a 6 PM cada 30 minutos)
+  
   const generateTimeOptions = () => {
     const times = [];
     for (let hour = 9; hour <= 18; hour++) {
       for (let minute of [0, 30]) {
-        if (hour === 18 && minute === 30) break; // No agregar 6:30 PM
+        if (hour === 18 && minute === 30) break;
         const time = `${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`;
         const displayTime = new Date(`2000-01-01T${time}`).toLocaleTimeString('es-AR', {
           hour: '2-digit',
@@ -150,8 +144,7 @@ Para cualquier consulta previa, contacta a:
     }
     return times;
   };
-
-  // Establecer fecha mínima (hoy)
+  
   const today = new Date().toISOString().split('T')[0];
 
   if (!isOpen) return null;

@@ -1,9 +1,8 @@
 import React, { useMemo } from "react";
 
 const LogoMarquee = ({ items, speed = 40 }) => {
-  // Repetimos el array lo suficiente para llenar pantallas grandes
-  const repeatedItems = useMemo(() => {
-    const MIN_ITEMS = 20; // garantiza ancho suficiente
+    const repeatedItems = useMemo(() => {
+    const MIN_ITEMS = 20;
     const times = Math.ceil(MIN_ITEMS / items.length);
     return Array(times).fill(items).flat();
   }, [items]);

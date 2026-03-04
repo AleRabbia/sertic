@@ -16,8 +16,8 @@ export const teamMembers = [
     photo: HAG,
     bio: "Más de 25 años liderando proyectos tecnológicos",
     experience: "25+ años",
-    education: "MBA, Ingeniería en Sistemas",
-    linkedin: "#",
+    education: "MBA UBA, Analista de Sistemas UTN",
+    linkedin: "https://www.linkedin.com/in/hag74/",
     email: "hector.garcia@sertic.com.ar",
     achievements: ["Certificación ISO 27002", "Ciberseguridad"]
   },
@@ -30,9 +30,9 @@ export const teamMembers = [
     bio: "Analista Funcional",
     experience: "9+ años",
     education: "Analista de Sistemas",
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/digna-m-b5352a1b5/",
     email: "digna.martinez@sertic.com.ar",
-    achievements: ["Atlassian"]
+    achievements: ["Atlassian","Base de datos"]
   },
   {
     id: 4,
@@ -43,7 +43,7 @@ export const teamMembers = [
     bio: "Analista de sistemas con orientación comercial",
     experience: "15+ años",
     education: "Análisis de Sistemas",
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/alexis-rabbia-4456b2122/",
     email: "alexis.rabbia@sertic.com.ar",
     achievements: ["Master en Negocios"]
   },
@@ -55,10 +55,10 @@ export const teamMembers = [
     photo: Melania,
     bio: "Gestión financiera y operaciones administrativas",
     experience: "9+ años",
-    education: "Contador Público",
-    linkedin: "#",
+    education: "Administración de Empresas",
+    linkedin: "https://www.linkedin.com/in/melania-quilici-037a8185/",
     email: "melania.quillici@sertic.com.ar",
-    achievements: ["SAP Consultant"]
+    achievements: ["SAP Consultant", "Odoo Expert"]
   },
   {
     id: 3,
@@ -68,10 +68,10 @@ export const teamMembers = [
     photo: Ramiro,
     bio: "Experto en arquitectura de redes y seguridad",
     experience: "15+ años",
-    education: "Ingeniería en Redes",
-    linkedin: "#",
+    education: "Ciencia de la Computación UNR",
+    linkedin: "https://www.linkedin.com/in/ramiro-lemos-b1392418/",
     email: "ramiro.lemos@sertic.com.ar",
-    achievements: ["CCNP Security", "CISSP"]
+    achievements: ["Adm Redes", "CCNP Security", "CISSP"]
   },
   {
     id: 2,
@@ -81,22 +81,22 @@ export const teamMembers = [
     photo: Nicolas,
     bio: "Especialista en CI/CD y automatización de infraestructura",
     experience: "15+ años",
-    education: "Ingeniería en Sistemas",
-    linkedin: "#",
+    education: "Ingeniería en Sistemas UTN",
+    linkedin: "https://www.linkedin.com/in/nicolaseroman/",
     email: "nicolas.romar@sertic.cloud",
     achievements: ["Kubernetes CKA", "AWS DevOps Pro"]
   },
   {
     id: 6,
-    name: "Patricio Paez",
+    name: "Patricio Saez de Arregui",
     role: "Cloud",
     gridPosition: { row: 2, col: 3 },
     photo: Patricio,
     bio: "Arquitecto Cloud certificado en AWS y Azure",
-    experience: "10+ años",
-    education: "Ingeniería en Software",
-    linkedin: "#",
-    email: "patricio.paez@sertic.com.ar",
+    experience: "15+ años",
+    education: "Ingeniero Ambiental",
+    linkedin: "https://www.linkedin.com/in/patricio-ramiro-saez-de-arregui-24025a64/",
+    email: "patricio.saez@sertic.com.ar",
     achievements: ["AWS Solutions Architect", "Azure Expert"]
   },
   {
@@ -106,10 +106,10 @@ export const teamMembers = [
     gridPosition: { row: 3, col: 3 },
     photo: Francisco,
     bio: "Recursos Humanos",
-    experience: "9+ años",
+    experience: "12+ años",
     education: "Recursos Humanos",
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/franciscomizzau/",
     email: "francisco.mizzau@sertic.com.ar",
-    achievements: ["Atlassian"]
+    achievements: ["Experto en Reclutamiento 2.0", "Selección por competencias"]
   }
 ];

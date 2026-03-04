@@ -1,4 +1,3 @@
-// src/App.jsx
 import React, { Suspense, lazy } from 'react';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 

@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useAnimatedCounter } from '../../hooks/useAnimatedCounter';
 
-// stats locales
 const stats = [
   { number: "6000+", label: "Tickets Resueltos con Éxito" },
   { number: "50+", label: "Empresas Confían en Nosotros" },
@@ -9,7 +8,6 @@ const stats = [
   { number: "24/7", label: "Soporte Remoto y Monitoreo" }
 ];
 
-// Hook personalizado para intersection observer
 const useIntersectionObserver = () => {
   const [hasTriggered, setHasTriggered] = useState(false);
   const elementRef = useRef();
@@ -42,7 +40,6 @@ const StatCard = ({ stat, index }) => {
   const { elementRef, hasTriggered } = useIntersectionObserver();
   const [hasStartedAnimation, setHasStartedAnimation] = useState(false);
   
-  // numeric value for animation
   const numericValue = stat.number.includes('+') 
     ? parseInt(stat.number.replace('+', '')) 
     : stat.number === '24/7' 

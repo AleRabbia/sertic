@@ -1,4 +1,3 @@
-// src/components/sections/CasosExito.jsx
 import React, { useState } from 'react';
 
 const CasosExito = () => {

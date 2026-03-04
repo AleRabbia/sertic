@@ -57,8 +57,7 @@ const Hero = () => {
          ========================= */}
       <div className="absolute inset-0">
         {heroSlides.map((s, index) => {
-          // Generate responsive srcsets for AVIF and WebP
-          // Assumes files exist as: /hero/nodos.avif, /hero/nodos-480.avif, etc.
+          
           const baseName = (s.image || '').split('/').pop()?.replace(/\.[^.]+$/, '');
           const sizes = [480, 768, 1280, 1920];
           
@@ -146,12 +145,12 @@ const Hero = () => {
           {/* CTA */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           {slide.cta.action === 'casos' ? (
-            // Si es casos de éxito → SuccessBadge
+            // Si es casos de éxito SuccessBadge
             <div onClick={() => handleCTA(slide.cta.action)} className="cursor-pointer">
               <SuccessBadge />
             </div>
           ) : (
-            // Otros slides → Button normal
+            // Otros slides Button normal
             <Button size="lg" icon onClick={() => handleCTA(slide.cta.action)}>
               {slide.cta.label}
             </Button>

@@ -6,5 +6,5 @@ export const clientLogos = casosExito
     id: caso.id,
     name: caso.title,
     logo: caso.logo,
-    website: null // opcional, por ahora no linkeamos
+    website: null
   }));

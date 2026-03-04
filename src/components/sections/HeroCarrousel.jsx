@@ -38,7 +38,7 @@ const HeroCarousel = () => {
       const newScales = slideRefs.current.map((ref) => {
         if (!ref) return 1;
         
-        const containerHeight = window.innerHeight - 300; // Altura disponible
+        const containerHeight = window.innerHeight - 300;
         const contentHeight = ref.scrollHeight;
         
         if (contentHeight > containerHeight) {
@@ -49,8 +49,7 @@ const HeroCarousel = () => {
       
       setScales(newScales);
     };
-
-    // Calcular después de que el DOM esté listo
+    
     setTimeout(calculateScales, 100);
     
     window.addEventListener('resize', calculateScales);

@@ -24,10 +24,8 @@ const Navigation = () => {
   }
 
     if (location.pathname !== "/") {
-      // Si no estás en home, navegá a home y hacé scroll después de cargar
       navigate("/");
-
-      // Esperá un momento a que el DOM cargue las secciones
+      
       setTimeout(() => {
         const element = document.querySelector(href);
         if (element) {
@@ -35,7 +33,7 @@ const Navigation = () => {
         }
       }, 300);
     } else {
-      // Si ya estás en home, solo hacé scroll
+      
       const element = document.querySelector(href);
       if (element) {
         element.scrollIntoView({ behavior: "smooth" });

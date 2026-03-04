@@ -37,8 +37,7 @@ const ConsentSettings = ({ isOpen, onClose }) => {
   const handleSave = () => {
     const settings = { analytics, ads };
     Cookies.set("cookieConsentSettings", JSON.stringify(settings), { expires: 365 });
-
-    // Guardar flag general
+    
     if (analytics || ads) {
       Cookies.set("cookieConsent", "accepted", { expires: 365 });
     } else {

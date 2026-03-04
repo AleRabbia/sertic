@@ -61,8 +61,7 @@ const CasosExitoPage = () => {
     { id: 'educacion', name: 'Educación' },
     { id: 'tecnologia', name: 'Tecnología' }
   ];
-
-  // Componente CaseCard mejorado con animación
+  
   const CaseCard = ({ caso, index }) => {
     const { elementRef, hasBeenVisible } = useIntersectionObserver();
 

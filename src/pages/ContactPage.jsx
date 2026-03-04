@@ -11,9 +11,7 @@ import ContactForm from '../components/sections/ContactForm';
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 import heroImage from '../assets/hero/escritorio.jpeg';
 
-/* =====================================================
-   CARD CONTACTO INTERNACIONAL
-===================================================== */
+/* CARD CONTACTO INTERNACIONAL*/
 const InternationalContactCard = ({ country, flag, city, address, phone, email }) => {
   return (
     <div
@@ -65,43 +63,6 @@ const InternationalContactCard = ({ country, flag, city, address, phone, email }
 };
 
 
-// Componente para las cards de contacto internacional
-{/*const InternationalContactCard = ({ country, phone, email, index }) => {
-  const { elementRef, hasBeenVisible } = useIntersectionObserver();
-  
-  return (
-    <div
-      ref={elementRef}
-      className={`transition-all duration-700 ${
-        hasBeenVisible 
-          ? 'opacity-100 translate-y-0' 
-          : 'opacity-0 translate-y-8'
-      }`}
-      style={{ transitionDelay: `${index * 150}ms` }}
-    >
-      <Card className="h-full bg-gradient-to-br from-sertic-dark/70 to-sertic-black/70 border border-sertic-gray/40 hover:border-sertic-cyan/50 transition-all duration-300">
-        <div className="flex flex-col gap-4">
-          <div className="flex items-center gap-3">
-            <Globe className="w-6 h-6 text-sertic-cyan" />
-            <h3 className="text-xl font-semibold text-sertic-white">{country}</h3>
-          </div>
-          
-          <div className="space-y-3">
-            <div className="flex items-center gap-2 text-sertic-light">
-              <Phone className="w-4 h-4 text-sertic-blue" />
-              <span>{phone}</span>
-            </div>
-            
-            <div className="flex items-center gap-2 text-sertic-light">
-              <Mail className="w-4 h-4 text-sertic-blue" />
-              <span className="break-all">{email}</span>
-            </div>
-          </div>
-        </div>
-      </Card>
-    </div>
-  );
-};*/}
 
 const ContactPage = () => {
   const navigate = useNavigate();
@@ -112,13 +73,7 @@ const ContactPage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  const handleScheduleMeeting = () => {
-    window.open(
-      'https://calendly.com/alexis-rabbia-sertic/consulta-tecnica',
-      '_blank'
-    );
-  };
+  
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -134,15 +89,13 @@ const ContactPage = () => {
       <Navigation />
 
       <main className="relative">
-        {/* Efectos de fondo decorativos */}
+        
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute w-96 h-96 -top-48 -left-48 bg-sertic-cyan/10 blur-3xl rounded-full" />
           <div className="absolute w-96 h-96 -bottom-48 -right-48 bg-sertic-blue/10 blur-3xl rounded-full" />
         </div>
 
-        {/* =====================================================
-            HERO SECTION
-        ===================================================== */}
+        {/* HERO SECTION */}
         <section className="relative min-h-screen overflow-hidden flex items-center">
           {/* Imagen de fondo */}
           <div className="absolute inset-0">
@@ -201,9 +154,7 @@ const ContactPage = () => {
             </div> </div>
         </section>
 
-        {/* =====================================================
-            SECCIÓN DE CONTACTOS INTERNACIONALES
-        ===================================================== */}
+        {/* SECCIÓN DE CONTACTOS INTERNACIONALES */}
         <section className="py-24 bg-sertic-black relative z-10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Grid de contactos internacionales */}
@@ -215,9 +166,7 @@ const ContactPage = () => {
               ))}
             </div>
 
-            {/* =====================================================
-                FORMULARIO DE CONTACTO
-            ===================================================== */}
+            {/* FORMULARIO DE CONTACTO */}
             <div
               ref={titleRef}
               className={`transition-all duration-700 ${titleVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'

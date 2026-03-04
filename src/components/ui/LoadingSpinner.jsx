@@ -1,4 +1,3 @@
-// src/components/ui/LoadingSpinner.jsx
 import React from 'react';
 
 const LoadingSpinner = ({ size = 'md', className = '' }) => {
@@ -15,7 +14,6 @@ const LoadingSpinner = ({ size = 'md', className = '' }) => {
   );
 };
 
-// src/components/ui/ErrorBoundary.jsx
 export class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
@@ -57,7 +55,6 @@ export class ErrorBoundary extends React.Component {
   }
 }
 
-// src/components/ui/LazyImage.jsx
 export const LazyImage = ({ src, alt, className = '', placeholder = null }) => {
   const [isLoaded, setIsLoaded] = React.useState(false);
   const [hasError, setHasError] = React.useState(false);

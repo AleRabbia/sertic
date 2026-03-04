@@ -63,15 +63,13 @@ const CalendlyModal = ({ isOpen, onClose }) => {
       }, 300);
     }
   }, [isOpen]);
-
-  // Cerrar con Escape
+  
   useEffect(() => {
     const onKey = (e) => e.key === "Escape" && onClose();
     if (isOpen) window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [isOpen, onClose]);
-
-  // Consultar slots al cambiar fecha
+  
   useEffect(() => {
   if (!form.date) return;
   
@@ -82,7 +80,6 @@ const CalendlyModal = ({ isOpen, onClose }) => {
   const controller = new AbortController();
 
   const fetchSlots = async () => {
-    // Esperar 400ms antes de mostrar loading, evita el flash
     await new Promise((resolve) => setTimeout(resolve, 400));
     if (controller.signal.aborted) return;
 
@@ -93,14 +90,14 @@ const CalendlyModal = ({ isOpen, onClose }) => {
       });
       if (!res.ok) throw new Error();
       const data = await res.json();
-      setSlotsError(""); // limpiar error previo si ahora hay slots
+      setSlotsError("");
       if (!data.available_slots?.length) {
         setSlotsError("No hay horarios disponibles para este día. Probá con otra fecha.");
       } else {
         setSlots(data.available_slots);
       }
     } catch (err) {
-      if (err.name === "AbortError") return; // cambió la fecha, ignorar
+      if (err.name === "AbortError") return;
       setSlotsError("No se pudo consultar la disponibilidad. Verificá tu conexión e intentá de nuevo.");
     } finally {
       setLoadingSlots(false);
@@ -108,7 +105,7 @@ const CalendlyModal = ({ isOpen, onClose }) => {
   };
 
   fetchSlots();
-  return () => controller.abort(); // cancelar si cambia la fecha antes de terminar
+  return () => controller.abort();
 }, [form.date]);
 
   const handleChange = (e) => {
@@ -200,7 +197,7 @@ const CalendlyModal = ({ isOpen, onClose }) => {
         .slot-chip.selected { border-color: #06b6d4; background: rgba(6,182,212,0.15); color: #06b6d4; font-weight: 600; }
       `}</style>
 
-      {/* Modal de resultado — mismo patrón que ContactForm */}
+      {/* Modal de resultado */}
       {modal.isOpen && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[60] flex items-center justify-center p-4">
           <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl border border-slate-700/50 max-w-md w-full p-8 text-center">

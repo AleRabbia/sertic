@@ -87,13 +87,7 @@ const ServiceDetail = () => {
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
-
-  const handleScheduleMeeting = () => {
-    window.open(
-      'https://calendly.com/alexis-rabbia-sertic/consulta-tecnica',
-      '_blank'
-    );
-  };
+  
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-sertic-blue via-sertic-black to-sertic-blue text-sertic-white">
@@ -101,9 +95,7 @@ const ServiceDetail = () => {
 
       <main className="relative">
 
-        {/* =========================
-            HERO CON IMAGEN DEL SERVICIO
-           ========================= */}
+        {/* HERO CON IMAGEN DEL SERVICIO */}
         <section className="relative min-h-screen overflow-hidden flex items-center">
           <div className="absolute inset-0">
             <img
@@ -196,9 +188,7 @@ const ServiceDetail = () => {
           </div>
         </section>
 
-        {/* =========================
-    FEATURES DETALLADOS
-   ========================= */}
+        {/* FEATURES DETALLADOS */}
 <section className="py-20 bg-sertic-black/30">
   <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -215,9 +205,7 @@ const ServiceDetail = () => {
   </div>
 </section>
 
-       {/* =========================
-    BENEFICIOS Y STACK TECNOLÓGICO
-   ========================= */}
+       {/* BENEFICIOS Y STACK TECNOLÓGICO */}
 <section className="py-20 bg-black/30">
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     {/* Beneficios */}
@@ -286,9 +274,7 @@ const ServiceDetail = () => {
   </div>
 </section>
 
-        {/* =========================
-            SERVICIOS RELACIONADOS
-           ========================= */}
+        {/* SERVICIOS RELACIONADOS */}
         {relatedServices.length > 0 && (
           <section className="py-20 bg-sertic-black/30">
             <div className="text-center mb-12">

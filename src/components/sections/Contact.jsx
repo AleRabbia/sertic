@@ -134,8 +134,7 @@ const Contact = () => {
               Completa el formulario y nos pondremos en contacto a la brevedad
             </p>
           </div>
-
-          {/* Grid principal: Info + Formulario */}
+          
           <div className="grid lg:grid-cols-2 gap-16 items-start mb-24">
             
             {/* Información de contacto local */}

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { getFeaturedCases } from '../../data/casosExito';
 
 const CasosExitoPreview = () => {
-  // Obtenemos solo los casos destacados
+  
   const featuredCases = getFeaturedCases();
 
   return (

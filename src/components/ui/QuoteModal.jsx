@@ -19,8 +19,7 @@ const QuoteModal = ({ isOpen, onClose }) => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState({});
-
-  // Resetear modal cuando se cierre
+  
   useEffect(() => {
     if (!isOpen) {
       setFormData({
@@ -39,8 +38,7 @@ const QuoteModal = ({ isOpen, onClose }) => {
       setErrors({});
     }
   }, [isOpen]);
-
-  // Función para validar el formulario
+  
   const validateForm = () => {
     const newErrors = {};
     
@@ -68,8 +66,7 @@ const QuoteModal = ({ isOpen, onClose }) => {
       ...formData,
       [name]: value
     });
-
-    // Limpiar error del campo al escribir
+    
     if (errors[name]) {
       setErrors({
         ...errors,
@@ -100,7 +97,7 @@ const QuoteModal = ({ isOpen, onClose }) => {
           company: formData.company || 'No especificada',
           service: formData.service || 'Cotización general',
           message: `COTIZACIÓN SOLICITADA:\n\n${formData.description}`,
-          type: 'quote' // Para identificar que viene del modal de cotización
+          type: 'quote'
         })
       });
 

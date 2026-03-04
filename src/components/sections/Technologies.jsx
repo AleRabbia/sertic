@@ -83,16 +83,7 @@ const Technologies = () => {
         <div className="mt-12 text-center">
           <p className="text-gray-400 mb-6 text-sm md:text-base">
             Evolucionamos junto a las tecnologías para acompañar los desafíos de cada organización.
-          </p>
-          {/*
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={handleConsultClick}
-            className="px-6 py-3 rounded-full font-medium text-white bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-600 hover:to-purple-700 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-slate-900"
-          >
-            Consultá por tu stack tecnológico
-          </motion.button>*/}
+          </p>          
         </div>
       </div>
     </section>

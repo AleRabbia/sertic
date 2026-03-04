@@ -13,8 +13,6 @@ export const services = [
     title: "Infraestructura IT",
     heroImage: Infra,
     description: "Rendimiento, escalabilidad y continuidad.",
-    
-    // Información extendida para la página de detalle
     fullDescription: "Transformamos tu infraestructura tecnológica en una ventaja competitiva. Nuestro equipo especializado diseña, implementa y gestiona soluciones robustas que garantizan la continuidad operativa de tu negocio 24/7.",
     
     features: [
@@ -22,8 +20,6 @@ export const services = [
       "Cloud (AWS/GCP)",
       "Backups & DR",
     ],
-    
-    // Detalles expandidos
     detailedFeatures: [
       {
         title: "Servidores Físicos y Virtuales",

@@ -12,8 +12,6 @@ export const heroSlides = [
     },
     icon: TrendingUp,
     gradient: "from-sertic-light via-sertic-celeste to-sertic-white",
-    // Use public URL paths instead of imports
-    // This ensures <picture> element can serve AVIF/WebP without browser bundling the original
     image: '/hero/nodos.jpeg',
     avif: '/hero/nodos.avif',
     webp: '/hero/nodos.webp'
