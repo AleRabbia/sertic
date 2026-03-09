@@ -69,7 +69,7 @@ const Hero = () => {
             : '';
 
           return (
-            <picture key={s.id} className={`absolute inset-0 block ${
+            <picture key={s.id} className={`absolute inset-0 block transition-opacity duration-700 ease-in-out ${
               index === currentSlide ? 'opacity-100' : 'opacity-0'
             }`}>
               {avifSrcSet && <source type="image/avif" srcSet={avifSrcSet} sizes="100vw" />}
@@ -82,7 +82,7 @@ const Hero = () => {
                 decoding="async"
                 width={1920}
                 height={1080}
-                className="absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-700 ease-in-out"
+                className="absolute inset-0 w-full h-full object-cover object-center"
               />
             </picture>
           );

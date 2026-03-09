@@ -152,9 +152,9 @@ const Chatbot = () => {
                 <Bot className="text-sertic-blue" size={20} />
               </div>
               <div>
-                <h3 className="font-semibold">Asistente Virtual</h3>
+                <h3 className="font-semibold">S-TIC</h3>
                 <p className="text-xs opacity-90">
-                  {isLoading ? 'Escribiendo...' : 'En línea'}
+                  {isLoading ? 'Escribiendo...' : 'Asistente de SerTIC'}
                 </p>
               </div>
             </div>

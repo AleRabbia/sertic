@@ -1,4 +1,4 @@
-export const faqs = {Horario: "🕘 Nuestro horario de atención es de lunes a viernes, de 9:00 a 18:00 hs.",
+export const faqs = {Horario: "🕘 Nuestro horario de atención es de lunes a viernes, de 8:00 a 16:00 hs.",
   
   Ubicación: "📍 Estamos en Rosario, pero brindamos servicios IT en todo el país.",
   
