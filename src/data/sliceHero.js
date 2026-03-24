@@ -3,11 +3,10 @@ import { TrendingUp, Shield, Users } from 'lucide-react';
 export const heroSlides = [
   {
     id: 1,
-    title: "La solución IT que tu empresa necesita",
-    subtitle:
-      "Infraestructura, ciberseguridad, desarrollo y talento especializado para acompañar tu crecimiento tecnológico.",
+    titleKey: "hero.title1",
+    subtitleKey: "hero.subtitle1",
     cta: {
-      label: "Solicitar asesoría",
+      labelKey: "hero.cta1",
       action: "contacto"
     },
     icon: TrendingUp,
@@ -18,11 +17,10 @@ export const heroSlides = [
   },
   {
     id: 2,
-    title: "Potencia tu seguridad con Prowler",
-    subtitle:
-      "Auditorías automatizadas de seguridad cloud para AWS, Azure y GCP. Identificá vulnerabilidades antes que los atacantes.",
+    titleKey: "hero.title2",
+    subtitleKey: "hero.subtitle2",
     cta: {
-      label: "Solicitar demo",
+      labelKey: "hero.cta2",
       action: "contacto"
     },
     icon: Shield,
@@ -33,11 +31,10 @@ export const heroSlides = [
   },
   {
     id: 3,
-    title: "Casos de éxito que inspiran",
-    subtitle:
-      "Conocé cómo empresas como INTA, LETIS y KONECTA transformaron su infraestructura junto a SerTIC.",
+    titleKey: "hero.title3",
+    subtitleKey: "hero.subtitle3",
     cta: {
-      label: "Ver casos de éxito",
+      labelKey: "hero.cta3",
       action: "casos"
     },
     icon: Users,

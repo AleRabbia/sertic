@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import SuccessBadge from '../ui/SuccessBadge';
 import Button from '../ui/Button';
 import { heroSlides } from '../../data/sliceHero';
@@ -10,8 +11,12 @@ const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const slide = heroSlides[currentSlide];
+  const title = slide.titleKey ? t(slide.titleKey) : slide.title;
+  const subtitle = slide.subtitleKey ? t(slide.subtitleKey) : slide.subtitle;
+  const ctaLabel = slide.cta?.labelKey ? t(slide.cta.labelKey) : slide.cta?.label;
 
   /* =========================
      PRELOAD HERO IMAGES
@@ -134,12 +139,12 @@ const Hero = () => {
           <h1
             className={`text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r ${slide.gradient} bg-clip-text text-transparent`}
           >
-            {slide.title}
+            {title}
           </h1>
 
           {/* Subtítulo */}
           <p className="text-lg md:text-xl text-sertic-light mb-8 max-w-3xl mx-auto">
-            {slide.subtitle}
+            {subtitle}
           </p>
 
           {/* CTA */}
@@ -152,7 +157,7 @@ const Hero = () => {
           ) : (
             // Otros slides Button normal
             <Button size="lg" icon onClick={() => handleCTA(slide.cta.action)}>
-              {slide.cta.label}
+              {ctaLabel}
             </Button>
           )}
           </div>

@@ -1,9 +1,11 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { Navigation, Footer } from "../components/layout";
 import { ArrowLeft } from "lucide-react";
 
 const TermsOfService = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -24,20 +26,17 @@ const TermsOfService = () => {
               className="flex items-center gap-2 text-sertic-cyan hover:text-sertic-light transition group"
             >
               <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
-              Volver
-            </button>
-          </div>
+                {t('serviceDetail.back')}
+              </button>
+            </div>
 
           {/* Header */}
           <div className="text-center mb-12">
             <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-sertic-cyan to-sertic-blue bg-clip-text text-transparent">
-              Términos de Servicio
+              {t('terms.title')}
             </h1>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Bienvenido a 
-              <a className="font-semibold"> SerTIC Tech Solutions</a>
-              . Al acceder o utilizar nuestros
-              servicios, aceptás los siguientes términos.
+              {t('terms.description')}
             </p>
           </div>
 
@@ -45,7 +44,7 @@ const TermsOfService = () => {
           <div className="max-w-3xl mx-auto space-y-6 text-gray-300">
             <section>
               <h2 className="text-2xl font-semibold mb-2">
-                1. Alcance de los servicios
+                1. {t('terms.section1')}
               </h2>
               <p>
                 SerTIC Tech Solutions brinda servicios profesionales de infraestructura, soporte remoto, 
@@ -56,7 +55,7 @@ const TermsOfService = () => {
 
             <section>
               <h2 className="text-2xl font-semibold mb-2">
-                2. Responsabilidades
+                2. {t('terms.section2')}
               </h2>
               <p>
                 El cliente debe proporcionar información y accesos necesarios para la correcta ejecución de 
@@ -67,7 +66,7 @@ const TermsOfService = () => {
 
             <section>
               <h2 className="text-2xl font-semibold mb-2">
-                3. Confidencialidad y protección de datos
+                3. {t('terms.section3')}
               </h2>
                 <p>
                     Toda la información compartida será tratada con estricta confidencialidad. 
@@ -77,7 +76,7 @@ const TermsOfService = () => {
             </section>
 
             <p className="mt-8 text-sm opacity-80">
-              Última actualización: Octubre 2025
+              {t('terms.lastUpdate')}
             </p>
           </div>
         </div>

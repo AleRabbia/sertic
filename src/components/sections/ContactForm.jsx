@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { X, CheckCircle, XCircle } from 'lucide-react';
 
 const ContactForm = () => {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -22,16 +24,16 @@ const ContactForm = () => {
   const validateForm = () => {
     const newErrors = {};
 
-    if (!formData.name.trim()) newErrors.name = 'El nombre es requerido';
+    if (!formData.name.trim()) newErrors.name = t('contacto.validacion.nombre');
 
     if (!formData.email.trim()) {
-      newErrors.email = 'El email es requerido';
+      newErrors.email = t('contacto.validacion.emailRequerido');
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Email inválido';
+      newErrors.email = t('contacto.validacion.emailInvalido');
     }
 
     if (!formData.message.trim()) {
-      newErrors.message = 'El mensaje es requerido';
+      newErrors.message = t('contacto.validacion.mensaje');
     }
 
     setErrors(newErrors);
@@ -68,7 +70,7 @@ const ContactForm = () => {
         setModal({
           isOpen: true,
           isSuccess: true,
-          message: '¡Mensaje enviado correctamente! Nos pondremos en contacto contigo pronto.'
+          message: t('contacto.exito')
         });
         setFormData({
           name: '',
@@ -83,14 +85,14 @@ const ContactForm = () => {
         setModal({
           isOpen: true,
           isSuccess: false,
-          message: 'Error al enviar el mensaje'
+          message: t('contacto.errorEnviar')
         });
       }
     } catch {
       setModal({
         isOpen: true,
         isSuccess: false,
-        message: 'Hubo un problema al enviar el mensaje. Intenta nuevamente.'
+        message: t('contacto.errorGeneral')
       });
     } finally {
       setIsSubmitting(false);
@@ -108,14 +110,14 @@ const ContactForm = () => {
       <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl border border-slate-700/50 max-w-2xl mx-auto">
         <div className="p-8">
           <h2 className="text-4xl font-bold bg-gradient-to-r from-sertic-cyan to-sertic-blue bg-clip-text text-transparent mb-4">
-            Solicitar información
+            {t('contacto.titulo')}
           </h2>
 
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid md:grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-300 mb-2">
-                  Nombre completo *
+                  {t('contacto.nombre')} *
                 </label>
                 <input
                   name="name"
@@ -134,7 +136,7 @@ const ContactForm = () => {
 
               <div>
                 <label className="block text-sm font-medium text-gray-300 mb-2">
-                  Email *
+                  {t('contacto.email')} *
                 </label>
                 <input
                   type="email"
@@ -156,7 +158,7 @@ const ContactForm = () => {
             <div className="grid md:grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-300 mb-2">
-                  Teléfono
+                  {t('contacto.telefono')}
                 </label>
                 <input
                   name="phone"
@@ -168,7 +170,7 @@ const ContactForm = () => {
 
               <div>
                 <label className="block text-sm font-medium text-gray-300 mb-2">
-                  Empresa
+                  {t('contacto.empresa')}
                 </label>
                 <input
                   name="company"
@@ -181,7 +183,7 @@ const ContactForm = () => {
 
             <div>
               <label className="block text-sm font-medium text-gray-300 mb-2">
-                Servicio de interés
+                {t('contacto.serviceInterest')}
               </label>
               <select
                 name="service"
@@ -189,18 +191,18 @@ const ContactForm = () => {
                 onChange={handleChange}
                 className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white focus:border-cyan-500 focus:outline-none transition-colors"
               >
-                <option value="">Selecciona un servicio</option>
-                <option value="soporte-remoto">Soporte IT</option>
-                <option value="infraestructura">Infraestructura IT</option>
-                <option value="consultoria">Ciberseguridad</option>
-                <option value="staffing">Staffing</option>
-                <option value="todos">Todos</option>
+                <option value="">{t('contacto.selectService')}</option>
+                <option value="soporte-remoto">{t('services.soporte')}</option>
+                <option value="infraestructura">{t('services.infraestructura')}</option>
+                <option value="consultoria">{t('services.ciberseguridad')}</option>
+                <option value="staffing">{t('services.staffing')}</option>
+                <option value="todos">{t('quoteModal.serviceSelectAll')}</option>
               </select>
             </div>
 
             <div>
               <label className="block text-sm font-medium text-gray-300 mb-2">
-                Mensaje *
+                {t('contacto.mensaje')} *
               </label>
               <textarea
                 rows={4}
@@ -227,7 +229,7 @@ const ContactForm = () => {
                   : 'bg-gray-600 text-gray-400 cursor-not-allowed'
               }`}
             >
-              {isSubmitting ? 'Enviando…' : 'Enviar mensaje'}
+              {isSubmitting ? t('contacto.enviando') : t('contacto.enviar')}
             </button>
           </form>
         </div>
@@ -242,14 +244,14 @@ const ContactForm = () => {
               <XCircle className="w-16 h-16 text-sertic-orange mx-auto mb-4" />
             )}
             <h3 className="text-xl font-semibold mb-4 text-white">
-              {modal.isSuccess ? 'Mensaje enviado' : 'Error'}
+              {modal.isSuccess ? t('contacto.modal.enviadoTitulo') : t('contacto.modal.errorTitulo')}
             </h3>
             <p className="text-gray-300 mb-6">{modal.message}</p>
             <button
               onClick={() => setModal({ ...modal, isOpen: false })}
               className="bg-gradient-to-r from-sertic-cyan to-sertic-blue hover:from-sertic-cyan-600 hover:to-sertic-blue-700 px-6 py-2 rounded-full transition-all duration-300"
             >
-              Cerrar
+              {t('common.cerrar')}
             </button>
           </div>
         </div>

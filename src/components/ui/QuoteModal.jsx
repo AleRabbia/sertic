@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { X, CheckCircle, XCircle } from 'lucide-react';
 import { services } from '../../data/services';
+import { useTranslation } from 'react-i18next';
 
 const QuoteModal = ({ isOpen, onClose }) => {
   const [formData, setFormData] = useState({
@@ -19,6 +20,7 @@ const QuoteModal = ({ isOpen, onClose }) => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState({});
+  const { t } = useTranslation();
   
   useEffect(() => {
     if (!isOpen) {
@@ -43,17 +45,17 @@ const QuoteModal = ({ isOpen, onClose }) => {
     const newErrors = {};
     
     if (!formData.name.trim()) {
-      newErrors.name = 'El nombre es requerido';
+      newErrors.name = t('contacto.validacion.nombre');
     }
     
     if (!formData.email.trim()) {
-      newErrors.email = 'El email es requerido';
+      newErrors.email = t('contacto.validacion.emailRequerido');
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Email inválido';
+      newErrors.email = t('contacto.validacion.emailInvalido');
     }
     
     if (!formData.description.trim()) {
-      newErrors.description = 'La descripción es requerida';
+      newErrors.description = t('contacto.validacion.mensaje');
     }
     
     setErrors(newErrors);
@@ -112,7 +114,7 @@ const QuoteModal = ({ isOpen, onClose }) => {
         setModal({
           isOpen: true,
           isSuccess: true,
-          message: '¡Cotización enviada correctamente! Nuestro equipo se pondrá en contacto contigo en las próximas 24 horas.'
+          message: t('quoteModal.successMessage')
         });
         setFormData({
           name: '',
@@ -127,15 +129,15 @@ const QuoteModal = ({ isOpen, onClose }) => {
         setModal({
           isOpen: true,
           isSuccess: false,
-          message: result?.message || 'Error al enviar la cotización'
+          message: result?.message || t('quoteModal.errorMessage')
         });
       }
     } catch (error) {
-      console.error('Error al enviar cotización:', error);
+      console.error(t('quoteModal.errorMessage'), error);
       setModal({
         isOpen: true,
         isSuccess: false,
-        message: 'Hubo un problema al enviar tu cotización. Por favor, intenta nuevamente o contáctanos directamente.'
+        message: t('quoteModal.errorMessage')
       });
     } finally {
       setIsSubmitting(false);
@@ -154,10 +156,10 @@ const QuoteModal = ({ isOpen, onClose }) => {
           <div className="p-8">
             <div className="flex justify-between items-center mb-6">
               <h2 id="quote-title" className="text-4xl font-bold bg-gradient-to-r from-sertic-cyan to-sertic-blue bg-clip-text text-transparent mb-4">
-                Solicitar Cotización
+                {t('quoteModal.title')}
               </h2>
               <button onClick={onClose} className="text-gray-400 hover:text-white"
-                      aria-label="Cerrar modal">
+                      aria-label={t('quoteModal.close')}>
                 <X className="w-6 h-6" />
               </button>
             </div>
@@ -166,14 +168,14 @@ const QuoteModal = ({ isOpen, onClose }) => {
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
                   <label htmlFor="q-name" className="block text-sm font-medium text-gray-300 mb-2">
-                    Nombre completo *
+                    {t('quoteModal.name')} *
                   </label>
                   <input
                     type="text" id="q-name" name="name" value={formData.name} onChange={handleInputChange}
                     className={`w-full px-4 py-3 bg-slate-700/50 border rounded-lg focus:outline-none transition-colors text-white ${
                       errors.name ? 'border-red-500 focus:border-red-400' : 'border-slate-600 focus:border-cyan-500'
                     }`}
-                    placeholder="Tu nombre completo"
+                    placeholder={t('quoteModal.placeholderName')}
                   />
                   {errors.name && (
                     <p className="mt-1 text-sm text-red-400" role="alert">{errors.name}</p>
@@ -181,14 +183,14 @@ const QuoteModal = ({ isOpen, onClose }) => {
                 </div>
                 <div>
                   <label htmlFor="q-email" className="block text-sm font-medium text-gray-300 mb-2">
-                    Email *
+                    {t('quoteModal.email')} *
                   </label>
                   <input
                     type="email" id="q-email" name="email" value={formData.email} onChange={handleInputChange}
                     className={`w-full px-4 py-3 bg-slate-700/50 border rounded-lg focus:outline-none transition-colors text-white ${
                       errors.email ? 'border-red-500 focus:border-red-400' : 'border-slate-600 focus:border-cyan-500'
                     }`}
-                    placeholder="tu@email.com"
+                    placeholder={t('quoteModal.placeholderEmail')}
                   />
                   {errors.email && (
                     <p className="mt-1 text-sm text-red-400" role="alert">{errors.email}</p>
@@ -199,47 +201,47 @@ const QuoteModal = ({ isOpen, onClose }) => {
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
                   <label htmlFor="q-phone" className="block text-sm font-medium text-gray-300 mb-2">
-                    Teléfono
+                    {t('quoteModal.phone')}
                   </label>
                   <input
                     type="tel" id="q-phone" name="phone" value={formData.phone} onChange={handleInputChange}
                     className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg focus:border-cyan-500 focus:outline-none transition-colors text-white"
-                    placeholder="+54 341 123 4567"
+                    placeholder={t('quoteModal.placeholderPhone')}
                   />
                 </div>
                 <div>
                   <label htmlFor="q-company" className="block text-sm font-medium text-gray-300 mb-2">
-                    Empresa
+                    {t('quoteModal.company')}
                   </label>
                   <input
                     type="text" id="q-company" name="company" value={formData.company} onChange={handleInputChange}
                     className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg focus:border-cyan-500 focus:outline-none transition-colors text-white"
-                    placeholder="Nombre de tu empresa"
+                    placeholder={t('quoteModal.placeholderCompany')}
                   />
                 </div>
               </div>
 
               <div>
                 <label htmlFor="q-service" className="block text-sm font-medium text-gray-300 mb-2">
-                  Servicio de interés
+                  {t('quoteModal.serviceInterest')}
                 </label>
                 <select
                   id="q-service" name="service" value={formData.service} onChange={handleInputChange}
                   className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg focus:border-cyan-500 focus:outline-none transition-colors text-white"
                 >
-                  <option value="">Selecciona un servicio</option>
+                  <option value="">{t('quoteModal.placeholderService')}</option>
                   {services.map((service) => (
                     <option key={service.id} value={service.id}>
-                      {service.title}
+                      {t(`serviceData.${service.id}.title`, service.title)}
                     </option>
                   ))}
-                  <option value="todos">Todos los servicios</option>
+                  <option value="todos">{t('quoteModal.serviceSelectAll')}</option>
                 </select>
               </div>
 
               <div>
                 <label htmlFor="q-description" className="block text-sm font-medium text-gray-300 mb-2">
-                  Descripción del proyecto *
+                  {t('quoteModal.description')} *
                 </label>
                 <textarea
                   id="q-description" name="description" value={formData.description} onChange={handleInputChange}
@@ -247,7 +249,7 @@ const QuoteModal = ({ isOpen, onClose }) => {
                   className={`w-full px-4 py-3 bg-slate-700/50 border rounded-lg focus:outline-none transition-colors text-white resize-none ${
                     errors.description ? 'border-red-500 focus:border-red-400' : 'border-slate-600 focus:border-cyan-500'
                   }`}
-                  placeholder="Cuéntanos sobre tu proyecto, objetivos, funcionalidades específicas, presupuesto estimado, plazo deseado, etc."
+                  placeholder={t('quoteModal.placeholderDescription')}
                 />
                 {errors.description && (
                   <p className="mt-1 text-sm text-red-400" role="alert">{errors.description}</p>
@@ -263,7 +265,7 @@ const QuoteModal = ({ isOpen, onClose }) => {
                     : 'bg-gray-600 text-gray-400 cursor-not-allowed'
                 }`}
               >
-                {isSubmitting ? 'Enviando cotización...' : 'Enviar Cotización'}
+                {isSubmitting ? t('quoteModal.sending') : t('quoteModal.send')}
               </button>
             </form>
           </div>
@@ -296,14 +298,14 @@ const QuoteModal = ({ isOpen, onClose }) => {
                   <XCircle className="w-16 h-16 text-sertic-orange mx-auto mb-4" />
                 )}
                 <h3 className="text-xl font-semibold mb-4">
-                  {modal.isSuccess ? '¡Cotización Enviada!' : 'Oops...'}
+                  {modal.isSuccess ? t('quoteModal.successMessage') : t('quoteModal.errorMessage')}
                 </h3>
                 <p className="text-gray-300 mb-6">{modal.message}</p>
                 <button
                   onClick={() => setModal({ ...modal, isOpen: false })}
                   className="bg-gradient-to-r from-sertic-cyan to-sertic-blue hover: px-6 py-2 rounded-full transition-all duration-300"
                 >
-                  Cerrar
+                  {t('common.cerrar')}
                 </button>
               </div>
             </div>

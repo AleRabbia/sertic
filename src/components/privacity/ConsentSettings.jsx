@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import Cookies from "js-cookie";
 import { X, Settings, CheckCircle2, Circle } from "lucide-react";
 
 const ConsentSettings = ({ isOpen, onClose }) => {
+  const { t } = useTranslation();
   const [analytics, setAnalytics] = useState(false);
   const [ads, setAds] = useState(false);
 
@@ -62,7 +64,7 @@ const ConsentSettings = ({ isOpen, onClose }) => {
               <Settings className="w-5 h-5 text-sertic-cyan" />
             </div>
             <h2 className="text-xl font-bold bg-gradient-to-r from-sertic-cyan to-sertic-light bg-clip-text text-transparent">
-              Configuración de Cookies
+              {t("cookiePolicy.settings.title")}
             </h2>
           </div>
           <button
@@ -90,9 +92,9 @@ const ConsentSettings = ({ isOpen, onClose }) => {
               )}
             </button>
             <div className="flex-1">
-              <p className="font-semibold text-white">Cookies Analíticas</p>
+              <p className="font-semibold text-white">{t("cookiePolicy.settings.analyticsTitle")}</p>
               <p className="text-sm text-gray-400 mt-1">
-                Google Analytics y herramientas similares para entender cómo usas nuestro sitio
+                {t("cookiePolicy.settings.analyticsText")}
               </p>
             </div>
           </label>
@@ -111,9 +113,9 @@ const ConsentSettings = ({ isOpen, onClose }) => {
               )}
             </button>
             <div className="flex-1">
-              <p className="font-semibold text-white">Cookies de Publicidad</p>
+              <p className="font-semibold text-white">{t("cookiePolicy.settings.adsTitle")}</p>
               <p className="text-sm text-gray-400 mt-1">
-                Anuncios personalizados según tus intereses y comportamiento
+                {t("cookiePolicy.settings.adsText")}
               </p>
             </div>
           </label>
@@ -125,13 +127,13 @@ const ConsentSettings = ({ isOpen, onClose }) => {
             onClick={onClose}
             className="flex-1 px-4 py-3 rounded-lg border border-sertic-cyan/30 hover:border-sertic-cyan/60 text-sertic-cyan hover:bg-sertic-cyan/10 font-semibold text-sm transition-all duration-300"
           >
-            Cancelar
+            {t("cookiePolicy.settings.cancel")}
           </button>
           <button
             onClick={handleSave}
             className="flex-1 px-4 py-3 rounded-lg bg-gradient-to-r from-sertic-cyan to-sertic-blue hover:from-sertic-blue hover:to-sertic-cyan text-white font-semibold text-sm transition-all duration-300 transform hover:scale-105 shadow-lg"
           >
-            Guardar
+            {t("cookiePolicy.settings.save")}
           </button>
         </div>
       </div>

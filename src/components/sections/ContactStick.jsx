@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Mail, Phone, MapPin, Send, Calendar, X, CheckCircle, XCircle } from 'lucide-react';
 import Button from '../ui/Button';
 import { Card } from '../ui/Card';
@@ -31,6 +32,7 @@ const ContactCard = ({ icon: Icon, title, content, color, index }) => {
 };
 
 const ContactForm = () => {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -51,17 +53,17 @@ const ContactForm = () => {
     const newErrors = {};
     
     if (!formData.name.trim()) {
-      newErrors.name = 'El nombre es requerido';
+      newErrors.name = t('contacto.validacion.nombre');
     }
     
     if (!formData.email.trim()) {
-      newErrors.email = 'El email es requerido';
+      newErrors.email = t('contacto.validacion.emailRequerido');
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Email inválido';
+      newErrors.email = t('contacto.validacion.emailInvalido');
     }
     
     if (!formData.message.trim()) {
-      newErrors.message = 'El mensaje es requerido';
+      newErrors.message = t('contacto.validacion.mensaje');
     }
     
     setErrors(newErrors);
@@ -104,7 +106,7 @@ const ContactForm = () => {
         setModal({
           isOpen: true,
           isSuccess: true,
-          message: '¡Mensaje enviado correctamente! Nos pondremos en contacto contigo pronto.'
+          message: t('contacto.exito')
         });
         setFormData({ name: '', email: '', company: '', phone: '', service: '', message: '' });
         setErrors({});
@@ -112,7 +114,7 @@ const ContactForm = () => {
         setModal({
           isOpen: true,
           isSuccess: false,
-          message: result?.message || 'Error al enviar el mensaje'
+          message: result?.message || t('contacto.errorEnviar')
         });
       }
     } catch (error) {
@@ -120,7 +122,7 @@ const ContactForm = () => {
       setModal({
         isOpen: true,
         isSuccess: false,
-        message: 'Hubo un problema al enviar tu mensaje. Por favor, intenta nuevamente o contáctanos directamente.'
+        message: t('contacto.errorGeneral')
       });
     } finally {
       setIsSubmitting(false);
@@ -150,14 +152,14 @@ const ContactForm = () => {
     <Card className="w-full max-w-2xl mx-auto">
       
       <h2 className="text-2xl font-bold text-center mb-6 bg-gradient-to-r from-sertic-cyan to-sertic-blue bg-clip-text text-transparent">
-        Solicita más información
+        {t('contacto.titulo')}
       </h2>
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="grid md:grid-cols-2 gap-4">
           <div>
             
             <label htmlFor="contact-name" className="block text-sm font-medium text-sertic-light mb-2">
-              Nombre completo *
+              {t('contacto.nombre')} *
             </label>
             <input
               type="text"
@@ -180,7 +182,7 @@ const ContactForm = () => {
           <div>
             
             <label htmlFor="contact-email" className="block text-sm font-medium text-sertic-light mb-2">
-              Email *
+              {t('contacto.email')} *
             </label>
             <input
               type="email"
@@ -206,7 +208,7 @@ const ContactForm = () => {
           <div>
             
             <label htmlFor="contact-company" className="block text-sm font-medium text-sertic-light mb-2">
-              Empresa
+              {t('contacto.empresa')}
             </label>
             <input
               type="text"
@@ -288,10 +290,10 @@ const ContactForm = () => {
           icon={!isSubmitting}
           aria-describedby="submit-help"
         >
-          {isSubmitting ? 'Enviando...' : 'Enviar mensaje'}
+          {isSubmitting ? t('contacto.enviando') : t('contacto.enviar')}
         </Button>
         <p id="submit-help" className="sr-only">
-          {!isFormValid ? 'Complete los campos requeridos para enviar el formulario' : 'Presione para enviar el formulario'}
+          {!isFormValid ? t('contacto.validacion.completarCampos') : t('contacto.validacion.presioneEnviar')}
         </p>
       </form>
     </Card>
@@ -308,7 +310,7 @@ const ContactForm = () => {
           <div className="p-8">
             <div className="flex justify-between items-center mb-6">
               <h2 id="modal-title" className="text-2xl font-bold bg-gradient-to-r from-sertic-cyan to-sertic-blue bg-clip-text text-transparent">
-                {modal.isSuccess ? 'Mensaje Enviado' : 'Error'}
+                {modal.isSuccess ? t('contacto.modal.enviadoTitulo') : t('contacto.modal.errorTitulo')}
               </h2>
               
               <button
@@ -327,7 +329,7 @@ const ContactForm = () => {
                 <XCircle className="w-16 h-16 text-red-500 mx-auto mb-4" aria-hidden="true" />
               )}
               <h3 className="text-xl font-semibold mb-4 text-sertic-white">
-                {modal.isSuccess ? '¡Mensaje Enviado!' : 'Oops...'}
+                {modal.isSuccess ? t('contacto.modal.enviadoMensaje') : t('contacto.modal.oops')}
               </h3>
               <p id="modal-description" className="text-sertic-light mb-6">{modal.message}</p>
               <button
@@ -347,6 +349,7 @@ const ContactForm = () => {
 };
 
 const ContactStick = () => {
+  const { t } = useTranslation();
   const { elementRef: titleRef, hasBeenVisible: titleVisible } = useIntersectionObserver();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCalendlyModalOpen, setIsCalendlyModalOpen] = useState(false); 
@@ -400,22 +403,22 @@ const ContactStick = () => {
         >
           
           <h2 id="contact-heading" className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-sertic-cyan to-sertic-blue bg-clip-text text-transparent">
-            ¿Listo para comenzar?
+            {t('contacto.titulo')}
           </h2>
           <p className="text-xl text-sertic-light max-w-3xl mx-auto mb-8">
-            Contactános y descubre cómo podemos mejorar tu infraestructura, seguridad y soporte tecnológico
+            {t('contacto.descripcion')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
             
-            <Button size="lg" icon aria-label="Solicitar cotización de servicios"
+            <Button size="lg" icon aria-label={t('serviceDetail.requestQuote')}
               onClick={handleOpenModal}
             >
-              Solicitar Cotización
+              {t('serviceDetail.requestQuote')}
             </Button>
-            <Button variant="secondary" size="lg" aria-label="Agendar una reunión" 
+            <Button variant="secondary" size="lg" aria-label={t('serviceDetail.scheduleMeeting')} 
             onClick={() =>setIsCalendlyModalOpen(true)}>
               <Calendar className="w-5 h-5 mr-2" aria-hidden="true" />
-              Agendar Reunión
+              {t('serviceDetail.scheduleMeeting')}
             </Button>
           </div>
         </div>

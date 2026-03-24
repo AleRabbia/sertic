@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const CasosExito = () => {
+  const { t } = useTranslation();
   const [activeFilter, setActiveFilter] = useState('todos');
 
   const cases = [
@@ -55,10 +57,10 @@ const CasosExito = () => {
   ];
 
   const filters = [
-    { id: 'todos', name: 'Todos' },
-    { id: 'infraestructura', name: 'Infraestructura' },
-    { id: 'soporte', name: 'Soporte Remoto' },
-    { id: 'staffing', name: 'Staffing' },
+    { id: 'todos', name: t('casosExito.todos') },
+    { id: 'infraestructura', name: t('casosExito.infraestructura') },
+    { id: 'soporte', name: t('casosExito.soporte') },
+    { id: 'staffing', name: t('casosExito.staffing') },
   ];
 
   const filteredCases =
@@ -71,10 +73,10 @@ const CasosExito = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
-            Casos de Éxito
+            {t('casosExito.titulo')}
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Algunos ejemplos reales de cómo apoyamos a nuestros clientes en sectores como agroindustria, salud, educación y tecnología.
+            {t('casosExito.subtitulo')}
           </p>
         </div>
 

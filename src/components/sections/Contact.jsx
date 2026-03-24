@@ -6,6 +6,7 @@ import QuoteModal from '../ui/QuoteModal';
 import { contactInfo, internationalContacts } from '../../data/contact';
 import ContactForm from './ContactForm';
 import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
+import { useTranslation } from 'react-i18next';
 
 import heroImage from '../../assets/hero/escritorio.jpeg';
 
@@ -48,6 +49,7 @@ const InternationalContactCard = ({ country, phone, email, index }) => {
 };
 
 const Contact = () => {
+  const { t } = useTranslation();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { elementRef: titleRef, hasBeenVisible: titleVisible } = useIntersectionObserver();
 
@@ -87,11 +89,11 @@ const Contact = () => {
         <div className="relative z-10 max-w-7xl mx-auto px-6 w-full pt-24">
           <div className="max-w-4xl">
             <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-sertic-cyan to-sertic-blue bg-clip-text text-transparent">
-              ¿Listo para comenzar?
+              {t('contacto.heroTitle')}
             </h1>
 
             <p className="text-xl text-sertic-light mb-10">
-              Estamos listos para transformar tu infraestructura tecnológica
+              {t('contacto.heroSubtitle')}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
@@ -99,7 +101,7 @@ const Contact = () => {
                 size="lg"
                 onClick={handleOpenModal}
               >
-                Solicitar cotización
+                {t('serviceDetail.requestQuote')}
               </Button>
 
               <Button
@@ -108,7 +110,7 @@ const Contact = () => {
                 onClick={handleScheduleMeeting}
               >
                 <Calendar className="w-5 h-5 mr-2" />
-                Agendar reunión
+                {t('serviceDetail.scheduleMeeting')}
               </Button>
             </div>
           </div>
@@ -128,10 +130,10 @@ const Contact = () => {
             }`}
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-sertic-cyan to-sertic-blue bg-clip-text text-transparent">
-              Contactános
+              {t('contacto.contactHeading')}
             </h2>
             <p className="text-xl text-sertic-light max-w-2xl mx-auto">
-              Completa el formulario y nos pondremos en contacto a la brevedad
+              {t('contacto.contactFormSubtitle')}
             </p>
           </div>
           
@@ -173,10 +175,10 @@ const Contact = () => {
           <div className="mt-24">
             <div className="text-center mb-12">
               <h3 className="text-3xl font-bold mb-4 bg-gradient-to-r from-sertic-cyan to-sertic-blue bg-clip-text text-transparent">
-                Contactos Internacionales
+                {t('contacto.internationalTitle')}
               </h3>
               <p className="text-xl text-sertic-light max-w-2xl mx-auto">
-                Estamos presentes en múltiples países para brindarte un mejor servicio
+                {t('contacto.internationalSubtitle')}
               </p>
             </div>
 

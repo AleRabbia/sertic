@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Navigation, Footer } from '../components/layout';
 import { useNavigate } from 'react-router-dom';
 import { Award, ArrowLeft, Filter, Users, Clock, CheckCircle, TrendingUp } from 'lucide-react';
@@ -7,6 +8,7 @@ import QuoteModal from '../components/ui/QuoteModal';
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 
 const CasosExitoPage = () => {
+  const { t } = useTranslation();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -48,18 +50,29 @@ const CasosExitoPage = () => {
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
+
+  const getCategoryLabel = (cat) => {
+    if (!cat) return t('casosExito.sinCategoria');
+    return t(`casosExito.${cat}`, cat);
+  };
+
+  const getSectorLabel = (sector) => {
+    if (!sector) return t('casosExito.sinSector');
+    return t(`casosExito.${sector}`, sector);
+  };
+
   const categoryFilters = [
-    { id: 'todos', name: 'Todos los servicios' },
-    { id: 'infraestructura', name: 'Infraestructura' },
-    { id: 'soporte', name: 'Soporte Remoto' },
-    { id: 'staffing', name: 'Staffing IT' }
+    { id: 'todos', name: t('casosExito.todos') },
+    { id: 'infraestructura', name: t('casosExito.infraestructura') },
+    { id: 'soporte', name: t('casosExito.soporte') },
+    { id: 'staffing', name: t('casosExito.staffing') }
   ];
 
   const sectorFilters = [
-    { id: 'todos', name: 'Todos los sectores' },
-    { id: 'servicios', name: 'Servicios' },
-    { id: 'educacion', name: 'Educación' },
-    { id: 'tecnologia', name: 'Tecnología' }
+    { id: 'todos', name: t('casosExito.todosSectores') },
+    { id: 'servicios', name: t('casosExito.servicios') },
+    { id: 'educacion', name: t('casosExito.educacion') },
+    { id: 'tecnologia', name: t('casosExito.tecnologia') }
   ];
   
   const CaseCard = ({ caso, index }) => {
@@ -102,16 +115,16 @@ const CasosExitoPage = () => {
                     key={i}
                     className="px-3 py-1 bg-gradient-to-r from-sertic-cyan/20 to-sertic-blue/20 border border-sertic-cyan/50 rounded-full text-xs font-semibold text-sertic-light hover:from-sertic-cyan/30 hover:to-sertic-blue/30 transition-all"
                   >
-                    {cat.charAt(0).toUpperCase() + cat.slice(1)}
+                    {getCategoryLabel(cat)}
                   </span>
                 ))
                 : (
                   <span className="px-3 py-1 bg-gradient-to-r from-sertic-cyan/20 to-sertic-blue/20 border border-sertic-cyan/50 rounded-full text-xs font-semibold text-sertic-light">
-                    {caso.category ? caso.category.charAt(0).toUpperCase() + caso.category.slice(1) : "Sin categoría"}
+                    {caso.category ? getCategoryLabel(caso.category) : t('casosExito.sinCategoria')}
                   </span>
                 )}
               <span className="px-3 py-1 bg-slate-700/50 border border-slate-600/50 rounded-full text-xs text-gray-300">
-                {caso.sector ? caso.sector.charAt(0).toUpperCase() + caso.sector.slice(1) : "Sin sector"}
+                {caso.sector ? getSectorLabel(caso.sector) : t('casosExito.sinSector')}
               </span>
             </div>
 
@@ -139,7 +152,7 @@ const CasosExitoPage = () => {
             <div className="mb-6">
               <h4 className="text-xs font-bold text-sertic-cyan mb-3 uppercase tracking-wider flex items-center gap-2">
                 <span className="w-1 h-4 bg-gradient-to-b from-sertic-cyan to-sertic-blue rounded"></span>
-                Solución Implementada
+                {t('casosExito.solucionImplementada')}
               </h4>
               <div className="space-y-2">
                 {(expandedMetrics[caso.id] ? caso.metrics : caso.metrics.slice(0, 3)).map((metric, index) => (
@@ -154,8 +167,8 @@ const CasosExitoPage = () => {
                     className="mt-2 px-3 py-1 bg-slate-700/30 hover:bg-slate-700/50 rounded-lg text-xs text-gray-400 hover:text-gray-300 transition-all"
                   >
                     {expandedMetrics[caso.id]
-                      ? '↑ Ver menos'
-                      : `+${caso.metrics.length - 3} más`
+                      ? t('casosExito.verMenos')
+                      : t('casosExito.mas', { count: caso.metrics.length - 3 })
                     }
                   </button>
                 )}
@@ -166,7 +179,7 @@ const CasosExitoPage = () => {
             <div className="mb-6">
               <h4 className="text-xs font-bold text-sertic-cyan mb-3 uppercase tracking-wider flex items-center gap-2">
                 <span className="w-1 h-4 bg-gradient-to-b from-sertic-cyan to-sertic-blue rounded"></span>
-                Resultados Clave
+                {t('casosExito.resultadosClave')}
               </h4>
               <div className="space-y-2">
                 {(expandedResults[caso.id] ? caso.results : caso.results.slice(0, 3)).map((result, index) => (
@@ -181,8 +194,8 @@ const CasosExitoPage = () => {
                     className="mt-2 px-3 py-1 bg-slate-700/30 hover:bg-slate-700/50 rounded-lg text-xs text-gray-400 hover:text-gray-300 transition-all"
                   >
                     {expandedResults[caso.id]
-                      ? '↑ Ver menos'
-                      : `+${caso.results.length - 3} más`
+                      ? t('casosExito.verMenos')
+                      : t('casosExito.mas', { count: caso.results.length - 3 })
                     }
                   </button>
                 )}
@@ -193,7 +206,7 @@ const CasosExitoPage = () => {
             <div className="mb-6">
               <h4 className="text-xs font-bold text-sertic-blue mb-3 uppercase tracking-wider flex items-center gap-2">
                 <span className="w-1 h-4 bg-gradient-to-b from-sertic-blue to-sertic-cyan rounded"></span>
-                Stack Tecnológico
+                {t('casosExito.stackTecnologico')}
               </h4>
               <div className="flex flex-wrap gap-2">
                 {(expandedTechs[caso.id] ? caso.technologies : caso.technologies.slice(0, 5)).map((tech, index) => (
@@ -210,8 +223,8 @@ const CasosExitoPage = () => {
                     className="px-3 py-1 bg-slate-700/30 rounded-full text-xs text-gray-400 hover:text-gray-300 hover:bg-slate-700/50 transition-all"
                   >
                     {expandedTechs[caso.id]
-                      ? '↑ Ver menos'
-                      : `+${caso.technologies.length - 5}`
+                      ? t('casosExito.verMenos')
+                      : t('casosExito.mas', { count: caso.technologies.length - 5 })
                     }
                   </button>
                 )}
@@ -261,16 +274,16 @@ const CasosExitoPage = () => {
               className="flex items-center gap-2 text-sertic-cyan hover:text-sertic-light transition-colors mb-10 group"
             >
               <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
-              Volver
+              {t('common.back')}
             </button>
 
             {/* Título */}
             <div className="text-center mb-16">
               <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-sertic-cyan via-sertic-blue to-sertic-cyan bg-clip-text text-transparent">
-                Casos de Éxito
+                {t('casosExito.titulo')}
               </h1>
               <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-                Descubre cómo hemos transformado empresas de diferentes sectores, optimizando su infraestructura tecnológica y potenciando su crecimiento digital
+                {t('casosExito.subtitulo')}
               </p>
             </div>
 
@@ -284,7 +297,7 @@ const CasosExitoPage = () => {
                       : 'text-sertic-light hover:text-white'
                     }`}
                 >
-                  Por Servicio
+                  {t('casosExito.porServicio')}
                 </button>
                 <button
                   onClick={() => { setFilterType('sector'); setActiveFilter('todos'); }}
@@ -293,7 +306,7 @@ const CasosExitoPage = () => {
                       : 'text-sertic-light hover:text-white'
                     }`}
                 >
-                  Por Sector
+                  {t('casosExito.porSector')}
                 </button>
               </div>
             </div>
@@ -328,7 +341,7 @@ const CasosExitoPage = () => {
                 ))
               ) : (
                 <div className="col-span-full text-center py-12">
-                  <p className="text-gray-400 text-lg">No hay casos disponibles para esta categoría</p>
+                  <p className="text-gray-400 text-lg">{t('casosExito.noCases')}</p>
                 </div>
               )}
             </div>
@@ -341,17 +354,17 @@ const CasosExitoPage = () => {
             <div className="text-center mb-16">
               <Award className="w-14 h-14 text-sertic-cyan mx-auto mb-4" />
               <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-sertic-cyan via-sertic-blue to-sertic-cyan bg-clip-text text-transparent">
-                Resultados que Hablan
+                {t('casosExito.resultadosQueHablan')}
               </h2>
-              <p className="text-gray-400">Métricas que demuestran nuestro compromiso con la excelencia</p>
+              <p className="text-gray-400">{t('casosExito.metricasCompromiso')}</p>
             </div>
 
             <div className="grid md:grid-cols-4 gap-8">
               {[
-                { value: `${casosPublicados.length}+`, label: 'Casos de Éxito' },
-                { value: '99.8%', label: 'Uptime Promedio' },
-                { value: '24/7', label: 'Soporte' },
-                { value: '100%', label: 'Clientes Satisfechos' }
+                { value: `${casosPublicados.length}+`, label: t('casosExito.stats.cases') },
+                { value: '99.8%', label: t('casosExito.stats.uptime') },
+                { value: '24/7', label: t('casosExito.stats.support') },
+                { value: '100%', label: t('casosExito.stats.clients') }
               ].map((stat, index) => {
                 const { elementRef, hasBeenVisible } = useIntersectionObserver();
                 return (
@@ -383,23 +396,23 @@ const CasosExitoPage = () => {
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="bg-gradient-to-r from-slate-800/60 to-slate-900/60 backdrop-blur-sm rounded-3xl p-12 border border-slate-700/30 hover:border-sertic-cyan/50 transition-all duration-300">
               <h2 className="text-4xl md:text-5xl font-bold mb-6 text-center bg-gradient-to-r from-sertic-cyan to-sertic-blue bg-clip-text text-transparent">
-                ¿Tu empresa será nuestro próximo caso de éxito?
+                {t('casosExito.ctaTitle')}
               </h2>
               <p className="text-xl text-gray-300 mb-10 text-center max-w-2xl mx-auto">
-                Descubre cómo podemos ayudarte a optimizar tu infraestructura, aumentar productividad y alcanzar tus objetivos digitales
+                {t('casosExito.ctaSubtitle')}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <button
                   onClick={handleOpenModal}
                   className="bg-gradient-to-r from-sertic-cyan to-sertic-blue hover:from-sertic-blue hover:to-sertic-cyan text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-cyan-500/30"
                 >
-                  Solicitar Cotización
+                  {t('testimonios.ctaButton')}
                 </button>
                 <button
                   onClick={() => navigate('/servicios/infraestructura-it')}
                   className="border-2 border-sertic-cyan/50 hover:border-sertic-cyan text-sertic-cyan hover:text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 hover:bg-sertic-cyan/10"
                 >
-                  Ver Servicios
+                  {t('casosExito.verServicios')}
                 </button>
               </div>
             </div>

@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Navigation, Footer } from '../components/layout';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Filter } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { testimonials } from '../data/testimonials';
 
 const TestimoniosPage = () => {
+    const { t } = useTranslation();
     const [activeFilter, setActiveFilter] = useState('todos');
     const navigate = useNavigate();
     useEffect(() => {
@@ -12,12 +14,12 @@ const TestimoniosPage = () => {
     }, []);
   // Definir sectores
   const sectors = [
-    { id: 'todos', name: 'Todos los sectores' },
-    { id: 'agroindustria', name: 'Agroindustria' },
-    { id: 'salud', name: 'Salud' },
-    { id: 'educacion', name: 'Educación' },
-    { id: 'tecnologia', name: 'Tecnología' },
-    { id: 'servicios', name: 'Servicios' }
+    { id: 'todos', name: t('testimonios.filterAll') },
+    { id: 'agroindustria', name: t('testimonios.sectorAgroindustria') },
+    { id: 'salud', name: t('testimonios.sectorSalud') },
+    { id: 'educacion', name: t('testimonios.sectorEducacion') },
+    { id: 'tecnologia', name: t('testimonios.sectorTecnologia') },
+    { id: 'servicios', name: t('testimonios.sectorServicios') }
   ];
 
   // Filtrar testimonios
@@ -38,17 +40,16 @@ const TestimoniosPage = () => {
               className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors"
             >
               <ArrowLeft className="w-5 h-5" />
-              Volver
+              {t('testimonios.back')}
             </button>
           </div>
 
           <div className="text-center mb-16">
             <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
-              Testimonios de Nuestros Clientes
+              {t('testimonios.pageTitle')}
             </h1>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Descubre las experiencias reales de empresas que han confiado en
-              nuestros servicios para transformar su infraestructura tecnológica
+              {t('testimonios.pageDescription')}
             </p>
           </div>
 
@@ -92,7 +93,7 @@ const TestimoniosPage = () => {
                         {testimonial.name}
                       </h3>
                       <p className="text-cyan-400 font-semibold">
-                        {testimonial.position || 'Cliente'}
+                        {testimonial.position || t('testimonios.client')}
                       </p>
                       <p className="text-gray-400">{testimonial.company}</p>
                     </div>
@@ -117,7 +118,7 @@ const TestimoniosPage = () => {
                     {testimonial.project && (
                       <div>
                         <h4 className="text-sm font-semibold text-cyan-400 mb-2">
-                          PROYECTO
+                          {t('testimonios.project')}
                         </h4>
                         <p className="text-gray-300">{testimonial.project}</p>
                       </div>
@@ -125,7 +126,7 @@ const TestimoniosPage = () => {
                     {testimonial.duration && (
                       <div>
                         <h4 className="text-sm font-semibold text-cyan-400 mb-2">
-                          DURACIÓN
+                          {t('testimonios.duration')}
                         </h4>
                         <p className="text-gray-300">{testimonial.duration}</p>
                       </div>
@@ -135,7 +136,7 @@ const TestimoniosPage = () => {
                   {testimonial.results && (
                     <div>
                       <h4 className="text-sm font-semibold text-cyan-400 mb-3">
-                        RESULTADOS CLAVE
+                        {t('testimonios.keyResults')}
                       </h4>
                       <div className="flex flex-wrap gap-2">
                         {testimonial.results.map((result, index) => (
@@ -157,17 +158,16 @@ const TestimoniosPage = () => {
           {/* Call to Action */}
           <div className="text-center mt-16 bg-gradient-to-r from-slate-800/50 to-slate-900/50 backdrop-blur-sm rounded-2xl p-12 border border-slate-700/50">
             <h3 className="text-3xl font-bold mb-4">
-              ¿Listo para ser nuestro próximo caso de éxito?
+              {t('testimonios.ctaTitle')}
             </h3>
             <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-              Únete a empresas líderes que ya confían en SerTIC para sus
-              necesidades tecnológicas
+              {t('testimonios.ctaSubtitle')}
             </p>
             <button
               onClick={() => (window.location.href = '/')}
               className="bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-600 hover:to-purple-700 px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105"
             >
-              Solicitar Cotización
+              {t('testimonios.ctaButton')}
             </button>
           </div>
         </div>

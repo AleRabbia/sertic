@@ -4,15 +4,21 @@ import { CheckCircle, ArrowRight } from 'lucide-react';
 import { Card } from '../ui/Card';
 import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
 import { services } from '../../data/services';
+import { useTranslation } from 'react-i18next';
 
 const ServiceCard = ({ service, index }) => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const { elementRef, hasBeenVisible } = useIntersectionObserver();
   const IconComponent = service.icon;
 
   const handleClick = () => {
     navigate(`/servicios/${service.slug}`);
   };
+
+  const translatedTitle = t(`serviceData.${service.id}.title`, service.title);
+  const translatedDescription = t(`serviceData.${service.id}.description`, service.description);
+  const translatedFeatures = t(`serviceData.${service.id}.features`, { returnObjects: true, defaultValue: service.features });
 
   return (
     <div 
@@ -32,11 +38,11 @@ const ServiceCard = ({ service, index }) => {
           <IconComponent className="w-8 h-8" />
         </div>
         <h3 className="text-xl font-bold mb-4 text-white group-hover:text-sertic-cyan transition-colors">
-          {service.title}
+          {translatedTitle}
         </h3>
-        <p className="text-sm text-gray-400 mb-6 flex-grow">{service.description}</p>
+        <p className="text-sm text-gray-400 mb-6 flex-grow">{translatedDescription}</p>
         <ul className="space-y-2 mb-6">
-          {service.features.slice(0, 3).map((feature, idx) => (
+          {translatedFeatures.slice(0, 3).map((feature, idx) => (
             <li key={idx} className="flex items-center text-sm text-gray-300">
               <CheckCircle className={`w-4 h-4 text-${service.color}-400 mr-2 flex-shrink-0`} />
               {feature}
@@ -45,7 +51,7 @@ const ServiceCard = ({ service, index }) => {
         </ul>
         <div className="mt-auto">
           <span className="inline-flex items-center gap-2 text-sertic-cyan font-semibold group-hover:gap-4 transition-all">
-            Detalles
+            {t('common.details')}
             <ArrowRight className="w-4 h-4" />
           </span>
         </div>
@@ -55,15 +61,17 @@ const ServiceCard = ({ service, index }) => {
 };
 
 const Services = () => {
+  const { t } = useTranslation();
+
   return (
     <section id="servicios" className="py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-sertic-cyan via-sertic-blue to-sertic-cyan bg-clip-text text-transparent">
-            Nuestros Servicios
+            {t('services.titulo')}
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Ofrecemos soluciones tecnológicas completas para llevar tu negocio al siguiente nivel
+            {t('services.descripcion')}
           </p>
         </div>
 

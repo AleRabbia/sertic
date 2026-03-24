@@ -1,6 +1,6 @@
 export const navigationLinks = [
-  { href: "#inicio", label: "Inicio" },
-  { href: "#servicios", label: "Servicios" },
-  { href: "/nosotros", label: "Nosotros", isPage: true },
-  { href: "/contacto", label: "Contacto", isPage: true }
+  { href: "#inicio", labelKey: "nav.inicio" },
+  { href: "#servicios", labelKey: "nav.servicios" },
+  { href: "/nosotros", labelKey: "nav.nosotros", isPage: true },
+  { href: "/contacto", labelKey: "nav.contacto", isPage: true }
 ];

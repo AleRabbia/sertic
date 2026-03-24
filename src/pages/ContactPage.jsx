@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { Calendar, Globe, Mail, Phone, ArrowLeft, MapPin } from 'lucide-react';
 import { Navigation, Footer } from '../components/layout';
 import Button from '../components/ui/Button';
@@ -65,6 +66,7 @@ const InternationalContactCard = ({ country, flag, city, address, phone, email }
 
 
 const ContactPage = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isCalendlyModalOpen, setIsCalendlyModalOpen] = useState(false); 
@@ -117,7 +119,7 @@ const ContactPage = () => {
                   className="flex items-center gap-2 text-sertic-cyan hover:text-sertic-light transition group"
                 >
                   <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
-                  Volver
+                  {t('nav.inicio')}
                 </button>
               </div>
             </div>
@@ -126,11 +128,11 @@ const ContactPage = () => {
             <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-24">
               <div className="max-w-4xl">
                 <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-sertic-cyan to-sertic-blue bg-clip-text text-transparent">
-                  ¿Listo para comenzar?
+                  {t('contacto.titulo')}
                 </h1>
 
                 <p className="text-xl text-sertic-light mb-10">
-                  Estamos listos para transformar tu infraestructura tecnológica
+                  {t('contacto.subtitulo')}
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4">
@@ -138,7 +140,7 @@ const ContactPage = () => {
                     size="lg"
                     onClick={handleOpenModal}
                   >
-                    Solicitar cotización
+                    {t('nav.cotizacion')}
                   </Button>
 
                   <Button
@@ -147,7 +149,7 @@ const ContactPage = () => {
                     onClick={() => setIsCalendlyModalOpen(true)}
                   >
                     <Calendar className="w-5 h-5 mr-2" />
-                    Agendar reunión
+                    {t('contacto.agendarReunion')}
                   </Button>
                 </div>
               </div>

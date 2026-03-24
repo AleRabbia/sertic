@@ -1,11 +1,12 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { Navigation, Footer } from "../components/layout";
 import { ArrowLeft } from "lucide-react";
 
 const PrivPoli = () => {
+  const { t } = useTranslation();
 
-  
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -27,20 +28,17 @@ const PrivPoli = () => {
                             className="flex items-center gap-2 text-sertic-cyan hover:text-sertic-light transition group"
                           >
                             <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
-                            Volver
+                            {t("common.back")}
                           </button>
                         </div>
 
           {/* Header */}
           <div className="text-center mb-12">
             <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-sertic-cyan to-sertic-blue bg-clip-text text-transparent">
-              Política de Privacidad
+              {t("privacyPolicy.title")}
             </h1>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              En
-              <a className="font-semibold"> SerTIC Tech Solutions </a> 
-              valoramos tu privacidad. Esta política describe 
-              cómo recopilamos, usamos y protegemos tus datos personales.
+              {t("privacyPolicy.subtitle")}
             </p>
           </div>
 
@@ -48,39 +46,36 @@ const PrivPoli = () => {
           <div className="max-w-3xl mx-auto space-y-6 text-gray-300">
             <section>
               <h2 className="text-2xl font-semibold mb-2">
-                1. Información que recopilamos
+                {t("privacyPolicy.section1.title")}
               </h2>
-              <p>
-                Podemos recopilar datos de contacto, uso de servicios, 
-                formularios web, etc.
-              </p>
+              <p>{t("privacyPolicy.section1.text")}</p>
             </section>
 
             <section>
               <h2 className="text-2xl font-semibold mb-2">
-                2. Uso de la información
+                {t("privacyPolicy.section2.title")}
               </h2>
-              <p>
-                Utilizamos los datos para prestar nuestros servicios, 
-                mejorar procesos y comunicarnos con vos.
-              </p>
+              <p>{t("privacyPolicy.section2.text")}</p>
             </section>
 
             <section>
               <h2 className="text-2xl font-semibold mb-2">
-                3. Tus derechos
+                {t("privacyPolicy.section3.title")}
               </h2>
               <p>
-                Podés solicitar acceso, corrección o 
-                eliminación de tus datos escribiendo a 
-                <a href={`mailto:info@sertic.cloud`}
-                className="hover:text-cyan-400 font-semibold transition-colors text-sm"> info@sertic.cloud</a>
-                .
+                {t("privacyPolicy.section3.textPrefix")}
+                <a
+                  href="mailto:info@sertic.cloud"
+                  className="hover:text-cyan-400 font-semibold transition-colors text-sm"
+                >
+                  info@sertic.cloud
+                </a>
+                {t("privacyPolicy.section3.textSuffix")}
               </p>
             </section>
 
             <p className="mt-8 text-sm opacity-80">
-              Última actualización: Octubre 2025
+              {t("privacyPolicy.lastUpdate")}
             </p>
           </div>
         </div>

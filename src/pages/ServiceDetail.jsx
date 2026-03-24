@@ -1,13 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate, Link } from 'react-router-dom';
-import { ArrowLeft, CheckCircle, TrendingUp, Calendar, Mail, ArrowRight } from 'lucide-react';
-import { Navigation, Footer } from '../components/layout';
-import { Card } from '../components/ui/Card';
-import { getServiceBySlug, getRelatedServices } from '../data/services';
-import QuoteModal from '../components/ui/QuoteModal';
-import CalendlyModal from '../components/ui/Calendlymodal';
-import Button from '../components/ui/Button';
-import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
+import React, { useEffect, useState } from "react";
+import { useParams, useNavigate, Link } from "react-router-dom";
+import {
+  ArrowLeft,
+  CheckCircle,
+  TrendingUp,
+  Calendar,
+  Mail,
+  ArrowRight,
+} from "lucide-react";
+import { Navigation, Footer } from "../components/layout";
+import { useTranslation } from "react-i18next";
+import { Card } from "../components/ui/Card";
+import { getServiceBySlug, getRelatedServices } from "../data/services";
+import QuoteModal from "../components/ui/QuoteModal";
+import CalendlyModal from "../components/ui/Calendlymodal";
+import Button from "../components/ui/Button";
+import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
 
 const FeatureCard = ({ icon: Icon, title, description, index }) => {
   const { elementRef, hasBeenVisible } = useIntersectionObserver();
@@ -16,9 +24,7 @@ const FeatureCard = ({ icon: Icon, title, description, index }) => {
     <div
       ref={elementRef}
       className={`transition-all duration-700 ${
-        hasBeenVisible
-          ? 'opacity-100 translate-y-0'
-          : 'opacity-0 translate-y-8'
+        hasBeenVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
       }`}
       style={{ transitionDelay: `${index * 150}ms` }}
     >
@@ -38,9 +44,7 @@ const FeatureCard = ({ icon: Icon, title, description, index }) => {
           {title}
         </h3>
 
-        <p className="text-gray-400 leading-relaxed">
-          {description}
-        </p>
+        <p className="text-gray-400 leading-relaxed">{description}</p>
       </Card>
     </div>
   );
@@ -49,10 +53,11 @@ const FeatureCard = ({ icon: Icon, title, description, index }) => {
 const ServiceDetail = () => {
   const { slug } = useParams();
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const service = getServiceBySlug(slug);
   const relatedServices = getRelatedServices(slug, 3);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isCalendlyModalOpen, setIsCalendlyModalOpen] = useState(false); 
+  const [isCalendlyModalOpen, setIsCalendlyModalOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
@@ -64,13 +69,13 @@ const ServiceDetail = () => {
       <div className="min-h-screen bg-gradient-to-br from-sertic-blue via-sertic-black to-sertic-blue flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-4xl font-bold text-white mb-4">
-            Servicio no encontrado
+            {t("serviceDetail.notFound")}
           </h1>
           <button
-            onClick={() => navigate('/')}
+            onClick={() => navigate("/")}
             className="bg-gradient-to-r from-sertic-cyan to-sertic-blue px-6 py-3 rounded-full hover:scale-105 transition-transform"
           >
-            Volver
+            {t("serviceDetail.back")}
           </button>
         </div>
       </div>
@@ -78,6 +83,24 @@ const ServiceDetail = () => {
   }
 
   const IconComponent = service.icon;
+  const serviceTitle = t(`serviceData.${service.id}.title`, service.title);
+  const serviceDescription = t(`serviceData.${service.id}.description`, service.description);
+  const serviceFullDescription = t(`serviceData.${service.id}.fullDescription`, service.fullDescription);
+
+  const serviceFeatures = t(`serviceData.${service.id}.features`, {
+    returnObjects: true,
+    defaultValue: service.features,
+  });
+
+  const serviceBenefits = t(`serviceData.${service.id}.benefits`, {
+    returnObjects: true,
+    defaultValue: service.benefits,
+  });
+
+  const serviceDetailedFeatures = t(`serviceData.${service.id}.detailedFeatures`, {
+    returnObjects: true,
+    defaultValue: service.detailedFeatures,
+  });
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -87,14 +110,12 @@ const ServiceDetail = () => {
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
-  
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-sertic-blue via-sertic-black to-sertic-blue text-sertic-white">
       <Navigation />
 
       <main className="relative">
-
         {/* HERO CON IMAGEN DEL SERVICIO */}
         <section className="relative min-h-screen overflow-hidden flex items-center">
           <div className="absolute inset-0">
@@ -109,193 +130,209 @@ const ServiceDetail = () => {
           </div>
           <div className="relative z-10 w-full py-24 lg:min-h-screen flex items-start lg:items-center">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-
               <button
-                onClick={() => navigate('/')}
+                onClick={() => navigate("/")}
                 className="flex items-center gap-2 text-sertic-cyan hover:text-sertic-light transition-colors mb-10 group"
               >
                 <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
-                Volver
+                {t("nav.inicio")}
               </button>
 
               <div className="grid lg:grid-cols-2 gap-12 items-center">
                 <div>
                   <div className="flex items-center gap-4 mb-6">
-                    <div className={`bg-gradient-to-br from-sertic-cyan to-sertic-blue p-4 rounded-2xl`}>
+                    <div
+                      className={`bg-gradient-to-br from-sertic-cyan to-sertic-blue p-4 rounded-2xl`}
+                    >
                       <IconComponent className="w-8 h-8 text-white" />
                     </div>
                     <span className="text-sertic-cyan font-semibold text-lg">
-                      Servicio Profesional
+                      {t("serviceDetail.professionalService")}
                     </span>
                   </div>
 
-                  <h1 className={`text-4xl sm:text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r ${service.gradient} bg-clip-text text-transparent`}>
-                    {service.title}
+                  <h1
+                    className={`text-4xl sm:text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r ${service.gradient} bg-clip-text text-transparent`}
+                  >
+                    {serviceTitle}
                   </h1>
 
                   <p className="text-xl text-sertic-light mb-8 leading-relaxed">
-                    {service.fullDescription}
+                    {serviceFullDescription}
                   </p>
 
                   <div className="flex flex-wrap gap-4">
-                    <Button size="lg" icon aria-label="Solicitar cotización de servicios"
+                    <Button
+                      size="lg"
+                      icon
+                      aria-label={t("serviceDetail.requestQuote")}
                       onClick={handleOpenModal}
                     >
-                      Solicitar Cotización
+                      {t("serviceDetail.requestQuote")}
                     </Button>
 
                     <Button
                       variant="secondary"
                       size="lg"
                       onClick={() => setIsCalendlyModalOpen(true)}
-                  >
+                    >
                       <Calendar className="w-5 h-5 mr-2" />
-                      Agendar Reunión
+                      {t("serviceDetail.scheduleMeeting")}
                     </Button>
                   </div>
                 </div>
 
                 {/* Modal de Cotización */}
-                <QuoteModal
-                  isOpen={isModalOpen}
-                  onClose={handleCloseModal}
-                />
+                <QuoteModal isOpen={isModalOpen} onClose={handleCloseModal} />
 
                 <CalendlyModal
-        isOpen={isCalendlyModalOpen}
-        onClose={() => setIsCalendlyModalOpen(false)}
-      />
+                  isOpen={isCalendlyModalOpen}
+                  onClose={() => setIsCalendlyModalOpen(false)}
+                />
 
                 <Card
                   hover={false}
                   className="hidden lg:block bg-black/60 backdrop-blur-md"
                 >
                   <h3 className="text-2xl font-bold mb-6 text-sertic-cyan">
-                    Características Principales
+                    {t("serviceDetail.benefitsHeading")}
                   </h3>
                   <ul className="space-y-4">
-                    {service.features.map((feature, idx) => (
+                    {serviceFeatures.map((feature, idx) => (
                       <li key={idx} className="flex items-start gap-3">
                         <CheckCircle className="w-6 h-6 text-sertic-cyan mt-1" />
-                        <span className="text-sertic-light text-lg">{feature}</span>
+                        <span className="text-sertic-light text-lg">
+                          {feature}
+                        </span>
                       </li>
                     ))}
                   </ul>
                 </Card>
-
               </div>
             </div>
           </div>
         </section>
 
         {/* FEATURES DETALLADOS */}
-<section className="py-20 bg-sertic-black/30">
-  <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-      {service.detailedFeatures.map((feature, idx) => (
-        <FeatureCard
-          key={idx}
-          index={idx}
-          icon={feature.icon}
-          title={feature.title}
-          description={feature.description}
-        />
-      ))}
-    </div>
-  </div>
-</section>
+        <section className="py-20 bg-sertic-black/30">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {serviceDetailedFeatures.map((feature, idx) => (
+                <FeatureCard
+                  key={idx}
+                  index={idx}
+                  icon={feature.icon}
+                  title={feature.title}
+                  description={feature.description}
+                />
+              ))}
+            </div>
+          </div>
+        </section>
 
-       {/* BENEFICIOS Y STACK TECNOLÓGICO */}
-<section className="py-20 bg-black/30">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    {/* Beneficios */}
-    <div className="mb-20 flex flex-col items-center">
-      <div className="text-center mb-12">
-        <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-sertic-cyan via-sertic-blue to-sertic-cyan bg-clip-text text-transparent">
-          Beneficios Clave
-        </h2>
-        <p className="text-lg text-gray-300">Descubre las ventajas de elegir nuestros servicios</p>
-      </div>
+        {/* BENEFICIOS Y STACK TECNOLÓGICO */}
+        <section className="py-20 bg-black/30">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            {/* Beneficios */}
+            <div className="mb-20 flex flex-col items-center">
+              <div className="text-center mb-12">
+                <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-sertic-cyan via-sertic-blue to-sertic-cyan bg-clip-text text-transparent">
+                  {t("serviceDetail.benefitsHeading")}
+                </h2>
+                <p className="text-lg text-gray-300">
+                  {t("serviceDetail.benefitsText")}
+                </p>
+              </div>
 
-      <div className="space-y-4 max-w-2xl">
-        {service.benefits.map((benefit, idx) => {
-          const { elementRef, hasBeenVisible } = useIntersectionObserver();
-          return (
-            <div
-              key={idx}
-              ref={elementRef}
-              className={`transition-all duration-700 ${
-                hasBeenVisible
-                  ? 'opacity-100 translate-y-0'
-                  : 'opacity-0 translate-y-8'
-              }`}
-              style={{ transitionDelay: `${idx * 150}ms` }}
-            >
-              <div className="flex items-center gap-4 bg-sertic-dark/30 p-4 rounded-xl border border-sertic-gray/20 hover:border-sertic-cyan/50 transition-all duration-300">
-                <div className="bg-gradient-to-br from-sertic-cyan to-sertic-blue p-2 rounded-lg flex-shrink-0">
-                  <TrendingUp className="w-5 h-5 text-white" />
-                </div>
-                <span className="text-sertic-light font-medium">
-                  {benefit}
-                </span>
+              <div className="space-y-4 max-w-2xl">
+                {serviceBenefits.map((benefit, idx) => {
+                  const { elementRef, hasBeenVisible } =
+                    useIntersectionObserver();
+                  return (
+                    <div
+                      key={idx}
+                      ref={elementRef}
+                      className={`transition-all duration-700 ${
+                        hasBeenVisible
+                          ? "opacity-100 translate-y-0"
+                          : "opacity-0 translate-y-8"
+                      }`}
+                      style={{ transitionDelay: `${idx * 150}ms` }}
+                    >
+                      <div className="flex items-center gap-4 bg-sertic-dark/30 p-4 rounded-xl border border-sertic-gray/20 hover:border-sertic-cyan/50 transition-all duration-300">
+                        <div className="bg-gradient-to-br from-sertic-cyan to-sertic-blue p-2 rounded-lg flex-shrink-0">
+                          <TrendingUp className="w-5 h-5 text-white" />
+                        </div>
+                        <span className="text-sertic-light font-medium">
+                          {benefit}
+                        </span>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
-          );
-        })}
-      </div>
-    </div>
-  </div>
+          </div>
 
-  {/* Stack Tecnológico - FUERA del contenedor con max-w */}
-  <div>
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-12">
-      <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-sertic-cyan via-sertic-blue to-sertic-cyan bg-clip-text text-transparent">
-        Stack Tecnológico
-      </h2>
-      <p className="text-lg text-gray-300">Tecnologías modernas y confiables para tu proyecto</p>
-    </div>
+          {/* Stack Tecnológico - FUERA del contenedor con max-w */}
+          <div>
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-12">
+              <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-sertic-cyan via-sertic-blue to-sertic-cyan bg-clip-text text-transparent">
+                {t("serviceDetail.stackHeading")}
+              </h2>
+              <p className="text-lg text-gray-300">
+                {t("serviceDetail.stackText")}
+              </p>
+            </div>
+            <div className="relative w-full overflow-hidden">
+              {/* Gradientes laterales */}
+              <div className="pointer-events-none absolute left-0 top-0 h-full w-32 bg-gradient-to-r from-black/30 via-black/20 to-transparent z-10" />
+              <div className="pointer-events-none absolute right-0 top-0 h-full w-32 bg-gradient-to-l from-black/30 via-black/20 to-transparent z-10" />
 
-    <div className="relative w-full overflow-hidden">
-      {/* Gradientes laterales */}
-      <div className="pointer-events-none absolute left-0 top-0 h-full w-32 bg-gradient-to-r from-black/30 via-black/20 to-transparent z-10" />
-      <div className="pointer-events-none absolute right-0 top-0 h-full w-32 bg-gradient-to-l from-black/30 via-black/20 to-transparent z-10" />
-
-      <div className="group flex w-max items-center gap-6 animate-marquee hover:[animation-play-state:paused] py-8" style={{ animationDuration: '30s' }}>
-        {[...service.technologies, ...service.technologies, ...service.technologies].map((tech, index) => (
-          <span
-            key={index}
-            className="bg-gradient-to-r from-sertic-cyan/20 to-sertic-blue/20 border border-sertic-cyan/50 px-6 py-3 rounded-full text-sm font-medium text-sertic-light hover:border-sertic-cyan hover:bg-gradient-to-r hover:from-sertic-cyan/30 hover:to-sertic-blue/30 transition-all duration-300 whitespace-nowrap flex-shrink-0"
-          >
-            {tech}
-          </span>
-        ))}
-      </div>
-    </div>
-  </div>
-</section>
+              <div
+                className="group flex w-max items-center gap-6 animate-marquee hover:[animation-play-state:paused] py-8"
+                style={{ animationDuration: "30s" }}
+              >
+                {[
+                  ...service.technologies,
+                  ...service.technologies,
+                  ...service.technologies,
+                ].map((tech, index) => (
+                  <span
+                    key={index}
+                    className="bg-gradient-to-r from-sertic-cyan/20 to-sertic-blue/20 border border-sertic-cyan/50 px-6 py-3 rounded-full text-sm font-medium text-sertic-light hover:border-sertic-cyan hover:bg-gradient-to-r hover:from-sertic-cyan/30 hover:to-sertic-blue/30 transition-all duration-300 whitespace-nowrap flex-shrink-0"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* SERVICIOS RELACIONADOS */}
         {relatedServices.length > 0 && (
           <section className="py-20 bg-sertic-black/30">
             <div className="text-center mb-12">
               <h2 className="text-4xl font-bold bg-gradient-to-r from-sertic-cyan to-sertic-blue bg-clip-text text-transparent">
-                Otros Servicios
+                {t("serviceDetail.otherServices")}
               </h2>
             </div>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="grid md:grid-cols-3 gap-8 items-stretch">
                 {relatedServices.map((related, index) => {
                   const RelatedIcon = related.icon;
-                  const { elementRef, hasBeenVisible } = useIntersectionObserver();
-                  
+                  const { elementRef, hasBeenVisible } =
+                    useIntersectionObserver();
+
                   return (
                     <div
                       key={related.id}
                       ref={elementRef}
                       className={`transition-all duration-700 ${
-                        hasBeenVisible 
-                          ? 'opacity-100 translate-y-0' 
-                          : 'opacity-0 translate-y-8'
+                        hasBeenVisible
+                          ? "opacity-100 translate-y-0"
+                          : "opacity-0 translate-y-8"
                       }`}
                       style={{ transitionDelay: `${index * 150}ms` }}
                     >
@@ -304,17 +341,21 @@ const ServiceDetail = () => {
                         className="group h-full block"
                       >
                         <Card className="group h-full flex flex-col cursor-pointer hover:border-sertic-cyan/50 transition-all duration-300 transform hover:scale-105">
-                          <div className={`text-${related.color}-400 mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                          <div
+                            className={`text-${related.color}-400 mb-6 group-hover:scale-110 transition-transform duration-300`}
+                          >
                             <RelatedIcon className="w-8 h-8" />
                           </div>
                           <h3 className="text-xl font-bold mb-4 text-white group-hover:text-sertic-cyan transition-colors">
-                            {related.title}
+                            {t(`serviceData.${related.id}.title`, related.title)}
                           </h3>
-                          <p className="text-gray-400 mb-6 flex-grow">{related.description}</p>
-                          
+                          <p className="text-gray-400 mb-6 flex-grow">
+                            {t(`serviceData.${related.id}.description`, related.description)}
+                          </p>
+
                           <div className="mt-auto">
                             <span className="inline-flex items-center gap-2 text-sertic-cyan font-semibold group-hover:gap-4 transition-all">
-                              Ver más detalles
+                              {t("serviceDetail.serviceCardInfo")}
                               <ArrowRight className="w-4 h-4" />
                             </span>
                           </div>
@@ -327,7 +368,6 @@ const ServiceDetail = () => {
             </div>
           </section>
         )}
-
       </main>
 
       <Footer />

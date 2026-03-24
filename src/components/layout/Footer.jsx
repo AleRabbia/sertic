@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from 'react-i18next';
 import { Linkedin, Twitter, Github, Mail, MapPin } from "lucide-react";
 import { Logo } from "../ui/Logo";
 import { contactInfo } from "../../data/contact";
@@ -61,6 +62,7 @@ const QuickLink = ({ href, children }) => {
 };
 
 const Footer = () => {
+  const { t } = useTranslation();
   const currentYear = new Date().getFullYear();
   const navigate = useNavigate();
   const location = useLocation();
@@ -103,8 +105,7 @@ const Footer = () => {
             </button>
 
             <p className="text-gray-400 text-sm max-w-xs">
-              Soluciones IT confiables para empresas. Transformamos la
-              tecnología en el motor de tu crecimiento.
+              {t('footer.descripcion')}
             </p>
 
             <div className="flex space-x-3">
@@ -121,11 +122,11 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-white font-semibold mb-4">Enlaces Rápidos</h3>
+            <h3 className="text-white font-semibold mb-4">{t('footer.enlacesRapidos')}</h3>
             <div className="space-y-2">
               {navigationLinks.map((link) => (
                 <QuickLink key={link.href} href={link.href}>
-                  {link.label}
+                  {t(link.labelKey)}
                 </QuickLink>
               ))}
             </div>
@@ -133,7 +134,7 @@ const Footer = () => {
 
           {/* Services */}
           <div>
-            <h3 className="text-white font-semibold mb-4">Servicios</h3>
+            <h3 className="text-white font-semibold mb-4">{t('footer.servicios')}</h3>
             <div className="space-y-2">
               {services.map((service) => (
                 <button
@@ -141,7 +142,7 @@ const Footer = () => {
                   onClick={() => navigate(`/servicios/${service.slug}`)}
                   className="text-gray-400 hover:text-cyan-400 transition-colors duration-200 block py-1 text-left"
                 >
-                  {service.title}
+                  {t(`serviceData.${service.id}.title`)}
                 </button>
               ))}
             </div>
@@ -149,7 +150,7 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-white font-semibold mb-4">Contacto</h3>
+            <h3 className="text-white font-semibold mb-4">{t('footer.contacto')}</h3>
             <div className="space-y-3">
               <div className="flex items-center gap-3 text-gray-400">
                 <Mail className="w-4 h-4 text-sertic-cyan flex-shrink-0" />
@@ -190,8 +191,7 @@ const Footer = () => {
         <div className="border-t border-slate-800/50 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="text-gray-400 text-sm">
-              &copy; {currentYear} SerTIC Tech Solutions. Todos los derechos
-              reservados.
+              &copy; {currentYear} SerTIC Tech Solutions. {t('footer.derechos')}
             </div>
 
             <div className="flex gap-6 text-sm text-gray-400">
@@ -199,21 +199,21 @@ const Footer = () => {
                 onClick={() => navigate("/politica-privacidad")}
                 className="hover:text-cyan-400 transition-colors"
               >
-                Política de Privacidad
+                {t('footer.politicaPrivacidad')}
               </button>
 
               <button
                 onClick={() => navigate("/terminos-servicios")}
                 className="hover:text-cyan-400 transition-colors"
               >
-                Términos de Servicio
+                {t('footer.terminosServicio')}
               </button>
 
               <button
                 onClick={() => navigate("/politica-cookies")}
                 className="hover:text-cyan-400 transition-colors"
               >
-                Cookies
+                {t('footer.politicaCookies')}
               </button>
             </div>
           </div>

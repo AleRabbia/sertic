@@ -1,0 +1,480 @@
+{
+  "nav": {
+    "inicio": "Home",
+    "servicios": "Services",
+    "nosotros": "About Us",
+    "contacto": "Contact",
+    "testimonios": "Testimonials",
+    "casosExito": "Success Stories",
+    "cotizacion": "Quote"
+  },
+  "hero": {
+    "title1": "The IT solution your company needs",
+    "subtitle1": "Infrastructure, cybersecurity, development and specialized talent to support your technological growth.",
+    "title2": "Enhance your security with Prowler",
+    "subtitle2": "Automated security audits for AWS, Azure and GCP. Identify vulnerabilities before attackers do.",
+    "title3": "Success stories that inspire",
+    "subtitle3": "Discover how companies like INTA, LETIS and KONECTA transformed their infrastructure with SerTIC.",
+    "cta1": "Request consultation",
+    "cta2": "Request demo",
+    "cta3": "View success stories"
+  },
+  "home": {
+    "membershipsTitle": "Memberships & Certifications",
+    "membershipsSubtitle": "Ecosystems that support our work",
+    "clientsTitle": "Trusted by Companies",
+    "clientsSubtitle": "IT Partners"
+  },
+  "successBadge": {
+    "count": "+50 success stories",
+    "tooltip": "View top success stories"
+  },
+  "services": {
+    "titulo": "Our Services",
+    "descripcion": "Comprehensive technology solutions for your company",
+    "infraestructura": "IT Infrastructure",
+    "ciberseguridad": "Cybersecurity",
+    "desarrollo": "Software Development",
+    "staffing": "Tech Staffing",
+    "soporte": "Remote Support",
+    "verMas": "Learn more",
+    "solicitar": "Request"
+  },
+  "serviceData": {
+    "infraestructura": {
+      "title": "IT Infrastructure",
+      "description": "Performance, scalability and continuity.",
+      "fullDescription": "We transform your technological infrastructure into a competitive advantage. Our specialized team designs, implements and manages robust solutions that ensure 24/7 operational continuity.",
+      "features": [
+        "Physical & Virtual Servers",
+        "Cloud (AWS/GCP)",
+        "Backups & DR"
+      ],
+      "benefits": [
+        "Guaranteed high availability (99.9% uptime)",
+        "On-demand scalability",
+        "Operating cost reduction up to 40%",
+        "Specialized 24/7 technical support",
+        "Security updates and patch management"
+      ],
+      "detailedFeatures": [
+        {
+          "title": "Physical and Virtual Servers",
+          "description": "Design and implementation of on-premise infrastructure with Windows Server and Linux, virtualization with VMware and Hyper-V.",
+          "icon": "Server"
+        },
+        {
+          "title": "Cloud Infrastructure",
+          "description": "Migration and management of infrastructure on AWS, Azure and Google Cloud Platform with scalable and secure architectures.",
+          "icon": "Server"
+        },
+        {
+          "title": "Backup and Disaster Recovery",
+          "description": "Implementation of automated backup solutions with Veeam, replication and disaster recovery plans.",
+          "icon": "Shield"
+        },
+        {
+          "title": "Monitoring 24/7",
+          "description": "Proactive monitoring with Zabbix, Prometheus and Grafana to detect and resolve issues before they impact your operations.",
+          "icon": "TrendingUp"
+        }
+      ],
+      "benefitsHeading": "Key Benefits",
+      "stackHeading": "Technology Stack"
+    },
+    "ciberseguridad": {
+      "title": "Cybersecurity & Hardening",
+      "description": "We reduce risks and strengthen your assets.",
+      "fullDescription": "In a digital world where threats evolve constantly, we protect your company with robust cybersecurity solutions based on international standards and industry best practices.",
+      "features": [
+        "Preventive & corrective",
+        "IT Audits",
+        "ISO 27002 Controls"
+      ],
+      "benefits": [
+        "Reduced attack surface",
+        "Guaranteed regulatory compliance",
+        "Early threat detection",
+        "Protection of critical data",
+        "Automated audits with Prowler"
+      ],
+      "detailedFeatures": [
+        {
+          "title": "Security Audits",
+          "description": "Comprehensive vulnerability assessment using Prowler, Nessus and specialized tools to identify security gaps.",
+          "icon": "Shield"
+        },
+        {
+          "title": "System Hardening",
+          "description": "Hardening of servers, applications and networks following CIS frameworks and ISO 27002 standards.",
+          "icon": "Server"
+        },
+        {
+          "title": "Incident Management",
+          "description": "Rapid incident response with containment, eradication and recovery plans.",
+          "icon": "Zap"
+        },
+        {
+          "title": "Compliance and Regulations",
+          "description": "Implementation of controls for ISO 27001, SOC 2, GDPR and local regulations compliance.",
+          "icon": "Award"
+        }
+      ]
+    },
+    "development": {
+      "title": "Development & DevOps",
+      "description": "Automation for reliable deployments.",
+      "fullDescription": "We accelerate your development lifecycle with modern DevOps practices, infrastructure automation and robust CI/CD pipelines that reduce time-to-market and improve software quality.",
+      "features": [
+        "IaC (Terraform/Ansible)",
+        "Kubernetes (EKS/OKD)",
+        "CI/CD (GitLab/Jenkins)"
+      ],
+      "benefits": [
+        "70% reduction in deployment time",
+        "Automation of repetitive tasks",
+        "Better visibility and traceability",
+        "Consistent and reproducible environments",
+        "Early detection of issues"
+      ],
+      "detailedFeatures": [
+        {
+          "title": "Infrastructure as Code",
+          "description": "Full infrastructure automation with Terraform and Ansible for reproducible, versioned environments.",
+          "icon": "Code"
+        },
+        {
+          "title": "Kubernetes & Containers",
+          "description": "Container orchestration with Kubernetes, EKS, AKS and management with Rancher or OpenShift.",
+          "icon": "Server"
+        },
+        {
+          "title": "CI/CD Pipelines",
+          "description": "Implementation of automated pipelines with GitLab CI, Jenkins, GitHub Actions and Azure DevOps.",
+          "icon": "Zap"
+        },
+        {
+          "title": "Monitoring & Observability",
+          "description": "Complete observability stack with Prometheus, Grafana, ELK and APM tools.",
+          "icon": "TrendingUp"
+        }
+      ]
+    },
+    "staffing": {
+      "title": "Staffing IT",
+      "description": "Technical talent to scale with flexibility.",
+      "fullDescription": "We empower your team with highly skilled IT professionals. Our flexible model allows you to scale resources according to your project needs.",
+      "features": [
+        "Qualified profiles",
+        "Flexible assignment",
+        "Technical support"
+      ],
+      "benefits": [
+        "Quick access to specialized talent",
+        "Reduced recruitment time",
+        "Demand-based scalability",
+        "Managed external resources with expert oversight",
+        "Adaptation to modern tech stacks"
+      ],
+      "detailedFeatures": [
+        {
+          "title": "Talent Selection",
+          "description": "Technical assessments and interviews to ensure the best fit for your team and project.",
+          "icon": "Users"
+        },
+        {
+          "title": "Agile Onboarding",
+          "description": "Fast integration of resources with training and ongoing support.",
+          "icon": "Headphones"
+        },
+        {
+          "title": "Continuous Support",
+          "description": "We support your operations with monitoring, reporting and continuous alignment.",
+          "icon": "CheckCircle"
+        }
+      ]
+    }
+  },
+  "stats": {
+    "titulo": "Our Impact",
+    "descripcion": "Metrics showing how we help businesses.",
+    "tickets": "Resolved Tickets Successfully",
+    "empresas": "Companies Trust Us",
+    "experiencia": "Years of Experience",
+    "soporte": "24/7 Remote Support and Monitoring"
+  },
+  "casosExito": {
+    "titulo": "Success Cases",
+    "subtitulo": "Transformations that demonstrate our commitment",
+    "todos": "All",
+    "todosSectores": "All sectors",
+    "infraestructura": "Infrastructure",
+    "soporte": "Remote Support",
+    "staffing": "Staffing",
+    "porServicio": "By service",
+    "porSector": "By sector",
+    "verCaso": "View case",
+    "volver": "Back",
+    "empresas": "Companies",
+    "sector": "Sector",
+    "duracion": "Duration",
+    "equipo": "Team size",
+    "servicios": "Services",
+    "metricas": "Key metrics",
+    "resultados": "Results",
+    "sinCategoria": "No category",
+    "sinSector": "No sector",
+    "noCases": "No cases available for this category",
+    "resultadosQueHablan": "Results that speak for themselves",
+    "metricasCompromiso": "Metrics that support our work",
+    "ctaTitle": "Ready to be our next success story?",
+    "ctaSubtitle": "Request a quote and let's grow together",
+    "verServicios": "View Services",
+    "stats": {
+      "cases": "Success stories",
+      "uptime": "Average uptime",
+      "support": "Support",
+      "clients": "Satisfied clients"
+    }
+  },
+  "testimonios": {
+    "titulo": "Testimonials",
+    "descripcion": "Hear what our clients say about us",
+    "pageTitle": "Client Testimonials",
+    "pageDescription": "Discover real company experiences that have trusted our services to transform their technological infrastructure",
+    "filterAll": "All sectors",
+    "sectorAgroindustria": "Agroindustry",
+    "sectorSalud": "Health",
+    "sectorEducacion": "Education",
+    "sectorTecnologia": "Technology",
+    "sectorServicios": "Services",
+    "back": "Back",
+    "ctaTitle": "Ready to be our next success story?",
+    "ctaSubtitle": "Join leading companies that already rely on SerTIC for their technology needs",
+    "ctaButton": "Request Quote",
+    "project": "Project",
+    "duration": "Duration",
+    "keyResults": "Key results",
+    "client": "Client"
+  },
+  "contacto": {
+    "titulo": "Contact Us",
+    "subtitulo": "Global presence, close attention",
+    "descripcion": "Offices in Argentina and international presence in Spain to be closer to our clients",
+    "nombre": "Full name",
+    "email": "Email Address",
+    "telefono": "Phone",
+    "empresa": "Company",
+    "serviceInterest": "Service of interest",
+    "selectService": "Select a service",
+    "mensaje": "Message",
+    "enviar": "Send Message",
+    "enviando": "Sending...",
+    "exito": "Message sent successfully",
+    "error": "Error sending message",
+    "validacion": {
+      "nombre": "Name is required",
+      "emailRequerido": "Email is required",
+      "emailInvalido": "Invalid email",
+      "mensaje": "Message is required",
+      "completarCampos": "Please fill required fields to submit the form",
+      "presioneEnviar": "Press to submit the form"
+    },
+    "modal": {
+      "enviadoTitulo": "Message Sent",
+      "errorTitulo": "Error",
+      "enviadoMensaje": "Message Sent!",
+      "oops": "Oops..."
+    },
+    "errorEnviar": "Error sending message",
+    "errorGeneral": "There was an issue sending your message. Please try again or contact us directly.",
+    "agendarReunion": "Schedule meeting",
+    "heroTitle": "Ready to get started?",
+    "heroSubtitle": "We are ready to transform your technological infrastructure",
+    "contactHeading": "Contact us",
+    "contactFormSubtitle": "Fill out the form and we will get in touch shortly",
+    "internationalTitle": "International Contacts",
+    "internationalSubtitle": "We are present in multiple countries to provide you with better service"
+  },
+  "terms": {
+    "title": "Terms of Service",
+    "description": "Welcome to SerTIC Tech Solutions. By accessing or using our services, you agree to the following terms.",
+    "section1": "Scope of services",
+    "section2": "Responsibilities",
+    "section3": "Confidentiality and data protection",
+    "lastUpdate": "Last updated: October 2025"
+  },
+  "about": {
+    "titulo": "About Us",
+    "mision": "Our mission",
+    "vision": "Our vision",
+    "valores": "Our values",
+    "whyTitle": "Why SerTIC?",
+    "whyDescription": "We provide reliable IT solutions for companies, with continuous monitored support, secure infrastructure and strategic consulting to protect and grow your business.",
+    "feature1Title": "Specialized Team",
+    "feature1Description": "We have IT experts to ensure efficient, reliable solutions.",
+    "feature2Title": "Security and Compliance",
+    "feature2Description": "We apply controls and processes aligned to ISO/IEC 27002 and NIST CSF 2.0 to manage risks, secure access and respond to incidents.",
+    "feature3Title": "Continuous Support",
+    "feature3Description": "24/7 on-call for incidents and critical alerts, with triage, escalation and recovery.",
+    "metric1Label": "Monitoring",
+    "metric2Label": "Specialists",
+    "metric3Label": "Technologies",
+    "metric4Label": "Secure Infrastructure"
+  },
+  "footer": {
+    "descripcion": "Reliable IT solutions for businesses. We turn technology into the engine of your growth.",
+    "enlacesRapidos": "Quick Links",
+    "servicios": "Services",
+    "contacto": "Contact",
+    "derechos": "All rights reserved",
+    "politicaPrivacidad": "Privacy Policy",
+    "politicaCookies": "Cookie Policy",
+    "terminosServicio": "Terms of Service"
+  },
+  "serviceDetail": {
+    "notFound": "Service not found",
+    "back": "Back",
+    "professionalService": "Professional Service",
+    "benefitsHeading": "Key Benefits",
+    "benefitsText": "Discover the advantages of choosing our services",
+    "stackHeading": "Technology Stack",
+    "stackText": "Modern and reliable technologies for your project",
+    "otherServices": "Other Services",
+    "serviceCardInfo": "View more details",
+    "requestQuote": "Request Quote",
+    "scheduleMeeting": "Schedule Meeting"
+  },
+  "cookiePolicy": {
+    "title": "Cookie Policy",
+    "subtitle": "At SerTIC Tech Solutions we explain how we use cookies to improve your experience and protect your privacy.",
+    "whatAreCookies": {
+      "title": "What are cookies?",
+      "text": "Cookies are small text files stored on your device when you visit a website. They are used to remember your preferences, collect statistics, and show relevant content."
+    },
+    "cookieTypes": {
+      "title": "Types of cookies we use",
+      "essentialLabel": "Essential:",
+      "essentialText": "necessary for basic site functionality.",
+      "analyticsLabel": "Analytics:",
+      "analyticsText": "help us understand how you use our site (e.g., Google Analytics).",
+      "advertisingLabel": "Advertising:",
+      "advertisingText": "allow us to display personalized ads."
+    },
+    "consentManagement": {
+      "title": "Consent management",
+      "text": "When you first visit our site, we ask for your consent to use cookies. You can accept or reject them at any time. If you want to change your decision, you can use the \"Configure cookies\" button."
+    },
+    "disableCookies": {
+      "title": "How to disable cookies",
+      "text": "You can configure your browser to block or delete cookies. Keep in mind that some site features may not be available if you disable certain cookies."
+    },
+    "configureButton": "Configure cookies",
+    "settings": {
+      "title": "Cookie Settings",
+      "analyticsTitle": "Analytics Cookies",
+      "analyticsText": "Google Analytics and similar tools to understand how you use our site",
+      "adsTitle": "Advertising Cookies",
+      "adsText": "Personalized ads based on your interests and behavior",
+      "cancel": "Cancel",
+      "save": "Save"
+    }
+  },
+  "privacyPolicy": {
+    "title": "Privacy Policy",
+    "subtitle": "At SerTIC Tech Solutions we value your privacy. This policy describes how we collect, use, and protect your personal data.",
+    "section1": {
+      "title": "1. Information we collect",
+      "text": "We may collect contact data, service usage, web forms, etc."
+    },
+    "section2": {
+      "title": "2. Use of information",
+      "text": "We use data to provide our services, improve processes, and communicate with you."
+    },
+    "section3": {
+      "title": "3. Your rights",
+      "textPrefix": "You can request access, correction, or deletion of your data by writing to ",
+      "textSuffix": "."
+    },
+    "lastUpdate": "Last updated: October 2025"
+  },
+  "quoteModal": {
+    "title": "Request Quote",
+    "close": "Close modal",
+    "name": "Full name",
+    "email": "Email",
+    "phone": "Phone",
+    "company": "Company",
+    "serviceInterest": "Service of interest",
+    "selectService": "Select a service",
+    "description": "Project description",
+    "placeholderName": "Your full name",
+    "placeholderEmail": "you@email.com",
+    "placeholderPhone": "+1 555 123 4567",
+    "placeholderCompany": "Your company name",
+    "placeholderService": "Select a service",
+    "placeholderDescription": "Tell us about your project, goals, specific features, estimated budget, desired timeline, etc.",
+    "send": "Send Quote",
+    "sending": "Sending quote...",
+    "successMessage": "Quote sent successfully! Our team will contact you in the next 24 hours.",
+    "errorMessage": "There was an issue sending your quote. Please try again or contact us directly.",
+    "serviceSelectAll": "All services"
+  },
+  "calendlyModal": {
+    "heading": "Schedule meeting",
+    "subtitle": "Monday to Friday · 8:00 AM to 5:00 PM · 30 minutes",
+    "name": "Full name",
+    "company": "Company",
+    "email": "Email",
+    "phone": "Phone",
+    "dateLabel": "Preferred date",
+    "timeLabel": "Available slot",
+    "messageLabel": "What do you want to discuss?",
+    "placeholderName": "John Doe",
+    "placeholderCompany": "My company LLC",
+    "placeholderEmail": "email@company.com",
+    "placeholderPhone": "+1 555 ...",
+    "placeholderMessage": "Brief description of the meeting purpose...",
+    "selectDateToShowSlots": "Select a date to see available slots.",
+    "checkingAvailability": "Checking availability...",
+    "noSlots": "No slots available for this day. Try another date.",
+    "slotsFetchError": "Could not fetch availability. Check your connection and try again.",
+    "validation": {
+      "name": "Name is required",
+      "emailRequired": "Email is required",
+      "emailInvalid": "Invalid email",
+      "dateRequired": "Date is required",
+      "timeRequired": "Select a slot",
+      "messageRequired": "Message is required"
+    },
+    "scheduling": "Scheduling...",
+    "confirm": "Confirm meeting",
+    "successTitle": "Meeting booked!",
+    "errorTitle": "Could not book",
+    "scheduledMessage": "Meeting confirmed for {{date}} at {{time}}! Check your inbox, we sent all details via email.",
+    "slotTaken": "That time slot is already taken. Please choose another available slot.",
+    "generalError": "There was a problem booking the meeting. Please try again.",
+    "openMeetingLink": "Open Google Meet",
+    "close": "Close",
+    "ok": "Perfect",
+    "meetingTitleFallback": "Meeting",
+    "notSpecified": "Not specified",
+    "notSpecifiedCompany": "Not specified"
+  },
+  "language": {
+    "titulo": "Language",
+    "es": "Español",
+    "en": "English"
+  },
+  "common": {
+    "cargando": "Loading...",
+    "error": "An error occurred",
+    "reintentar": "Retry",
+    "cerrar": "Close",
+    "si": "Yes",
+    "no": "No",
+    "aceptar": "Accept",
+    "details": "Details",
+    "back": "Back"
+  }
+}

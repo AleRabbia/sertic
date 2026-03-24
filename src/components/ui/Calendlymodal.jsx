@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useTranslation } from "react-i18next";
 import { X, CheckCircle, XCircle, Loader2, Calendar, Clock, ExternalLink } from "lucide-react";
 
 const AVAILABLE_URL = import.meta.env.VITE_N8N_SCHEDULE_WEBHOOK_URL;
@@ -12,10 +13,10 @@ const getMinDate = () => {
   return d.toISOString().split("T")[0];
 };
 
-const formatDateLabel = (dateStr) => {
+const formatDateLabel = (dateStr, locale = "es-AR") => {
   if (!dateStr) return "";
   const [y, m, d] = dateStr.split("-");
-  return new Date(+y, +m - 1, +d).toLocaleDateString("es-AR", {
+  return new Date(+y, +m - 1, +d).toLocaleDateString(locale, {
     weekday: "long", day: "numeric", month: "long",
   });
 };
@@ -34,6 +35,8 @@ const InputField = ({ label, error, ...props }) => (
 );
 
 const CalendlyModal = ({ isOpen, onClose }) => {
+  const { t, i18n } = useTranslation();
+  const locale = i18n.language === "es" ? "es-AR" : "en-US";
   const overlayRef = useRef(null);
 
   const [form, setForm] = useState({
@@ -92,13 +95,13 @@ const CalendlyModal = ({ isOpen, onClose }) => {
       const data = await res.json();
       setSlotsError("");
       if (!data.available_slots?.length) {
-        setSlotsError("No hay horarios disponibles para este día. Probá con otra fecha.");
+        setSlotsError(t("calendlyModal.noSlots"));
       } else {
         setSlots(data.available_slots);
       }
     } catch (err) {
       if (err.name === "AbortError") return;
-      setSlotsError("No se pudo consultar la disponibilidad. Verificá tu conexión e intentá de nuevo.");
+      setSlotsError(t("calendlyModal.slotsFetchError"));
     } finally {
       setLoadingSlots(false);
     }
@@ -116,12 +119,12 @@ const CalendlyModal = ({ isOpen, onClose }) => {
 
   const validate = () => {
     const e = {};
-    if (!form.name.trim()) e.name = "El nombre es requerido";
-    if (!form.email.trim()) e.email = "El email es requerido";
-    else if (!/\S+@\S+\.\S+/.test(form.email)) e.email = "Email inválido";
-    if (!form.date) e.date = "La fecha es requerida";
-    if (!form.time) e.time = "Seleccioná un horario";
-    if (!form.message.trim()) e.message = "El mensaje es requerido";
+    if (!form.name.trim()) e.name = t("calendlyModal.validation.name");
+    if (!form.email.trim()) e.email = t("calendlyModal.validation.emailRequired");
+    else if (!/\S+@\S+\.\S+/.test(form.email)) e.email = t("calendlyModal.validation.emailInvalid");
+    if (!form.date) e.date = t("calendlyModal.validation.dateRequired");
+    if (!form.time) e.time = t("calendlyModal.validation.timeRequired");
+    if (!form.message.trim()) e.message = t("calendlyModal.validation.messageRequired");
     setErrors(e);
     return Object.keys(e).length === 0;
   };
@@ -139,10 +142,10 @@ const CalendlyModal = ({ isOpen, onClose }) => {
           start_time: form.time,
           client_name: form.name,
           client_email: form.email,
-          meeting_title: form.message.slice(0, 60) || "Reunión",
+          meeting_title: form.message.slice(0, 60) || t("calendlyModal.meetingTitleFallback"),
           organizer_email: ORGANIZER_EMAIL,
-          phone: form.phone || "No especificado",
-          company: form.company || "No especificada",
+          phone: form.phone || t("calendlyModal.notSpecified"),
+          company: form.company || t("calendlyModal.notSpecifiedCompany"),
         }),
       });
 
@@ -152,7 +155,7 @@ const CalendlyModal = ({ isOpen, onClose }) => {
         setModal({
           isOpen: true,
           isSuccess: true,
-          message: `¡Reunión confirmada para el ${formatDateLabel(form.date)} a las ${form.time}! Revisá tu casilla, te enviamos un email con todos los detalles.`,
+          message: t("calendlyModal.scheduledMessage", { date: formatDateLabel(form.date, locale), time: form.time }),
           meetLink: data.meet_link || "",
         });
         setForm({ name: "", email: "", phone: "", company: "", date: "", time: "", message: "" });
@@ -162,14 +165,14 @@ const CalendlyModal = ({ isOpen, onClose }) => {
         setModal({
           isOpen: true,
           isSuccess: false,
-          message: "Ese horario ya fue tomado por otra persona. Por favor elegí otro horario disponible.",
+          message: t("calendlyModal.slotTaken"),
           meetLink: "",
         });
       } else {
         setModal({
           isOpen: true,
           isSuccess: false,
-          message: data.message || "Hubo un problema al agendar la reunión. Intenta nuevamente.",
+          message: data.message || t("calendlyModal.generalError"),
           meetLink: "",
         });
       }
@@ -177,7 +180,7 @@ const CalendlyModal = ({ isOpen, onClose }) => {
       setModal({
         isOpen: true,
         isSuccess: false,
-        message: "Hubo un problema al agendar la reunión. Intenta nuevamente.",
+        message: t("calendlyModal.generalError"),
         meetLink: "",
       });
     } finally {
@@ -207,7 +210,7 @@ const CalendlyModal = ({ isOpen, onClose }) => {
               <XCircle className="w-16 h-16 text-sertic-orange mx-auto mb-4" />
             )}
             <h3 className="text-xl font-semibold mb-4 text-white">
-              {modal.isSuccess ? "¡Reunión agendada!" : "No se pudo agendar"}
+              {modal.isSuccess ? t('calendlyModal.successTitle') : t('calendlyModal.errorTitle')}
             </h3>
             <p className="text-gray-300 mb-6">{modal.message}</p>
 
@@ -220,7 +223,7 @@ const CalendlyModal = ({ isOpen, onClose }) => {
                 className="flex items-center justify-center gap-2 w-full mb-4 px-4 py-2.5 rounded-full border border-sertic-cyan/40 text-sertic-cyan text-sm hover:bg-sertic-cyan/10 transition-colors"
               >
                 <ExternalLink className="w-4 h-4" />
-                Abrir Google Meet
+                {t('calendlyModal.openMeetingLink')}
               </a>
             )}
 
@@ -231,7 +234,7 @@ const CalendlyModal = ({ isOpen, onClose }) => {
               }}
               className="bg-gradient-to-r from-sertic-cyan to-sertic-blue hover:opacity-90 px-6 py-2 rounded-full transition-all duration-300 text-white font-medium"
             >
-              {modal.isSuccess ? "Perfecto" : "Cerrar"}
+              {modal.isSuccess ? t("calendlyModal.ok") : t("common.cerrar")}
             </button>
           </div>
         </div>
@@ -249,9 +252,9 @@ const CalendlyModal = ({ isOpen, onClose }) => {
             <div className="flex justify-between items-start mb-6">
               <div>
                 <h2 className="text-3xl font-bold bg-gradient-to-r from-sertic-cyan to-sertic-blue bg-clip-text text-transparent">
-                  Agendar reunión
+                  {t('calendlyModal.heading')}
                 </h2>
-                <p className="text-sm text-slate-400 mt-1">Lunes a viernes · 08:00 a 17:00 · 30 minutos</p>
+                <p className="text-sm text-slate-400 mt-1">{t('calendlyModal.subtitle')}</p>
               </div>
               <button onClick={onClose} className="text-gray-400 hover:text-white transition-colors mt-1">
                 <X className="w-6 h-6" />
@@ -261,19 +264,19 @@ const CalendlyModal = ({ isOpen, onClose }) => {
             <form onSubmit={handleSubmit} className="space-y-5">
 
               <div className="grid md:grid-cols-2 gap-4">
-                <InputField label="Nombre completo *" name="name" value={form.name} onChange={handleChange} error={errors.name} placeholder="Juan García" />
-                <InputField label="Empresa" name="company" value={form.company} onChange={handleChange} placeholder="Mi empresa S.A." />
+                <InputField label={`${t('calendlyModal.name')} *`} name="name" value={form.name} onChange={handleChange} error={errors.name} placeholder={t('calendlyModal.placeholderName')} />
+                <InputField label={t('calendlyModal.company')} name="company" value={form.company} onChange={handleChange} placeholder={t('calendlyModal.placeholderCompany')} />
               </div>
 
               <div className="grid md:grid-cols-2 gap-4">
-                <InputField label="Email *" name="email" type="email" value={form.email} onChange={handleChange} error={errors.email} placeholder="correo@empresa.com" />
-                <InputField label="Teléfono" name="phone" type="tel" value={form.phone} onChange={handleChange} placeholder="+54 341 ..." />
+                <InputField label={`${t('calendlyModal.email')} *`} name="email" type="email" value={form.email} onChange={handleChange} error={errors.email} placeholder={t('calendlyModal.placeholderEmail')} />
+                <InputField label={t('calendlyModal.phone')} name="phone" type="tel" value={form.phone} onChange={handleChange} placeholder={t('calendlyModal.placeholderPhone')} />
               </div>
 
               {/* Fecha */}
               <div>
                 <label className="block text-sm font-medium text-gray-300 mb-2">
-                  <span className="inline-flex items-center gap-1.5"><Calendar className="w-4 h-4" /> Fecha preferida *</span>
+                  <span className="inline-flex items-center gap-1.5"><Calendar className="w-4 h-4" /> {t('calendlyModal.dateLabel')} *</span>
                 </label>
                 <input
                   type="date"
@@ -291,17 +294,17 @@ const CalendlyModal = ({ isOpen, onClose }) => {
               {/* Slots */}
               <div>
                 <label className="block text-sm font-medium text-gray-300 mb-2">
-                  <span className="inline-flex items-center gap-1.5"><Clock className="w-4 h-4" /> Horario disponible *</span>
+                  <span className="inline-flex items-center gap-1.5"><Clock className="w-4 h-4" /> {t('calendlyModal.timeLabel')} *</span>
                 </label>
 
                 {!form.date && (
-                  <p className="text-sm text-slate-500 italic py-2">Seleccioná una fecha para ver los horarios disponibles.</p>
+                  <p className="text-sm text-slate-500 italic py-2">{t('calendlyModal.selectDateToShowSlots')}</p>
                 )}
 
                 {loadingSlots && (
                   <div className="flex items-center gap-2 text-sm text-slate-400 py-2">
                     <Loader2 className="w-4 h-4 animate-spin text-sertic-cyan" />
-                    Consultando disponibilidad...
+                    {t('calendlyModal.checkingAvailability')}
                   </div>
                 )}
 
@@ -338,7 +341,7 @@ const CalendlyModal = ({ isOpen, onClose }) => {
 
               {/* Mensaje */}
               <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">¿De qué querés hablar? *</label>
+                <label className="block text-sm font-medium text-gray-300 mb-2">{t('calendlyModal.messageLabel')} *</label>
                 <textarea
                   name="message"
                   value={form.message}
@@ -347,7 +350,7 @@ const CalendlyModal = ({ isOpen, onClose }) => {
                   className={`w-full px-4 py-3 bg-slate-700/50 border rounded-lg text-white resize-none focus:outline-none transition-colors ${
                     errors.message ? "border-red-500 focus:border-red-400" : "border-slate-600 focus:border-cyan-500"
                   }`}
-                  placeholder="Breve descripción del motivo de la reunión..."
+                  placeholder={t('calendlyModal.placeholderMessage')}
                 />
                 {errors.message && <p className="mt-1 text-sm text-red-400">{errors.message}</p>}
               </div>
@@ -362,9 +365,9 @@ const CalendlyModal = ({ isOpen, onClose }) => {
                 }`}
               >
                 {isSubmitting ? (
-                  <><Loader2 className="w-4 h-4 animate-spin" /> Agendando...</>
+                  <><Loader2 className="w-4 h-4 animate-spin" /> {t('calendlyModal.scheduling')}</>
                 ) : (
-                  "Confirmar reunión"
+                  t('calendlyModal.confirm')
                 )}
               </button>
 

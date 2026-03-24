@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { Logo } from '../ui/Logo';
 import Button from '../ui/Button';
 import QuoteModal from '../ui/QuoteModal';
+import LanguageSwitcher from '../ui/LanguageSwitcher';
 import { useScrollPosition } from '../../hooks/useScrollPosition';
 import { navigationLinks } from '../../data/navigation';
 import { useNavigate, useLocation } from 'react-router-dom';
@@ -11,6 +13,7 @@ const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { scrollY } = useScrollPosition();
+  const { t } = useTranslation();
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -75,21 +78,22 @@ const Navigation = () => {
           </button>
             
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-8">
+            <div className="hidden md:flex items-center space-x-6">
               {navigationLinks.map((link) => (
                 <button
                   key={link.href}
                   onClick={() => handleNavClick(link.href, link.isPage)}
                   className="hover:text-cyan-400 transition-colors duration-200"
                 >
-                  {link.label}
+                  {t(link.labelKey)}
                 </button>
               ))}
+              <LanguageSwitcher />
               <Button 
                 size="sm"
                 onClick={handleOpenModal}
               >
-                Cotización
+                {t('nav.cotizacion')}
               </Button>
             </div>
 
@@ -117,11 +121,14 @@ const Navigation = () => {
                   {link.label}
                 </button>
               ))}
+              <div className="py-4 border-t border-cyan-400/20">
+                <LanguageSwitcher />
+              </div>
               <Button 
                 className="w-full"
                 onClick={handleOpenModal}
               >
-                Cotización
+                {t('nav.cotizacion')}
               </Button>
             </div>
           </div>

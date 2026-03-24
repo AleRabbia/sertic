@@ -1,6 +1,7 @@
 import React from 'react';
 import { Users, Shield, Headphones, Cloud, Server } from 'lucide-react';
 import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
+import { useTranslation } from 'react-i18next';
 
 const FeatureItem = ({ icon: Icon, title, description, index }) => {
   const { elementRef, hasBeenVisible } = useIntersectionObserver();
@@ -38,29 +39,31 @@ const About = () => {
   const { elementRef: titleRef, hasBeenVisible: titleVisible } = useIntersectionObserver();
   const { elementRef: contentRef, hasBeenVisible: contentVisible } = useIntersectionObserver();
 
+  const { t } = useTranslation();
+
   const features = [
     {
       icon: Users,
-      title: "Equipo Especializado",
-      description: "Contamos con profesionales expertos en IT para garantizar soluciones eficientes y confiables."
+      title: t('about.feature1Title'),
+      description: t('about.feature1Description')
     },
     {
       icon: Shield,
-      title: "Seguridad y Cumplimiento",
-      description: "Aplicamos controles y procesos alineados a ISO/IEC 27002 y NIST CSF 2.0 para gestionar riesgos, proteger accesos y responder a incidentes. Acompañamos medidas vinculadas a NIS2 cuando corresponda."
+      title: t('about.feature2Title'),
+      description: t('about.feature2Description')
     },
     {
       icon: Headphones,
-      title: "Soporte Continuo",
-      description: "Guardia 24/7 para incidentes y alertas críticas, con triage, escalamiento y recuperación. Las solicitudes se gestionan por mesa de ayuda según SLA."
+      title: t('about.feature3Title'),
+      description: t('about.feature3Description')
     }
   ];
 
   const metrics = [
-    { icon: Cloud, value: "24/7", label: "Monitoreo", color: "cyan" },
-    { icon: Users, value: "20+", label: "Especialistas", color: "cyan" },
-    { icon: Server, value: "15+", label: "Tecnologías", color: "cyan" },
-    { icon: Shield, value: "Hardening", label: "Infraestructura segura", color: "cyan" }
+    { icon: Cloud, value: '24/7', label: t('about.metric1Label'), color: 'cyan' },
+    { icon: Users, value: '20+', label: t('about.metric2Label'), color: 'cyan' },
+    { icon: Server, value: '15+', label: t('about.metric3Label'), color: 'cyan' },
+    { icon: Shield, value: 'Hardening', label: t('about.metric4Label'), color: 'cyan' }
   ];
 
   return (
@@ -75,10 +78,10 @@ const About = () => {
               }`}
             >
               <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-sertic-cyan via-sertic-blue to-sertic-cyan bg-clip-text text-transparent">
-                ¿Por qué SerTIC?
+                {t('about.whyTitle')}
               </h2>
               <p className="text-xl text-gray-300 mb-8">
-                Brindamos soluciones IT confiables para empresas, con soporte continuo y monitoreado, infraestructura segura y consultoría estratégica para proteger y potenciar tu negocio.
+                {t('about.whyDescription')}
               </p>
             </div>
             
