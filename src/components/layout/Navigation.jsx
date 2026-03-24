@@ -118,7 +118,7 @@ const Navigation = () => {
                   onClick={() => handleNavClick(link.href,link.isPage)}
                   className="block w-full text-left hover:text-cyan-400 transition-colors duration-200"
                 >
-                  {link.label}
+                  {t(link.labelKey)}
                 </button>
               ))}
               <div className="py-4 border-t border-cyan-400/20">
