@@ -88,7 +88,8 @@ const Navigation = () => {
                   {t(link.labelKey)}
                 </button>
               ))}
-              <LanguageSwitcher />
+              {/* Para levantar luego
+              <LanguageSwitcher />*/}
               <Button 
                 size="sm"
                 onClick={handleOpenModal}

@@ -1,6 +1,6 @@
 import React from "react";
 import { useTranslation } from 'react-i18next';
-import { Linkedin, Twitter, Github, Mail, MapPin } from "lucide-react";
+import { Linkedin, Twitter, Github, Mail, MapPin, GraduationCap } from "lucide-react";
 import { Logo } from "../ui/Logo";
 import { contactInfo } from "../../data/contact";
 import { navigationLinks } from "../../data/navigation";
@@ -74,9 +74,9 @@ const Footer = () => {
       label: "LinkedIn",
     },
     {
-      href: contactInfo.social?.twitter || "#",
-      icon: Twitter,
-      label: "Twitter",
+      href: contactInfo.social?.academy || "#",
+      icon: GraduationCap,
+      label: "Academia",
     },
     { href: contactInfo.social?.github || "#", icon: Github, label: "GitHub" },
   ];
@@ -175,13 +175,45 @@ const Footer = () => {
               <div className="flex items-start gap-3 text-gray-400">
                 <MapPin className="w-4 h-4 text-sertic-cyan flex-shrink-0 mt-1" />
                 <a
-    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contactInfo.location)}`}
-    target="_blank"
-    rel="noopener noreferrer"
-    className="text-sm hover:text-cyan-400 transition-colors"
-  >
-    {contactInfo.location}
-  </a>
+                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contactInfo.location)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm hover:text-cyan-400 transition-colors"
+                >
+                  {contactInfo.location}
+                </a>
+              </div>
+
+              <div className="flex items-center gap-3 text-gray-400">
+                <Mail className="w-4 h-4 text-sertic-cyan flex-shrink-0" />
+                <a
+                  href={`mailto:${contactInfo.secondary.email}`}
+                  className="hover:text-cyan-400 transition-colors text-sm"
+                >
+                  {contactInfo.secondary.email}
+                </a>
+              </div>
+
+              <div className="flex items-center gap-3 text-gray-400">
+                <FaWhatsapp className="w-4 h-4 text-sertic-cyan flex-shrink-0" />
+                <a
+                  href={`https://wa.me/${contactInfo.secondary.phone.replace(/[^\d]/g, "")}`}
+                  className="hover:text-cyan-400 transition-colors text-sm"
+                >
+                  {contactInfo.secondary.phone}
+                </a>
+              </div>
+
+              <div className="flex items-start gap-3 text-gray-400">
+                <MapPin className="w-4 h-4 text-sertic-cyan flex-shrink-0 mt-1" />
+                <a
+                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contactInfo.secondary.location)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm hover:text-cyan-400 transition-colors"
+                >
+                  {contactInfo.secondary.location}
+                </a>
               </div>
             </div>
           </div>

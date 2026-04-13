@@ -2,10 +2,16 @@ export const contactInfo = {
   email: "info@sertic.cloud",
   phone: "+54 9 3417 51-4628",
   location: "Italia 1352, Rosario, Argentina",
+  secondary: {
+    name: "Nicolás Roman",
+    location: "Pintor Gisbert 25, Alicante, España",
+    phone: "+34 672 74 50 25",
+    email: "nicolas.roman@sertic.cloud"
+  },
   social: {
     linkedin: "https://linkedin.com/company/sertic-tech",
-    twitter: "https://twitter.com",
-    github: "https://github.com"
+    academy: "https://academia.sertic.cloud/",
+    github: "https://github.com/sertic"
   }
 };
 

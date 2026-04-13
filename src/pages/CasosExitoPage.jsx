@@ -232,13 +232,13 @@ const CasosExitoPage = () => {
             </div>
 
             {/* Testimonio del cliente */}
-            {caso.clientQuote && (
+            {/*{caso.clientQuote && (
               <div className="bg-gradient-to-r from-sertic-cyan/10 via-sertic-blue/10 to-purple-500/10 hover:from-sertic-cyan/15 hover:via-sertic-blue/15 hover:to-purple-500/15 rounded-xl p-4 border-l-4 border-sertic-cyan transition-all">
                 <blockquote className="text-gray-300 italic text-sm">
                   "{caso.clientQuote}"
                 </blockquote>
               </div>
-            )}
+            )}*/}
           </div>
         </div>
       </div>
