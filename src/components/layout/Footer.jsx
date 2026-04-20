@@ -82,11 +82,11 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-black/50 py-12 border-t border-slate-800/50">
+    <footer className="bg-black/50 py-8 border-t border-slate-800/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           {/* Company Info */}
-          <div className="space-y-4">
+          <div className="space-y-3">
             <button
               onClick={() => {
                 if (location.pathname !== "/") {
@@ -150,70 +150,82 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-white font-semibold mb-4">{t('footer.contacto')}</h3>
+            {/*<h3 className="text-white font-semibold mb-4">{t('footer.contacto')}</h3>*/}
             <div className="space-y-3">
-              <div className="flex items-center gap-3 text-gray-400">
-                <Mail className="w-4 h-4 text-sertic-cyan flex-shrink-0" />
-                <a
-                  href={`mailto:${contactInfo.email}`}
-                  className="hover:text-cyan-400 transition-colors text-sm"
-                >
-                  {contactInfo.email}
-                </a>
+              {/* Argentina */}
+              <div>
+                <h4 className="text-white font-semibold mb-4">{t('footer.contacto')}</h4>
+                <div className="space-y-2 pl-2 border-l border-slate-700">
+                  <div className="flex items-center gap-3 text-gray-400">
+                    <Mail className="w-4 h-4 text-sertic-cyan flex-shrink-0" />
+                    <a
+                      href={`mailto:${contactInfo.email}`}
+                      className="hover:text-cyan-400 transition-colors text-sm"
+                    >
+                      {contactInfo.email}
+                    </a>
+                  </div>
+
+                  <div className="flex items-center gap-3 text-gray-400">
+                    <FaWhatsapp className="w-4 h-4 text-sertic-cyan flex-shrink-0" />
+                    <a
+                      href={`https://wa.me/${contactInfo.phone.replace(/[^\d]/g, "")}`}
+                      className="hover:text-cyan-400 transition-colors text-sm"
+                    >
+                      {contactInfo.phone}
+                    </a>
+                  </div>
+
+                  <div className="flex items-start gap-3 text-gray-400">
+                    <MapPin className="w-4 h-4 text-sertic-cyan flex-shrink-0 mt-1" />
+                    <a
+                      href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contactInfo.location)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm hover:text-cyan-400 transition-colors"
+                    >
+                      {contactInfo.location}
+                    </a>
+                  </div>
+                </div>
               </div>
 
-              <div className="flex items-center gap-3 text-gray-400">
-                <FaWhatsapp className="w-4 h-4 text-sertic-cyan flex-shrink-0" />
-                <a
-                  href={`https://wa.me/${contactInfo.phone.replace(/[^\d]/g, "")}`}
-                  className="hover:text-cyan-400 transition-colors text-sm"
-                >
-                  {contactInfo.phone}
-                </a>
-              </div>
+              {/* España */}
+              <div>
+                <h4 className="text-white font-semibold mb-4">{t('footer.contactoEspaña')}</h4>
+                <div className="space-y-2 pl-2 border-l border-slate-700">
+                  <div className="flex items-center gap-3 text-gray-400">
+                    <Mail className="w-4 h-4 text-sertic-cyan flex-shrink-0" />
+                    <a
+                      href={`mailto:${contactInfo.secondary.email}`}
+                      className="hover:text-cyan-400 transition-colors text-sm"
+                    >
+                      {contactInfo.secondary.email}
+                    </a>
+                  </div>
 
-              <div className="flex items-start gap-3 text-gray-400">
-                <MapPin className="w-4 h-4 text-sertic-cyan flex-shrink-0 mt-1" />
-                <a
-                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contactInfo.location)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm hover:text-cyan-400 transition-colors"
-                >
-                  {contactInfo.location}
-                </a>
-              </div>
+                  <div className="flex items-center gap-3 text-gray-400">
+                    <FaWhatsapp className="w-4 h-4 text-sertic-cyan flex-shrink-0" />
+                    <a
+                      href={`https://wa.me/${contactInfo.secondary.phone.replace(/[^\d]/g, "")}`}
+                      className="hover:text-cyan-400 transition-colors text-sm"
+                    >
+                      {contactInfo.secondary.phone}
+                    </a>
+                  </div>
 
-              <div className="flex items-center gap-3 text-gray-400">
-                <Mail className="w-4 h-4 text-sertic-cyan flex-shrink-0" />
-                <a
-                  href={`mailto:${contactInfo.secondary.email}`}
-                  className="hover:text-cyan-400 transition-colors text-sm"
-                >
-                  {contactInfo.secondary.email}
-                </a>
-              </div>
-
-              <div className="flex items-center gap-3 text-gray-400">
-                <FaWhatsapp className="w-4 h-4 text-sertic-cyan flex-shrink-0" />
-                <a
-                  href={`https://wa.me/${contactInfo.secondary.phone.replace(/[^\d]/g, "")}`}
-                  className="hover:text-cyan-400 transition-colors text-sm"
-                >
-                  {contactInfo.secondary.phone}
-                </a>
-              </div>
-
-              <div className="flex items-start gap-3 text-gray-400">
-                <MapPin className="w-4 h-4 text-sertic-cyan flex-shrink-0 mt-1" />
-                <a
-                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contactInfo.secondary.location)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm hover:text-cyan-400 transition-colors"
-                >
-                  {contactInfo.secondary.location}
-                </a>
+                  <div className="flex items-start gap-3 text-gray-400">
+                    <MapPin className="w-4 h-4 text-sertic-cyan flex-shrink-0 mt-1" />
+                    <a
+                      href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contactInfo.secondary.location)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm hover:text-cyan-400 transition-colors"
+                    >
+                      {contactInfo.secondary.location}
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

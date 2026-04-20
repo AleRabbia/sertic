@@ -98,7 +98,8 @@ export const services = [
     fullDescription: "En un mundo digital donde las amenazas evolucionan constantemente, protegemos tu empresa con soluciones de ciberseguridad robustas basadas en estándares internacionales y mejores prácticas de la industria.",
     
     features: [
-      "Preventiva & correctiva",
+      /*"Preventiva & correctiva",*/
+      "Análisis de Vulnerabilidades",
       "Auditorías IT",
       "Controles ISO 27002"
     ],

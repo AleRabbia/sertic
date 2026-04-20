@@ -362,7 +362,7 @@ const CasosExitoPage = () => {
             <div className="grid md:grid-cols-4 gap-8">
               {[
                 { value: `${casosPublicados.length}+`, label: t('casosExito.stats.cases') },
-                { value: '99.8%', label: t('casosExito.stats.uptime') },
+                { value: '6000+', label: t('casosExito.stats.uptime') },
                 { value: '24/7', label: t('casosExito.stats.support') },
                 { value: '100%', label: t('casosExito.stats.clients') }
               ].map((stat, index) => {

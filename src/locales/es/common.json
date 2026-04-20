@@ -87,7 +87,7 @@
       "description": "Reducimos riesgos y fortalecemos tus activos.",
       "fullDescription": "En un mundo digital donde las amenazas evolucionan constantemente, protegemos tu empresa con soluciones de ciberseguridad robustas basadas en estándares internacionales y mejores prácticas de la industria.",
       "features": [
-        "Preventiva & correctiva",
+        "Análisis de Vulnerabilidades",
         "Auditorías IT",
         "Controles ISO 27002"
       ],
@@ -101,7 +101,7 @@
       "detailedFeatures": [
         {
           "title": "Auditorías de Seguridad",
-          "description": "Evaluación integral de vulnerabilidades con Prowler, Nessus y herramientas especializadas para identificar brechas de seguridad.",
+          "description": "Evaluación integral de vulnerabilidades con Prowler, Wazuh, Vulseek y herramientas especializadas para identificar brechas de seguridad.",
           "icon": "Shield"
         },
         {
@@ -222,6 +222,11 @@
     "servicios": "Servicios",
     "metricas": "Métricas clave",
     "resultados": "Resultados",
+    "solucionImplementada": "Solución Implementada",
+    "mas": "más",
+    "resultadosClave": "Resultados Clave",
+    "stackTecnologico": "Stack Tecnológico",
+    "verMenos": "Ver menos",
     "sinCategoria": "Sin categoría",
     "sinSector": "Sin sector",
     "noCases": "No hay casos disponibles para esta categoría",
@@ -232,7 +237,7 @@
     "verServicios": "Ver Servicios",
     "stats": {
       "cases": "Casos de éxito",
-      "uptime": "Uptime promedio",
+      "uptime": "Tickets Resueltos",
       "support": "Soporte",
       "clients": "Clientes satisfechos"
     }
@@ -326,7 +331,8 @@
     "descripcion": "Soluciones IT confiables para empresas. Transformamos la tecnología en el motor de tu crecimiento.",
     "enlacesRapidos": "Enlaces Rápidos",
     "servicios": "Servicios",
-    "contacto": "Contacto",
+    "contacto": "Contacto Argentina",
+    "contactoEspaña": "Contacto España",
     "derechos": "Todos los derechos reservados",
     "politicaPrivacidad": "Política de Privacidad",
     "politicaCookies": "Política de Cookies",

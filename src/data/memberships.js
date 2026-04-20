@@ -3,6 +3,8 @@ import cessi from '../assets/clientes/cessi.png';
 import isobn from '../assets/clientes/isobn.png';
 import kbnbn from '../assets/tecnologias/kbnbn.png';
 import aws from '../assets/tecnologias/aws.png';
+import vulseek from '../assets/tecnologias/vulseek.png';
+
 export const memberships = [
   {
     id: 1,
@@ -43,6 +45,12 @@ export const memberships = [
     description: "Aplicamos las buenas prácticas de seguridad definidas en la norma ISO 27002.",
     website: "https://www.iso.org/standard/75652.html",
     type: "standard"
-  }
+  },
+  {id: 6,
+    name: "Vulseek By Securetia",
+    logo: vulseek,
+    description: "Utilizamos Vulseek para gestionar vulnerabilidades, priorizar riesgos y mejorar la postura de ciberseguridad de nuestros clientes.",
+    website: "https://www.securetia.com/",
+    type: "technology"}
 ];
 

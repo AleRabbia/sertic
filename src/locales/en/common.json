@@ -87,7 +87,7 @@
       "description": "We reduce risks and strengthen your assets.",
       "fullDescription": "In a digital world where threats evolve constantly, we protect your company with robust cybersecurity solutions based on international standards and industry best practices.",
       "features": [
-        "Preventive & corrective",
+        "Vulnerability Analysis",
         "IT Audits",
         "ISO 27002 Controls"
       ],
@@ -101,7 +101,7 @@
       "detailedFeatures": [
         {
           "title": "Security Audits",
-          "description": "Comprehensive vulnerability assessment using Prowler, Nessus and specialized tools to identify security gaps.",
+          "description": "Comprehensive vulnerability assessment using Prowler, Wazuh, Vulseek and specialized tools to identify security gaps.",
           "icon": "Shield"
         },
         {
@@ -222,6 +222,11 @@
     "servicios": "Services",
     "metricas": "Key metrics",
     "resultados": "Results",
+    "solucionImplementada": "Implemented Solution",
+    "mas": "more",
+    "resultadosClave": "Key Results",
+    "stackTecnologico": "Technology Stack",
+    "verMenos": "See less",
     "sinCategoria": "No category",
     "sinSector": "No sector",
     "noCases": "No cases available for this category",
@@ -232,7 +237,7 @@
     "verServicios": "View Services",
     "stats": {
       "cases": "Success stories",
-      "uptime": "Average uptime",
+      "uptime": "Resolved Tickets",
       "support": "Support",
       "clients": "Satisfied clients"
     }
@@ -326,7 +331,8 @@
     "descripcion": "Reliable IT solutions for businesses. We turn technology into the engine of your growth.",
     "enlacesRapidos": "Quick Links",
     "servicios": "Services",
-    "contacto": "Contact",
+    "contacto": "Contact Argentina",
+    "contactoEspaña": "Contact Spain",
     "derechos": "All rights reserved",
     "politicaPrivacidad": "Privacy Policy",
     "politicaCookies": "Cookie Policy",
