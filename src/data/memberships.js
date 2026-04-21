@@ -4,6 +4,7 @@ import isobn from '../assets/clientes/isobn.png';
 import kbnbn from '../assets/tecnologias/kbnbn.png';
 import aws from '../assets/tecnologias/aws.png';
 import vulseek from '../assets/tecnologias/vulseek.png';
+import achilles from '../assets/tecnologias/achilles.png';
 
 export const memberships = [
   {
@@ -46,11 +47,21 @@ export const memberships = [
     website: "https://www.iso.org/standard/75652.html",
     type: "standard"
   },
-  {id: 6,
+  {
+    id: 6,
     name: "Vulseek By Securetia",
     logo: vulseek,
     description: "Utilizamos Vulseek para gestionar vulnerabilidades, priorizar riesgos y mejorar la postura de ciberseguridad de nuestros clientes.",
     website: "https://www.securetia.com/",
-    type: "technology"}
+    type: "technology"
+  },
+  {
+    id: 7,
+    name: "Achilles Global Risk Management",
+    logo: achilles,
+    description: "Utilizamos Achilles para gestionar riesgos y mejorar la postura de ciberseguridad de nuestros clientes.",
+    website: "https://www.achilles.com/",
+    type: "technology"
+  }
 ];
 
