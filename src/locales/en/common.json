@@ -11,13 +11,16 @@
   "hero": {
     "title1": "The IT solution your company needs",
     "subtitle1": "Infrastructure, cybersecurity, development and specialized talent to support your technological growth.",
-    "title2": "Enhance your security with Prowler",
-    "subtitle2": "Automated security audits for AWS, Azure and GCP. Identify vulnerabilities before attackers do.",
+    "title2": "AI could be exposing your business",
+    "subtitle2": "Identify data exposure and lack of control in your AI usage in minutes. Protect your critical information with our AI audit service.",
     "title3": "Success stories that inspire",
     "subtitle3": "Discover how companies like INTA, LETIS and KONECTA transformed their infrastructure with SerTIC.",
     "cta1": "Request consultation",
-    "cta2": "Request demo",
-    "cta3": "View success stories"
+    "cta2": "Start free assessment",
+    "cta3": "View success stories",
+    "cta4": "Request demo",
+    "title4": "Enhance your security with Prowler",
+    "subtitle4": "Automated security audits for AWS, Azure and GCP. Identify vulnerabilities before attackers do."
   },
   "home": {
     "membershipsTitle": "Memberships & Certifications",
@@ -404,6 +407,152 @@
     },
     "lastUpdate": "Last updated: October 2025"
   },
+  "team": {
+    "title": "We Build SerTIC",
+    "subtitle": "A team of experts committed to technological excellence and our clients' success",
+    "sectionTitle": "The Team",
+    "mission": {
+      "title": "Our Mission",
+      "description": "Transform technology into the engine of growth for our clients, providing innovative, secure, and reliable IT solutions.",
+      "yearsExperience": "Years of experience",
+      "satisfiedClients": "Satisfied clients",
+      "supportAvailable": "Support available"
+    },
+    "values": {
+      "title": "Our Values",
+      "innovation": "Innovation",
+      "innovationDesc": "We constantly seek new ways to improve and evolve",
+      "commitment": "Commitment",
+      "commitmentDesc": "Total dedication to our clients' success",
+      "excellence": "Excellence",
+      "excellenceDesc": "Superior quality in every project we undertake",
+      "transparency": "Transparency",
+      "transparencyDesc": "Clear and honest communication at all times"
+    },
+    "workWithUs": {
+      "title": "Work With Us",
+      "subtitle": "Are you passionate about technology? Join our team and be part of the digital transformation",
+      "form": {
+        "name": "Full name *",
+        "email": "Email *",
+        "phone": "Phone",
+        "position": "Position of interest *",
+        "positionPlaceholder": "E.g: DevOps Engineer",
+        "linkedin": "LinkedIn (optional)",
+        "linkedinPlaceholder": "https://linkedin.com/in/your-profile",
+        "cv": "CV / Resume",
+        "cvButton": "Choose file",
+        "noFile": "No file selected",
+        "message": "Message (optional)",
+        "messagePlaceholder": "Tell us why you'd like to work with us..."
+      },
+      "button": "Send Application",
+      "sending": "Sending..."
+    },
+    "memberModal": {
+      "achievements": "Achievements",
+      "linkedin": "LinkedIn",
+      "email": "Email"
+    },
+    "confirmationModal": {
+      "successTitle": "Application Sent!",
+      "errorTitle": "Error",
+      "successMessage": "Your application has been received! We will contact you soon.",
+      "errorMessage": "There was a problem sending your application. Please try again.",
+      "close": "Close"
+    },
+    "back": "Back"
+  },
+  "teamMembers": {
+    "1": {
+      "name": "Héctor Garcia",
+      "role": "CEO",
+      "bio": "More than 25 years leading technology projects",
+      "experience": "25+ years",
+      "education": "MBA UBA, Systems Analyst UTN",
+      "achievements": [
+        "ISO 27002 Certification",
+        "Cybersecurity"
+      ]
+    },
+    "2": {
+      "name": "Nicolás Román",
+      "role": "DevOps",
+      "bio": "Specialist in CI/CD and infrastructure automation",
+      "experience": "15+ years",
+      "education": "Systems Engineering UTN",
+      "achievements": [
+        "Kubernetes CKA",
+        "AWS DevOps Pro"
+      ]
+    },
+    "3": {
+      "name": "Ramiro Lemos",
+      "role": "Infrastructure",
+      "bio": "Expert in network architecture and security",
+      "experience": "15+ years",
+      "education": "Computer Science UNR",
+      "achievements": [
+        "Network Admin",
+        "CCNP Security",
+        "CISSP"
+      ]
+    },
+    "4": {
+      "name": "Alexis Rabbia",
+      "role": "Sales",
+      "bio": "Systems analyst with commercial orientation",
+      "experience": "15+ years",
+      "education": "Systems Analysis",
+      "achievements": [
+        "Master in Business"
+      ]
+    },
+    "5": {
+      "name": "Melania Quillici",
+      "role": "Administration",
+      "bio": "Financial management and administrative operations",
+      "experience": "9+ years",
+      "education": "Business Administration",
+      "achievements": [
+        "SAP Consultant",
+        "Odoo Expert"
+      ]
+    },
+    "6": {
+      "name": "Patricio Saez de Arregui",
+      "role": "Cloud",
+      "bio": "Cloud Architect certified in AWS and Azure",
+      "experience": "15+ years",
+      "education": "Environmental Engineer",
+      "achievements": [
+        "AWS Solutions Architect",
+        "Azure Expert"
+      ]
+    },
+    "7": {
+      "name": "Digna Martinez",
+      "role": "Project Manager",
+      "bio": "Functional Analyst",
+      "experience": "9+ years",
+      "education": "Systems Analyst",
+      "achievements": [
+        "Atlassian",
+        "Database"
+      ]
+    },
+    "8": {
+      "name": "Francisco Mizzau",
+      "role": "HR",
+      "bio": "Human Resources",
+      "experience": "12+ years",
+      "education": "Human Resources",
+      "achievements": [
+        "Recruitment Expert 2.0",
+        "Competency-based Selection"
+      ]
+    }
+  },
   "quoteModal": {
     "title": "Request Quote",
     "close": "Close modal",
@@ -466,6 +615,25 @@
     "meetingTitleFallback": "Meeting",
     "notSpecified": "Not specified",
     "notSpecifiedCompany": "Not specified"
+  },
+  "chatbot": {
+    "openAria": "Open virtual chat assistant",
+    "welcome": "Hi! I am your virtual assistant. How can I help you?",
+    "title": "S-TIC",
+    "subtitle": "SerTIC assistant",
+    "writing": "Typing...",
+    "placeholder": "Type your message...",
+    "defaultResponse": "Sorry, I could not process your message.",
+    "errorResponse": "Sorry, there was an error. Please try again.",
+    "faq": {
+      "servicios": "Services",
+      "horario": "Hours",
+      "ubicacion": "Location",
+      "hablarConPersona": "Talk to a person"
+    },
+    "faqAnswer": {
+      "default": "Sorry, I don't have information about that."
+    }
   },
   "language": {
     "titulo": "Language",

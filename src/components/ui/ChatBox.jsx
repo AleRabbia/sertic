@@ -1,20 +1,22 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Send, Bot, User, Loader, X, MessageCircle, HelpCircle, Clock, MapPin, Phone } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+import { Send, Bot, User, Loader, X, HelpCircle, Clock, MapPin, Phone } from 'lucide-react';
 import { faqs } from '../../data/faq';
-import Button from '../ui/Button';
 
 const faqOptions = [
-  { label: "Servicios", icon: HelpCircle },
-  { label: "Horario", icon: Clock },
-  { label: "Ubicación", icon: MapPin },
-  { label: "Hablar con una persona", icon: Phone }
+  { key: 'servicios', icon: HelpCircle },
+  { key: 'horario', icon: Clock },
+  { key: 'ubicacion', icon: MapPin },
+  { key: 'hablarConPersona', icon: Phone }
 ];
 
 const Chatbot = () => {
+  const { t, i18n } = useTranslation();
+
   const [messages, setMessages] = useState([
     {
       id: 1,
-      text: '¡Hola! Soy tu asistente virtual. ¿En qué puedo ayudarte?',
+      text: t('chatbot.welcome'),
       sender: 'bot',
       timestamp: new Date()
     }
@@ -39,24 +41,34 @@ const Chatbot = () => {
     }
   }, [isOpen]);
 
-  //FAQ'S
+  useEffect(() => {
+    setMessages(prev => prev.map(message =>
+      message.id === 1 && message.sender === 'bot'
+        ? { ...message, text: t('chatbot.welcome') }
+        : message
+    ));
+  }, [t, i18n.language]);
+
+  const getMessageLocale = () => {
+    return i18n.language === 'es' ? 'es-AR' : 'en-US';
+  };
+
   const handleFAQClick = (optionObj) => {
-    const option = optionObj.label;
-    if (option === "Hablar con una persona") {
-      window.open("https://wa.me/5493417514628", "_blank");
+    if (optionObj.key === 'hablarConPersona') {
+      window.open('https://wa.me/5493417514628', '_blank');
       return;
     }
 
     const userMessage = {
       id: Date.now(),
-      text: option,
+      text: t(`chatbot.faq.${optionObj.key}`),
       sender: 'user',
       timestamp: new Date(),
     };
 
     const botMessage = {
       id: Date.now() + 1,
-      text: faqs[option] || "Lo siento, no tengo información sobre eso.",
+      text: faqs[i18n.language]?.[optionObj.key] || t('chatbot.faqAnswer.default'),
       sender: 'bot',
       timestamp: new Date(),
     };
@@ -95,7 +107,7 @@ const Chatbot = () => {
 
       const botMessage = {
         id: Date.now() + 1,
-        text: data.response || 'Lo siento, no pude procesar tu mensaje.',
+        text: data.response || t('chatbot.defaultResponse'),
         sender: 'bot',
         timestamp: new Date()
       };
@@ -105,7 +117,7 @@ const Chatbot = () => {
       console.error('Error:', error);
       const errorMessage = {
         id: Date.now() + 1,
-        text: 'Lo siento, hubo un error. Por favor intenta nuevamente.',
+        text: t('chatbot.errorResponse'),
         sender: 'bot',
         timestamp: new Date()
       };
@@ -123,7 +135,7 @@ const Chatbot = () => {
   };
 
   const formatTime = (date) => {
-    return new Intl.DateTimeFormat('es-AR', {
+    return new Intl.DateTimeFormat(getMessageLocale(), {
       hour: '2-digit',
       minute: '2-digit'
     }).format(date);
@@ -136,7 +148,7 @@ const Chatbot = () => {
         <button
             onClick={() => setIsOpen(true)}
             className="bg-gradient-to-r from-sertic-blue to-sertic-cyan text-sertic-white rounded-full p-4 shadow-2xl transition-all duration-300 transform hover:scale-110 relative group before:absolute before:inset-0 before:rounded-full before:bg-sertic-cyan/30 before:animate-pulse before:-z-10"
-            aria-label="Abrir chatbot asistente virtual"
+            aria-label={t('chatbot.openAria')}
         >
             <Bot size={24} className="text-sertic-white" />
         </button>
@@ -152,9 +164,9 @@ const Chatbot = () => {
                 <Bot className="text-sertic-blue" size={20} />
               </div>
               <div>
-                <h3 className="font-semibold">S-TIC</h3>
+                <h3 className="font-semibold">{t('chatbot.title')}</h3>
                 <p className="text-xs opacity-90">
-                  {isLoading ? 'Escribiendo...' : 'Asistente de SerTIC'}
+                  {isLoading ? t('chatbot.writing') : t('chatbot.subtitle')}
                 </p>
               </div>
             </div>
@@ -207,7 +219,7 @@ const Chatbot = () => {
                   <div className="flex items-center space-x-2">
                     <Bot className="text-sertic-cyan" size={16} />
                     <Loader className="animate-spin text-sertic-blue" size={16} />
-                    <span className="text-sm text-sertic-blue font-medium">Escribiendo...</span>
+                    <span className="text-sm text-sertic-blue font-medium">{t('chatbot.writing')}</span>
                   </div>
                 </div>
               </div>
@@ -222,12 +234,12 @@ const Chatbot = () => {
               const IconComponent = optionObj.icon;
               return (
                 <button
-                  key={optionObj.label}
+                  key={optionObj.key}
                   onClick={() => handleFAQClick(optionObj)}
                   className="flex items-center gap-1 bg-gradient-to-r from-sertic-cyan/10 to-sertic-blue/10 hover:from-sertic-cyan/20 hover:to-sertic-blue/20 border border-sertic-cyan/30 hover:border-sertic-cyan/60 text-sertic-blue hover:text-sertic-cyan text-xs font-medium px-3 py-2 rounded-full transition-all duration-300 transform hover:scale-105 group"
                 >
                   <IconComponent size={14} className="group-hover:rotate-12 transition-transform" />
-                  <span>{optionObj.label}</span>
+                  <span>{t(`chatbot.faq.${optionObj.key}`)}</span>
                 </button>
               );
             })}
@@ -242,7 +254,7 @@ const Chatbot = () => {
                 value={inputMessage}
                 onChange={(e) => setInputMessage(e.target.value)}
                 onKeyPress={handleKeyPress}
-                placeholder="Escribe tu mensaje..."
+                placeholder={t('chatbot.placeholder')}
                 className="flex-1 resize-none border border-sertic-cyan/30 rounded-xl px-3 py-2 focus:outline-none focus:border-sertic-cyan focus:ring-2 focus:ring-sertic-cyan/20 min-h-[40px] max-h-[120px] text-sertic-black placeholder-sertic-gray/60 bg-white/50 backdrop-blur-sm transition-all"
                 disabled={isLoading}
               />

@@ -52,6 +52,10 @@ const Hero = () => {
     if (slide.cta.action === 'casos') {
       navigate('/casos-de-exito');
     }
+
+    if (slide.cta.action === 'autoevaluacion') {
+      window.open('https://autoevaluacion.sertic.tech/', '_blank');
+    }
   };
 
   return (

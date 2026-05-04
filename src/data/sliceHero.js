@@ -21,13 +21,13 @@ export const heroSlides = [
     subtitleKey: "hero.subtitle2",
     cta: {
       labelKey: "hero.cta2",
-      action: "contacto"
+      action: "autoevaluacion"
     },
     icon: Shield,
     gradient: "from-sertic-orange via-sertic-light to-sertic-white",
-    image: '/hero/nube.jpeg',
-    avif: '/hero/nube.avif',
-    webp: '/hero/nube.webp'
+    image: '/hero/ia.jpeg',
+    avif: '/hero/ia.avif',
+    webp: '/hero/ia.webp'
   },
   {
     id: 3,
@@ -44,3 +44,21 @@ export const heroSlides = [
     webp: '/hero/escritorio.webp'
   }
 ];
+
+
+/* Reemplazamos prowler por encuesta ia
+{
+    id: 2,
+    titleKey: "hero.title2",
+    subtitleKey: "hero.subtitle2",
+    cta: {
+      labelKey: "hero.cta2",
+      action: "contacto"
+    },
+    icon: Shield,
+    gradient: "from-sertic-orange via-sertic-light to-sertic-white",
+    image: '/hero/nube.jpeg',
+    avif: '/hero/nube.avif',
+    webp: '/hero/nube.webp'
+  },
+   */

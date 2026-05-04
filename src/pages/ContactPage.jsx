@@ -13,7 +13,12 @@ import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 import heroImage from '../assets/hero/escritorio.jpeg';
 
 /* CARD CONTACTO INTERNACIONAL*/
+/* CARD CONTACTO INTERNACIONAL */
 const InternationalContactCard = ({ country, flag, city, address, phone, email }) => {
+  const mapsUrl =
+    "https://maps.google.com/?q=" +
+    encodeURIComponent(address + ", " + city + ", " + country);
+
   return (
     <div
       className="
@@ -29,9 +34,7 @@ const InternationalContactCard = ({ country, flag, city, address, phone, email }
       <div className="flex items-center gap-3 mb-4">
         <Globe className="w-5 h-5 text-sertic-cyan" />
         <div>
-          <h3 className="text-lg font-semibold text-white">
-            {city}
-          </h3>
+          <h3 className="text-lg font-semibold text-white">{city}</h3>
           <p className="text-sm text-gray-400">
             {flag} {country}
           </p>
@@ -40,25 +43,41 @@ const InternationalContactCard = ({ country, flag, city, address, phone, email }
 
       {/* Info */}
       <div className="space-y-3 text-sm text-gray-300">
-        <div className="flex items-start gap-2">
-          <MapPin className="w-4 h-4 text-sertic-cyan mt-0.5" />
+        {/* Dirección → Google Maps */}
+        <a
+          href={mapsUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-start gap-2 hover:text-cyan-400 transition-colors"
+        >
+          <MapPin className="w-4 h-4 text-sertic-cyan mt-0.5 shrink-0" />
           <span>{address}</span>
-        </div>
+        </a>
 
-        <div className="flex items-center gap-2">
-          <Phone className="w-4 h-4 text-sertic-cyan" />
+        {/* Teléfono → marcador */}
+        <a
+          href={"tel:" + phone.replace(/\s/g, "")}
+          className="flex items-center gap-2 hover:text-cyan-400 transition-colors"
+        >
+          <Phone className="w-4 h-4 text-sertic-cyan shrink-0" />
           <span>{phone}</span>
-        </div>
+        </a>
 
-        <div className="flex items-center gap-2">
-          <Mail className="w-4 h-4 text-sertic-cyan" />
+        {/* Email → cliente de correo */}
+        <a
+          href={"mailto:" + email}
+          className="flex items-center gap-2 hover:text-cyan-400 transition-colors"
+        >
+          <Mail className="w-4 h-4 text-sertic-cyan shrink-0" />
           <span className="break-all">{email}</span>
-        </div>
+        </a>
       </div>
 
       {/* Glow decorativo */}
-      <div className="absolute inset-0 rounded-2xl pointer-events-none 
-        bg-gradient-to-r from-transparent via-sertic-cyan/5 to-transparent opacity-0 hover:opacity-100 transition" />
+      <div
+        className="absolute inset-0 rounded-2xl pointer-events-none 
+        bg-gradient-to-r from-transparent via-sertic-cyan/5 to-transparent opacity-0 hover:opacity-100 transition"
+      />
     </div>
   );
 };

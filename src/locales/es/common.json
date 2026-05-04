@@ -11,13 +11,16 @@
   "hero": {
     "title1": "La solución IT que tu empresa necesita",
     "subtitle1": "Infraestructura, ciberseguridad, desarrollo y talento especializado para acompañar tu crecimiento tecnológico.",
-    "title2": "Potencia tu seguridad con Prowler",
-    "subtitle2": "Auditorías automatizadas de seguridad cloud para AWS, Azure y GCP. Identificá vulnerabilidades antes que los atacantes.",
+    "title2": "La IA puede estar exponiendo tu empresa",
+    "subtitle2": "Detectá exposición de datos y falta de control en el uso de IA en minutos. Protegé tu información crítica con nuestro servicio de auditoría de IA.",
     "title3": "Casos de éxito que inspiran",
     "subtitle3": "Conocé cómo empresas como INTA, LETIS y KONECTA transformaron su infraestructura junto a SerTIC.",
     "cta1": "Solicitar asesoría",
-    "cta2": "Solicitar demo",
-    "cta3": "Ver casos de éxito"
+    "cta2": "Iniciar evaluación gratis",
+    "cta3": "Ver casos de éxito",
+    "cta4": "Solicitar demo",
+    "title4": "Potencia tu seguridad con Prowler",
+    "subtitle4": "Auditorías automatizadas de seguridad cloud para AWS, Azure y GCP. Identificá vulnerabilidades antes que los atacantes."
   },
   "home": {
     "membershipsTitle": "Membresías y Certificaciones",
@@ -404,6 +407,152 @@
     },
     "lastUpdate": "Última actualización: Octubre 2025"
   },
+  "team": {
+    "title": "Formamos SerTIC",
+    "subtitle": "Un equipo de expertos comprometidos con la excelencia tecnológica y el éxito de nuestros clientes",
+    "sectionTitle": "El Equipo",
+    "mission": {
+      "title": "Nuestra Misión",
+      "description": "Transformar la tecnología en el motor del crecimiento de nuestros clientes, brindando soluciones IT innovadoras, seguras y confiables.",
+      "yearsExperience": "Años de experiencia",
+      "satisfiedClients": "Clientes satisfechos",
+      "supportAvailable": "Soporte disponible"
+    },
+    "values": {
+      "title": "Nuestros Valores",
+      "innovation": "Innovación",
+      "innovationDesc": "Buscamos constantemente nuevas formas de mejorar y evolucionar",
+      "commitment": "Compromiso",
+      "commitmentDesc": "Dedicación total al éxito de nuestros clientes",
+      "excellence": "Excelencia",
+      "excellenceDesc": "Calidad superior en cada proyecto que emprendemos",
+      "transparency": "Transparencia",
+      "transparencyDesc": "Comunicación clara y honesta en todo momento"
+    },
+    "workWithUs": {
+      "title": "Trabajá con Nosotros",
+      "subtitle": "¿Te apasiona la tecnología? Sumate a nuestro equipo y formá parte de la transformación digital",
+      "form": {
+        "name": "Nombre completo *",
+        "email": "Email *",
+        "phone": "Teléfono",
+        "position": "Posición de interés *",
+        "positionPlaceholder": "Ej: DevOps Engineer",
+        "linkedin": "LinkedIn (opcional)",
+        "linkedinPlaceholder": "https://linkedin.com/in/tu-perfil",
+        "cv": "CV / Currículum",
+        "cvButton": "Seleccionar archivo",
+        "noFile": "Ningún archivo seleccionado",
+        "message": "Mensaje (opcional)",
+        "messagePlaceholder": "Contanos por qué te gustaría trabajar con nosotros..."
+      },
+      "button": "Enviar Postulación",
+      "sending": "Enviando…"
+    },
+    "memberModal": {
+      "achievements": "Logros",
+      "linkedin": "LinkedIn",
+      "email": "Email"
+    },
+    "confirmationModal": {
+      "successTitle": "¡Postulación Enviada!",
+      "errorTitle": "Error",
+      "successMessage": "¡Tu postulación ha sido recibida! Nos pondremos en contacto contigo pronto.",
+      "errorMessage": "Hubo un problema al enviar tu postulación. Intenta nuevamente.",
+      "close": "Cerrar"
+    },
+    "back": "Volver"
+  },
+  "teamMembers": {
+    "1": {
+      "name": "Héctor Garcia",
+      "role": "CEO",
+      "bio": "Más de 25 años liderando proyectos tecnológicos",
+      "experience": "25+ años",
+      "education": "MBA UBA, Analista de Sistemas UTN",
+      "achievements": [
+        "Certificación ISO 27002",
+        "Ciberseguridad"
+      ]
+    },
+    "2": {
+      "name": "Nicolás Román",
+      "role": "DevOps",
+      "bio": "Especialista en CI/CD y automatización de infraestructura",
+      "experience": "15+ años",
+      "education": "Ingeniería en Sistemas UTN",
+      "achievements": [
+        "Kubernetes CKA",
+        "AWS DevOps Pro"
+      ]
+    },
+    "3": {
+      "name": "Ramiro Lemos",
+      "role": "Infraestructura",
+      "bio": "Experto en arquitectura de redes y seguridad",
+      "experience": "15+ años",
+      "education": "Ciencia de la Computación UNR",
+      "achievements": [
+        "Adm Redes",
+        "CCNP Security",
+        "CISSP"
+      ]
+    },
+    "4": {
+      "name": "Alexis Rabbia",
+      "role": "Comercial",
+      "bio": "Analista de sistemas con orientación comercial",
+      "experience": "15+ años",
+      "education": "Análisis de Sistemas",
+      "achievements": [
+        "Master en Negocios"
+      ]
+    },
+    "5": {
+      "name": "Melania Quillici",
+      "role": "Administración",
+      "bio": "Gestión financiera y operaciones administrativas",
+      "experience": "9+ años",
+      "education": "Administración de Empresas",
+      "achievements": [
+        "SAP Consultant",
+        "Odoo Expert"
+      ]
+    },
+    "6": {
+      "name": "Patricio Saez de Arregui",
+      "role": "Cloud",
+      "bio": "Arquitecto Cloud certificado en AWS y Azure",
+      "experience": "15+ años",
+      "education": "Ingeniero Ambiental",
+      "achievements": [
+        "AWS Solutions Architect",
+        "Azure Expert"
+      ]
+    },
+    "7": {
+      "name": "Digna Martinez",
+      "role": "Project Manager",
+      "bio": "Analista Funcional",
+      "experience": "9+ años",
+      "education": "Analista de Sistemas",
+      "achievements": [
+        "Atlassian",
+        "Base de datos"
+      ]
+    },
+    "8": {
+      "name": "Francisco Mizzau",
+      "role": "HR",
+      "bio": "Recursos Humanos",
+      "experience": "12+ años",
+      "education": "Recursos Humanos",
+      "achievements": [
+        "Experto en Reclutamiento 2.0",
+        "Selección por competencias"
+      ]
+    }
+  },
   "quoteModal": {
     "title": "Solicitar Cotización",
     "close": "Cerrar modal",
@@ -466,6 +615,25 @@
     "meetingTitleFallback": "Reunión",
     "notSpecified": "No especificado",
     "notSpecifiedCompany": "No especificada"
+  },
+  "chatbot": {
+    "openAria": "Abrir chatbot asistente virtual",
+    "welcome": "¡Hola! Soy tu asistente virtual. ¿En qué puedo ayudarte?",
+    "title": "S-TIC",
+    "subtitle": "Asistente de SerTIC",
+    "writing": "Escribiendo...",
+    "placeholder": "Escribe tu mensaje...",
+    "defaultResponse": "Lo siento, no pude procesar tu mensaje.",
+    "errorResponse": "Lo siento, hubo un error. Por favor intenta nuevamente.",
+    "faq": {
+      "servicios": "Servicios",
+      "horario": "Horario",
+      "ubicacion": "Ubicación",
+      "hablarConPersona": "Hablar con una persona"
+    },
+    "faqAnswer": {
+      "default": "Lo siento, no tengo información sobre eso."
+    }
   },
   "language": {
     "titulo": "Idioma",

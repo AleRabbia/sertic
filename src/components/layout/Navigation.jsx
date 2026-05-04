@@ -88,8 +88,8 @@ const Navigation = () => {
                   {t(link.labelKey)}
                 </button>
               ))}
-              {/* Para levantar luego
-              <LanguageSwitcher />*/}
+              {/* Para levantar luego*/}
+              <LanguageSwitcher />
               <Button 
                 size="sm"
                 onClick={handleOpenModal}
@@ -123,8 +123,8 @@ const Navigation = () => {
                 </button>
               ))}
               <div className="py-4 border-t border-cyan-400/20">
-                {/* Para levantar luego
-              <LanguageSwitcher />*/}
+                {/* Para levantar luego*/}
+              <LanguageSwitcher />
               </div>
               <Button 
                 className="w-full"

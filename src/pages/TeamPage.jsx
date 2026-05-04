@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   Linkedin,
   Mail,
@@ -13,13 +14,15 @@ import {
   TrendingUp,
   MessageSquare
 } from 'lucide-react';
-import { teamMembers } from '../data/equipo';
+import { useTeamMembers } from '../data/equipo';
 import { Navigation, Footer } from '../components/layout';
 import { useNavigate } from 'react-router-dom';
 import { Card } from '../components/ui/Card';
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 
 const TeamPage = () => {
+  const { t } = useTranslation();
+  const teamMembers = useTeamMembers();
   const [selectedMember, setSelectedMember] = useState(null);
   const [hoveredMember, setHoveredMember] = useState(null);
   const [nodePositions, setNodePositions] = useState({});
@@ -40,7 +43,7 @@ const TeamPage = () => {
     isSuccess: false,
     message: ''
   });
-  
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -178,38 +181,38 @@ const TeamPage = () => {
 
   /* -------------------- POSICIONES EXACTAS SEGÚN FIGMA (CENTRADAS) -------------------- */
   const offsetX = -8;
-/*
-  const desktopPositions = {
-    1: { x: 60.5 + offsetX, y: 37.6 },
-    2: { x: 28.5 + offsetX, y: 24.9 },
-    3: { x: 47.9 + offsetX, y: 82.9 },
-    4: { x: 60.4 + offsetX, y: 64.2 },
-    5: { x: 83.8 + offsetX, y: 24.7 },
-    6: { x: 89.0 + offsetX, y: 50.1 },
-    7: { x: 26.8 + offsetX, y: 59.3 },
-    8: { x: 83.7 + offsetX, y: 82.4 }
-  };
-*/
+  /*
+    const desktopPositions = {
+      1: { x: 60.5 + offsetX, y: 37.6 },
+      2: { x: 28.5 + offsetX, y: 24.9 },
+      3: { x: 47.9 + offsetX, y: 82.9 },
+      4: { x: 60.4 + offsetX, y: 64.2 },
+      5: { x: 83.8 + offsetX, y: 24.7 },
+      6: { x: 89.0 + offsetX, y: 50.1 },
+      7: { x: 26.8 + offsetX, y: 59.3 },
+      8: { x: 83.7 + offsetX, y: 82.4 }
+    };
+  */
   /* -------------------- CONNECTIONS -------------------- */
- /* const connections = [
-    { from: 1, to: 7, curve: 'left' },
-    { from: 1, to: 5, curve: 'right' },
-    { from: 1, to: 6, curve: 'right' },
-    { from: 1, to: 3, curve: 'left' },
-    { from: 1, to: 4, curve: 'down' },
-    { from: 7, to: 2, curve: 'up' },
-    { from: 7, to: 3, curve: 'down' },
-    { from: 7, to: 8, curve: 'right' },
-    { from: 3, to: 2, curve: 'right' },
-    { from: 3, to: 6, curve: 'right' },
-    { from: 6, to: 2, curve: 'left' },
-    { from: 5, to: 8, curve: 'down' },
-    { from: 5, to: 4, curve: 'left' },
-    { from: 4, to: 7, curve: 'up' }
-  ];
-*/
+  /* const connections = [
+     { from: 1, to: 7, curve: 'left' },
+     { from: 1, to: 5, curve: 'right' },
+     { from: 1, to: 6, curve: 'right' },
+     { from: 1, to: 3, curve: 'left' },
+     { from: 1, to: 4, curve: 'down' },
+     { from: 7, to: 2, curve: 'up' },
+     { from: 7, to: 3, curve: 'down' },
+     { from: 7, to: 8, curve: 'right' },
+     { from: 3, to: 2, curve: 'right' },
+     { from: 3, to: 6, curve: 'right' },
+     { from: 6, to: 2, curve: 'left' },
+     { from: 5, to: 8, curve: 'down' },
+     { from: 5, to: 4, curve: 'left' },
+     { from: 4, to: 7, curve: 'up' }
+   ];
+ */
 
- const desktopPositions = {
+  const desktopPositions = {
     1: { x: 50, y: 50 },      // Héctor - CENTRO
     7: { x: 50, y: 15 },      // ARRIBA
     2: { x: 70, y: 28 },      // ARRIBA DERECHA
@@ -217,7 +220,7 @@ const TeamPage = () => {
     3: { x: 73, y: 62 },      // ABAJO DERECHA
     6: { x: 60, y: 85 },      // ABAJO 2
     4: { x: 27, y: 62 },      // ABAJO IZQUIERDA
-    
+
     8: { x: 40, y: 85 },      // ABAJO 1
   };
 
@@ -229,7 +232,7 @@ const TeamPage = () => {
     { from: 1, to: 5, curve: 'auto' },  // Centro -> Abajo
     { from: 1, to: 6, curve: 'auto' },  // Centro -> Abajo Izquierda
     { from: 1, to: 7, curve: 'auto' },  // Centro -> Arriba Izquierda
-    { from: 1, to: 8, curve: 'auto'},   // Centro -> Abajo
+    { from: 1, to: 8, curve: 'auto' },   // Centro -> Abajo
   ];
 
 
@@ -319,13 +322,13 @@ const TeamPage = () => {
   const validateForm = () => {
     const newErrors = {};
 
-    if (!formData.name.trim()) newErrors.name = 'El nombre es requerido';
+    if (!formData.name.trim()) newErrors.name = t('contacto.validacion.nombre');
     if (!formData.email.trim()) {
-      newErrors.email = 'El email es requerido';
+      newErrors.email = t('contacto.validacion.emailRequerido');
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Email inválido';
+      newErrors.email = t('contacto.validacion.emailInvalido');
     }
-    if (!formData.position.trim()) newErrors.position = 'La posición es requerida';
+    if (!formData.position.trim()) newErrors.position = t('team.workWithUs.form.position') + ' *';
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -352,26 +355,26 @@ const TeamPage = () => {
 
     try {
       const webhookUrl = import.meta.env.VITE_N8N_CAREERS_WEBHOOK_URL;
-      
+
       if (!webhookUrl) {
         // Modo simulación: sin configuración de n8n aún
         await new Promise(resolve => setTimeout(resolve, 1500));
-        
+
         setModal({
           isOpen: true,
           isSuccess: true,
-          message: '¡Tu postulación ha sido recibida! Nos pondremos en contacto contigo pronto.'
+          message: t('team.confirmationModal.successMessage')
         });
       } else {
         // Modo producción: enviar a n8n vía FormData (incluye CV)
         const formDataToSend = new FormData();
         formDataToSend.append('name', formData.name);
         formDataToSend.append('email', formData.email);
-        formDataToSend.append('phone', formData.phone || 'No especificado');
+        formDataToSend.append('phone', formData.phone || t('contacto.validacion.presioneEnviar'));
         formDataToSend.append('position', formData.position);
-        formDataToSend.append('linkedin', formData.linkedin || 'No especificado');
-        formDataToSend.append('message', formData.message || 'Sin mensaje adicional');
-        
+        formDataToSend.append('linkedin', formData.linkedin || t('contacto.validacion.presioneEnviar'));
+        formDataToSend.append('message', formData.message || t('contacto.validacion.presioneEnviar'));
+
         if (formData.cv) {
           formDataToSend.append('data', formData.cv, formData.cv.name);
         }
@@ -388,7 +391,7 @@ const TeamPage = () => {
         setModal({
           isOpen: true,
           isSuccess: true,
-          message: '¡Tu postulación ha sido enviada correctamente! Nos pondremos en contacto contigo pronto.'
+          message: t('team.confirmationModal.successMessage')
         });
       }
 
@@ -408,7 +411,7 @@ const TeamPage = () => {
       setModal({
         isOpen: true,
         isSuccess: false,
-        message: 'Hubo un problema al enviar tu postulación. Intenta nuevamente.'
+        message: t('team.confirmationModal.errorMessage')
       });
     } finally {
       setIsSubmitting(false);
@@ -432,23 +435,23 @@ const TeamPage = () => {
             className="flex items-center gap-2 text-sertic-cyan hover:text-sertic-light transition-colors mb-10 group"
           >
             <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
-            Volver
+            {t('team.back')}
           </button>
 
           {/* ================= TÍTULO Y SUBTÍTULO ================= */}
           <div className="text-center mb-16">
             <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-sertic-cyan to-sertic-blue bg-clip-text text-transparent">
-              Formamos SerTIC
+              {t('team.title')}
             </h1>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Un equipo de expertos comprometidos con la excelencia tecnológica y el éxito de nuestros clientes
+              {t('team.subtitle')}
             </p>
           </div>
 
           {/* ================= TÍTULO DE LA SECCIÓN DE EQUIPO ================= */}
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold bg-gradient-to-r from-sertic-cyan to-sertic-blue bg-clip-text text-transparent">
-              El Equipo
+              {t('team.sectionTitle')}
             </h2>
           </div>
 
@@ -579,18 +582,18 @@ const TeamPage = () => {
 
             <div className="flex items-center justify-center mb-6">
               <h2 className="text-4xl font-bold bg-gradient-to-r from-sertic-cyan to-sertic-blue bg-clip-text text-transparent">
-                Nuestra Misión
+                {t('team.mission.title')}
               </h2>
             </div>
 
             <p className="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed">
-              Transformar la tecnología en el motor del crecimiento de nuestros clientes, brindando soluciones IT innovadoras, seguras y confiables.
+              {t('team.mission.description')}
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <MissionStat value="25+" label="Años de experiencia" delay={0} />
-              <MissionStat value="50+" label="Clientes satisfechos" delay={200} />
-              <MissionStat value="24/7" label="Soporte disponible" delay={400} />
+              <MissionStat value="25+" label={t('team.mission.yearsExperience')} delay={0} />
+              <MissionStat value="50+" label={t('team.mission.satisfiedClients')} delay={200} />
+              <MissionStat value="24/7" label={t('team.mission.supportAvailable')} delay={400} />
             </div>
 
 
@@ -601,7 +604,7 @@ const TeamPage = () => {
           <section className="mb-24">
             <div className="text-center mb-12">
               <h2 className="text-4xl font-bold bg-gradient-to-r from-sertic-cyan to-sertic-blue bg-clip-text text-transparent">
-                Nuestros Valores
+                {t('team.values.title')}
               </h2>
             </div>
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -609,29 +612,29 @@ const TeamPage = () => {
                 <ValueCard
                   index={0}
                   icon={Lightbulb}
-                  title="Innovación"
-                  description="Buscamos constantemente nuevas formas de mejorar y evolucionar"
+                  title={t('team.values.innovation')}
+                  description={t('team.values.innovationDesc')}
                 />
 
                 <ValueCard
                   index={1}
                   icon={Heart}
-                  title="Compromiso"
-                  description="Dedicación total al éxito de nuestros clientes"
+                  title={t('team.values.commitment')}
+                  description={t('team.values.commitmentDesc')}
                 />
 
                 <ValueCard
                   index={2}
                   icon={Award}
-                  title="Excelencia"
-                  description="Calidad superior en cada proyecto que emprendemos"
+                  title={t('team.values.excellence')}
+                  description={t('team.values.excellenceDesc')}
                 />
 
                 <ValueCard
                   index={3}
                   icon={MessageSquare}
-                  title="Transparencia"
-                  description="Comunicación clara y honesta en todo momento"
+                  title={t('team.values.transparency')}
+                  description={t('team.values.transparencyDesc')}
                 />
               </div>
             </div>
@@ -641,10 +644,10 @@ const TeamPage = () => {
           <section className="mb-24">
             <div className="text-center mb-12">
               <h2 className="text-4xl font-bold bg-gradient-to-r from-sertic-cyan to-sertic-blue bg-clip-text text-transparent mb-4">
-                Trabajá con Nosotros
+                {t('team.workWithUs.title')}
               </h2>
               <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-                ¿Te apasiona la tecnología? Sumate a nuestro equipo y formá parte de la transformación digital
+                {t('team.workWithUs.subtitle')}
               </p>
             </div>
 
@@ -656,7 +659,7 @@ const TeamPage = () => {
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-sm font-medium text-gray-300 mb-2">
-                        Nombre completo *
+                        {t('team.workWithUs.form.name')}
                       </label>
                       <input
                         type="text"
@@ -675,7 +678,7 @@ const TeamPage = () => {
 
                     <div>
                       <label className="block text-sm font-medium text-gray-300 mb-2">
-                        Email *
+                        {t('team.workWithUs.form.email')}
                       </label>
                       <input
                         type="email"
@@ -697,7 +700,7 @@ const TeamPage = () => {
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-sm font-medium text-gray-300 mb-2">
-                        Teléfono
+                        {t('team.workWithUs.form.phone')}
                       </label>
                       <input
                         type="tel"
@@ -710,14 +713,14 @@ const TeamPage = () => {
 
                     <div>
                       <label className="block text-sm font-medium text-gray-300 mb-2">
-                        Posición de interés *
+                        {t('team.workWithUs.form.position')}
                       </label>
                       <input
                         type="text"
                         name="position"
                         value={formData.position}
                         onChange={handleChange}
-                        placeholder="Ej: DevOps Engineer"
+                        placeholder={t('team.workWithUs.form.positionPlaceholder')}
                         className={`w-full px-4 py-3 bg-slate-700/50 border rounded-lg text-white focus:outline-none transition-colors ${errors.position
                           ? 'border-red-500 focus:border-red-400'
                           : 'border-slate-600 focus:border-cyan-500'
@@ -732,14 +735,14 @@ const TeamPage = () => {
                   {/* LinkedIn */}
                   <div>
                     <label className="block text-sm font-medium text-gray-300 mb-2">
-                      LinkedIn (opcional)
+                      {t('team.workWithUs.form.linkedin')}
                     </label>
                     <input
                       type="url"
                       name="linkedin"
                       value={formData.linkedin}
                       onChange={handleChange}
-                      placeholder="https://linkedin.com/in/tu-perfil"
+                      placeholder={t('team.workWithUs.form.linkedinPlaceholder')}
                       className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white focus:border-cyan-500 focus:outline-none transition-colors"
                     />
                   </div>
@@ -747,28 +750,48 @@ const TeamPage = () => {
                   {/* CV */}
                   <div>
                     <label className="block text-sm font-medium text-gray-300 mb-2">
-                      CV / Currículum
+                      {t('team.workWithUs.form.cv')}
                     </label>
-                    <input
-                      type="file"
-                      name="cv"
-                      onChange={handleFileChange}
-                      accept=".pdf,.doc,.docx"
-                      className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white focus:outline-none file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-gradient-to-r file:from-sertic-cyan file:to-sertic-blue file:text-white hover:file:opacity-90"
-                    />
+
+                    {/* Contenedor que simula el input */}
+                    <div className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg flex items-center gap-3">
+
+                      {/* Input real pero invisible */}
+                      <input
+                        type="file"
+                        id="cv-upload"
+                        name="cv"
+                        onChange={handleFileChange}
+                        accept=".pdf,.doc,.docx"
+                        className="hidden"
+                      />
+
+                      {/* Botón personalizado que dispara el input */}
+                      <label
+                        htmlFor="cv-upload"
+                        className="cursor-pointer py-2 px-4 rounded-full text-sm font-semibold bg-gradient-to-r from-sertic-cyan to-sertic-blue text-white hover:opacity-90 shrink-0"
+                      >
+                        {t('team.workWithUs.form.cvButton')} {/* 👈 tu clave traducida */}
+                      </label>
+
+                      {/* Nombre del archivo seleccionado */}
+                      <span className="text-gray-400 text-sm truncate">
+                        {formData.cv ? formData.cv.name : t('team.workWithUs.form.noFile')}
+                      </span>
+                    </div>
                   </div>
 
                   {/* Mensaje */}
                   <div>
                     <label className="block text-sm font-medium text-gray-300 mb-2">
-                      Mensaje (opcional)
+                      {t('team.workWithUs.form.message')}
                     </label>
                     <textarea
                       name="message"
                       value={formData.message}
                       onChange={handleChange}
                       rows={4}
-                      placeholder="Contanos por qué te gustaría trabajar con nosotros..."
+                      placeholder={t('team.workWithUs.form.messagePlaceholder')}
                       className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white resize-none focus:border-cyan-500 focus:outline-none transition-colors"
                     />
                   </div>
@@ -782,7 +805,7 @@ const TeamPage = () => {
                       : 'bg-gradient-to-r from-sertic-cyan to-sertic-blue text-white hover:shadow-lg hover:shadow-cyan-500/30'
                       }`}
                   >
-                    {isSubmitting ? 'Enviando…' : 'Enviar Postulación'}
+                    {isSubmitting ? t('team.workWithUs.sending') : t('team.workWithUs.button')}
                   </button>
                 </form>
               </div>
@@ -867,7 +890,7 @@ const TeamPage = () => {
                 <div className="mb-8">
                   <h3 className="font-semibold text-white mb-3 flex items-center gap-2">
                     <Award className="text-cyan-400" />
-                    Logros
+                    {t('team.memberModal.achievements')}
                   </h3>
 
                   <div className="flex flex-wrap gap-2">
@@ -895,7 +918,7 @@ const TeamPage = () => {
                      hover:border-cyan-500 hover:text-cyan-400 transition"
                   >
                     <Linkedin />
-                    LinkedIn
+                    {t('team.memberModal.linkedin')}
                   </a>
 
                   <a
@@ -905,7 +928,7 @@ const TeamPage = () => {
                      hover:border-blue-500 hover:text-blue-400 transition"
                   >
                     <Mail />
-                    Email
+                    {t('team.memberModal.email')}
                   </a>
                 </div>
               </div>
@@ -928,14 +951,14 @@ const TeamPage = () => {
                   </div>
                 )}
                 <h3 className="text-xl font-bold text-white mb-2">
-                  {modal.isSuccess ? '¡Postulación Enviada!' : 'Error'}
+                  {modal.isSuccess ? t('team.confirmationModal.successTitle') : t('team.confirmationModal.errorTitle')}
                 </h3>
                 <p className="text-gray-300 mb-6">{modal.message}</p>
                 <button
                   onClick={() => setModal({ ...modal, isOpen: false })}
                   className="px-6 py-2 rounded-full bg-gradient-to-r from-sertic-cyan to-sertic-blue text-white hover:shadow-lg hover:shadow-sertic-cyan/50 transition-all"
                 >
-                  Cerrar
+                  {t('team.confirmationModal.close')}
                 </button>
               </div>
             </div>
